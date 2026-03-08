@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-canvas bg-grid bg-[length:28px_28px] font-body text-ink;
+  background-image:
+    radial-gradient(circle at top left, rgba(166, 98, 44, 0.14), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(18, 90, 67, 0.16), transparent 22%),
+    linear-gradient(rgba(24,36,31,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,36,31,0.05) 1px, transparent 1px);
+}
+
+* {
+  scrollbar-width: thin;
+}

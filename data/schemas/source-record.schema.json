@@ -162,6 +162,10 @@
         "content_sha256",
         "local_path",
         "http_status",
+        "final_url",
+        "media_type",
+        "byte_length",
+        "last_modified",
         "failure_reason"
       ],
       "properties": {
@@ -202,6 +206,33 @@
           "minimum": 100,
           "maximum": 599
         },
+        "final_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "media_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$"
+        },
+        "byte_length": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "last_modified": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "failure_reason": {
           "type": [
             "string",
@@ -234,6 +265,18 @@
               "local_path": {
                 "type": "string",
                 "pattern": "^data/sources/"
+              },
+              "final_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "media_type": {
+                "type": "string",
+                "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$"
+              },
+              "byte_length": {
+                "type": "integer",
+                "minimum": 1
               }
             }
           }

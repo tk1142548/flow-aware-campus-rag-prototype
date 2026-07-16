@@ -1,6 +1,42 @@
+# 密钥与本机配置
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python 本地环境与缓存
 __pycache__/
-.env.local
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node.js 依赖与构建产物
 node_modules/
 .next/
 out/
+
+# Codex 与本机工具状态
+.agents/
+.codex/
 tools/
+
+# 可重建产物、临时提取结果和日志
+output/
+tmp_ppt_extract/
+artifacts/
+logs/
+*.log
+*.tmp
+*.temp
+
+# 数据下载缓存与实验逐次运行产物
+data/cache/
+data/downloads/
+data/tmp/
+experiments/runs/

@@ -26,7 +26,7 @@
 | Skill 同步脚本 | 已验证 |
 | `.gitignore` 边界 | 已验证 |
 | 核心代码与现有证据修改 | 未执行，符合本轮范围 |
-| Git 提交与推送 | 本轮基础文件形成独立提交；后续自动节奏待确认 |
+| Git 提交与推送 | 已验证；本轮基础文件已同步到私有远程仓库 |
 
 ## 3. 实际完成内容
 
@@ -95,7 +95,7 @@ Skill 规定：
 
 ## 5. 已使用的仓库证据
 
-- 当前基线提交：`869e2a6 Build flow-aware campus RAG prototype`。
+- 核心实现的技术审查基线提交：`869e2a6 Build flow-aware campus RAG prototype`。
 - 受版本控制文件：27 个。
 - 现有数据：30 条证据、8 个来源、2 个事项、10 条缺失发布日期。
 - 现有主链路：`app/backend/rag_engine.py`。
@@ -172,6 +172,19 @@ Git 状态显示：
 - 用户原有申报书、导师准备文档和答辩材料仍为未跟踪文件
 
 本轮没有修改 `app/`、`data/`、`README.md`、`requirements.txt` 或现有启动脚本。
+
+### 6.7 提交与远程同步
+
+本轮工作流基础文件形成提交：
+
+`dd7cb60 chore: bootstrap long-term research workflow`
+
+执行 `git push origin main` 成功。推送完成时：
+
+- 本地提交：`dd7cb6047eef8bc691d21386e0c0c4a255d48d1f`
+- 远程 `origin/main`：`dd7cb6047eef8bc691d21386e0c0c4a255d48d1f`
+
+两者一致。用户原有申报书、导师准备文档和答辩材料未包含在提交中。
 
 ## 7. 尚未验证或未完成
 

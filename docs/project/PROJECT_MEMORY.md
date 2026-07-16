@@ -19,7 +19,7 @@
 
 ### 已验证
 
-- `main` 分支当前基线提交为 `869e2a6`，初始仓库只有这一个提交。
+- 核心实现的技术审查基线提交为 `869e2a6`；阶段 0 工作流由提交 `dd7cb60` 引入并已同步到远程仓库。
 - 受版本控制文件 27 个。
 - 后端主链路位于 `app/backend/rag_engine.py`，核心类为 `EvidenceIndex` 和 `FlowAwareCampusRAG`。
 - 当前只支持 `UG_PROOF_PRINT` 与 `UG_STATUS_CHANGE` 两个事项。

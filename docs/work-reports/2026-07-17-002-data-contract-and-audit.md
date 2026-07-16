@@ -194,7 +194,11 @@ python -m pip install --dry-run -r requirements-dev.txt
 
 `b6aa6d9 feat: add research data contracts and audit baseline`
 
-执行 `git push origin main` 成功。推送完成时：
+记录验证结果的后续文档提交：
+
+`528ac95 docs: record stage 1a verification`
+
+两次执行 `git push origin main` 均成功。主要变更推送完成时：
 
 - 本地提交：`b6aa6d993bbf0d773ec698fefb1abd5cee95850b`
 - 远程 `origin/main`：`b6aa6d993bbf0d773ec698fefb1abd5cee95850b`
@@ -216,6 +220,11 @@ python -m pip install --dry-run -r requirements-dev.txt
 - 初始负例覆盖不足，不能证明推进方案列出的全部失败条件。已补齐并重新验证。
 - 来源模式最初将文件格式和资料角色混在一个字段，并试图用一个记录表示落地页与 PDF。迁移前自审发现该设计会丢失独立哈希和版本信息，已修正为“一文件一来源记录＋关系字段”。
 - `jsonschema.__version__` 检查产生弃用警告，仅出现在临时验证命令中，不影响项目代码；正式工具未使用该接口。
+- 最终 Git 状态复核时，本轮开始仍在仓库根目录的三份未跟踪材料副本已经不在该目录。只读搜索确认相同文件名、大小和修改时间的原件仍位于 `E:\个人文件\已产出且可复用的结果文件`：
+  - 申报书 DOC（文档文件）：1,857,674 字节；
+  - 导师面谈文档：42,328 字节；
+  - 答辩 PPTX（演示文稿文件）：47,273 字节。
+  用户随后确认这些副本由其主动移出，项目无需恢复、提交或继续考虑这些文件。
 
 ## 8. 对推进方案和决策的影响
 
@@ -227,7 +236,7 @@ python -m pip install --dry-run -r requirements-dev.txt
 
 ## 9. 需要用户决定
 
-本轮没有新增阻塞性决定。根据 GitHub（代码托管平台）作为事实源的既有约定，验证通过后提交并推送已记录为 D-011；现有申报书、答辩材料和导师准备文档的隐私边界仍需用户确认。
+本轮没有阻塞性决定。用户已明确允许自动提交，并确认三份材料由其主动移出且无需项目考虑；对应问题已经在决策日志中关闭。
 
 ## 10. 下一轮接续任务
 

@@ -164,7 +164,7 @@ python scripts/validate_research_data.py --scope repository
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-最终结果：4 项测试通过，耗时约 0.062 秒。
+最终提交前结果：4 项测试通过，耗时约 0.029 秒。
 
 ### 5.4 Python 语法
 
@@ -187,6 +187,19 @@ python -m pip install --dry-run -r requirements-dev.txt
 ```
 
 结果：退出状态 0，运行依赖与 `jsonschema==4.26.0` 均已满足。
+
+### 5.6 提交与远程同步
+
+本轮主要变更形成提交：
+
+`b6aa6d9 feat: add research data contracts and audit baseline`
+
+执行 `git push origin main` 成功。推送完成时：
+
+- 本地提交：`b6aa6d993bbf0d773ec698fefb1abd5cee95850b`
+- 远程 `origin/main`：`b6aa6d993bbf0d773ec698fefb1abd5cee95850b`
+
+两者一致。三份用户原有材料未包含在提交中。
 
 ## 6. 尚未验证或未完成
 

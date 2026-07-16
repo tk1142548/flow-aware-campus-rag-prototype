@@ -1,0 +1,225 @@
+{
+  "output_path": "data/research/source_records.jsonl",
+  "records": [
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_PRINT_20210317",
+      "title": "打印中英文成绩单、证明等",
+      "canonical_url": "https://jwc.jnu.edu.cn/2021/0317/c11805a602515/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2023-01-19",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2023-1-19 15:46:10",
+        "note": "日期取自当前官方页面显示的更新时间，不将网址路径中的 2021-03-17 视为现行发布日期。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_PRINT_20210317/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "官方页面更新于 2023-01-19",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未明确给出统一生效和失效区间；当前可访问不等同于长期有效。"
+      },
+      "relations": [],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "本轮先核验来源元数据和快照；九条旧证据将在后续逐条复核。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_SUSPEND_FORM",
+      "title": "XX1_休学申请表202504",
+      "canonical_url": "https://jwc.jnu.edu.cn/2021/0313/c6757a600991/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-04-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-4-16 10:00:00",
+        "note": "日期取自表格落地页显示的更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_SUSPEND_FORM/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "休学申请表 2025 年 4 月落地页",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "落地页当前链接 2025 年 4 月版 PDF，但未明确业务生效区间。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_SUSPEND_FORM_PDF_202504"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需与附件 PDF 的文件名、地址和内容交叉核验。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_SUSPEND_FORM_PDF_202504",
+      "title": "休学申请表（本科学生）",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/26/18/5fde309f47a3a4eb7f037a4a720b/1b6a2c01-631c-4162-8915-510adeddc284.pdf",
+      "publisher": {
+        "name": "暨南大学教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学教务处制表（2025 年 4 月）",
+        "note": "表格只显示到月份，不虚构具体发布日期；HTTP Last-Modified 仅作为抓取元数据。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_SUSPEND_FORM_PDF_202504/form.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "version": {
+        "label": "2025 年 4 月版",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "当前官方落地页链接该文件，但表格未写明生效和失效日期。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_SUSPEND_FORM"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "本轮将进行文本提取与页面渲染双重核验。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_RESUME_FORM",
+      "title": "FX1_复学申请表202504",
+      "canonical_url": "https://jwc.jnu.edu.cn/2021/0313/c6757a600999/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-04-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-4-16 10:00:00",
+        "note": "日期取自表格落地页显示的更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_RESUME_FORM/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "复学申请表 2025 年 4 月落地页",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "落地页当前链接 2025 年 4 月版 PDF，但未明确业务生效区间。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_RESUME_FORM_PDF_202504"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需与附件 PDF 的文件名、地址和内容交叉核验。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_RESUME_FORM_PDF_202504",
+      "title": "复学申请表（本科学生）",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/85/ed/532b7c2740ea81fbf5515c8eae02/e9589e0b-b39a-4964-a7bf-cc892fe2082e.pdf",
+      "publisher": {
+        "name": "暨南大学教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学教务处制表（2025 年 4 月）",
+        "note": "表格只显示到月份，不虚构具体发布日期；HTTP Last-Modified 仅作为抓取元数据。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_RESUME_FORM_PDF_202504/form.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "version": {
+        "label": "2025 年 4 月版",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "当前官方落地页链接该文件，但表格未写明生效和失效日期。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_RESUME_FORM"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "本轮将进行文本提取与页面渲染双重核验。"
+      }
+    }
+  ]
+}

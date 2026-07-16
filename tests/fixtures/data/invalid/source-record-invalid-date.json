@@ -23,6 +23,10 @@
     "content_sha256": null,
     "local_path": null,
     "http_status": null,
+    "final_url": null,
+    "media_type": null,
+    "byte_length": null,
+    "last_modified": null,
     "failure_reason": null
   },
   "version": {

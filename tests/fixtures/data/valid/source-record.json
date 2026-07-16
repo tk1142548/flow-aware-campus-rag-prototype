@@ -23,6 +23,10 @@
     "content_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
     "local_path": "data/sources/SRC_UG_PRINT_20210317/page.html",
     "http_status": 200,
+    "final_url": "https://jwc.jnu.edu.cn/2021/0317/c11805a602515/page.htm",
+    "media_type": "text/html",
+    "byte_length": 51782,
+    "last_modified": null,
     "failure_reason": null
   },
   "version": {

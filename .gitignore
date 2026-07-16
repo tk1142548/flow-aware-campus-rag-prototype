@@ -29,6 +29,7 @@ tools/
 # 可重建产物、临时提取结果和日志
 output/
 tmp_ppt_extract/
+tmp/
 artifacts/
 logs/
 *.log

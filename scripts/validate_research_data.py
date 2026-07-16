@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -58,9 +60,12 @@ EVIDENCE_AUDIT_COLUMNS = [
     "next_action",
     "review_status",
     "migration_status",
+    "target_evidence_ids",
 ]
 
 KNOWN_MISMATCH_IDS = {"UGS002", "UGS003", "UGS013", "UGS014"}
+TARGET_SOURCE_RECORDS_PATH = Path("data/research/source_records.jsonl")
+TARGET_EVIDENCE_RECORDS_PATH = Path("data/research/evidence_units.jsonl")
 
 
 def load_json(path: Path) -> Any:
@@ -112,6 +117,16 @@ def validate_target_links(
         errors.append(f"duplicate target evidence_id values: {duplicate_evidence_ids}")
 
     known_sources = set(source_ids)
+    sources_by_id = {
+        str(row.get("source_id", "")): row
+        for row in source_records
+        if row.get("source_id")
+    }
+    reciprocal_relations = {
+        "attachment_of": "landing_page_for",
+        "landing_page_for": "attachment_of",
+        "same_document_as": "same_document_as",
+    }
     for source in source_records:
         source_id = str(source.get("source_id", "<unknown>"))
         for relation in source.get("relations", []):
@@ -121,6 +136,20 @@ def validate_target_links(
                     f"{source_id}: relation references unknown source_id "
                     f"{target_source_id!r}"
                 )
+                continue
+            relation_type = str(relation.get("relation_type", ""))
+            reciprocal_type = reciprocal_relations.get(relation_type)
+            if reciprocal_type:
+                target_relations = sources_by_id[target_source_id].get("relations", [])
+                if not any(
+                    target_relation.get("relation_type") == reciprocal_type
+                    and target_relation.get("target_source_id") == source_id
+                    for target_relation in target_relations
+                ):
+                    errors.append(
+                        f"{source_id}: {relation_type} relation to {target_source_id} "
+                        f"is missing reciprocal {reciprocal_type}"
+                    )
         version = source.get("version", {})
         for field in ("supersedes", "superseded_by"):
             for target_source_id in version.get(field, []):
@@ -128,6 +157,18 @@ def validate_target_links(
                     errors.append(
                         f"{source_id}: version.{field} references unknown source_id "
                         f"{target_source_id!r}"
+                    )
+                    continue
+                reciprocal_field = (
+                    "superseded_by" if field == "supersedes" else "supersedes"
+                )
+                reciprocal_values = sources_by_id[target_source_id].get("version", {}).get(
+                    reciprocal_field, []
+                )
+                if source_id not in reciprocal_values:
+                    errors.append(
+                        f"{source_id}: version.{field} reference to {target_source_id} "
+                        f"is missing reciprocal version.{reciprocal_field}"
                     )
 
     for evidence in evidence_records:
@@ -137,6 +178,156 @@ def validate_target_links(
                 f"{evidence.get('evidence_id', '<unknown>')}: unknown source_id {source_id!r}"
             )
     return errors
+
+
+def host_matches_domain(host: str, domain: str) -> bool:
+    return host == domain or host.endswith(f".{domain}")
+
+
+def validate_target_repository(
+    root: Path = ROOT,
+) -> tuple[list[str], dict[str, int]]:
+    errors: list[str] = []
+    source_path = root / TARGET_SOURCE_RECORDS_PATH
+    evidence_path = root / TARGET_EVIDENCE_RECORDS_PATH
+
+    missing_paths = [path for path in (source_path, evidence_path) if not path.is_file()]
+    if missing_paths:
+        return [f"{path}: required target data file is missing" for path in missing_paths], {}
+
+    try:
+        source_records = load_jsonl(source_path)
+        evidence_records = load_jsonl(evidence_path)
+    except ValueError as exc:
+        return [str(exc)], {}
+
+    source_schema = load_json(root / "data/schemas/source-record.schema.json")
+    evidence_schema = load_json(root / "data/schemas/evidence-unit.schema.json")
+    source_validator = Draft202012Validator(
+        source_schema, format_checker=FormatChecker()
+    )
+    evidence_validator = Draft202012Validator(
+        evidence_schema, format_checker=FormatChecker()
+    )
+
+    for line_number, source in enumerate(source_records, start=1):
+        record_path = Path(f"{source_path}:{line_number}")
+        record_errors = sorted(
+            source_validator.iter_errors(source), key=lambda item: list(item.path)
+        )
+        errors.extend(format_schema_error(record_path, error) for error in record_errors)
+
+    for line_number, evidence in enumerate(evidence_records, start=1):
+        record_path = Path(f"{evidence_path}:{line_number}")
+        record_errors = sorted(
+            evidence_validator.iter_errors(evidence), key=lambda item: list(item.path)
+        )
+        errors.extend(format_schema_error(record_path, error) for error in record_errors)
+
+        evidence_id = str(evidence.get("evidence_id", f"line-{line_number}"))
+        review = evidence.get("review", {})
+        if review.get("status") == "verified":
+            if not review.get("reviewed_at") or not review.get("reviewer"):
+                errors.append(
+                    f"{evidence_path}:{evidence_id}: verified review requires "
+                    "reviewed_at and reviewer"
+                )
+        anchor_text = evidence.get("source_locator", {}).get("anchor_text")
+        if anchor_text and anchor_text not in str(evidence.get("verbatim_text", "")):
+            errors.append(
+                f"{evidence_path}:{evidence_id}: anchor_text is absent from verbatim_text"
+            )
+
+    errors.extend(validate_target_links(source_records, evidence_records))
+
+    allowed_source_root = (root / "data/sources").resolve()
+    captured_file_count = 0
+    verified_source_count = 0
+    expected_media_types = {
+        "html": "text/html",
+        "pdf": "application/pdf",
+    }
+
+    for source in source_records:
+        source_id = str(source.get("source_id", "<unknown>"))
+        publisher_domain = str(source.get("publisher", {}).get("domain", "")).lower()
+        canonical_host = (urlparse(str(source.get("canonical_url", ""))).hostname or "").lower()
+        if publisher_domain and not host_matches_domain(canonical_host, publisher_domain):
+            errors.append(
+                f"{source_path}:{source_id}: canonical URL host {canonical_host!r} "
+                f"does not match publisher domain {publisher_domain!r}"
+            )
+
+        review = source.get("review", {})
+        if review.get("status") == "verified":
+            verified_source_count += 1
+            if not review.get("reviewed_at") or not review.get("reviewer"):
+                errors.append(
+                    f"{source_path}:{source_id}: verified review requires "
+                    "reviewed_at and reviewer"
+                )
+
+        capture = source.get("capture", {})
+        if capture.get("status") != "captured":
+            continue
+        captured_file_count += 1
+
+        relative_path = str(capture.get("local_path", ""))
+        local_path = (root / relative_path).resolve()
+        if local_path == allowed_source_root or allowed_source_root not in local_path.parents:
+            errors.append(
+                f"{source_path}:{source_id}: local_path is outside data/sources"
+            )
+            continue
+        if not local_path.is_file():
+            errors.append(
+                f"{source_path}:{source_id}: captured file is missing: {relative_path}"
+            )
+            continue
+
+        content = local_path.read_bytes()
+        recorded_length = capture.get("byte_length")
+        if recorded_length != len(content):
+            errors.append(
+                f"{source_path}:{source_id}: byte_length={recorded_length}, "
+                f"actual={len(content)}"
+            )
+        actual_sha256 = hashlib.sha256(content).hexdigest()
+        if capture.get("content_sha256") != actual_sha256:
+            errors.append(
+                f"{source_path}:{source_id}: content_sha256 does not match local file"
+            )
+
+        content_format = str(source.get("content_format", ""))
+        expected_media_type = expected_media_types.get(content_format)
+        if expected_media_type and capture.get("media_type") != expected_media_type:
+            errors.append(
+                f"{source_path}:{source_id}: media_type={capture.get('media_type')!r}, "
+                f"expected={expected_media_type!r}"
+            )
+        if content_format == "pdf" and not content.startswith(b"%PDF-"):
+            errors.append(f"{source_path}:{source_id}: local file lacks PDF signature")
+        if content_format == "html" and b"<html" not in content[:4096].lower():
+            errors.append(f"{source_path}:{source_id}: local file lacks HTML signature")
+
+        final_host = (urlparse(str(capture.get("final_url", ""))).hostname or "").lower()
+        if publisher_domain and not host_matches_domain(final_host, publisher_domain):
+            errors.append(
+                f"{source_path}:{source_id}: final URL host {final_host!r} "
+                f"does not match publisher domain {publisher_domain!r}"
+            )
+
+    return errors, {
+        "target_source_records": len(source_records),
+        "captured_source_files": captured_file_count,
+        "verified_source_records": verified_source_count,
+        "target_evidence_units": len(evidence_records),
+        "verified_target_evidence_units": sum(
+            1
+            for row in evidence_records
+            if row.get("review", {}).get("status") == "verified"
+        ),
+    }
 
 
 def format_schema_error(path: Path, error: Any) -> str:
@@ -250,11 +441,15 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
     evidence_path = root / "data" / "evidence" / "evidence_units.jsonl"
     source_audit_path = root / "data" / "audit" / "source-audit.csv"
     evidence_audit_path = root / "data" / "audit" / "evidence-audit.csv"
+    target_evidence_path = root / TARGET_EVIDENCE_RECORDS_PATH
 
     manifest = load_json(manifest_path)
     if not isinstance(manifest, list):
         return [f"{manifest_path}: expected a JSON array"], {}
     evidence_rows = load_jsonl(evidence_path)
+    target_evidence_rows = (
+        load_jsonl(target_evidence_path) if target_evidence_path.is_file() else []
+    )
     source_headers, source_audit = load_csv(source_audit_path)
     evidence_headers, evidence_audit = load_csv(evidence_audit_path)
 
@@ -281,6 +476,11 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
     sources_by_id = {row["source_id"]: row for row in manifest if row.get("source_id")}
     sources_by_url = {row["source_url"]: row for row in manifest if row.get("source_url")}
     evidence_by_id = {row["evidence_id"]: row for row in evidence_rows if row.get("evidence_id")}
+    target_evidence_ids = {
+        str(row["evidence_id"])
+        for row in target_evidence_rows
+        if row.get("evidence_id")
+    }
     source_audit_by_id = {row["source_id"]: row for row in source_audit if row.get("source_id")}
     evidence_audit_by_id = {
         row["evidence_id"]: row for row in evidence_audit if row.get("evidence_id")
@@ -383,6 +583,7 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
             errors.append(f"{source_audit_path}:{source_id}: next_action must not be empty")
 
     marked_mismatches: set[str] = set()
+    migrated_legacy_rows = 0
     for evidence_id, evidence in evidence_by_id.items():
         audit = evidence_audit_by_id.get(evidence_id)
         if not audit:
@@ -471,6 +672,48 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
         if not audit["next_action"].strip():
             errors.append(f"{evidence_audit_path}:{evidence_id}: next_action must not be empty")
 
+        target_ids = [
+            value.strip()
+            for value in audit.get("target_evidence_ids", "").split("|")
+            if value.strip()
+        ]
+        duplicate_target_ids = duplicate_values(target_ids)
+        if duplicate_target_ids:
+            errors.append(
+                f"{evidence_audit_path}:{evidence_id}: duplicate target_evidence_ids "
+                f"{duplicate_target_ids}"
+            )
+        unknown_target_ids = sorted(set(target_ids) - target_evidence_ids)
+        if unknown_target_ids:
+            errors.append(
+                f"{evidence_audit_path}:{evidence_id}: unknown target_evidence_ids "
+                f"{unknown_target_ids}"
+            )
+
+        migration_status = audit["migration_status"]
+        if migration_status == "migrated":
+            migrated_legacy_rows += 1
+            if not target_ids:
+                errors.append(
+                    f"{evidence_audit_path}:{evidence_id}: migrated row requires "
+                    "target_evidence_ids"
+                )
+            if audit["review_status"] != "verified":
+                errors.append(
+                    f"{evidence_audit_path}:{evidence_id}: migrated row requires "
+                    "review_status=verified"
+                )
+            if audit["verbatim_text_status"] != "verified":
+                errors.append(
+                    f"{evidence_audit_path}:{evidence_id}: migrated row requires "
+                    "verbatim_text_status=verified"
+                )
+        elif migration_status in {"pending", "not_applicable", "rejected"} and target_ids:
+            errors.append(
+                f"{evidence_audit_path}:{evidence_id}: {migration_status} row must not "
+                "declare target_evidence_ids"
+            )
+
     if marked_mismatches != KNOWN_MISMATCH_IDS:
         errors.append(
             f"{evidence_audit_path}: known mismatches must be exactly "
@@ -486,6 +729,7 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
             1 for row in evidence_rows if not row.get("publish_date")
         ),
         "known_mismatch_rows": len(marked_mismatches),
+        "migrated_legacy_rows": migrated_legacy_rows,
         "legacy_unmigrated_rows": sum(
             1 for row in evidence_audit if row.get("migration_status") != "migrated"
         ),
@@ -504,6 +748,9 @@ def run_validation(root: Path = ROOT, scope: str = "all") -> tuple[list[str], di
         repository_errors, repository_summary = validate_repository_audits(root)
         errors.extend(repository_errors)
         summary.update(repository_summary)
+        target_errors, target_summary = validate_target_repository(root)
+        errors.extend(target_errors)
+        summary.update(target_summary)
 
     return errors, summary
 

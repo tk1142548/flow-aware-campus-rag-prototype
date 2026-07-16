@@ -1,0 +1,391 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/source-record.schema.json",
+  "title": "校园办事来源记录",
+  "description": "用于保存官方来源、抓取状态、版本关系和人工复核状态的目标数据契约。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "title",
+    "canonical_url",
+    "publisher",
+    "content_format",
+    "document_role",
+    "authority_level",
+    "publication",
+    "capture",
+    "version",
+    "relations",
+    "review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC_[A-Z0-9_]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "domain"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "type": "string",
+          "pattern": "^[a-z0-9.-]+$"
+        }
+      }
+    },
+    "content_format": {
+      "enum": [
+        "html",
+        "pdf",
+        "docx",
+        "other"
+      ]
+    },
+    "document_role": {
+      "enum": [
+        "guide",
+        "notice",
+        "form",
+        "process",
+        "policy",
+        "service_page",
+        "other"
+      ]
+    },
+    "authority_level": {
+      "enum": [
+        "official_primary",
+        "official_secondary"
+      ]
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "date",
+        "date_kind",
+        "displayed_date_text",
+        "note"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "known",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "date_kind": {
+          "enum": [
+            "published",
+            "updated",
+            "effective",
+            "unknown"
+          ]
+        },
+        "displayed_date_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "known"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "date": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "captured_at",
+        "content_sha256",
+        "local_path",
+        "http_status",
+        "failure_reason"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "captured",
+            "failed",
+            "not_permitted"
+          ]
+        },
+        "captured_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "content_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "local_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^data/sources/"
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "failure_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "captured"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "captured_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "local_path": {
+                "type": "string",
+                "pattern": "^data/sources/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "failed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "failure_reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "status",
+        "effective_from",
+        "effective_to",
+        "supersedes",
+        "superseded_by",
+        "note"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "current",
+            "historical",
+            "superseded",
+            "unknown",
+            "time_bounded"
+          ]
+        },
+        "effective_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "effective_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SRC_[A-Z0-9_]+$"
+          },
+          "uniqueItems": true
+        },
+        "superseded_by": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SRC_[A-Z0-9_]+$"
+          },
+          "uniqueItems": true
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relation_type",
+          "target_source_id"
+        ],
+        "properties": {
+          "relation_type": {
+            "enum": [
+              "links_to",
+              "attachment_of",
+              "landing_page_for",
+              "same_document_as"
+            ]
+          },
+          "target_source_id": {
+            "type": "string",
+            "pattern": "^SRC_[A-Z0-9_]+$"
+          }
+        }
+      }
+    },
+    "review": {
+      "$ref": "#/$defs/review"
+    }
+  },
+  "$defs": {
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewed_at",
+        "reviewer",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "in_review",
+            "verified",
+            "rejected"
+          ]
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

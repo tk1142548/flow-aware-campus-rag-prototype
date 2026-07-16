@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "source_id": "SRC_UG_PRINT_20210317",
+  "title": "打印中英文成绩单、证明等",
+  "canonical_url": "https://jwc.jnu.edu.cn/2021/0317/c11805a602515/page.htm",
+  "publisher": {
+    "name": "暨南大学本科生院",
+    "domain": "jwc.jnu.edu.cn"
+  },
+  "content_format": "html",
+  "document_role": "guide",
+  "authority_level": "official_primary",
+  "publication": {
+    "status": "known",
+    "date": "2023-01-19",
+    "date_kind": "updated",
+    "displayed_date_text": "更新：2023-01-19",
+    "note": "日期取自页面当前显示的更新时间。"
+  },
+  "capture": {
+    "status": "captured",
+    "captured_at": "2026-07-17T12:00:00+08:00",
+    "content_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "local_path": "data/sources/SRC_UG_PRINT_20210317/page.html",
+    "http_status": 200,
+    "failure_reason": null
+  },
+  "version": {
+    "label": "页面更新于 2023-01-19",
+    "status": "unknown",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes": [],
+    "superseded_by": [],
+    "note": "尚未确认页面更新时间是否等同于业务生效日期。"
+  },
+  "relations": [],
+  "review": {
+    "status": "in_review",
+    "reviewed_at": "2026-07-17T12:30:00+08:00",
+    "reviewer": "codex",
+    "notes": "仅用于模式正例，不代表来源已完成正式审计。"
+  }
+}

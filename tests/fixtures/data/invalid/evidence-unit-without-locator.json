@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "UGP999",
+  "item_id": "UG_PROOF_PRINT",
+  "source_id": "SRC_UG_PRINT_20210317",
+  "source_locator": {
+    "locator_type": "anchor_text",
+    "page": null,
+    "section": null,
+    "anchor_text": null
+  },
+  "verbatim_text": "这条记录有原文，但没有提供任何可复核的位置。",
+  "normalized_claim": "缺少定位信息的证据不能进入已验证数据集。",
+  "claim_type": "note",
+  "audience": [
+    "本科生"
+  ],
+  "applicability": {
+    "effective_from": null,
+    "effective_to": null,
+    "term_label": null,
+    "conditions": []
+  },
+  "keywords": [
+    "错误样例"
+  ],
+  "review": {
+    "status": "pending",
+    "reviewed_at": null,
+    "reviewer": null,
+    "notes": ""
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "source_id": "SRC_INVALID_DATE",
+  "title": "发布日期错误的来源记录",
+  "canonical_url": "https://jwc.jnu.edu.cn/example",
+  "publisher": {
+    "name": "暨南大学本科生院",
+    "domain": "jwc.jnu.edu.cn"
+  },
+  "content_format": "html",
+  "document_role": "guide",
+  "authority_level": "official_primary",
+  "publication": {
+    "status": "known",
+    "date": "2026-02-31",
+    "date_kind": "published",
+    "displayed_date_text": "2026-02-31",
+    "note": "二月不存在三十一日。"
+  },
+  "capture": {
+    "status": "pending",
+    "captured_at": null,
+    "content_sha256": null,
+    "local_path": null,
+    "http_status": null,
+    "failure_reason": null
+  },
+  "version": {
+    "label": "未知版本",
+    "status": "unknown",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes": [],
+    "superseded_by": [],
+    "note": ""
+  },
+  "relations": [],
+  "review": {
+    "status": "pending",
+    "reviewed_at": null,
+    "reviewer": null,
+    "notes": ""
+  }
+}

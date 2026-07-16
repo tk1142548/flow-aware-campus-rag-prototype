@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "invalid-id",
+  "item_id": "UG_PROOF_PRINT",
+  "source_id": "SRC_UG_PRINT_20210317",
+  "source_locator": {
+    "locator_type": "anchor_text",
+    "page": null,
+    "section": "在校本科学生",
+    "anchor_text": "在校本科学生可打印中英文成绩单和中英文在学证明"
+  },
+  "verbatim_text": "在校本科学生可打印中英文成绩单和中英文在学证明。",
+  "normalized_claim": "在校本科生可以办理中英文成绩单和中英文在学证明打印。",
+  "claim_type": "applicable_audience",
+  "audience": [
+    "在校本科生"
+  ],
+  "applicability": {
+    "effective_from": null,
+    "effective_to": null,
+    "term_label": null,
+    "conditions": []
+  },
+  "keywords": [
+    "本科生"
+  ],
+  "review": {
+    "status": "pending",
+    "reviewed_at": null,
+    "reviewer": null,
+    "notes": ""
+  }
+}

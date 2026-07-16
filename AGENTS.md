@@ -28,8 +28,10 @@
 - 项目记忆：`docs/project/PROJECT_MEMORY.md`
 - 决策日志：`docs/project/DECISIONS.md`
 - 工作报告：`docs/work-reports/`
+- 数据契约：`docs/data/DATA_CONTRACT.md`
 - 项目 Skill：`skills/advance-campus-rag-research/SKILL.md`
 - Skill 同步：`powershell -ExecutionPolicy Bypass -File scripts/sync_project_skill.ps1`
+- 数据校验：`python scripts/validate_research_data.py`
 - 现有后端主链路：`app/backend/rag_engine.py`
 - 现有接口：`app/backend/main.py`
 - 现有证据数据：`data/evidence/evidence_units.jsonl`

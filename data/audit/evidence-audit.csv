@@ -1,0 +1,31 @@
+evidence_id,item_id,source_id,legacy_publish_date_status,legacy_locator_status,verbatim_text_status,claim_review_status,priority,known_issue,next_action,review_status,migration_status
+UGP001,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"来源日期和长期有效性尚未核验。","在来源快照中定位适用对象原文并分离原文与规范化声明。",pending,pending
+UGP002,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"账号、密码和各校区设备信息可能随页面更新。","在来源快照中定位入口和登录说明，并核对当前页面。",pending,pending
+UGP003,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"注册和在校状态前置条件尚无原文定位。","在来源快照中定位原文并核验条件边界。",pending,pending
+UGP004,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"英文名修改所需材料和提交主体尚无原文定位。","在来源快照中定位并拆分前置条件、材料和步骤。",pending,pending
+UGP005,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"入学年份边界尚未对当前页面复核。","定位毕业生办理条件原文并核对年份边界。",pending,pending
+UGP006,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"咨询电话和年份分支可能变化。","定位原文并分别记录年份条件、联系电话和档案馆渠道。",pending,pending
+UGP007,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"英文毕业证明的年份和材料分支尚未复核。","定位原文并拆分对象、材料、地点和年份条件。",pending,pending
+UGP008,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"各校区密封地点可能变化。","定位当前密封办理点并按校区拆分证据。",pending,pending
+UGP009,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"收费和联系方式属于易变信息。","定位当前收费表与联系方式，分别建立费用和联系类声明。",pending,pending
+UGP010,UG_PROOF_PRINT,SRC_UG_GRAD_NOTICE_20250617,present,descriptive_only,missing,pending,P1,"内容仅适用于 2025 年暑假，当前适用条件未结构化。","保存通知及附件并记录明确起止时间和适用对象。",pending,pending
+UGP011,UG_PROOF_PRINT,SRC_GS_CERT_20140616,present,descriptive_only,missing,pending,P1,"仅依据标题概括对象排除，页面现行有效性不明。","获取原文后核验研究生办理渠道；无法获取则标记证据不足。",pending,pending
+UGS001,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"表单版本和发布日期未结构化。","保存表格落地页及 PDF，定位表单名称和下载入口。",pending,pending
+UGS002,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,known_mismatch,P0,"现有摘要称家长填写意见并签字，当前表格要求随附家长签字的知情同意书；字段描述也需复核。","依据 2025 年 PDF 逐字段重建声明，保留旧值和修改依据。",pending,pending
+UGS003,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,known_mismatch,P0,"现有摘要列出出国、创业、家庭、个人等原因，当前表格选项为身体原因、服兵役和其他。","依据 2025 年 PDF 修正选项，并核验是否存在自由填写字段。",pending,pending
+UGS004,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"受理周次和五个工作日反馈的具体来源位置尚未核验。","在表格须知与流程页中分别定位时间要求和审核时长。",pending,pending
+UGS005,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"第七周后课程处理规则尚无原文定位。","在 2025 年表格须知中定位并核对适用条件。",pending,pending
+UGS006,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"退学后果属于高风险声明，尚无原文定位和版本关系。","在表格、学籍规定或通知中定位权威原文并核对版本。",pending,pending
+UGS007,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"2019 年流程与现行表格关系未知。","保存流程页并核验校门诊核签要求是否仍适用。",pending,pending
+UGS008,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"学院与学籍科步骤尚未与现行表格交叉核验。","定位流程步骤并记录办理主体和顺序。",pending,pending
+UGS009,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"审批通知和离校步骤尚未与现行资料交叉核验。","定位流程步骤并记录批准条件和后续动作。",pending,pending
+UGS010,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"该条是对整张流程图的人工归纳，不是原文声明。","将办理地点与步骤分别绑定到流程页中的具体节点。",pending,pending
+UGS011,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,pending,P1,"表单版本和发布日期未结构化。","保存表格落地页及 PDF，定位表单名称和下载入口。",pending,pending
+UGS012,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,pending,P1,"提交时间和通知时间属于高风险时间约束。","在 2025 年 PDF 中定位原文并拆分提交、院系审核和通知时间。",pending,pending
+UGS013,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,known_mismatch,P0,"现有摘要把休学通知写成原件和复印件，并写为三甲医院；当前表格为原件或复印件、县级以上医院且区分校内外情形。","依据 2025 年 PDF 按材料和对象条件拆分重建声明。",pending,pending
+UGS014,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,known_mismatch,P0,"现有摘要包含休学起止时间和申请复学时间字段，当前表格未见对应明确字段。","依据 2025 年 PDF 逐字段重建表单信息声明。",pending,pending
+UGS015,UG_STATUS_CHANGE,SRC_UG_RESUME_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"2019 年流程中的时间和校门诊要求需与现行表格交叉核验。","保存流程页并分别核验时间、地点和因病条件。",pending,pending
+UGS016,UG_STATUS_CHANGE,SRC_UG_RESUME_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"学院审批和学籍科通知步骤尚无原文定位。","定位流程步骤并记录办理主体和顺序。",pending,pending
+UGS017,UG_STATUS_CHANGE,SRC_UG_RESUME_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"缴费、注册和选课顺序需确认是否仍适用。","定位原文并与现行复学通知交叉核验。",pending,pending
+UGS018,UG_STATUS_CHANGE,SRC_UG_RESUME_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"该条是对整张流程图的人工归纳，不是原文声明。","将办理地点与步骤分别绑定到流程页中的具体节点。",pending,pending
+UGS019,UG_STATUS_CHANGE,SRC_UG_UNREGISTERED_20250321,present,descriptive_only,missing,pending,P1,"通知仅适用于 2025 年春季，当前摘要把多个后果合并为一条。","保存通知并拆分注册期、逾期两周和逾期一个月三个条件声明。",pending,pending

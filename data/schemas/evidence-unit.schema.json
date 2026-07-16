@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evidence-unit.schema.json",
+  "title": "校园办事证据单元",
+  "description": "用于将可定位的官方原文与规范化声明分开保存，并记录适用条件和复核状态。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "item_id",
+    "source_id",
+    "source_locator",
+    "verbatim_text",
+    "normalized_claim",
+    "claim_type",
+    "audience",
+    "applicability",
+    "keywords",
+    "review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+    },
+    "item_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC_[A-Z0-9_]+$"
+    },
+    "source_locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locator_type",
+        "page",
+        "section",
+        "anchor_text"
+      ],
+      "properties": {
+        "locator_type": {
+          "enum": [
+            "page",
+            "section",
+            "paragraph",
+            "table_cell",
+            "form_field",
+            "anchor_text"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "section": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "anchor_text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 8
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "section": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "anchor_text": {
+              "type": "string",
+              "minLength": 8
+            }
+          }
+        }
+      ]
+    },
+    "verbatim_text": {
+      "type": "string",
+      "minLength": 8
+    },
+    "normalized_claim": {
+      "type": "string",
+      "minLength": 8
+    },
+    "claim_type": {
+      "enum": [
+        "applicable_audience",
+        "entry",
+        "precondition",
+        "step",
+        "material",
+        "time_constraint",
+        "service_location",
+        "fee",
+        "contact",
+        "exception",
+        "consequence",
+        "conflict",
+        "note"
+      ]
+    },
+    "audience": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effective_from",
+        "effective_to",
+        "term_label",
+        "conditions"
+      ],
+      "properties": {
+        "effective_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "effective_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "term_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewed_at",
+        "reviewer",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "in_review",
+            "verified",
+            "rejected"
+          ]
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

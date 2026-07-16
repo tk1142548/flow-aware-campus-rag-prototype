@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "UGP998",
+  "item_id": "UG_PROOF_PRINT",
+  "source_id": "SRC_DOES_NOT_EXIST",
+  "source_locator": {
+    "locator_type": "anchor_text",
+    "page": null,
+    "section": "测试章节",
+    "anchor_text": "这条模式合法的记录引用了不存在的来源编号"
+  },
+  "verbatim_text": "这条模式合法的记录引用了不存在的来源编号。",
+  "normalized_claim": "证据记录必须引用来源集合中真实存在的来源编号。",
+  "claim_type": "note",
+  "audience": [
+    "本科生"
+  ],
+  "applicability": {
+    "effective_from": null,
+    "effective_to": null,
+    "term_label": null,
+    "conditions": []
+  },
+  "keywords": [
+    "外键"
+  ],
+  "review": {
+    "status": "pending",
+    "reviewed_at": null,
+    "reviewer": null,
+    "notes": ""
+  }
+}

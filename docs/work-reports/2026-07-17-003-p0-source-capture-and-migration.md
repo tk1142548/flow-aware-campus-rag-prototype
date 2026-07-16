@@ -221,6 +221,20 @@ python -m py_compile scripts/validate_research_data.py scripts/capture_official_
 - `pdfinfo.exe`：页数、页面尺寸、文件大小和 PDF 版本读取成功。
 - 两张渲染图已人工查看；临时文本和图片不纳入版本控制。
 
+### 5.6 提交与远程同步
+
+本轮代码、来源、证据、测试和主体文档形成提交：
+
+`3a8b9ab21fd6bef715fad5da7bb646d4253787f8 feat: capture and verify initial official sources`
+
+执行 `git push origin main` 成功。推送完成后：
+
+- 本地提交：`3a8b9ab21fd6bef715fad5da7bb646d4253787f8`
+- 远程 `origin/main`：`3a8b9ab21fd6bef715fad5da7bb646d4253787f8`
+- `git ls-remote origin refs/heads/main` 返回同一提交。
+
+本报告与项目记忆写入上述结果的后续纯文档提交由 Git 历史继续审计，不修改来源、证据或代码。
+
 ## 6. 尚未验证或未完成
 
 - 尚未执行独立第二次人工复核；该任务保留到阶段 1F。

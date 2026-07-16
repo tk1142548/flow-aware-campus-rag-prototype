@@ -21,7 +21,8 @@
 
 - 核心实现的技术审查基线提交为 `869e2a6`；阶段 0 工作流由提交 `dd7cb60` 引入并已同步到远程仓库。
 - 阶段 1A 数据契约和审计基线由提交 `b6aa6d9` 引入并已同步到远程仓库。
-- 受版本控制文件 27 个。
+- 阶段 1B 首批来源固化与 P0 证据迁移由提交 `3a8b9ab` 引入并已同步到远程仓库。
+- 阶段 1B 主体提交后受版本控制文件 63 个。
 - 后端主链路位于 `app/backend/rag_engine.py`，核心类为 `EvidenceIndex` 和 `FlowAwareCampusRAG`。
 - 当前只支持 `UG_PROOF_PRINT` 与 `UG_STATUS_CHANGE` 两个事项。
 - 检索为 BM25 加字符级 TF-IDF 融合，并使用 FAISS 保存字符特征；不是真正的语义嵌入检索。

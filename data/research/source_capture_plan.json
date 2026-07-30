@@ -220,6 +220,460 @@
         "reviewer": null,
         "notes": "本轮将进行文本提取与页面渲染双重核验。"
       }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_GRAD_NOTICE_20250617",
+      "title": "关于2025届夏季本科毕业生打印成绩单及本科生毕业证明（英文）的通知",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0617/c6765a838588/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "notice",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-06-18",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-6-18 09:07:34；落款：2025年6月18日",
+        "note": "日期取自页面显示更新时间和正文落款；网址路径中的 2025-06-17 不作为发布日期。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_GRAD_NOTICE_20250617/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "2025 届夏季本科毕业季通知",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "正文分别规定 6 月 20 日后的第一批打印时间、第二批另行通知和暑假期间服务，没有统一生效起止日期。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_GRAD_NOTICE_ATTACHMENT3_20250618"
+        },
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_GRAD_NOTICE_ATTACHMENT4_20250618"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验通知日期、毕业批次、暑假适用对象、各校区设备和密封点，并检查两张版式附件。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_GRAD_NOTICE_ATTACHMENT3_20250618",
+      "title": "附件3：本科生毕业证明（英文）版式",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/images/81/82/11774b8b404bb2483fe554b0659e/402aebe3-865a-4425-be84-6a476a5a81b4.png",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "png",
+      "document_role": "other",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "附件3. 本科生毕业证明（英文）版式.png",
+        "note": "独立图片没有显示发布日期，通过 2025-06-18 通知页面建立附件关系。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_GRAD_NOTICE_ATTACHMENT3_20250618/attachment-3.png",
+        "expected_media_type": "image/png"
+      },
+      "version": {
+        "label": "2025 届夏季通知附件 3",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "版式图片仅与所附通知版本绑定。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_GRAD_NOTICE_20250617"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需视觉核验图片完整性、标题和证件版式。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_GRAD_NOTICE_ATTACHMENT4_20250618",
+      "title": "附件4：英文毕业学位证明（主辅合一）版式",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/images/81/82/11774b8b404bb2483fe554b0659e/0cf58f08-7aeb-4433-b309-4a4e2cbd7f26.png",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "png",
+      "document_role": "other",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "附件4.英文毕业学位证明（主辅合一）版式.png",
+        "note": "独立图片没有显示发布日期，通过 2025-06-18 通知页面建立附件关系。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_GRAD_NOTICE_ATTACHMENT4_20250618/attachment-4.png",
+        "expected_media_type": "image/png"
+      },
+      "version": {
+        "label": "2025 届夏季通知附件 4",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "版式图片仅与所附通知版本绑定。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_GRAD_NOTICE_20250617"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需视觉核验图片完整性、标题和主辅合一版式。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_GS_CERT_20140616",
+      "title": "研究生证明、成绩单办理",
+      "canonical_url": "https://gs.jnu.edu.cn/2014/0616/c1187a28429/page.htm",
+      "publisher": {
+        "name": "暨南大学研究生院",
+        "domain": "gs.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": null,
+        "note": "旧运行清单记录 2014-06-16，但失效页面无法复核标题、日期和正文。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_GS_CERT_20140616/page.html",
+        "expected_media_type": "text/html"
+      },
+      "capture_policy": "record_failure",
+      "version": {
+        "label": "旧运行清单中的研究生证明与成绩单页面",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "官方端点已移除；未建立与可访问同机构页面的版本替代关系。"
+      },
+      "relations": [
+        {
+          "relation_type": "links_to",
+          "target_source_id": "SRC_GS_CERT_20130903"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "记录官方端点的实际失败状态，并使用可访问同机构页面核验研究生对象和办理渠道。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_GS_CERT_20130903",
+      "title": "研究生各类证明、中英文成绩单办理",
+      "canonical_url": "https://gs.jnu.edu.cn/2013/0903/c29179a603795/page.htm",
+      "publisher": {
+        "name": "暨南大学研究生院",
+        "domain": "gs.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2013-09-03",
+        "date_kind": "published",
+        "displayed_date_text": "发布时间：2013-09-03；来源：研究生院",
+        "note": "日期取自页面显示的发布时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_GS_CERT_20130903/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "研究生院页面发布于 2013-09-03",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面当前可访问，但未声明统一生效或失效区间；办理地点和联系方式只按该快照记录。"
+      },
+      "relations": [],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验页面标题、研究生对象、成绩单和证明办理渠道，并限制地点与联系方式的版本范围。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_SUSPEND_PROCESS_20190418",
+      "title": "办理休学流程",
+      "canonical_url": "https://jwc.jnu.edu.cn/2019/0418/c11805a310056/page.psp",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "process",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2019-04-18",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2019-4-18 16:16:23",
+        "note": "日期取自页面显示的更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_SUSPEND_PROCESS_20190418/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "休学流程页面更新于 2019-04-18",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面当前可访问；与 2025 年 4 月休学表格的统一版本关系未由来源声明。"
+      },
+      "relations": [
+        {
+          "relation_type": "links_to",
+          "target_source_id": "SRC_UG_SUSPEND_FORM"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需逐步骤核验学生、学院、教务处学籍科、审批时长和离校手续。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_RESUME_PROCESS_20190418",
+      "title": "办理复学流程",
+      "canonical_url": "https://jwc.jnu.edu.cn/2019/0418/c11805a310075/page.psp",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "process",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2019-04-18",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2019-4-18 17:13:14",
+        "note": "日期取自页面显示的更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_RESUME_PROCESS_20190418/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "复学流程页面更新于 2019-04-18",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面当前可访问；与 2025 年 4 月复学表格的统一版本关系未由来源声明。"
+      },
+      "relations": [
+        {
+          "relation_type": "links_to",
+          "target_source_id": "SRC_UG_RESUME_FORM"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需逐步骤核验休学期满、开学前、因病条件、学院、教务处、财务和注册选课。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_UNREGISTERED_20250321",
+      "title": "关于做好2025年春季未注册本科学生联系及清退工作的通知",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0321/c6765a832213/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "notice",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-03-21",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-3-21 16:47:43；落款：2025年3月21日",
+        "note": "日期取自页面显示更新时间和正文落款。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_UNREGISTERED_20250321/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "2025 年春季未注册学生联系及清退通知",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "通知包含 3 月 3 日至 3 月 14 日注册期、4 月 11 日材料报送期限和不同后果条件，没有统一生效起止日期。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_UNREGISTERED_NOTICE_TEMPLATE_20250321"
+        },
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_UNREGISTERED_SUMMARY_20250321"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需拆分注册期、逾期两周后果、休学期满一个月条件，并核验两个通知附件。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_UNREGISTERED_NOTICE_TEMPLATE_20250321",
+      "title": "关于学院未按时注册本科生违规情况的公示（模板）",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/ea/84/e6103629407cad18f3c510072f56/9813f47c-1a06-4bc4-8923-b7f362a09da8.doc",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "doc",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "附件1. 关于_____学院未按时注册本科生违规情况的公示（模板）.doc",
+        "note": "独立附件未显示发布日期，通过 2025-03-21 通知页面建立附件关系。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_UNREGISTERED_NOTICE_TEMPLATE_20250321/notice-template.doc",
+        "expected_media_type": "application/msword"
+      },
+      "version": {
+        "label": "2025 年春季未注册通知附件 1",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "公示模板仅与所附 2025 年春季通知版本绑定。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_UNREGISTERED_20250321"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验旧式 Word 文件签名、模板标题、违规事实字段和公示期说明。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_UNREGISTERED_SUMMARY_20250321",
+      "title": "2025年春季学院清退未注册本科学生汇总表",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/ea/84/e6103629407cad18f3c510072f56/cf5f500e-701c-45ec-b8e8-14220fb7525b.xls",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "xls",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "附件2. 2025年春季_____学院清退未注册本科学生汇总表.xls",
+        "note": "独立附件未显示发布日期，通过 2025-03-21 通知页面建立附件关系。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_UNREGISTERED_SUMMARY_20250321/summary.xls",
+        "expected_media_type": "application/vnd.ms-excel"
+      },
+      "version": {
+        "label": "2025 年春季未注册通知附件 2",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "汇总表仅与所附 2025 年春季通知版本绑定。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_UNREGISTERED_20250321"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验旧式 Excel 文件签名、工作表名称、字段和 2025 年春季标题。"
+      }
     }
   ]
 }

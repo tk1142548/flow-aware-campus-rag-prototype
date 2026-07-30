@@ -246,7 +246,17 @@ git diff --check
 
 ## 10. 提交与远程同步
 
-本轮验证闭环完成后，按 D-011 将授权范围内的数据、测试、脚本和文档形成独立提交并推送到私有远程仓库。提交结果在同步完成后补记。
+本轮数据、测试和主体文档形成提交：
+
+`b14633df9344390fddd8bc50de3897f71a3e63c1 feat: complete stage 1d html evidence migration`
+
+执行 `git push origin main` 成功。推送后：
+
+- 本地提交：`b14633df9344390fddd8bc50de3897f71a3e63c1`
+- 远程 `origin/main`：`b14633df9344390fddd8bc50de3897f71a3e63c1`
+- `git ls-remote origin refs/heads/main` 返回同一提交。
+
+本报告与项目记忆补记上述结果的后续纯文档提交由 Git 历史继续审计，避免为了记录自身哈希形成循环提交。
 
 ## 11. 下一轮接续任务
 

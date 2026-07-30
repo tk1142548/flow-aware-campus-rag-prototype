@@ -63,7 +63,14 @@ EVIDENCE_AUDIT_COLUMNS = [
     "target_evidence_ids",
 ]
 
-KNOWN_MISMATCH_IDS = {"UGS002", "UGS003", "UGS013", "UGS014"}
+KNOWN_MISMATCH_IDS = {
+    "UGS002",
+    "UGS003",
+    "UGS004",
+    "UGS012",
+    "UGS013",
+    "UGS014",
+}
 TARGET_SOURCE_RECORDS_PATH = Path("data/research/source_records.jsonl")
 TARGET_EVIDENCE_RECORDS_PATH = Path("data/research/evidence_units.jsonl")
 

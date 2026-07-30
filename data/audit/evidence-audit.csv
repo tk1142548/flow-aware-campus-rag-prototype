@@ -10,18 +10,18 @@ UGP008,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pen
 UGP009,UG_PROOF_PRINT,SRC_UG_PRINT_20210317,present,descriptive_only,missing,pending,P1,"收费和联系方式属于易变信息。","定位当前收费表与联系方式，分别建立费用和联系类声明。",pending,pending,
 UGP010,UG_PROOF_PRINT,SRC_UG_GRAD_NOTICE_20250617,present,descriptive_only,missing,pending,P1,"内容仅适用于 2025 年暑假，当前适用条件未结构化。","保存通知及附件并记录明确起止时间和适用对象。",pending,pending,
 UGP011,UG_PROOF_PRINT,SRC_GS_CERT_20140616,present,descriptive_only,missing,pending,P1,"仅依据标题概括对象排除，页面现行有效性不明。","获取原文后核验研究生办理渠道；无法获取则标记证据不足。",pending,pending,
-UGS001,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"表单版本和发布日期未结构化。","保存表格落地页及 PDF，定位表单名称和下载入口。",pending,pending,
+UGS001,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,verified,P1,"旧摘要同时陈述表单身份和下载入口；PDF 已核验表单标题与代码，下载关系已由落地页和附件来源记录保存。","阶段 2 将表单入口与事项流程节点建立证据绑定。",verified,migrated,UGS001
 UGS002,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,known_mismatch,P0,"现有摘要称家长填写意见并签字，当前表格要求随附家长签字的知情同意书；字段描述也需复核。","在后续全量迁移中复用本轮字段、时长、附件和签名拆分方式。",verified,migrated,"UGS002|UGS020|UGS021|UGS022"
 UGS003,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,known_mismatch,P0,"现有摘要列出出国、创业、家庭、个人等原因，当前表格选项为身体原因、服兵役和其他。","将修正后的原因枚举纳入后续查询与回答评测样例。",verified,migrated,UGS003
-UGS004,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"受理周次和五个工作日反馈的具体来源位置尚未核验。","在表格须知与流程页中分别定位时间要求和审核时长。",pending,pending,
-UGS005,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"第七周后课程处理规则尚无原文定位。","在 2025 年表格须知中定位并核对适用条件。",pending,pending,
-UGS006,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,missing,pending,P1,"退学后果属于高风险声明，尚无原文定位和版本关系。","在表格、学籍规定或通知中定位权威原文并核对版本。",pending,pending,
+UGS004,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,known_mismatch,P1,"旧摘要将受理主体和完成审批描述为本科生院提交后的结果反馈；表格实际为教务处学籍科第 1-4 周受理并一般于 5 个工作日内完成审批。","阶段 2 分别构造受理时间、审批时长、办理主体和例外条件评测项。",verified,migrated,"UGS004|UGS028|UGS029|UGS030|UGS031|UGS032|UGS033"
+UGS005,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,verified,P1,"原文已定位；旧摘要没有分离获批后的常规退课规则、超过第 7 周无法退课的条件和记录后果。","阶段 2 将常规课程处理与超过第 7 周的条件后果分别纳入评测。",verified,migrated,"UGS005|UGS034|UGS035"
+UGS006,UG_STATUS_CHANGE,SRC_UG_SUSPEND_FORM,missing,descriptive_only,verified,verified,P1,"退学处理原文已定位，并拆出及时复学、自动放弃学籍和退学处理；表格具体生效区间仍无证据。","阶段 1E 结合学籍规定或现行通知复查该高风险后果的版本关系。",verified,migrated,"UGS006|UGS036|UGS037"
 UGS007,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"2019 年流程与现行表格关系未知。","保存流程页并核验校门诊核签要求是否仍适用。",pending,pending,
 UGS008,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"学院与学籍科步骤尚未与现行表格交叉核验。","定位流程步骤并记录办理主体和顺序。",pending,pending,
 UGS009,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"审批通知和离校步骤尚未与现行资料交叉核验。","定位流程步骤并记录批准条件和后续动作。",pending,pending,
 UGS010,UG_STATUS_CHANGE,SRC_UG_SUSPEND_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"该条是对整张流程图的人工归纳，不是原文声明。","将办理地点与步骤分别绑定到流程页中的具体节点。",pending,pending,
-UGS011,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,pending,P1,"表单版本和发布日期未结构化。","保存表格落地页及 PDF，定位表单名称和下载入口。",pending,pending,
-UGS012,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,missing,pending,P1,"提交时间和通知时间属于高风险时间约束。","在 2025 年 PDF 中定位原文并拆分提交、院系审核和通知时间。",pending,pending,
+UGS011,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,verified,verified,P1,"旧摘要同时陈述表单身份和下载入口；PDF 已核验表单标题与代码，下载关系已由落地页和附件来源记录保存。","阶段 2 将表单入口与事项流程节点建立证据绑定。",verified,migrated,UGS011
+UGS012,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,verified,known_mismatch,P1,"旧摘要把第 1 周写成院系审核期限并把通知主体写成本科生院；表格规定学院教科办在第 1 周内提交教务处，教务处在第 2 周内发放通知。","阶段 2 分别构造提交截止、院系审核、学院提交、通知发放和后续注册步骤评测项。",verified,migrated,"UGS012|UGS038|UGS039|UGS040|UGS041|UGS042"
 UGS013,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,verified,known_mismatch,P0,"现有摘要把休学通知写成原件和复印件，并写为三甲医院；当前表格为原件或复印件、县级以上医院且区分校内外情形。","将分支化材料条件和缺件后果纳入后续流程图与评测集。",verified,migrated,"UGS013|UGS025|UGS026|UGS027"
 UGS014,UG_STATUS_CHANGE,SRC_UG_RESUME_FORM,missing,descriptive_only,verified,known_mismatch,P0,"现有摘要包含休学起止时间和申请复学时间字段，当前表格未见对应明确字段。","将实际字段、理由和签名声明纳入后续问题模板，不恢复无依据字段。",verified,migrated,"UGS014|UGS023|UGS024"
 UGS015,UG_STATUS_CHANGE,SRC_UG_RESUME_PROCESS_20190418,present,descriptive_only,missing,pending,P1,"2019 年流程中的时间和校门诊要求需与现行表格交叉核验。","保存流程页并分别核验时间、地点和因病条件。",pending,pending,

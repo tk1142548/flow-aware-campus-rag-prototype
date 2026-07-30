@@ -64,6 +64,7 @@ EVIDENCE_AUDIT_COLUMNS = [
 ]
 
 KNOWN_MISMATCH_IDS = {
+    "UGP002",
     "UGS002",
     "UGS003",
     "UGS004",

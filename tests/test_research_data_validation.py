@@ -18,6 +18,7 @@ from scripts.validate_research_data import (
     validate_schemas_and_fixtures,
     validate_stage2_fixture_links,
     validate_stage2a_contract,
+    validate_stage2b_withdrawal_contract,
     validate_target_links,
     validate_target_repository,
 )
@@ -599,6 +600,27 @@ class ResearchDataValidationTests(unittest.TestCase):
             any("primary and secondary reviewers must differ" in error for error in errors)
         )
 
+    def test_stage2b_withdrawal_sources_evidence_processes_and_reviews_close(
+        self,
+    ) -> None:
+        errors, summary = validate_stage2b_withdrawal_contract(ROOT)
+
+        self.assertEqual([], errors)
+        self.assertEqual(10, summary["stage2b_withdrawal_sources"])
+        self.assertEqual(7, summary["stage2b_withdrawal_captured_sources"])
+        self.assertEqual(3, summary["stage2b_withdrawal_failed_sources"])
+        self.assertEqual(113, summary["stage2b_withdrawal_evidence"])
+        self.assertEqual(5, summary["stage2b_withdrawal_process_records"])
+        self.assertEqual(113, summary["stage2b_withdrawal_second_reviews"])
+        self.assertEqual(4, summary["stage2b_withdrawal_positive_examples"])
+        self.assertEqual(5, summary["stage2b_withdrawal_negative_examples"])
+        self.assertEqual(4, summary["stage2b_withdrawal_version_groups"])
+        self.assertEqual(10, summary["stage2b_withdrawal_capture_plan_rows"])
+        self.assertEqual(
+            3,
+            summary["stage2b_withdrawal_primary_access_failures"],
+        )
+
     def test_target_links_reject_unknown_source_relations(self) -> None:
         source = load_json(ROOT / "tests/fixtures/data/valid/source-record.json")
         related = copy.deepcopy(source)
@@ -638,12 +660,12 @@ class ResearchDataValidationTests(unittest.TestCase):
         errors, summary = validate_target_repository(ROOT)
 
         self.assertEqual([], errors)
-        self.assertEqual(15, summary["target_source_records"])
-        self.assertEqual(14, summary["captured_source_files"])
-        self.assertEqual(15, summary["verified_source_records"])
-        self.assertEqual(136, summary["target_evidence_units"])
-        self.assertEqual(136, summary["verified_target_evidence_units"])
-        self.assertEqual(136, summary["source_located_evidence_units"])
+        self.assertEqual(25, summary["target_source_records"])
+        self.assertEqual(21, summary["captured_source_files"])
+        self.assertEqual(25, summary["verified_source_records"])
+        self.assertEqual(249, summary["target_evidence_units"])
+        self.assertEqual(249, summary["verified_target_evidence_units"])
+        self.assertEqual(249, summary["source_located_evidence_units"])
 
 
 if __name__ == "__main__":

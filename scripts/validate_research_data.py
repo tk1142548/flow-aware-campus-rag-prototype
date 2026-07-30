@@ -117,6 +117,42 @@ STAGE_2_SOURCE_PLAN_PATH = Path(
 STAGE_2_ANNOTATION_GUIDE_PATH = Path(
     "docs/data/STAGE_2_ANNOTATION_GUIDE.md"
 )
+STAGE_2B_WITHDRAWAL_PROCESS_PATH = Path(
+    "data/research/process_records.jsonl"
+)
+STAGE_2B_WITHDRAWAL_SECOND_REVIEW_PATH = Path(
+    "data/audit/stage2b-withdrawal-second-review.csv"
+)
+STAGE_2B_WITHDRAWAL_EXAMPLES_PATH = Path(
+    "data/research/stage2b-withdrawal-annotation-examples.json"
+)
+
+STAGE_2B_WITHDRAWAL_SOURCE_IDS = {
+    "SRC_UG_WITHDRAWAL_PROCESS_20190418",
+    "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY",
+    "SRC_UG_WITHDRAWAL_INDEX_20250716",
+    "SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI",
+    "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716",
+    "SRC_UG_WITHDRAWAL_POLICY_PDF_20250716",
+    "SRC_UG_WITHDRAWAL_NOTICE_20260320",
+}
+STAGE_2B_WITHDRAWAL_CAPTURED_SOURCE_IDS = {
+    "SRC_UG_WITHDRAWAL_PROCESS_20190418",
+    "SRC_UG_WITHDRAWAL_INDEX_20250716",
+    "SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI",
+    "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716",
+    "SRC_UG_WITHDRAWAL_NOTICE_20260320",
+}
+STAGE_2B_WITHDRAWAL_FAILED_SOURCE_IDS = {
+    "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY",
+    "SRC_UG_WITHDRAWAL_POLICY_PDF_20250716",
+}
 
 CANDIDATE_SURVEY_COLUMNS = [
     "candidate_id",
@@ -2059,9 +2095,13 @@ def validate_stage2a_contract(
                 f"{source_plan_path}:{plan_id}: scope_role must be "
                 f"{expected_scope_role}"
             )
-        if row.get("status") != "计划":
+        expected_status = (
+            "已验证" if plan_id == "S2SRC001" else "计划"
+        )
+        if row.get("status") != expected_status:
             errors.append(
-                f"{source_plan_path}:{plan_id}: status must be 计划"
+                f"{source_plan_path}:{plan_id}: status must be "
+                f"{expected_status}"
             )
         if row.get("priority") not in {"P0", "P1", "P2"}:
             errors.append(
@@ -2186,6 +2226,800 @@ def validate_stage2a_contract(
     }
 
 
+def validate_stage2b_withdrawal_contract(
+    root: Path = ROOT,
+) -> tuple[list[str], dict[str, int]]:
+    errors: list[str] = []
+    source_path = root / TARGET_SOURCE_RECORDS_PATH
+    evidence_path = root / TARGET_EVIDENCE_RECORDS_PATH
+    process_path = root / STAGE_2B_WITHDRAWAL_PROCESS_PATH
+    review_path = root / STAGE_2B_WITHDRAWAL_SECOND_REVIEW_PATH
+    examples_path = root / STAGE_2B_WITHDRAWAL_EXAMPLES_PATH
+    source_plan_path = root / STAGE_2_SOURCE_PLAN_PATH
+    capture_plan_path = root / "data/research/source_capture_plan.json"
+    baseline_path = root / "docs/data/STAGE_2B_WITHDRAWAL_BASELINE.md"
+    report_path = (
+        root
+        / "docs/work-reports/"
+        "2026-07-30-008-stage-2b-withdrawal-baseline.md"
+    )
+    decisions_path = root / "docs/project/DECISIONS.md"
+    project_plan_path = root / "docs/project/PROJECT_PLAN.md"
+    project_memory_path = root / "docs/project/PROJECT_MEMORY.md"
+    generator_path = root / "scripts/complete_stage2b_withdrawal.py"
+    required_paths = [
+        source_path,
+        evidence_path,
+        process_path,
+        review_path,
+        examples_path,
+        source_plan_path,
+        capture_plan_path,
+        baseline_path,
+        report_path,
+        decisions_path,
+        project_plan_path,
+        project_memory_path,
+        generator_path,
+        root / "data/schemas/process-record.schema.json",
+    ]
+    missing_paths = [path for path in required_paths if not path.is_file()]
+    if missing_paths:
+        return [
+            f"{path}: required stage 2B withdrawal artifact is missing"
+            for path in missing_paths
+        ], {}
+
+    try:
+        source_records = load_jsonl(source_path)
+        evidence_records = load_jsonl(evidence_path)
+        all_process_records = load_jsonl(process_path)
+        review_headers, review_rows = load_csv(review_path)
+        examples = load_json(examples_path)
+        capture_plan = load_json(capture_plan_path)
+        _, source_plan_rows = load_csv(source_plan_path)
+        process_schema = load_json(
+            root / "data/schemas/process-record.schema.json"
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return [str(exc)], {}
+
+    source_by_id = {
+        str(row.get("source_id", "")): row for row in source_records
+    }
+    capture_plan_records = capture_plan.get("records", [])
+    withdrawal_capture_plan_by_id = {
+        str(row.get("source_id", "")): row
+        for row in capture_plan_records
+        if str(row.get("source_id", "")).startswith(
+            "SRC_UG_WITHDRAWAL"
+        )
+    }
+    if (
+        set(withdrawal_capture_plan_by_id)
+        != STAGE_2B_WITHDRAWAL_SOURCE_IDS
+    ):
+        errors.append(
+            f"{capture_plan_path}: withdrawal capture-plan coverage differs"
+        )
+    for source_id in STAGE_2B_WITHDRAWAL_FAILED_SOURCE_IDS:
+        if (
+            withdrawal_capture_plan_by_id.get(source_id, {}).get(
+                "capture_policy"
+            )
+            != "record_failure"
+        ):
+            errors.append(
+                f"{capture_plan_path}:{source_id}: failed sources must use "
+                "record_failure policy"
+            )
+    actual_withdrawal_source_ids = {
+        source_id
+        for source_id in source_by_id
+        if source_id.startswith("SRC_UG_WITHDRAWAL")
+    }
+    if actual_withdrawal_source_ids != STAGE_2B_WITHDRAWAL_SOURCE_IDS:
+        errors.append(
+            f"{source_path}: stage 2B withdrawal source coverage differs; "
+            f"expected={sorted(STAGE_2B_WITHDRAWAL_SOURCE_IDS)}, "
+            f"got={sorted(actual_withdrawal_source_ids)}"
+        )
+
+    captured_source_ids = {
+        source_id
+        for source_id in actual_withdrawal_source_ids
+        if source_by_id[source_id].get("capture", {}).get("status")
+        == "captured"
+    }
+    failed_source_ids = {
+        source_id
+        for source_id in actual_withdrawal_source_ids
+        if source_by_id[source_id].get("capture", {}).get("status")
+        == "failed"
+    }
+    if captured_source_ids != STAGE_2B_WITHDRAWAL_CAPTURED_SOURCE_IDS:
+        errors.append(
+            f"{source_path}: captured withdrawal source set differs; "
+            f"expected={sorted(STAGE_2B_WITHDRAWAL_CAPTURED_SOURCE_IDS)}, "
+            f"got={sorted(captured_source_ids)}"
+        )
+    if failed_source_ids != STAGE_2B_WITHDRAWAL_FAILED_SOURCE_IDS:
+        errors.append(
+            f"{source_path}: failed withdrawal source set differs; "
+            f"expected={sorted(STAGE_2B_WITHDRAWAL_FAILED_SOURCE_IDS)}, "
+            f"got={sorted(failed_source_ids)}"
+        )
+
+    for source_id in sorted(actual_withdrawal_source_ids):
+        source = source_by_id[source_id]
+        review = source.get("review", {})
+        if review.get("status") != "verified":
+            errors.append(
+                f"{source_path}:{source_id}: review status must be verified"
+            )
+        if not review.get("reviewed_at") or not review.get("reviewer"):
+            errors.append(
+                f"{source_path}:{source_id}: verified source review "
+                "requires time and reviewer"
+            )
+        else:
+            try:
+                reviewed_at = datetime.fromisoformat(
+                    str(review["reviewed_at"])
+                )
+                captured_at = datetime.fromisoformat(
+                    str(source.get("capture", {})["captured_at"])
+                )
+                if reviewed_at < captured_at:
+                    errors.append(
+                        f"{source_path}:{source_id}: source review predates "
+                        "the capture attempt"
+                    )
+            except (KeyError, TypeError, ValueError):
+                errors.append(
+                    f"{source_path}:{source_id}: source capture/review "
+                    "timestamps must be valid ISO datetimes"
+                )
+
+    auth_page = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
+        {},
+    ).get("capture", {})
+    auth_final_host = (
+        urlparse(str(auth_page.get("final_url", ""))).hostname or ""
+    ).lower()
+    if (
+        auth_page.get("status") != "failed"
+        or auth_page.get("http_status") != 200
+        or auth_final_host != "icas.jnu.edu.cn"
+        or auth_page.get("local_path") is not None
+        or auth_page.get("content_sha256") is not None
+    ):
+        errors.append(
+            f"{source_path}: authenticated 2025 landing-page redirect must "
+            "remain a non-stored failed capture"
+        )
+
+    primary_pdf = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY",
+        {},
+    ).get("capture", {})
+    if (
+        primary_pdf.get("status") != "failed"
+        or primary_pdf.get("http_status") != 403
+        or primary_pdf.get("local_path") is not None
+        or primary_pdf.get("content_sha256") is not None
+    ):
+        errors.append(
+            f"{source_path}: 2025-04 primary PDF must retain the HTTP 403 "
+            "non-stored failure record"
+        )
+
+    policy_pdf = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_POLICY_PDF_20250716",
+        {},
+    ).get("capture", {})
+    if (
+        policy_pdf.get("status") != "failed"
+        or policy_pdf.get("http_status") != 403
+        or policy_pdf.get("local_path") is not None
+        or policy_pdf.get("content_sha256") is not None
+    ):
+        errors.append(
+            f"{source_path}: 2025 student-status policy PDF must retain "
+            "the HTTP 403 non-stored failure record"
+        )
+
+    policy_page = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716",
+        {},
+    )
+    if (
+        policy_page.get("document_role") != "policy"
+        or policy_page.get("capture", {}).get("status") != "captured"
+        or policy_page.get("publication", {}).get("date") != "2025-07-16"
+    ):
+        errors.append(
+            f"{source_path}: 2025 student-status policy landing page must "
+            "remain a captured official policy entry"
+        )
+
+    cleanup_notice = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_NOTICE_20260320",
+        {},
+    )
+    if (
+        cleanup_notice.get("document_role") != "notice"
+        or cleanup_notice.get("capture", {}).get("status") != "captured"
+        or cleanup_notice.get("publication", {}).get("date")
+        != "2026-03-20"
+        or cleanup_notice.get("version", {}).get("status")
+        != "time_bounded"
+    ):
+        errors.append(
+            f"{source_path}: 2026 spring cleanup notice must remain a "
+            "captured time-bounded official notice"
+        )
+
+    historical_source = source_by_id.get(
+        "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR",
+        {},
+    )
+    historical_text = str(
+        historical_source.get("publication", {}).get(
+            "displayed_date_text",
+            "",
+        )
+    )
+    if (
+        historical_source.get("version", {}).get("status") != "historical"
+        or "2011 年 11 月" not in historical_text
+    ):
+        errors.append(
+            f"{source_path}: law-school PDF must remain identified as the "
+            "2011-11 historical form"
+        )
+    sihai_text = str(
+        source_by_id.get(
+            "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI",
+            {},
+        )
+        .get("publication", {})
+        .get("displayed_date_text", "")
+    )
+    if "2025年1月" not in compact_text(sihai_text):
+        errors.append(
+            f"{source_path}: Sihai PDF must retain its 2025-01 form marker"
+        )
+
+    expected_evidence_ids = {
+        f"UGW{number:03d}" for number in range(1, 114)
+    }
+    withdrawal_evidence = [
+        row
+        for row in evidence_records
+        if row.get("item_id") == "UG_WITHDRAWAL"
+    ]
+    withdrawal_evidence_by_id = {
+        str(row.get("evidence_id", "")): row
+        for row in withdrawal_evidence
+    }
+    if set(withdrawal_evidence_by_id) != expected_evidence_ids:
+        errors.append(
+            f"{evidence_path}: withdrawal evidence coverage differs; "
+            f"missing={sorted(expected_evidence_ids - set(withdrawal_evidence_by_id))}, "
+            f"extra={sorted(set(withdrawal_evidence_by_id) - expected_evidence_ids)}"
+        )
+    for evidence_id, evidence in withdrawal_evidence_by_id.items():
+        source_id = str(evidence.get("source_id", ""))
+        if source_id not in STAGE_2B_WITHDRAWAL_CAPTURED_SOURCE_IDS:
+            errors.append(
+                f"{evidence_path}:{evidence_id}: evidence must reference a "
+                "captured withdrawal source"
+            )
+        if source_id == "SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027":
+            errors.append(
+                f"{evidence_path}:{evidence_id}: law landing page must not "
+                "substitute for its historical PDF content"
+            )
+        review = evidence.get("review", {})
+        if (
+            review.get("status") != "verified"
+            or not review.get("reviewed_at")
+            or not review.get("reviewer")
+        ):
+            errors.append(
+                f"{evidence_path}:{evidence_id}: evidence must have a "
+                "complete verified primary review"
+            )
+        else:
+            try:
+                evidence_reviewed_at = datetime.fromisoformat(
+                    str(review["reviewed_at"])
+                )
+                source_captured_at = datetime.fromisoformat(
+                    str(
+                        source_by_id[source_id]
+                        .get("capture", {})["captured_at"]
+                    )
+                )
+                if evidence_reviewed_at < source_captured_at:
+                    errors.append(
+                        f"{evidence_path}:{evidence_id}: evidence review "
+                        "predates its source capture"
+                    )
+            except (KeyError, TypeError, ValueError):
+                errors.append(
+                    f"{evidence_path}:{evidence_id}: evidence/source "
+                    "timestamps must be valid ISO datetimes"
+                )
+
+    process_validator = Draft202012Validator(
+        process_schema,
+        format_checker=FormatChecker(),
+    )
+    process_records = [
+        row
+        for row in all_process_records
+        if row.get("item_id") == "UG_WITHDRAWAL"
+    ]
+    expected_process_ids = {
+        "PROC_UG_WITHDRAWAL_V001",
+        "PROC_UG_WITHDRAWAL_V002",
+        "PROC_UG_WITHDRAWAL_V003",
+        "PROC_UG_WITHDRAWAL_V004",
+        "PROC_UG_WITHDRAWAL_V005",
+    }
+    process_by_id = {
+        str(row.get("process_id", "")): row for row in process_records
+    }
+    if set(process_by_id) != expected_process_ids:
+        errors.append(
+            f"{process_path}: process coverage differs; "
+            f"expected={sorted(expected_process_ids)}, "
+            f"got={sorted(process_by_id)}"
+        )
+    evidence_sha256 = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
+    expected_process_source_sets = {
+        "PROC_UG_WITHDRAWAL_V001": {
+            "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+        },
+        "PROC_UG_WITHDRAWAL_V002": {
+            "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+        },
+        "PROC_UG_WITHDRAWAL_V003": {
+            "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR"
+        },
+        "PROC_UG_WITHDRAWAL_V004": {
+            "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI"
+        },
+        "PROC_UG_WITHDRAWAL_V005": {
+            "SRC_UG_WITHDRAWAL_NOTICE_20260320"
+        },
+    }
+    expected_process_evidence_sets = {
+        "PROC_UG_WITHDRAWAL_V001": {
+            "UGW002",
+            "UGW003",
+            "UGW004",
+            "UGW007",
+            "UGW008",
+            *{f"UGW{number:03d}" for number in range(12, 21)},
+        },
+        "PROC_UG_WITHDRAWAL_V002": {
+            "UGW005",
+            "UGW006",
+            "UGW009",
+            "UGW010",
+            "UGW011",
+            *{f"UGW{number:03d}" for number in range(12, 21)},
+            "UGW073",
+        },
+        "PROC_UG_WITHDRAWAL_V003": {
+            f"UGW{number:03d}" for number in range(54, 73)
+        },
+        "PROC_UG_WITHDRAWAL_V004": {
+            f"UGW{number:03d}" for number in range(21, 54)
+        },
+        "PROC_UG_WITHDRAWAL_V005": {
+            f"UGW{number:03d}" for number in range(75, 114)
+        },
+    }
+    for index, process in enumerate(process_records, start=1):
+        process_id = str(process.get("process_id", f"line-{index}"))
+        record_path = Path(f"{process_path}:{index}")
+        schema_errors = sorted(
+            process_validator.iter_errors(process),
+            key=lambda item: list(item.path),
+        )
+        errors.extend(
+            format_schema_error(record_path, error)
+            for error in schema_errors
+        )
+        if process.get("item_id") != "UG_WITHDRAWAL":
+            errors.append(
+                f"{process_path}:{process_id}: item_id must be UG_WITHDRAWAL"
+            )
+        snapshot = process.get("evidence_snapshot", {})
+        if snapshot.get("dataset_sha256") != evidence_sha256:
+            errors.append(
+                f"{process_path}:{process_id}: evidence dataset hash differs"
+            )
+        snapshot_ids = {
+            str(value) for value in snapshot.get("evidence_ids", [])
+        }
+        if snapshot_ids != expected_process_evidence_sets.get(
+            process_id,
+            set(),
+        ):
+            errors.append(
+                f"{process_path}:{process_id}: evidence snapshot coverage "
+                "differs from the verified process baseline"
+            )
+        process_source_ids = {
+            str(withdrawal_evidence_by_id[evidence_id].get("source_id", ""))
+            for evidence_id in snapshot_ids
+            if evidence_id in withdrawal_evidence_by_id
+        }
+        if process_source_ids != expected_process_source_sets.get(
+            process_id,
+            set(),
+        ):
+            errors.append(
+                f"{process_path}:{process_id}: source-version group differs; "
+                f"got={sorted(process_source_ids)}"
+            )
+        review = process.get("review", {})
+        if review.get("status") != "verified":
+            errors.append(
+                f"{process_path}:{process_id}: review status must be verified"
+            )
+        if review.get("annotator") == review.get("reviewer"):
+            errors.append(
+                f"{process_path}:{process_id}: annotator and reviewer "
+                "must differ"
+            )
+        try:
+            process_annotated_at = datetime.fromisoformat(
+                str(review["annotated_at"])
+            )
+            process_reviewed_at = datetime.fromisoformat(
+                str(review["reviewed_at"])
+            )
+            latest_source_capture = max(
+                datetime.fromisoformat(
+                    str(
+                        source_by_id[source_id]
+                        .get("capture", {})["captured_at"]
+                    )
+                )
+                for source_id in process_source_ids
+            )
+            if process_annotated_at < latest_source_capture:
+                errors.append(
+                    f"{process_path}:{process_id}: process annotation "
+                    "predates its source capture"
+                )
+            if process_reviewed_at < process_annotated_at:
+                errors.append(
+                    f"{process_path}:{process_id}: process review predates "
+                    "its annotation"
+                )
+        except (KeyError, TypeError, ValueError):
+            errors.append(
+                f"{process_path}:{process_id}: process/source timestamps "
+                "must be valid ISO datetimes"
+            )
+
+        allowed_claims = process.get("allowed_claims", [])
+        claim_evidence_ids: list[str] = []
+        for claim in allowed_claims:
+            claim_ids = [
+                str(value) for value in claim.get("evidence_ids", [])
+            ]
+            if len(claim_ids) != 1:
+                errors.append(
+                    f"{process_path}:{process_id}:{claim.get('claim_id')}: "
+                    "each allowed claim must bind exactly one atomic evidence unit"
+                )
+                continue
+            evidence_id = claim_ids[0]
+            claim_evidence_ids.append(evidence_id)
+            evidence = withdrawal_evidence_by_id.get(evidence_id, {})
+            if claim.get("text") != evidence.get("normalized_claim"):
+                errors.append(
+                    f"{process_path}:{process_id}:{claim.get('claim_id')}: "
+                    "allowed-claim text must equal its normalized evidence claim"
+                )
+            if claim.get("claim_type") != evidence.get("claim_type"):
+                errors.append(
+                    f"{process_path}:{process_id}:{claim.get('claim_id')}: "
+                    "claim type differs from its evidence unit"
+                )
+        if set(claim_evidence_ids) != snapshot_ids:
+            errors.append(
+                f"{process_path}:{process_id}: atomic allowed claims must "
+                "cover the evidence snapshot exactly"
+            )
+
+        sample_id = f"S2E-WD-{index:03d}"
+        sample = {
+            "sample_id": sample_id,
+            "dataset_version": "0.2.0",
+            "allocation_item_id": "UG_WITHDRAWAL",
+            "item_id": "UG_WITHDRAWAL",
+            "process_id": process_id,
+            "scenario_type": "direct",
+            "turn_structure": "single_turn",
+            "conversation": [{"turn_id": "T01", "role": "user"}],
+            "input_context": {"provided_slots": []},
+            "gold": {
+                "target_item_id": "UG_WITHDRAWAL",
+                "response_mode": "answer",
+                "required_slot_ids": [],
+                "missing_slot_ids": [],
+                "ordered_step_ids": [],
+                "material_ids": [],
+                "allowed_claim_ids": [],
+                "supporting_evidence_ids": [],
+            },
+            "leakage_control": {
+                "prohibited_overlap_sample_ids": []
+            },
+        }
+        review_fixture = {
+            "review_id": f"S2B-LINK-{index:03d}",
+            "sample_id": sample_id,
+            "dataset_version": "0.2.0",
+            "primary_annotation": {"reviewer": "流程标注者"},
+            "secondary_review": {"reviewer": "流程复核者"},
+            "disagreements": [],
+            "adjudication": None,
+        }
+        errors.extend(
+            validate_stage2_fixture_links(
+                process,
+                sample,
+                review_fixture,
+                evidence_records,
+            )
+        )
+
+    require_columns(
+        review_headers,
+        SECOND_REVIEW_COLUMNS,
+        review_path,
+        errors,
+    )
+    expected_review_ids = {
+        f"S2BWD{number:03d}" for number in range(1, 114)
+    }
+    actual_review_ids = {
+        row.get("review_id", "") for row in review_rows
+    }
+    if actual_review_ids != expected_review_ids:
+        errors.append(
+            f"{review_path}: second-review ID coverage differs"
+        )
+    reviewed_evidence_ids = [
+        row.get("evidence_id", "") for row in review_rows
+    ]
+    if (
+        set(reviewed_evidence_ids) != expected_evidence_ids
+        or len(reviewed_evidence_ids) != len(set(reviewed_evidence_ids))
+    ):
+        errors.append(
+            f"{review_path}: second review must cover each withdrawal "
+            "evidence unit exactly once"
+        )
+    for row in review_rows:
+        evidence_id = row.get("evidence_id", "")
+        evidence = withdrawal_evidence_by_id.get(evidence_id, {})
+        if row.get("source_id") != evidence.get("source_id"):
+            errors.append(
+                f"{review_path}:{row.get('review_id')}: source_id differs "
+                "from evidence"
+            )
+        for field in {
+            "locator_recheck",
+            "verbatim_recheck",
+            "claim_recheck",
+            "applicability_recheck",
+        }:
+            if row.get(field) != "通过":
+                errors.append(
+                    f"{review_path}:{row.get('review_id')}: {field} "
+                    "must be 通过"
+                )
+        if row.get("result") != "已验证":
+            errors.append(
+                f"{review_path}:{row.get('review_id')}: result must be 已验证"
+            )
+        if row.get("reviewer") == evidence.get("review", {}).get("reviewer"):
+            errors.append(
+                f"{review_path}:{row.get('review_id')}: primary and "
+                "secondary reviewer identities must differ"
+            )
+        for field in {"reviewed_at", "reviewer", "notes"}:
+            if not row.get(field, "").strip():
+                errors.append(
+                    f"{review_path}:{row.get('review_id')}: {field} "
+                    "must not be empty"
+                )
+        try:
+            secondary_reviewed_at = datetime.fromisoformat(
+                str(row["reviewed_at"])
+            )
+            primary_reviewed_at = datetime.fromisoformat(
+                str(evidence.get("review", {})["reviewed_at"])
+            )
+            if secondary_reviewed_at < primary_reviewed_at:
+                errors.append(
+                    f"{review_path}:{row.get('review_id')}: secondary "
+                    "review predates primary evidence review"
+                )
+        except (KeyError, TypeError, ValueError):
+            errors.append(
+                f"{review_path}:{row.get('review_id')}: review timestamps "
+                "must be valid ISO datetimes"
+            )
+
+    version_groups = examples.get("version_groups", [])
+    positive_examples = examples.get("positive_examples", [])
+    negative_examples = examples.get("negative_examples", [])
+    expected_version_group_ids = {
+        "VG_WD_2011_11_FORM",
+        "VG_WD_2019_04_PROCESS",
+        "VG_WD_2025_01_FORM",
+        "VG_WD_2026_SPRING_NOTICE",
+    }
+    actual_version_group_ids = {
+        str(row.get("version_group_id", "")) for row in version_groups
+    }
+    if examples.get("status") != "已验证":
+        errors.append(f"{examples_path}: status must be 已验证")
+    if actual_version_group_ids != expected_version_group_ids:
+        errors.append(
+            f"{examples_path}: version-group coverage differs"
+        )
+    for group in version_groups:
+        group_id = group.get("version_group_id", "<unknown>")
+        if group.get("status") != "已验证":
+            errors.append(
+                f"{examples_path}:{group_id}: status must be 已验证"
+            )
+        unknown_sources = (
+            set(str(value) for value in group.get("source_ids", []))
+            - STAGE_2B_WITHDRAWAL_SOURCE_IDS
+        )
+        unknown_processes = (
+            set(str(value) for value in group.get("process_ids", []))
+            - expected_process_ids
+        )
+        if unknown_sources or unknown_processes:
+            errors.append(
+                f"{examples_path}:{group_id}: unknown source or process "
+                "references"
+            )
+
+    for example in positive_examples:
+        example_id = example.get("example_id", "<unknown>")
+        if example.get("process_id") not in expected_process_ids:
+            errors.append(
+                f"{examples_path}:{example_id}: unknown process reference"
+            )
+        unknown_evidence = (
+            set(str(value) for value in example.get("evidence_ids", []))
+            - expected_evidence_ids
+        )
+        if unknown_evidence or not example.get("annotation", "").strip():
+            errors.append(
+                f"{examples_path}:{example_id}: invalid positive example"
+            )
+    for example in negative_examples:
+        example_id = example.get("example_id", "<unknown>")
+        unknown_evidence = (
+            set(str(value) for value in example.get("evidence_ids", []))
+            - expected_evidence_ids
+        )
+        unknown_sources = (
+            set(str(value) for value in example.get("source_ids", []))
+            - STAGE_2B_WITHDRAWAL_SOURCE_IDS
+        )
+        if (
+            unknown_evidence
+            or unknown_sources
+            or not example.get("rejected_claim", "").strip()
+            or not example.get("reason", "").strip()
+        ):
+            errors.append(
+                f"{examples_path}:{example_id}: invalid negative example"
+            )
+    negative_text = json.dumps(
+        negative_examples,
+        ensure_ascii=False,
+    )
+    for marker in {
+        "HTTP 403",
+        "替代关系",
+        "家长知情同意书",
+        "集中受理周次不同",
+        "其他学期统一规则",
+    }:
+        if marker not in negative_text:
+            errors.append(
+                f"{examples_path}: negative examples lack marker {marker!r}"
+            )
+
+    source_plan_by_id = {
+        row.get("plan_id", ""): row for row in source_plan_rows
+    }
+    if source_plan_by_id.get("S2SRC001", {}).get("status") != "已验证":
+        errors.append(
+            f"{source_plan_path}: S2SRC001 must be 已验证"
+        )
+    for plan_id, row in source_plan_by_id.items():
+        if plan_id != "S2SRC001" and row.get("status") != "计划":
+            errors.append(
+                f"{source_plan_path}:{plan_id}: later migration items "
+                "must remain 计划"
+            )
+
+    required_document_markers = {
+        baseline_path: {
+            "# 阶段 2B 退学办理来源、证据与流程基线",
+            "状态：已验证",
+            "`UGW001` 至 `UGW113`",
+            "`PROC_UG_WITHDRAWAL_V005`",
+            "100% 第二次独立复核",
+        },
+        report_path: {
+            "# 工作报告 008",
+            "迁移计划：`S2SRC001`",
+            "20 项测试全部通过",
+            "最近接续点更新为 `S2SRC002`",
+        },
+        decisions_path: {
+            "### D-018 退学表格按可核验制表月份与流程页分组",
+            "- 状态：已验证",
+        },
+        project_plan_path: {
+            "状态为进行中；`S2SRC001` 已验证",
+            "阶段 2B 退学办理验收结果",
+        },
+        project_memory_path: {
+            "阶段 2B 进行中，`S2SRC001` 已验证",
+            "最近接续点：按 P0 顺序执行阶段 2B 的 `S2SRC002`",
+        },
+    }
+    for document_path, markers in required_document_markers.items():
+        document_text = document_path.read_text(encoding="utf-8")
+        for marker in markers:
+            if marker not in document_text:
+                errors.append(
+                    f"{document_path}: missing stage 2B marker {marker!r}"
+                )
+
+    return errors, {
+        "stage2b_withdrawal_sources": len(actual_withdrawal_source_ids),
+        "stage2b_withdrawal_captured_sources": len(captured_source_ids),
+        "stage2b_withdrawal_failed_sources": len(failed_source_ids),
+        "stage2b_withdrawal_evidence": len(withdrawal_evidence),
+        "stage2b_withdrawal_process_records": len(process_records),
+        "stage2b_withdrawal_second_reviews": len(review_rows),
+        "stage2b_withdrawal_positive_examples": len(positive_examples),
+        "stage2b_withdrawal_negative_examples": len(negative_examples),
+        "stage2b_withdrawal_version_groups": len(version_groups),
+        "stage2b_withdrawal_capture_plan_rows": len(
+            withdrawal_capture_plan_by_id
+        ),
+        "stage2b_withdrawal_primary_access_failures": len(
+            STAGE_2B_WITHDRAWAL_FAILED_SOURCE_IDS
+        ),
+        "stage2b_withdrawal_baseline_reports": 2,
+    }
+
+
 def run_validation(root: Path = ROOT, scope: str = "all") -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     summary: dict[str, int] = {}
@@ -2207,6 +3041,11 @@ def run_validation(root: Path = ROOT, scope: str = "all") -> tuple[list[str], di
         stage2a_errors, stage2a_summary = validate_stage2a_contract(root)
         errors.extend(stage2a_errors)
         summary.update(stage2a_summary)
+        stage2b_errors, stage2b_summary = (
+            validate_stage2b_withdrawal_contract(root)
+        )
+        errors.extend(stage2b_errors)
+        summary.update(stage2b_summary)
 
     return errors, summary
 

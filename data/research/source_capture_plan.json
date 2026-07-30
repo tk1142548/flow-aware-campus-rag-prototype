@@ -674,6 +674,449 @@
         "reviewer": null,
         "notes": "需核验旧式 Excel 文件签名、工作表名称、字段和 2025 年春季标题。"
       }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_PROCESS_20190418",
+      "title": "办理退学流程",
+      "canonical_url": "https://jwc.jnu.edu.cn/2019/0418/c11805a310100/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "process",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2019-04-18",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2019-4-18 17:39:58",
+        "note": "日期取自官方流程页显示的更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_PROCESS_20190418/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "退学流程页面更新于 2019-04-18",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面当前可访问，但未声明统一生效和失效区间，也未声明与 2025 年 4 月表格的替代关系。"
+      },
+      "relations": [],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需逐步骤核验主动申请退学、违纪违规退学处理、学院审批、教务处审核、校长办公会批准、离校手续和证明办理。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
+      "title": "本科学生主动退学申请表",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0716/c6757a840738/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-07-16",
+        "date_kind": "updated",
+        "displayed_date_text": "学籍相关文件列表：本科学生主动退学申请表 2025-07-16",
+        "note": "日期和标题取自可访问的官方学籍相关文件列表；落地页当前跳转到统一身份认证，页面正文与精确更新时间无法从公开响应复核。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_FORM_PAGE_20250716/page.html",
+        "expected_media_type": "text/html"
+      },
+      "capture_policy": "record_failure",
+      "version": {
+        "label": "官方表格落地页列于 2025-07-16",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "公开列表显示该落地页日期为 2025-07-16；认证重定向不能证明业务生效区间。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "应记录认证重定向的实际最终地址，不得把登录页保存为退学表格来源证据。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY",
+      "title": "退学申请表（本科学生）",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/e2/44/6fec25bc4b688769af8f3a81fcd6/471ac380-63f4-4789-88b2-c0f78b2a47ea.pdf",
+      "publisher": {
+        "name": "暨南大学教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学教务处制表（2025 年4 月）",
+        "note": "表格只显示到月份，不虚构具体发布日期；当前主附件公开请求返回 HTTP 403。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY/form.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "capture_policy": "record_failure",
+      "version": {
+        "label": "2025 年 4 月版主附件",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "主附件当前不可公开抓取；不能据可搜索文本推断与可访问镜像逐字节相同，也不能建立替代关系。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "记录 HTTP 403 失败事实；错误响应不保存为证据文件。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_INDEX_20250716",
+      "title": "学籍相关文件",
+      "canonical_url": "https://jwc.jnu.edu.cn/6747/list.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "not_applicable",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": null,
+        "note": "列表页没有统一发布日期；其中退学申请表条目显示日期 2025-07-16。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_INDEX_20250716/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "2026-07-30 抓取的学籍相关文件列表",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "快照仅用于核验表格条目的标题、日期和落地页入口，不作为退学流程正文。"
+      },
+      "relations": [
+        {
+          "relation_type": "links_to",
+          "target_source_id": "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验列表中的本科学生主动退学申请表标题、2025-07-16 日期和落地页地址。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027",
+      "title": "常用下载",
+      "canonical_url": "https://law.jnu.edu.cn/2024/1007/c41541a822074/page.htm",
+      "publisher": {
+        "name": "暨南大学法学院/知识产权学院",
+        "domain": "law.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_secondary",
+      "publication": {
+        "status": "known",
+        "date": "2024-10-27",
+        "date_kind": "published",
+        "displayed_date_text": "发布时间：2024-10-27；来源：法学院",
+        "note": "日期取自法学院官方页面；视觉核验确认页面当前链接的是暨南大学教务处 2011 年 11 月制表的历史退学申请表。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "法学院常用下载页面发布于 2024-10-27；2026-07-30 抓取快照",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面发布日期不能作为当前附件的发布日期；该页面只用于建立同校官方镜像的承载关系。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验常用下载页中的退学申请表题名、附件地址和页面发布日期。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR",
+      "title": "退学申请表（本科学生）",
+      "canonical_url": "https://law.jnu.edu.cn/_upload/article/files/95/40/4bb132f2400184783aaa3f690517/de4cc03d-fedd-4d2e-bbbf-39bd8fc10660.pdf",
+      "publisher": {
+        "name": "暨南大学教务处（由法学院官方站点承载）",
+        "domain": "law.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_secondary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学教务处制表（2011 年 11 月）",
+        "note": "制表月份取自 PDF 页脚；通过同校法学院官方页面建立附件关系。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR/form.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "version": {
+        "label": "2011 年 11 月版法学院官方镜像",
+        "status": "historical",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "该表格与 2019 年流程页及 2025 年表格存在可定位差异；来源没有声明版本替代关系，不能作为 2025 年表格的镜像。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_WITHDRAWAL_FORM_MIRROR_20241027"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "文本提取与逐页渲染确认该附件为 2011 年 11 月历史版本；需与 2019 年流程页及 2025 年表格分别保留。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI",
+      "title": "退学申请表（本科学生）",
+      "canonical_url": "https://shsy.jnu.edu.cn/_upload/article/files/dc/2b/214aa20e4ec2aed9664c85b6ecad/b8f49f11-bec6-4a7a-8b28-f8c5b04391ef.pdf",
+      "publisher": {
+        "name": "暨南大学教务处（由四海书院官方站点承载）",
+        "domain": "shsy.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_secondary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学教务处制表（2025 年1 月）",
+        "note": "表格只显示到月份，不虚构具体发布日期；当前未找到承载该直链的四海书院落地页。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI/form.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "version": {
+        "label": "2025 年 1 月版四海书院官方副本",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "该副本的正文与 2025 年 4 月主附件可搜索文本高度相近，但制表月份不同；来源未声明替代关系，分别保留。"
+      },
+      "relations": [],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需执行 PDF 文本提取和逐页渲染，核验正文、版式、制表月份及与 2025 年 4 月主附件可搜索文本的差异。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716",
+      "title": "暨南大学全日制本科学生学籍管理规定",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0715/c6753a840599/page.psp",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "policy",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-07-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-7-16 17:39:32",
+        "note": "日期取自教务处官方规章制度页面；页面公开展示规定题名和印发通知附件。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "2025-07-16 教务处学籍管理规定发布页",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未在可访问正文中显示规定的统一生效日期或与旧文件的替代关系。"
+      },
+      "relations": [
+        {
+          "relation_type": "landing_page_for",
+          "target_source_id": "SRC_UG_WITHDRAWAL_POLICY_PDF_20250716"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验页面题名、更新时间、印发通知附件地址和附件公开访问状态。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_POLICY_PDF_20250716",
+      "title": "暨南大学关于印发《暨南大学全日制本科学生学籍管理规定》的通知",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/b5/13/aa6f7e414ffbb1cd9067eb139ffd/e29f6254-c58d-4633-936d-6af6cc40c9ff.pdf",
+      "publisher": {
+        "name": "暨南大学",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "notice",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": null,
+        "date_kind": "unknown",
+        "displayed_date_text": "暨南大学关于印发《暨南大学全日制本科学生学籍管理规定》的通知.PDF",
+        "note": "附件题名取自 2025-07-16 官方发布页；附件正文当前无法公开抓取。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_POLICY_PDF_20250716/policy.pdf",
+        "expected_media_type": "application/pdf"
+      },
+      "capture_policy": "record_failure",
+      "version": {
+        "label": "2025-07-16 官方学籍管理规定印发通知附件",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "附件访问失败时只记录失败事实；搜索索引文本不进入本地原子证据。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "记录附件响应状态和失败原因，错误响应不得保存为政策正文。"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_WITHDRAWAL_NOTICE_20260320",
+      "title": "关于做好2026年春季未注册本科学生联系及清退工作的通知",
+      "canonical_url": "https://jwc.jnu.edu.cn/2026/0320/c6765a852080/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院教务处",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "notice",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2026-03-20",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2026-3-20 15:42:35；落款：2026年3月20日",
+        "note": "日期取自官方通知页面显示的更新时间和正文落款。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_WITHDRAWAL_NOTICE_20260320/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "2026 年春季未注册本科学生联系及清退通知",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "通知包含 2026 年春季注册期和清退工作要求，不据该通知推断其他学期的统一流程。"
+      },
+      "relations": [
+        {
+          "relation_type": "links_to",
+          "target_source_id": "SRC_UG_WITHDRAWAL_POLICY_PAGE_20250716"
+        }
+      ],
+      "review": {
+        "status": "in_review",
+        "reviewed_at": null,
+        "reviewer": null,
+        "notes": "需核验清退范围、主动退学表格使用条件、肄业证书申请和最长学习年限分支。"
+      }
     }
   ]
 }

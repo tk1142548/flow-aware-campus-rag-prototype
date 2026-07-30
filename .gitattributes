@@ -4,3 +4,12 @@ data/sources/** -text -diff
 # 阶段 2A 的确定性生成产物参与逐字节校验，统一使用 LF 换行。
 data/research/stage2-evaluation-blueprint.csv text eol=lf
 data/research/stage2-evaluation-plan.json text eol=lf
+
+# 来源、证据与流程文件参与哈希和确定性复核，统一使用 LF 换行。
+data/research/source_capture_plan.json text eol=lf
+data/research/source_records.jsonl text eol=lf
+data/research/evidence_units.jsonl text eol=lf
+data/research/process_records.jsonl text eol=lf
+data/research/stage2-source-migration-plan.csv text eol=lf
+data/research/stage2b-withdrawal-annotation-examples.json text eol=lf
+data/audit/stage2b-withdrawal-second-review.csv text eol=lf

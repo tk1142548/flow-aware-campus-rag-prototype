@@ -4,11 +4,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import requests
+
 from scripts.capture_official_sources import (
     append_jsonl,
+    capture_record,
     safe_output_path,
     safe_record_path,
     validate_content,
+    validate_final_host,
     write_jsonl,
 )
 
@@ -119,6 +123,94 @@ class OfficialSourceCaptureTests(unittest.TestCase):
                         actual_type,
                         content,
                     )
+
+    def test_final_host_validation_rejects_authentication_redirects(self) -> None:
+        validate_final_host(
+            "SRC_SAME_HOST",
+            "https://jwc.jnu.edu.cn/example/page.htm",
+            "https://jwc.jnu.edu.cn/example/page.psp",
+        )
+
+        with self.assertRaisesRegex(ValueError, "unexpected final host"):
+            validate_final_host(
+                "SRC_AUTH_REDIRECT",
+                "https://jwc.jnu.edu.cn/example/page.htm",
+                "https://icas.jnu.edu.cn/cas/login",
+            )
+
+    def test_record_failure_does_not_store_authentication_page_as_evidence(
+        self,
+    ) -> None:
+        class StubSession:
+            def get(
+                self,
+                url: str,
+                timeout: int,
+                allow_redirects: bool,
+            ) -> requests.Response:
+                self.request = (url, timeout, allow_redirects)
+                response = requests.Response()
+                response.status_code = 200
+                response.url = "https://icas.jnu.edu.cn/cas/login"
+                response.headers["Content-Type"] = "text/html; charset=UTF-8"
+                response._content = b"<html><body>login</body></html>"
+                return response
+
+        planned = {
+            "schema_version": "1.0",
+            "source_id": "SRC_AUTH_REDIRECT",
+            "title": "Protected official page",
+            "canonical_url": "https://jwc.jnu.edu.cn/example/page.htm",
+            "publisher": {
+                "name": "Example",
+                "domain": "jwc.jnu.edu.cn",
+            },
+            "content_format": "html",
+            "document_role": "service_page",
+            "authority_level": "official_primary",
+            "publication": {
+                "status": "unknown",
+                "date": None,
+                "date_kind": "unknown",
+                "displayed_date_text": None,
+                "note": "",
+            },
+            "capture_target": {
+                "local_path": "data/sources/SRC_AUTH_REDIRECT/page.html",
+                "expected_media_type": "text/html",
+            },
+            "capture_policy": "record_failure",
+            "version": {
+                "label": "test",
+                "status": "unknown",
+                "effective_from": None,
+                "effective_to": None,
+                "supersedes": [],
+                "superseded_by": [],
+                "note": "",
+            },
+            "relations": [],
+            "review": {
+                "status": "in_review",
+                "reviewed_at": None,
+                "reviewer": None,
+                "notes": "",
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            record, target, content = capture_record(
+                Path(temp_dir),
+                planned,
+                StubSession(),
+            )
+
+        self.assertEqual("failed", record["capture"]["status"])
+        self.assertEqual(200, record["capture"]["http_status"])
+        self.assertEqual("https://icas.jnu.edu.cn/cas/login", record["capture"]["final_url"])
+        self.assertIn("unexpected final host", record["capture"]["failure_reason"])
+        self.assertIsNone(target)
+        self.assertIsNone(content)
 
     def test_source_record_output_is_immutable(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

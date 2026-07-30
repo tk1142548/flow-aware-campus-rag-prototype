@@ -6,6 +6,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 
@@ -86,6 +87,21 @@ def validate_content(
         raise ValueError(f"{source_id}: response does not have an OOXML ZIP signature")
 
 
+def validate_final_host(
+    source_id: str,
+    canonical_url: str,
+    final_url: str,
+    expected_final_host: str | None = None,
+) -> None:
+    expected_host = expected_final_host or urlparse(canonical_url).hostname
+    actual_host = urlparse(final_url).hostname
+    if not expected_host or actual_host != expected_host:
+        raise ValueError(
+            f"{source_id}: unexpected final host {actual_host!r}, "
+            f"expected {expected_host!r}"
+        )
+
+
 def planned_record(planned: dict[str, Any]) -> dict[str, Any]:
     return {
         key: value
@@ -94,12 +110,16 @@ def planned_record(planned: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def failed_capture_record(
+def failed_response_record(
     planned: dict[str, Any],
     captured_at: str,
-    error: requests.RequestException,
+    response: requests.Response | None,
+    reason: str,
 ) -> dict[str, Any]:
-    response = error.response
+    response_media_type = media_type(response) if response is not None else ""
+    response_byte_length = (
+        len(response.content) if response is not None and response.content else None
+    )
     record = planned_record(planned)
     record["capture"] = {
         "status": "failed",
@@ -108,17 +128,30 @@ def failed_capture_record(
         "local_path": None,
         "http_status": response.status_code if response is not None else None,
         "final_url": response.url if response is not None else None,
-        "media_type": media_type(response) if response is not None else None,
-        "byte_length": len(response.content) if response is not None else None,
+        "media_type": response_media_type or None,
+        "byte_length": response_byte_length,
         "last_modified": (
             response.headers.get("Last-Modified") if response is not None else None
         ),
         "failure_reason": (
-            f"{type(error).__name__}: {error}; "
+            f"{reason}; "
             "the error response was not stored as source evidence"
         ),
     }
     return record
+
+
+def failed_capture_record(
+    planned: dict[str, Any],
+    captured_at: str,
+    error: requests.RequestException,
+) -> dict[str, Any]:
+    return failed_response_record(
+        planned,
+        captured_at,
+        error.response,
+        f"{type(error).__name__}: {error}",
+    )
 
 
 def capture_record(
@@ -150,13 +183,33 @@ def capture_record(
 
     content = response.content
     actual_media_type = media_type(response)
-    validate_content(
-        source_id,
-        planned["content_format"],
-        target_config["expected_media_type"],
-        actual_media_type,
-        content,
-    )
+    try:
+        validate_final_host(
+            source_id,
+            planned["canonical_url"],
+            response.url,
+            target_config.get("expected_final_host"),
+        )
+        validate_content(
+            source_id,
+            planned["content_format"],
+            target_config["expected_media_type"],
+            actual_media_type,
+            content,
+        )
+    except ValueError as exc:
+        if planned.get("capture_policy", "required") != "record_failure":
+            raise
+        return (
+            failed_response_record(
+                planned,
+                captured_at,
+                response,
+                f"{type(exc).__name__}: {exc}",
+            ),
+            None,
+            None,
+        )
 
     record = planned_record(planned)
     record["capture"] = {

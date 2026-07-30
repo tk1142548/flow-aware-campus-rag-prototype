@@ -16,6 +16,8 @@ from scripts.validate_research_data import (
     load_jsonl,
     validate_repository_audits,
     validate_schemas_and_fixtures,
+    validate_stage2_fixture_links,
+    validate_stage2a_contract,
     validate_target_links,
     validate_target_repository,
 )
@@ -232,8 +234,8 @@ class ResearchDataValidationTests(unittest.TestCase):
         errors, summary = validate_schemas_and_fixtures(ROOT)
 
         self.assertEqual([], errors)
-        self.assertEqual(2, summary["valid_fixtures_accepted"])
-        self.assertEqual(4, summary["invalid_fixtures_rejected"])
+        self.assertEqual(6, summary["valid_fixtures_accepted"])
+        self.assertEqual(8, summary["invalid_fixtures_rejected"])
         self.assertEqual(1, summary["invalid_link_fixtures_rejected"])
 
     def test_repository_audits_cover_all_legacy_records(self) -> None:
@@ -547,6 +549,55 @@ class ResearchDataValidationTests(unittest.TestCase):
 
     def test_duplicate_values_are_reported_deterministically(self) -> None:
         self.assertEqual(["A", "B"], duplicate_values(["B", "A", "B", "C", "A"]))
+
+    def test_stage2a_scope_allocation_and_annotation_contract_are_complete(
+        self,
+    ) -> None:
+        errors, summary = validate_stage2a_contract(ROOT)
+
+        self.assertEqual([], errors)
+        self.assertEqual(8, summary["stage2_formal_items"])
+        self.assertEqual(200, summary["stage2_allocated_samples"])
+        self.assertEqual(7, summary["stage2_source_migration_rows"])
+        self.assertEqual(100, summary["stage2_second_review_target_percent"])
+        self.assertEqual(1, summary["stage2_allocation_frozen"])
+        self.assertEqual(0, summary["stage2_content_frozen"])
+        self.assertEqual(1, summary["stage2_fixture_link_sets_validated"])
+
+    def test_stage2_fixture_links_reject_cross_field_inconsistency(self) -> None:
+        process = load_json(
+            ROOT / "tests/fixtures/data/valid/process-record.json"
+        )
+        sample = load_json(
+            ROOT / "tests/fixtures/data/valid/evaluation-sample.json"
+        )
+        review = load_json(
+            ROOT / "tests/fixtures/data/valid/evaluation-review-record.json"
+        )
+        evidence = load_jsonl(ROOT / TARGET_EVIDENCE_RECORDS_PATH)
+
+        process["evidence_snapshot"]["evidence_ids"].remove("UGP014")
+        sample["gold"]["allowed_claim_ids"].append("CLM_999")
+        review["secondary_review"]["reviewer"] = review[
+            "primary_annotation"
+        ]["reviewer"]
+
+        errors = validate_stage2_fixture_links(
+            process,
+            sample,
+            review,
+            evidence,
+        )
+
+        self.assertTrue(
+            any("evidence_snapshot must exactly equal" in error for error in errors)
+        )
+        self.assertTrue(
+            any("gold.allowed_claim_ids" in error for error in errors)
+        )
+        self.assertTrue(
+            any("primary and secondary reviewers must differ" in error for error in errors)
+        )
 
     def test_target_links_reject_unknown_source_relations(self) -> None:
         source = load_json(ROOT / "tests/fixtures/data/valid/source-record.json")

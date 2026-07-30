@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evaluation-review-record.schema.json",
+  "title": "阶段 2 评测样本独立复核与裁决记录",
+  "description": "用于记录初次标注、第二次独立复核、字段级分歧和裁决结果。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "sample_id",
+    "dataset_version",
+    "primary_annotation",
+    "secondary_review",
+    "disagreements",
+    "adjudication",
+    "final_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^REV-S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}-V[0-9]{3}$"
+    },
+    "sample_id": {
+      "type": "string",
+      "pattern": "^S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+    },
+    "dataset_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$"
+    },
+    "primary_annotation": {
+      "$ref": "#/$defs/reviewPass"
+    },
+    "secondary_review": {
+      "$ref": "#/$defs/reviewPass"
+    },
+    "disagreements": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field_path",
+          "primary_value",
+          "secondary_value",
+          "reason"
+        ],
+        "properties": {
+          "field_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "primary_value": {},
+          "secondary_value": {},
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "adjudication": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/adjudication"
+        }
+      ]
+    },
+    "final_status": {
+      "enum": [
+        "pending_adjudication",
+        "accepted",
+        "rejected"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "disagreements": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "disagreements"
+        ]
+      },
+      "then": {
+        "oneOf": [
+          {
+            "properties": {
+              "adjudication": {
+                "type": "null"
+              },
+              "final_status": {
+                "const": "pending_adjudication"
+              }
+            }
+          },
+          {
+            "properties": {
+              "adjudication": {
+                "$ref": "#/$defs/adjudication"
+              },
+              "final_status": {
+                "enum": [
+                  "accepted",
+                  "rejected"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "else": {
+        "properties": {
+          "adjudication": {
+            "type": "null"
+          },
+          "final_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_mapping",
+        "slot_and_follow_up",
+        "process_structure",
+        "claim_and_evidence",
+        "version_applicability",
+        "leakage_control"
+      ],
+      "properties": {
+        "item_mapping": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "slot_and_follow_up": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "process_structure": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "claim_and_evidence": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "version_applicability": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "leakage_control": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        }
+      }
+    },
+    "reviewPass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer",
+        "completed_at",
+        "verdict",
+        "dimensions",
+        "notes"
+      ],
+      "properties": {
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verdict": {
+          "enum": [
+            "accept",
+            "revise",
+            "reject"
+          ]
+        },
+        "dimensions": {
+          "$ref": "#/$defs/dimensions"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adjudicator",
+        "completed_at",
+        "field_resolutions",
+        "decision",
+        "rationale"
+      ],
+      "properties": {
+        "adjudicator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "field_resolutions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field_path",
+              "final_value",
+              "evidence_ids",
+              "reason"
+            ],
+            "properties": {
+              "field_path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "final_value": {},
+              "evidence_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+                }
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "decision": {
+          "enum": [
+            "accept",
+            "revise",
+            "reject"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

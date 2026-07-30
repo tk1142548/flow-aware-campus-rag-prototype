@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "STAGE2_EVAL_200_V1",
+  "decision_id": "D-017",
+  "status": "allocation_frozen",
+  "confirmed_on": "2026-07-30",
+  "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
+  "dataset_release_version": "0.1.0-allocation",
+  "formal_items": [],
+  "transfer_candidates": [],
+  "target_sample_count": 199,
+  "allocation": {},
+  "review_policy": {},
+  "freeze_policy": {},
+  "upstream_baseline": {}
+}

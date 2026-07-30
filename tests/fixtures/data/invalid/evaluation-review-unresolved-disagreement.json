@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "review_id": "REV-S2E-PP-001-V001",
+  "sample_id": "S2E-PP-001",
+  "dataset_version": "0.1.0-dev",
+  "primary_annotation": {
+    "reviewer": "标注者甲",
+    "completed_at": "2026-07-30T23:10:00+08:00",
+    "verdict": "accept",
+    "dimensions": {
+      "item_mapping": "pass",
+      "slot_and_follow_up": "pass",
+      "process_structure": "pass",
+      "claim_and_evidence": "pass",
+      "version_applicability": "pass",
+      "leakage_control": "pass"
+    },
+    "notes": "初次标注认为证据绑定完整。"
+  },
+  "secondary_review": {
+    "reviewer": "复核者乙",
+    "completed_at": "2026-07-30T23:20:00+08:00",
+    "verdict": "revise",
+    "dimensions": {
+      "item_mapping": "pass",
+      "slot_and_follow_up": "pass",
+      "process_structure": "pass",
+      "claim_and_evidence": "fail",
+      "version_applicability": "pass",
+      "leakage_control": "pass"
+    },
+    "notes": "第二次复核认为支持证据范围过宽。"
+  },
+  "disagreements": [
+    {
+      "field_path": "gold.supporting_evidence_ids",
+      "primary_value": [
+        "UGP001",
+        "UGP014"
+      ],
+      "secondary_value": [
+        "UGP001"
+      ],
+      "reason": "UGP014 是否属于该问题的必要支持证据存在分歧。"
+    }
+  ],
+  "adjudication": null,
+  "final_status": "accepted"
+}

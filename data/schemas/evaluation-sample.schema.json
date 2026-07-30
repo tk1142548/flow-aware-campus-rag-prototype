@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evaluation-sample.schema.json",
+  "title": "校园办事冻结评测样本",
+  "description": "用于保存分层评测问题、对话上下文、槽位状态、金标准流程、允许声明、证据和泄漏检查元数据。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "dataset_version",
+    "sample_id",
+    "allocation_item_id",
+    "item_id",
+    "process_id",
+    "split",
+    "scenario_type",
+    "difficulty",
+    "version_risk",
+    "turn_structure",
+    "conversation",
+    "input_context",
+    "gold",
+    "leakage_control",
+    "review_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "dataset_id": {
+      "const": "CAMPUS_RAG_STAGE2_EVAL"
+    },
+    "dataset_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$"
+    },
+    "sample_id": {
+      "type": "string",
+      "pattern": "^S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+    },
+    "allocation_item_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "item_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "process_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^PROC_[A-Z][A-Z0-9_]+_V[0-9]{3}$"
+    },
+    "split": {
+      "const": "test"
+    },
+    "scenario_type": {
+      "enum": [
+        "direct",
+        "condition_missing",
+        "object_mismatch",
+        "version_conflict",
+        "step_error",
+        "material_confusion",
+        "out_of_scope",
+        "multi_turn"
+      ]
+    },
+    "difficulty": {
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "version_risk": {
+      "enum": [
+        "stable",
+        "version_sensitive",
+        "cross_version_conflict"
+      ]
+    },
+    "turn_structure": {
+      "enum": [
+        "single_turn",
+        "multi_turn"
+      ]
+    },
+    "conversation": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turn_id",
+          "role",
+          "text"
+        ],
+        "properties": {
+          "turn_id": {
+            "type": "string",
+            "pattern": "^T[0-9]{2}$"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "input_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provided_slots",
+        "requested_as_of",
+        "source_version_ids"
+      ],
+      "properties": {
+        "provided_slots": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot_id",
+              "value",
+              "value_status"
+            ],
+            "properties": {
+              "slot_id": {
+                "type": "string",
+                "pattern": "^SL_[A-Z0-9_]+$"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value_status": {
+                "enum": [
+                  "known",
+                  "unknown",
+                  "ambiguous"
+                ]
+              }
+            }
+          }
+        },
+        "requested_as_of": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "source_version_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^SRC_[A-Z0-9_]+$"
+          }
+        }
+      }
+    },
+    "gold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_mode",
+        "target_item_id",
+        "required_slot_ids",
+        "missing_slot_ids",
+        "follow_up_question",
+        "ordered_step_ids",
+        "material_ids",
+        "allowed_claim_ids",
+        "supporting_evidence_ids",
+        "prohibited_claims",
+        "answer_boundary"
+      ],
+      "properties": {
+        "response_mode": {
+          "enum": [
+            "answer",
+            "clarification",
+            "scoped_correction",
+            "version_qualified",
+            "abstention",
+            "conversation_resolution"
+          ]
+        },
+        "target_item_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z][A-Z0-9_]+$"
+        },
+        "required_slot_ids": {
+          "$ref": "#/$defs/slotIds"
+        },
+        "missing_slot_ids": {
+          "$ref": "#/$defs/slotIds"
+        },
+        "follow_up_question": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ordered_step_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^ST_[0-9]{2}$"
+          }
+        },
+        "material_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^MAT_[0-9]{2}$"
+          }
+        },
+        "allowed_claim_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^CLM_[0-9]{3}$"
+          }
+        },
+        "supporting_evidence_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+          }
+        },
+        "prohibited_claims": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "answer_boundary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "leakage_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_family_id",
+        "source_version_group_ids",
+        "semantic_cluster_id",
+        "construction_origin",
+        "prohibited_overlap_sample_ids",
+        "check_status",
+        "checked_at",
+        "checker",
+        "notes"
+      ],
+      "properties": {
+        "template_family_id": {
+          "type": "string",
+          "pattern": "^TPL_[A-Z0-9_]+$"
+        },
+        "source_version_group_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^SVG_[A-Z0-9_]+$"
+          }
+        },
+        "semantic_cluster_id": {
+          "type": "string",
+          "pattern": "^SEM_[A-Z0-9_]+$"
+        },
+        "construction_origin": {
+          "enum": [
+            "official_source_derived",
+            "human_written",
+            "adversarial_transform"
+          ]
+        },
+        "prohibited_overlap_sample_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+          }
+        },
+        "check_status": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed"
+          ]
+        },
+        "checked_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "checker": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "review_status": {
+      "enum": [
+        "draft",
+        "primary_complete",
+        "second_review_complete",
+        "adjudicated",
+        "frozen",
+        "rejected"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "turn_structure": {
+            "const": "single_turn"
+          }
+        },
+        "required": [
+          "turn_structure"
+        ]
+      },
+      "then": {
+        "properties": {
+          "conversation": {
+            "maxItems": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "conversation": {
+            "minItems": 3
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "gold": {
+            "properties": {
+              "response_mode": {
+                "const": "clarification"
+              }
+            },
+            "required": [
+              "response_mode"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gold": {
+            "properties": {
+              "missing_slot_ids": {
+                "minItems": 1
+              },
+              "follow_up_question": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "scenario_type": {
+            "const": "out_of_scope"
+          }
+        },
+        "required": [
+          "scenario_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "item_id": {
+            "type": "null"
+          },
+          "process_id": {
+            "type": "null"
+          },
+          "gold": {
+            "properties": {
+              "response_mode": {
+                "const": "abstention"
+              },
+              "target_item_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]+$"
+          },
+          "process_id": {
+            "type": "string",
+            "pattern": "^PROC_[A-Z][A-Z0-9_]+_V[0-9]{3}$"
+          },
+          "gold": {
+            "properties": {
+              "target_item_id": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Z0-9_]+$"
+              },
+              "supporting_evidence_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "slotIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^SL_[A-Z0-9_]+$"
+      }
+    }
+  }
+}

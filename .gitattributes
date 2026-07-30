@@ -1,2 +1,6 @@
 # 原始来源快照必须逐字节保存，禁止换行转换和文本差异规范化。
 data/sources/** -text -diff
+
+# 阶段 2A 的确定性生成产物参与逐字节校验，统一使用 LF 换行。
+data/research/stage2-evaluation-blueprint.csv text eol=lf
+data/research/stage2-evaluation-plan.json text eol=lf

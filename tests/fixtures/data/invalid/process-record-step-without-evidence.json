@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "process_id": "PROC_UG_PROOF_PRINT_V001",
+  "process_version": "0.1.0",
+  "item_id": "UG_PROOF_PRINT",
+  "title": "缺少步骤证据的非法流程",
+  "audience": [
+    "在校本科学生"
+  ],
+  "slots": [
+    {
+      "slot_id": "SL_STUDENT_STATUS",
+      "name": "学生状态",
+      "value_type": "enum",
+      "required_for_resolution": true,
+      "allowed_values": [
+        "在校本科学生"
+      ],
+      "unknown_policy": "ask",
+      "evidence_ids": [
+        "UGP001"
+      ]
+    }
+  ],
+  "follow_up_rules": [],
+  "steps": [
+    {
+      "step_id": "ST_01",
+      "order": 1,
+      "actor": "学生",
+      "action": "登录系统。",
+      "conditions": [],
+      "required_material_ids": [],
+      "service_point_ids": [],
+      "time_constraint_ids": [],
+      "next_step_ids": [],
+      "evidence_ids": []
+    }
+  ],
+  "materials": [],
+  "service_points": [],
+  "time_constraints": [],
+  "exceptions": [],
+  "consequences": [],
+  "allowed_claims": [
+    {
+      "claim_id": "CLM_001",
+      "claim_type": "entry",
+      "text": "登录系统。",
+      "conditions": [],
+      "applicable_step_ids": [
+        "ST_01"
+      ],
+      "evidence_ids": [
+        "UGP001"
+      ]
+    }
+  ],
+  "evidence_snapshot": {
+    "dataset_path": "data/research/evidence_units.jsonl",
+    "dataset_sha256": "8ccf3e5783b6bdea345fc077a7c33b10ce5ad8815c9886aa0a415ce6f33e7c0a",
+    "evidence_ids": [
+      "UGP001"
+    ]
+  },
+  "review": {
+    "status": "pending",
+    "annotated_at": null,
+    "annotator": null,
+    "reviewed_at": null,
+    "reviewer": null,
+    "notes": "模式反例。"
+  }
+}

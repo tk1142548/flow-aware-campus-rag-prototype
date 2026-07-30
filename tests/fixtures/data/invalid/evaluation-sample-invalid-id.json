@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
+  "dataset_version": "0.1.0-dev",
+  "sample_id": "S2E-XX-001",
+  "allocation_item_id": "UG_PROOF_PRINT",
+  "item_id": "UG_PROOF_PRINT",
+  "process_id": "PROC_UG_PROOF_PRINT_V001",
+  "split": "test",
+  "scenario_type": "direct",
+  "difficulty": "easy",
+  "version_risk": "stable",
+  "turn_structure": "single_turn",
+  "conversation": [
+    {
+      "turn_id": "T01",
+      "role": "user",
+      "text": "如何打印成绩单？"
+    }
+  ],
+  "input_context": {
+    "provided_slots": [],
+    "requested_as_of": null,
+    "source_version_ids": [
+      "SRC_UG_PRINT_20210317"
+    ]
+  },
+  "gold": {
+    "response_mode": "answer",
+    "target_item_id": "UG_PROOF_PRINT",
+    "required_slot_ids": [],
+    "missing_slot_ids": [],
+    "follow_up_question": null,
+    "ordered_step_ids": [
+      "ST_01"
+    ],
+    "material_ids": [],
+    "allowed_claim_ids": [
+      "CLM_001"
+    ],
+    "supporting_evidence_ids": [
+      "UGP001"
+    ],
+    "prohibited_claims": [
+      "不得补写无证据声明。"
+    ],
+    "answer_boundary": "仅回答有证据支持的内容。"
+  },
+  "leakage_control": {
+    "template_family_id": "TPL_INVALID_ID",
+    "source_version_group_ids": [
+      "SVG_UG_PRINT_20210317"
+    ],
+    "semantic_cluster_id": "SEM_INVALID_ID",
+    "construction_origin": "human_written",
+    "prohibited_overlap_sample_ids": [],
+    "check_status": "pending",
+    "checked_at": null,
+    "checker": null,
+    "notes": "样本编号使用未登记的事项代码。"
+  },
+  "review_status": "draft"
+}

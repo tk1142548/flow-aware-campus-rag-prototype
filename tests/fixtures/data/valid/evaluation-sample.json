@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
+  "dataset_version": "0.1.0-dev",
+  "sample_id": "S2E-PP-001",
+  "allocation_item_id": "UG_PROOF_PRINT",
+  "item_id": "UG_PROOF_PRINT",
+  "process_id": "PROC_UG_PROOF_PRINT_V001",
+  "split": "test",
+  "scenario_type": "direct",
+  "difficulty": "easy",
+  "version_risk": "stable",
+  "turn_structure": "single_turn",
+  "conversation": [
+    {
+      "turn_id": "T01",
+      "role": "user",
+      "text": "我是暨南大学在校本科生，想打印中文成绩单，在哪里可以办理？"
+    }
+  ],
+  "input_context": {
+    "provided_slots": [
+      {
+        "slot_id": "SL_STUDENT_STATUS",
+        "value": "在校本科学生",
+        "value_status": "known"
+      },
+      {
+        "slot_id": "SL_DOCUMENT_TYPE",
+        "value": "成绩单",
+        "value_status": "known"
+      },
+      {
+        "slot_id": "SL_LANGUAGE",
+        "value": "中文",
+        "value_status": "known"
+      }
+    ],
+    "requested_as_of": null,
+    "source_version_ids": [
+      "SRC_UG_PRINT_20210317"
+    ]
+  },
+  "gold": {
+    "response_mode": "answer",
+    "target_item_id": "UG_PROOF_PRINT",
+    "required_slot_ids": [
+      "SL_STUDENT_STATUS",
+      "SL_DOCUMENT_TYPE"
+    ],
+    "missing_slot_ids": [],
+    "follow_up_question": null,
+    "ordered_step_ids": [
+      "ST_01",
+      "ST_02"
+    ],
+    "material_ids": [],
+    "allowed_claim_ids": [
+      "CLM_001",
+      "CLM_002",
+      "CLM_003"
+    ],
+    "supporting_evidence_ids": [
+      "UGP001",
+      "UGP002",
+      "UGP014",
+      "UGP015",
+      "UGP016"
+    ],
+    "prohibited_claims": [
+      "不得把在校本科学生段的各校区设备范围扩展到毕业生。",
+      "不得补写来源未声明的当前长期有效期。"
+    ],
+    "answer_boundary": "回答在校本科学生自助打印入口、登录方式和页面对应的设备范围，并绑定页面版本。"
+  },
+  "leakage_control": {
+    "template_family_id": "TPL_PROOF_DIRECT_LOCATION",
+    "source_version_group_ids": [
+      "SVG_UG_PRINT_20210317"
+    ],
+    "semantic_cluster_id": "SEM_PROOF_CURRENT_STUDENT_LOCATION",
+    "construction_origin": "official_source_derived",
+    "prohibited_overlap_sample_ids": [],
+    "check_status": "pending",
+    "checked_at": null,
+    "checker": null,
+    "notes": "模式正例尚未进入冻结集，冻结前执行模板族、来源版本组和语义近重复检查。"
+  },
+  "review_status": "draft"
+}

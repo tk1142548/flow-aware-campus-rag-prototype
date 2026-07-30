@@ -5,11 +5,14 @@ import csv
 import hashlib
 import json
 from collections import Counter
+from datetime import date, datetime
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
 from jsonschema import Draft202012Validator, FormatChecker
+from pypdf import PdfReader
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -74,6 +77,78 @@ KNOWN_MISMATCH_IDS = {
 }
 TARGET_SOURCE_RECORDS_PATH = Path("data/research/source_records.jsonl")
 TARGET_EVIDENCE_RECORDS_PATH = Path("data/research/evidence_units.jsonl")
+CANDIDATE_SURVEY_PATH = Path("data/research/candidate-item-survey.csv")
+SECOND_REVIEW_PATH = Path("data/audit/stage1-second-review.csv")
+STAGE_1_AUDIT_REPORT_PATH = Path("docs/data/STAGE_1_DATA_AUDIT.md")
+
+CANDIDATE_SURVEY_COLUMNS = [
+    "candidate_id",
+    "candidate_name",
+    "data_baseline_status",
+    "official_source_urls",
+    "source_checked_at",
+    "source_availability",
+    "evidence_completeness_score",
+    "condition_branch_score",
+    "version_risk_score",
+    "evaluation_value_score",
+    "annotation_cost_score",
+    "observed_evidence",
+    "remaining_gap",
+    "stage_2_option_group",
+    "survey_status",
+]
+
+SECOND_REVIEW_COLUMNS = [
+    "review_id",
+    "evidence_id",
+    "source_id",
+    "selection_reason",
+    "locator_recheck",
+    "verbatim_recheck",
+    "claim_recheck",
+    "applicability_recheck",
+    "result",
+    "reviewed_at",
+    "reviewer",
+    "notes",
+]
+
+STAGE_1_EVIDENCE_SOURCE_IDS = {
+    "SRC_UG_PRINT_20210317",
+    "SRC_UG_SUSPEND_FORM_PDF_202504",
+    "SRC_UG_RESUME_FORM_PDF_202504",
+    "SRC_UG_GRAD_NOTICE_20250617",
+    "SRC_GS_CERT_20130903",
+    "SRC_UG_SUSPEND_PROCESS_20190418",
+    "SRC_UG_RESUME_PROCESS_20190418",
+    "SRC_UG_UNREGISTERED_20250321",
+}
+
+STAGE_1_CANDIDATE_IDS = {
+    "UG_PROOF_PRINT",
+    "UG_STATUS_CHANGE",
+    "UG_WITHDRAWAL",
+    "UG_CREDENTIAL_REISSUE",
+    "UG_STUDENT_CARD_REISSUE",
+    "UG_COURSE_SELECTION",
+    "UG_LEAVE_REQUEST",
+    "UG_MAJOR_CHANGE",
+    "UG_GRADUATION_INTERNSHIP",
+}
+
+
+class _TextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(data)
+
+
+def compact_text(text: str) -> str:
+    return "".join(text.replace("\xa0", " ").split())
 
 
 def load_json(path: Path) -> Any:
@@ -254,8 +329,13 @@ def validate_target_repository(
     expected_media_types = {
         "html": "text/html",
         "pdf": "application/pdf",
+        "png": "image/png",
+        "doc": "application/msword",
+        "xls": "application/vnd.ms-excel",
+        "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     }
 
+    source_text_by_id: dict[str, str] = {}
     for source in source_records:
         source_id = str(source.get("source_id", "<unknown>"))
         publisher_domain = str(source.get("publisher", {}).get("domain", "")).lower()
@@ -317,6 +397,32 @@ def validate_target_repository(
             errors.append(f"{source_path}:{source_id}: local file lacks PDF signature")
         if content_format == "html" and b"<html" not in content[:4096].lower():
             errors.append(f"{source_path}:{source_id}: local file lacks HTML signature")
+        if content_format == "png" and not content.startswith(b"\x89PNG\r\n\x1a\n"):
+            errors.append(f"{source_path}:{source_id}: local file lacks PNG signature")
+        if content_format in {"doc", "xls"} and not content.startswith(
+            b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"
+        ):
+            errors.append(
+                f"{source_path}:{source_id}: local file lacks OLE compound-file signature"
+            )
+        if content_format == "docx" and not content.startswith(b"PK\x03\x04"):
+            errors.append(f"{source_path}:{source_id}: local file lacks OOXML ZIP signature")
+
+        try:
+            if content_format == "html":
+                parser = _TextExtractor()
+                parser.feed(content.decode("utf-8"))
+                source_text_by_id[source_id] = compact_text(" ".join(parser.parts))
+            elif content_format == "pdf":
+                extracted_text = "\n".join(
+                    page.extract_text() or ""
+                    for page in PdfReader(local_path).pages
+                )
+                source_text_by_id[source_id] = compact_text(extracted_text)
+        except Exception as exc:
+            errors.append(
+                f"{source_path}:{source_id}: saved-source text extraction failed: {exc}"
+            )
 
         final_host = (urlparse(str(capture.get("final_url", ""))).hostname or "").lower()
         if publisher_domain and not host_matches_domain(final_host, publisher_domain):
@@ -324,6 +430,26 @@ def validate_target_repository(
                 f"{source_path}:{source_id}: final URL host {final_host!r} "
                 f"does not match publisher domain {publisher_domain!r}"
             )
+
+    source_located_evidence_count = 0
+    for evidence in evidence_records:
+        evidence_id = str(evidence.get("evidence_id", "<unknown>"))
+        source_id = str(evidence.get("source_id", ""))
+        source_text = source_text_by_id.get(source_id)
+        if source_text is None:
+            errors.append(
+                f"{evidence_path}:{evidence_id}: source does not provide "
+                "extractable saved text"
+            )
+            continue
+        anchor_text = str(evidence.get("source_locator", {}).get("anchor_text", ""))
+        if compact_text(anchor_text) not in source_text:
+            errors.append(
+                f"{evidence_path}:{evidence_id}: anchor_text is absent from "
+                "the extracted saved source"
+            )
+            continue
+        source_located_evidence_count += 1
 
     return errors, {
         "target_source_records": len(source_records),
@@ -335,6 +461,7 @@ def validate_target_repository(
             for row in evidence_records
             if row.get("review", {}).get("status") == "verified"
         ),
+        "source_located_evidence_units": source_located_evidence_count,
     }
 
 
@@ -744,6 +871,230 @@ def validate_repository_audits(root: Path = ROOT) -> tuple[list[str], dict[str, 
     }
 
 
+def validate_stage1_completion_artifacts(
+    root: Path = ROOT,
+) -> tuple[list[str], dict[str, int]]:
+    errors: list[str] = []
+    survey_path = root / CANDIDATE_SURVEY_PATH
+    review_path = root / SECOND_REVIEW_PATH
+    report_path = root / STAGE_1_AUDIT_REPORT_PATH
+    evidence_path = root / TARGET_EVIDENCE_RECORDS_PATH
+    evidence_audit_path = root / "data/audit/evidence-audit.csv"
+
+    required_paths = [
+        survey_path,
+        review_path,
+        report_path,
+        evidence_path,
+        evidence_audit_path,
+    ]
+    missing_paths = [path for path in required_paths if not path.is_file()]
+    if missing_paths:
+        return [f"{path}: required stage 1 artifact is missing" for path in missing_paths], {}
+
+    survey_headers, survey_rows = load_csv(survey_path)
+    review_headers, review_rows = load_csv(review_path)
+    evidence_rows = load_jsonl(evidence_path)
+    _, evidence_audit_rows = load_csv(evidence_audit_path)
+    evidence_by_id = {row["evidence_id"]: row for row in evidence_rows}
+
+    require_columns(survey_headers, CANDIDATE_SURVEY_COLUMNS, survey_path, errors)
+    require_columns(review_headers, SECOND_REVIEW_COLUMNS, review_path, errors)
+
+    if len(survey_rows) != 9:
+        errors.append(f"{survey_path}: expected 9 candidate rows, got {len(survey_rows)}")
+    candidate_ids = [row.get("candidate_id", "") for row in survey_rows]
+    duplicate_candidate_ids = duplicate_values(candidate_ids)
+    if duplicate_candidate_ids:
+        errors.append(
+            f"{survey_path}: duplicate candidate_id values: {duplicate_candidate_ids}"
+        )
+    if set(candidate_ids) != STAGE_1_CANDIDATE_IDS:
+        errors.append(
+            f"{survey_path}: candidate coverage differs; expected "
+            f"{sorted(STAGE_1_CANDIDATE_IDS)}, got {sorted(set(candidate_ids))}"
+        )
+
+    verified_baselines = {
+        row.get("candidate_id", "")
+        for row in survey_rows
+        if row.get("data_baseline_status") == "已验证"
+    }
+    if verified_baselines != {"UG_PROOF_PRINT", "UG_STATUS_CHANGE"}:
+        errors.append(
+            f"{survey_path}: verified data baselines must be UG_PROOF_PRINT and "
+            f"UG_STATUS_CHANGE; got {sorted(verified_baselines)}"
+        )
+
+    score_fields = {
+        "evidence_completeness_score",
+        "condition_branch_score",
+        "version_risk_score",
+        "evaluation_value_score",
+        "annotation_cost_score",
+    }
+    for row in survey_rows:
+        candidate_id = row.get("candidate_id", "<unknown>")
+        check_enum(
+            row,
+            "data_baseline_status",
+            {"已验证", "计划"},
+            candidate_id,
+            survey_path,
+            errors,
+        )
+        if row.get("survey_status") != "已验证":
+            errors.append(
+                f"{survey_path}:{candidate_id}: survey_status must be 已验证"
+            )
+        check_enum(
+            row,
+            "stage_2_option_group",
+            {"已冻结基线", "优先扩展", "条件分支扩展", "流程对照"},
+            candidate_id,
+            survey_path,
+            errors,
+        )
+        try:
+            checked_at = date.fromisoformat(row.get("source_checked_at", ""))
+        except ValueError:
+            errors.append(
+                f"{survey_path}:{candidate_id}: source_checked_at must be an ISO date"
+            )
+        else:
+            if checked_at > date.today():
+                errors.append(
+                    f"{survey_path}:{candidate_id}: source_checked_at is in the future"
+                )
+
+        urls = [
+            value.strip()
+            for value in row.get("official_source_urls", "").split("|")
+            if value.strip()
+        ]
+        if not urls:
+            errors.append(
+                f"{survey_path}:{candidate_id}: official_source_urls must not be empty"
+            )
+        for url in urls:
+            parsed = urlparse(url)
+            if (
+                parsed.scheme != "https"
+                or parsed.hostname not in {"jwc.jnu.edu.cn", "gs.jnu.edu.cn"}
+            ):
+                errors.append(
+                    f"{survey_path}:{candidate_id}: unsupported official URL {url!r}"
+                )
+
+        for field in score_fields:
+            try:
+                score = int(row.get(field, ""))
+            except ValueError:
+                errors.append(
+                    f"{survey_path}:{candidate_id}: {field} must be an integer"
+                )
+            else:
+                if score not in range(4):
+                    errors.append(
+                        f"{survey_path}:{candidate_id}: {field} must be between 0 and 3"
+                    )
+
+        for field in {
+            "candidate_name",
+            "source_availability",
+            "observed_evidence",
+            "remaining_gap",
+            "stage_2_option_group",
+        }:
+            if not row.get(field, "").strip():
+                errors.append(
+                    f"{survey_path}:{candidate_id}: {field} must not be empty"
+                )
+
+    if len(review_rows) != 30:
+        errors.append(f"{review_path}: expected 30 review rows, got {len(review_rows)}")
+    for field in ("review_id", "evidence_id"):
+        duplicates = duplicate_values([row.get(field, "") for row in review_rows])
+        if duplicates:
+            errors.append(f"{review_path}: duplicate {field} values: {duplicates}")
+
+    reviewed_source_ids = {row.get("source_id", "") for row in review_rows}
+    if reviewed_source_ids != STAGE_1_EVIDENCE_SOURCE_IDS:
+        errors.append(
+            f"{review_path}: reviewed source coverage differs; expected "
+            f"{sorted(STAGE_1_EVIDENCE_SOURCE_IDS)}, got {sorted(reviewed_source_ids)}"
+        )
+
+    reviewed_evidence_ids: set[str] = set()
+    for row in review_rows:
+        review_id = row.get("review_id", "<unknown>")
+        evidence_id = row.get("evidence_id", "")
+        target = evidence_by_id.get(evidence_id)
+        if target is None:
+            errors.append(
+                f"{review_path}:{review_id}: unknown evidence_id {evidence_id!r}"
+            )
+        elif target.get("source_id") != row.get("source_id"):
+            errors.append(
+                f"{review_path}:{review_id}: source_id differs from target evidence"
+            )
+        reviewed_evidence_ids.add(evidence_id)
+
+        for field in {
+            "locator_recheck",
+            "verbatim_recheck",
+            "claim_recheck",
+            "applicability_recheck",
+        }:
+            if row.get(field) != "通过":
+                errors.append(f"{review_path}:{review_id}: {field} must be 通过")
+        if row.get("result") != "已验证":
+            errors.append(f"{review_path}:{review_id}: result must be 已验证")
+        try:
+            datetime.fromisoformat(row.get("reviewed_at", ""))
+        except ValueError:
+            errors.append(
+                f"{review_path}:{review_id}: reviewed_at must be an ISO datetime"
+            )
+        for field in {"selection_reason", "reviewer", "notes"}:
+            if not row.get(field, "").strip():
+                errors.append(
+                    f"{review_path}:{review_id}: {field} must not be empty"
+                )
+
+    for audit in evidence_audit_rows:
+        if audit.get("claim_review_status") != "known_mismatch":
+            continue
+        mapped_ids = {
+            value.strip()
+            for value in audit.get("target_evidence_ids", "").split("|")
+            if value.strip()
+        }
+        if not reviewed_evidence_ids & mapped_ids:
+            errors.append(
+                f"{review_path}: known mismatch {audit.get('evidence_id')} "
+                "is absent from second-review coverage"
+            )
+
+    report_text = report_path.read_text(encoding="utf-8")
+    for marker in {
+        "# 阶段 1 数据审计报告",
+        "30 条旧证据",
+        "136 条目标证据",
+        "第二次独立复核",
+        "候选事项普查",
+        "阶段 1 验收结论",
+    }:
+        if marker not in report_text:
+            errors.append(f"{report_path}: missing required marker {marker!r}")
+
+    return errors, {
+        "candidate_items_surveyed": len(survey_rows),
+        "second_review_rows": len(review_rows),
+        "stage1_audit_reports": 1,
+    }
+
+
 def run_validation(root: Path = ROOT, scope: str = "all") -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     summary: dict[str, int] = {}
@@ -759,6 +1110,9 @@ def run_validation(root: Path = ROOT, scope: str = "all") -> tuple[list[str], di
         target_errors, target_summary = validate_target_repository(root)
         errors.extend(target_errors)
         summary.update(target_summary)
+        stage1_errors, stage1_summary = validate_stage1_completion_artifacts(root)
+        errors.extend(stage1_errors)
+        summary.update(stage1_summary)
 
     return errors, summary
 

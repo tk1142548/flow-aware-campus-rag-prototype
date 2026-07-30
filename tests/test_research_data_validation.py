@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import copy
 import unittest
+from datetime import date
 from html.parser import HTMLParser
+from urllib.parse import urlparse
 
 from scripts.validate_research_data import (
     KNOWN_MISMATCH_IDS,
@@ -116,6 +118,99 @@ STAGE_1D_DYNAMIC_IDS = {
     "UGP058",
 }
 
+STAGE_1E_MIGRATIONS = {
+    "UGP010": [
+        "UGP010",
+        "UGP059",
+        "UGP060",
+        "UGP061",
+        "UGP062",
+        "UGP063",
+        "UGP064",
+        "UGP065",
+        "UGP066",
+        "UGP067",
+        "UGP068",
+        "UGP069",
+        "UGP070",
+        "UGP071",
+        "UGP072",
+        "UGP073",
+        "UGP074",
+        "UGP075",
+        "UGP076",
+        "UGP077",
+    ],
+    "UGP011": ["UGP011", "UGP078", "UGP079", "UGP080"],
+    "UGS007": ["UGS007", "UGS043"],
+    "UGS008": ["UGS008", "UGS044", "UGS045"],
+    "UGS009": ["UGS009", "UGS046", "UGS047", "UGS048"],
+    "UGS010": ["UGS008", "UGS045", "UGS048"],
+    "UGS015": ["UGS015", "UGS049", "UGS050", "UGS051"],
+    "UGS016": ["UGS016", "UGS052", "UGS053", "UGS054"],
+    "UGS017": ["UGS017", "UGS055", "UGS056"],
+    "UGS018": ["UGS051", "UGS052", "UGS055", "UGS056"],
+    "UGS019": ["UGS019", "UGS057", "UGS058"],
+}
+
+STAGE_1E_SOURCE_IDS = {
+    "UGP010": "SRC_UG_GRAD_NOTICE_20250617",
+    "UGP011": "SRC_GS_CERT_20130903",
+    "UGS007": "SRC_UG_SUSPEND_PROCESS_20190418",
+    "UGS008": "SRC_UG_SUSPEND_PROCESS_20190418",
+    "UGS009": "SRC_UG_SUSPEND_PROCESS_20190418",
+    "UGS010": "SRC_UG_SUSPEND_PROCESS_20190418",
+    "UGS015": "SRC_UG_RESUME_PROCESS_20190418",
+    "UGS016": "SRC_UG_RESUME_PROCESS_20190418",
+    "UGS017": "SRC_UG_RESUME_PROCESS_20190418",
+    "UGS018": "SRC_UG_RESUME_PROCESS_20190418",
+    "UGS019": "SRC_UG_UNREGISTERED_20250321",
+}
+
+STAGE_1_SOURCE_IDS = {
+    "SRC_UG_PRINT_20210317",
+    "SRC_UG_SUSPEND_FORM_PDF_202504",
+    "SRC_UG_RESUME_FORM_PDF_202504",
+    "SRC_UG_GRAD_NOTICE_20250617",
+    "SRC_GS_CERT_20130903",
+    "SRC_UG_SUSPEND_PROCESS_20190418",
+    "SRC_UG_RESUME_PROCESS_20190418",
+    "SRC_UG_UNREGISTERED_20250321",
+}
+
+CANDIDATE_SURVEY_COLUMNS = [
+    "candidate_id",
+    "candidate_name",
+    "data_baseline_status",
+    "official_source_urls",
+    "source_checked_at",
+    "source_availability",
+    "evidence_completeness_score",
+    "condition_branch_score",
+    "version_risk_score",
+    "evaluation_value_score",
+    "annotation_cost_score",
+    "observed_evidence",
+    "remaining_gap",
+    "stage_2_option_group",
+    "survey_status",
+]
+
+SECOND_REVIEW_COLUMNS = [
+    "review_id",
+    "evidence_id",
+    "source_id",
+    "selection_reason",
+    "locator_recheck",
+    "verbatim_recheck",
+    "claim_recheck",
+    "applicability_recheck",
+    "result",
+    "reviewed_at",
+    "reviewer",
+    "notes",
+]
+
 
 class _TextExtractor(HTMLParser):
     def __init__(self) -> None:
@@ -151,8 +246,8 @@ class ResearchDataValidationTests(unittest.TestCase):
         self.assertEqual(30, summary["evidence_audit_rows"])
         self.assertEqual(10, summary["legacy_missing_publish_date"])
         self.assertEqual(len(KNOWN_MISMATCH_IDS), summary["known_mismatch_rows"])
-        self.assertEqual(19, summary["migrated_legacy_rows"])
-        self.assertEqual(11, summary["legacy_unmigrated_rows"])
+        self.assertEqual(30, summary["migrated_legacy_rows"])
+        self.assertEqual(0, summary["legacy_unmigrated_rows"])
 
     def test_stage_1c_migrations_are_verified_and_atomized(self) -> None:
         expected_mismatches = {
@@ -270,6 +365,186 @@ class ResearchDataValidationTests(unittest.TestCase):
         self.assertIsNotNone(print_source["review"]["reviewed_at"])
         self.assertIsNotNone(print_source["review"]["reviewer"])
 
+    def test_stage_1e_remaining_migrations_are_verified_and_locatable(self) -> None:
+        _, evidence_audit = load_csv(ROOT / "data/audit/evidence-audit.csv")
+        _, source_audit = load_csv(ROOT / "data/audit/source-audit.csv")
+        source_records = load_jsonl(ROOT / "data/research/source_records.jsonl")
+        target_evidence = load_jsonl(ROOT / TARGET_EVIDENCE_RECORDS_PATH)
+        audit_by_id = {row["evidence_id"]: row for row in evidence_audit}
+        source_audit_by_id = {row["source_id"]: row for row in source_audit}
+        source_by_id = {row["source_id"]: row for row in source_records}
+        target_by_id = {row["evidence_id"]: row for row in target_evidence}
+
+        normalized_source_text: dict[str, str] = {}
+        for source_id in STAGE_1_SOURCE_IDS:
+            source = source_by_id[source_id]
+            self.assertEqual("captured", source["capture"]["status"])
+            local_path = ROOT / source["capture"]["local_path"]
+            if source["content_format"] == "html":
+                normalized_source_text[source_id] = normalized_html_text(
+                    local_path.read_text(encoding="utf-8")
+                )
+
+        mapped_target_ids: list[str] = []
+        for legacy_id, expected_target_ids in STAGE_1E_MIGRATIONS.items():
+            audit = audit_by_id[legacy_id]
+            actual_target_ids = audit["target_evidence_ids"].split("|")
+            self.assertEqual(expected_target_ids, actual_target_ids)
+            self.assertEqual("verified", audit["verbatim_text_status"])
+            self.assertEqual("verified", audit["review_status"])
+            self.assertEqual("migrated", audit["migration_status"])
+
+            expected_source_id = STAGE_1E_SOURCE_IDS[legacy_id]
+            for target_id in actual_target_ids:
+                target = target_by_id[target_id]
+                self.assertEqual(expected_source_id, target["source_id"])
+                self.assertEqual("verified", target["review"]["status"])
+                anchor_text = target["source_locator"]["anchor_text"]
+                self.assertIn(anchor_text, target["verbatim_text"])
+                normalized_anchor = " ".join(
+                    anchor_text.replace("\xa0", " ").split()
+                )
+                self.assertIn(normalized_anchor, normalized_source_text[expected_source_id])
+            mapped_target_ids.extend(actual_target_ids)
+
+        self.assertEqual(47, len(set(mapped_target_ids)))
+        self.assertEqual(30, sum(
+            row["migration_status"] == "migrated" for row in evidence_audit
+        ))
+
+        expected_attachment_relations = {
+            "SRC_UG_GRAD_NOTICE_20250617": {
+                "SRC_UG_GRAD_NOTICE_ATTACHMENT3_20250618",
+                "SRC_UG_GRAD_NOTICE_ATTACHMENT4_20250618",
+            },
+            "SRC_UG_UNREGISTERED_20250321": {
+                "SRC_UG_UNREGISTERED_NOTICE_TEMPLATE_20250321",
+                "SRC_UG_UNREGISTERED_SUMMARY_20250321",
+            },
+        }
+        for landing_id, attachment_ids in expected_attachment_relations.items():
+            landing_targets = {
+                relation["target_source_id"]
+                for relation in source_by_id[landing_id]["relations"]
+                if relation["relation_type"] == "landing_page_for"
+            }
+            self.assertEqual(attachment_ids, landing_targets)
+            for attachment_id in attachment_ids:
+                attachment = source_by_id[attachment_id]
+                self.assertEqual("captured", attachment["capture"]["status"])
+                self.assertTrue((ROOT / attachment["capture"]["local_path"]).is_file())
+                self.assertIn(
+                    {
+                        "relation_type": "attachment_of",
+                        "target_source_id": landing_id,
+                    },
+                    attachment["relations"],
+                )
+
+        unavailable = source_by_id["SRC_GS_CERT_20140616"]
+        self.assertEqual("failed", unavailable["capture"]["status"])
+        self.assertEqual(410, unavailable["capture"]["http_status"])
+        self.assertIsNone(unavailable["capture"]["local_path"])
+        self.assertIn("SRC_GS_CERT_20130903", {
+            relation["target_source_id"] for relation in unavailable["relations"]
+        })
+
+        for source_id in {
+            "SRC_UG_GRAD_NOTICE_20250617",
+            "SRC_GS_CERT_20140616",
+            "SRC_UG_SUSPEND_PROCESS_20190418",
+            "SRC_UG_RESUME_PROCESS_20190418",
+            "SRC_UG_UNREGISTERED_20250321",
+        }:
+            self.assertEqual("verified", source_audit_by_id[source_id]["review_status"])
+
+    def test_stage_1f_candidate_survey_and_second_review_are_complete(self) -> None:
+        survey_path = ROOT / "data/research/candidate-item-survey.csv"
+        review_path = ROOT / "data/audit/stage1-second-review.csv"
+        report_path = ROOT / "docs/data/STAGE_1_DATA_AUDIT.md"
+
+        survey_headers, survey_rows = load_csv(survey_path)
+        review_headers, review_rows = load_csv(review_path)
+        target_evidence = load_jsonl(ROOT / TARGET_EVIDENCE_RECORDS_PATH)
+        _, evidence_audit = load_csv(ROOT / "data/audit/evidence-audit.csv")
+        target_by_id = {row["evidence_id"]: row for row in target_evidence}
+
+        self.assertEqual(CANDIDATE_SURVEY_COLUMNS, survey_headers)
+        self.assertEqual(9, len(survey_rows))
+        self.assertEqual(
+            {"UG_PROOF_PRINT", "UG_STATUS_CHANGE"},
+            {
+                row["candidate_id"]
+                for row in survey_rows
+                if row["data_baseline_status"] == "已验证"
+            },
+        )
+        for row in survey_rows:
+            self.assertEqual("已验证", row["survey_status"])
+            self.assertLessEqual(date.fromisoformat(row["source_checked_at"]), date.today())
+            urls = row["official_source_urls"].split("|")
+            self.assertGreaterEqual(len(urls), 1)
+            for url in urls:
+                parsed = urlparse(url)
+                self.assertEqual("https", parsed.scheme)
+                self.assertTrue(
+                    parsed.hostname == "jwc.jnu.edu.cn"
+                    or parsed.hostname == "gs.jnu.edu.cn"
+                )
+            for field in {
+                "evidence_completeness_score",
+                "condition_branch_score",
+                "version_risk_score",
+                "evaluation_value_score",
+                "annotation_cost_score",
+            }:
+                self.assertIn(int(row[field]), range(4))
+            self.assertTrue(row["observed_evidence"].strip())
+            self.assertTrue(row["remaining_gap"].strip())
+
+        self.assertEqual(SECOND_REVIEW_COLUMNS, review_headers)
+        self.assertEqual(30, len(review_rows))
+        reviewed_ids = [row["evidence_id"] for row in review_rows]
+        self.assertEqual(len(reviewed_ids), len(set(reviewed_ids)))
+        self.assertTrue(set(reviewed_ids) <= set(target_by_id))
+        self.assertEqual(
+            STAGE_1_SOURCE_IDS,
+            {row["source_id"] for row in review_rows},
+        )
+        for row in review_rows:
+            self.assertEqual(target_by_id[row["evidence_id"]]["source_id"], row["source_id"])
+            for field in {
+                "locator_recheck",
+                "verbatim_recheck",
+                "claim_recheck",
+                "applicability_recheck",
+            }:
+                self.assertEqual("通过", row[field])
+            self.assertEqual("已验证", row["result"])
+            self.assertTrue(row["reviewer"].strip())
+            self.assertTrue(row["notes"].strip())
+
+        reviewed_id_set = set(reviewed_ids)
+        for audit in evidence_audit:
+            if audit["claim_review_status"] != "known_mismatch":
+                continue
+            self.assertTrue(
+                reviewed_id_set
+                & set(audit["target_evidence_ids"].split("|")),
+                audit["evidence_id"],
+            )
+
+        report_text = report_path.read_text(encoding="utf-8")
+        for marker in {
+            "# 阶段 1 数据审计报告",
+            "30 条旧证据",
+            "136 条目标证据",
+            "第二次独立复核",
+            "候选事项普查",
+            "阶段 1 验收结论",
+        }:
+            self.assertIn(marker, report_text)
+
     def test_duplicate_values_are_reported_deterministically(self) -> None:
         self.assertEqual(["A", "B"], duplicate_values(["B", "A", "B", "C", "A"]))
 
@@ -312,11 +587,12 @@ class ResearchDataValidationTests(unittest.TestCase):
         errors, summary = validate_target_repository(ROOT)
 
         self.assertEqual([], errors)
-        self.assertEqual(5, summary["target_source_records"])
-        self.assertEqual(5, summary["captured_source_files"])
-        self.assertEqual(5, summary["verified_source_records"])
-        self.assertEqual(89, summary["target_evidence_units"])
-        self.assertEqual(89, summary["verified_target_evidence_units"])
+        self.assertEqual(15, summary["target_source_records"])
+        self.assertEqual(14, summary["captured_source_files"])
+        self.assertEqual(15, summary["verified_source_records"])
+        self.assertEqual(136, summary["target_evidence_units"])
+        self.assertEqual(136, summary["verified_target_evidence_units"])
+        self.assertEqual(136, summary["source_located_evidence_units"])
 
 
 if __name__ == "__main__":

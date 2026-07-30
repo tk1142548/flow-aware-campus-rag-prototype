@@ -59,6 +59,9 @@
       "enum": [
         "html",
         "pdf",
+        "png",
+        "doc",
+        "xls",
         "docx",
         "other"
       ]

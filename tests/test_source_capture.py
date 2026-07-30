@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from scripts.capture_official_sources import (
+    append_jsonl,
     safe_output_path,
     safe_record_path,
     validate_content,
@@ -69,11 +70,40 @@ class OfficialSourceCaptureTests(unittest.TestCase):
             "application/pdf",
             b"%PDF-1.7\n",
         )
+        validate_content(
+            "SRC_PNG",
+            "png",
+            "image/png",
+            "image/png",
+            b"\x89PNG\r\n\x1a\ncontent",
+        )
+        validate_content(
+            "SRC_DOC",
+            "doc",
+            "application/msword",
+            "application/msword",
+            b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1content",
+        )
+        validate_content(
+            "SRC_XLS",
+            "xls",
+            "application/vnd.ms-excel",
+            "application/vnd.ms-excel",
+            b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1content",
+        )
 
         invalid_cases = [
             ("html", "text/html", "application/pdf", b"<html></html>"),
             ("html", "text/html", "text/html", b"not html"),
             ("pdf", "application/pdf", "application/pdf", b"not pdf"),
+            ("png", "image/png", "image/png", b"not png"),
+            ("doc", "application/msword", "application/msword", b"not doc"),
+            (
+                "xls",
+                "application/vnd.ms-excel",
+                "application/vnd.ms-excel",
+                b"not xls",
+            ),
         ]
         for content_format, expected_type, actual_type, content in invalid_cases:
             with self.subTest(
@@ -99,6 +129,19 @@ class OfficialSourceCaptureTests(unittest.TestCase):
 
             with self.assertRaises(FileExistsError):
                 write_jsonl(output_path, rows)
+
+    def test_source_record_append_preserves_existing_bytes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_path = Path(temp_dir) / "source_records.jsonl"
+            write_jsonl(output_path, [{"source_id": "SRC_EXISTING"}])
+            existing_bytes = output_path.read_bytes()
+
+            append_jsonl(output_path, [{"source_id": "SRC_NEW"}])
+
+            updated_bytes = output_path.read_bytes()
+            self.assertTrue(updated_bytes.startswith(existing_bytes))
+            self.assertEqual(1, updated_bytes.count(b"SRC_EXISTING"))
+            self.assertEqual(1, updated_bytes.count(b"SRC_NEW"))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,268 @@
+{
+  "status": "阻塞",
+  "sample_count": 200,
+  "unique_conversations": 64,
+  "duplicate_excess": 136,
+  "link_errors": [
+    {
+      "sample_id": "S2E-WD-001",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-001",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-002",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-002",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-003",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-003",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-004",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-004",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-005",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-005",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-006",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-006",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-007",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-007",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-008",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-008",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-009",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-009",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-010",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-010",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-011",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-011",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-012",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-012",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-013",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-013",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-014",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-014",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-015",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-015",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-016",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-016",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-017",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-017",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-018",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-018",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-019",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-019",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-020",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-020",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-023",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-023",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-024",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-024",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "sample_id": "S2E-WD-025",
+      "code": "evidence_outside_process",
+      "ids": [
+        "UGW001"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-025",
+      "code": "claim_evidence_mismatch"
+    },
+    {
+      "code": "release_version_mismatch",
+      "sample_versions": [
+        "0.1.0-content"
+      ],
+      "plan_version": "1.0.0-frozen"
+    }
+  ]
+}

@@ -3,6 +3,10 @@ from __future__ import annotations
 import json, hashlib
 from pathlib import Path
 from jsonschema import Draft202012Validator
+try:
+    from scripts.audit_stage2_content import audit
+except ModuleNotFoundError:
+    from audit_stage2_content import audit
 
 ROOT=Path(__file__).resolve().parents[1]
 def load_jsonl(path): return [json.loads(x) for x in path.read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -24,6 +28,10 @@ def main():
         if review is None or review["primary_annotation"]["reviewer"]==review["secondary_review"]["reviewer"] or review["final_status"]!="accepted": errors.append(f"{x['sample_id']}: review contract failed")
     report=json.loads((ROOT/"data/evaluation/stage2-leakage-report.json").read_text(encoding="utf-8"))
     if report.get("status")!="passed" or report.get("duplicate_metadata_keys")!=0: errors.append("leakage report failed")
+    entry_audit = audit(ROOT)
+    if entry_audit["duplicate_excess"]:
+        errors.append(f"actual conversation duplicates: {entry_audit['duplicate_excess']}")
+    errors.extend(json.dumps(error, ensure_ascii=False) for error in entry_audit["link_errors"])
     if errors:
         for e in errors[:20]: print("[ERROR]",e)
         return 1

@@ -3003,8 +3003,8 @@ def validate_stage2b_withdrawal_contract(
             "阶段 2B 退学办理验收结果",
         },
         project_memory_path: {
-            "阶段 2A、2B、2C、2D 均已验证",
-            "阶段 2 已验证；阶段 2A、2B、2C、2D 均已验证",
+            "阶段 2 内容冻结验收阻塞",
+            "阶段 3 进行中",
         },
     }
     for document_path, markers in required_document_markers.items():

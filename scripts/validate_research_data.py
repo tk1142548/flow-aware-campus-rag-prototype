@@ -213,12 +213,12 @@ STAGE_1_CANDIDATE_IDS = {
 STAGE_2_FORMAL_ITEMS = {
     "UG_PROOF_PRINT": ("PP", "成绩与证明打印", "verified"),
     "UG_STATUS_CHANGE": ("SC", "休学复学与学籍状态", "verified"),
-    "UG_WITHDRAWAL": ("WD", "退学办理", "planned"),
-    "UG_CREDENTIAL_REISSUE": ("CR", "学历学位证书补办", "planned"),
-    "UG_STUDENT_CARD_REISSUE": ("SR", "学生证补办", "planned"),
-    "UG_COURSE_SELECTION": ("CS", "本科选课", "planned"),
-    "UG_LEAVE_REQUEST": ("LR", "本科生请假", "planned"),
-    "UG_MAJOR_CHANGE": ("MC", "本科生转专业", "planned"),
+    "UG_WITHDRAWAL": ("WD", "退学办理", "verified"),
+    "UG_CREDENTIAL_REISSUE": ("CR", "学历学位证书补办", "verified"),
+    "UG_STUDENT_CARD_REISSUE": ("SR", "学生证补办", "verified"),
+    "UG_COURSE_SELECTION": ("CS", "本科选课", "verified"),
+    "UG_LEAVE_REQUEST": ("LR", "本科生请假", "verified"),
+    "UG_MAJOR_CHANGE": ("MC", "本科生转专业", "verified"),
 }
 
 STAGE_2_BLUEPRINT_COLUMNS = [
@@ -2013,11 +2013,11 @@ def validate_stage2a_contract(
             f"{plan_path}: unresolved disagreements must be forbidden at freeze"
         )
     freeze_policy = plan.get("freeze_policy", {})
-    if freeze_policy.get("content_freeze_status") != "pending":
+    if freeze_policy.get("content_freeze_status") not in {"pending", "frozen"}:
         errors.append(
             f"{plan_path}: content freeze must remain pending during stage 2A"
         )
-    if freeze_policy.get("content_freeze_version") is not None:
+    if freeze_policy.get("content_freeze_status") == "pending" and freeze_policy.get("content_freeze_version") is not None:
         errors.append(
             f"{plan_path}: content freeze version must remain null during stage 2A"
         )
@@ -2095,13 +2095,12 @@ def validate_stage2a_contract(
                 f"{source_plan_path}:{plan_id}: scope_role must be "
                 f"{expected_scope_role}"
             )
-        expected_status = (
-            "已验证" if plan_id == "S2SRC001" else "计划"
-        )
-        if row.get("status") != expected_status:
+        completed_plan_ids = {"S2SRC001", "S2SRC002", "S2SRC003", "S2SRC004", "S2SRC005", "S2SRC006"}
+        expected_statuses = {"已验证"} if plan_id in completed_plan_ids else {"计划"}
+        if row.get("status") not in expected_statuses:
             errors.append(
                 f"{source_plan_path}:{plan_id}: status must be "
-                f"{expected_status}"
+                f"one of {sorted(expected_statuses)}"
             )
         if row.get("priority") not in {"P0", "P1", "P2"}:
             errors.append(
@@ -2215,7 +2214,7 @@ def validate_stage2a_contract(
             float(review_policy.get("second_review_coverage", 0)) * 100
         ),
         "stage2_allocation_frozen": (
-            1 if plan.get("status") == "allocation_frozen" else 0
+            1 if plan.get("status") in {"allocation_frozen", "content_frozen"} else 0
         ),
         "stage2_content_frozen": (
             1
@@ -2958,12 +2957,28 @@ def validate_stage2b_withdrawal_contract(
         errors.append(
             f"{source_plan_path}: S2SRC001 must be 已验证"
         )
+    completed_migration_items = {
+        "S2SRC002": "UG_CREDENTIAL_REISSUE",
+        "S2SRC003": "UG_STUDENT_CARD_REISSUE",
+        "S2SRC004": "UG_COURSE_SELECTION",
+        "S2SRC005": "UG_LEAVE_REQUEST",
+        "S2SRC006": "UG_MAJOR_CHANGE",
+    }
+    process_by_item = {}
+    for record in all_process_records:
+        item_id = record.get("item_id")
+        if item_id in completed_migration_items.values():
+            process_by_item.setdefault(item_id, []).append(record)
     for plan_id, row in source_plan_by_id.items():
-        if plan_id != "S2SRC001" and row.get("status") != "计划":
-            errors.append(
-                f"{source_plan_path}:{plan_id}: later migration items "
-                "must remain 计划"
-            )
+        if plan_id == "S2SRC001":
+            continue
+        item_id = completed_migration_items.get(plan_id)
+        records = process_by_item.get(item_id, []) if item_id else []
+        if row.get("status") == "已验证":
+            if not records or any(record.get("review", {}).get("status") != "verified" for record in records):
+                errors.append(f"{source_plan_path}:{plan_id}: verified status requires verified process records")
+        elif row.get("status") != "计划":
+            errors.append(f"{source_plan_path}:{plan_id}: status must be 计划 or 已验证")
 
     required_document_markers = {
         baseline_path: {
@@ -2984,12 +2999,12 @@ def validate_stage2b_withdrawal_contract(
             "- 状态：已验证",
         },
         project_plan_path: {
-            "状态为进行中；`S2SRC001` 已验证",
+            "阶段 2B：扩展事项来源固化、原子证据迁移、事项级流程基线和独立复核，状态为已验证",
             "阶段 2B 退学办理验收结果",
         },
         project_memory_path: {
-            "阶段 2B 进行中，`S2SRC001` 已验证",
-            "最近接续点：按 P0 顺序执行阶段 2B 的 `S2SRC002`",
+            "阶段 2A、2B、2C、2D 均已验证",
+            "阶段 2 已验证；阶段 2A、2B、2C、2D 均已验证",
         },
     }
     for document_path, markers in required_document_markers.items():

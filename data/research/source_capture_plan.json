@@ -1117,6 +1117,303 @@
         "reviewer": null,
         "notes": "需核验清退范围、主动退学表格使用条件、肄业证书申请和最长学习年限分支。"
       }
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "title": "全日制本科学生学位证书遗失补办",
+      "canonical_url": "https://jwc.jnu.edu.cn/2021/0317/c11805a602511/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2021-03-17",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2021-3-17",
+        "note": "页面显示更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_CREDENTIAL_DEGREE_20210317/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "官方页面更新于2021-03-17",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未声明替代关系。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_CREDENTIAL_DIPLOMA_20210317",
+      "title": "全日制本科学生毕业证书遗失补办",
+      "canonical_url": "https://jwc.jnu.edu.cn/2021/0317/c11805a602509/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2021-03-17",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2021-3-17",
+        "note": "页面显示更新时间。"
+      },
+      "capture_target": {
+        "local_path": "data/sources/SRC_UG_CREDENTIAL_DIPLOMA_20210317/page.html",
+        "expected_media_type": "text/html"
+      },
+      "version": {
+        "label": "官方页面更新于2021-03-17",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未声明替代关系。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_STUDENT_CARD_20190418",
+      "title": "在校全日制本科生遗失学生证补办",
+      "canonical_url": "https://jwc.jnu.edu.cn/2019/0418/c11805a310048/page.psp",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "guide",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2019-04-18",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2019-4-18 15:53:34",
+        "note": "日期取自页面显示更新时间。"
+      },
+      "version": {
+        "label": "官方页面更新于2019-04-18",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未声明替代关系。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_COURSE_SELECTION_20190419",
+      "title": "学生选课流程",
+      "canonical_url": "https://jwc.jnu.edu.cn/2019/0419/c11805a310286/page.psp",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "process",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2019-04-19",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2019-4-19 13:02:56",
+        "note": "日期取自页面显示更新时间。"
+      },
+      "version": {
+        "label": "官方页面更新于2019-04-19",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面未声明替代关系。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_LEAVE_PAGE_202504",
+      "title": "本科学生请假申请表202504",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0409/c6757a833626/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-04-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-4-16 10:00:05",
+        "note": "日期取自官方页面。"
+      },
+      "version": {
+        "label": "2025年4月版",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "表格页脚标注2025年4月。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_LEAVE_FORM_PDF_202504",
+      "title": "暨南大学学生请假申请表202504",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/9c/6e/2748741c430d9aff7c1e81363de7/e67cd3ae-af2b-4c23-ac82-088bdf1d0a2c.pdf",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-04-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-4-16 10:00:05",
+        "note": "日期取自官方页面。"
+      },
+      "version": {
+        "label": "2025年4月版",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "表格页脚标注2025年4月。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_LEAVE_PAGE_202504"
+        }
+      ],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_MAJOR_CHANGE_EXTERNAL_20250716",
+      "title": "转专业申请表（外招生）",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0716/c6757a840740/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-07-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-7-16",
+        "note": "日期取自官方页面。"
+      },
+      "version": {
+        "label": "2025年7月外招生申请材料",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面或表格未声明替代关系。"
+      },
+      "relations": [],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_MAJOR_CHANGE_EXTERNAL_PDF_20250716",
+      "title": "转专业申请表（外招生）202507.pdf",
+      "canonical_url": "https://jwc.jnu.edu.cn/_upload/article/files/54/9b/cb5520e347e7a6f89f82a04a4be0/320a44ba-79e1-4c19-a72b-ed6ac3bd7edd.pdf",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "pdf",
+      "document_role": "form",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "known",
+        "date": "2025-07-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间：2025-7-16",
+        "note": "日期取自官方页面。"
+      },
+      "version": {
+        "label": "2025年7月外招生申请材料",
+        "status": "time_bounded",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "页面或表格未声明替代关系。"
+      },
+      "relations": [
+        {
+          "relation_type": "attachment_of",
+          "target_source_id": "SRC_UG_MAJOR_CHANGE_EXTERNAL_20250716"
+        }
+      ],
+      "capture_policy": "required"
+    },
+    {
+      "schema_version": "1.0",
+      "source_id": "SRC_UG_MAJOR_CHANGE_INTERNAL_20250716",
+      "title": "转专业申请表（校内生）202507",
+      "canonical_url": "https://jwc.jnu.edu.cn/2025/0716/c6757a840739/page.htm",
+      "publisher": {
+        "name": "暨南大学本科生院",
+        "domain": "jwc.jnu.edu.cn"
+      },
+      "content_format": "html",
+      "document_role": "service_page",
+      "authority_level": "official_primary",
+      "publication": {
+        "status": "unknown",
+        "date": "2025-07-16",
+        "date_kind": "updated",
+        "displayed_date_text": "更新时间页面受限",
+        "note": "公开访问跳转统一身份认证。"
+      },
+      "version": {
+        "label": "2025年7月校内生申请材料入口",
+        "status": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "supersedes": [],
+        "superseded_by": [],
+        "note": "正文无法公开访问。"
+      },
+      "relations": [],
+      "capture_policy": "record_failure"
     }
   ]
 }

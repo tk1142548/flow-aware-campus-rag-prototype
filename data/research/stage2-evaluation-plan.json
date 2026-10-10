@@ -2,10 +2,10 @@
   "schema_version": "1.0",
   "plan_id": "STAGE2_EVAL_200_V1",
   "decision_id": "D-017",
-  "status": "allocation_frozen",
+  "status": "content_frozen",
   "confirmed_on": "2026-07-30",
   "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
-  "dataset_release_version": "0.1.0-allocation",
+  "dataset_release_version": "1.0.0-frozen",
   "formal_items": [
     {
       "item_id": "UG_PROOF_PRINT",
@@ -25,42 +25,42 @@
       "item_id": "UG_WITHDRAWAL",
       "item_code": "WD",
       "item_name": "退学办理",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     },
     {
       "item_id": "UG_CREDENTIAL_REISSUE",
       "item_code": "CR",
       "item_name": "学历学位证书补办",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     },
     {
       "item_id": "UG_STUDENT_CARD_REISSUE",
       "item_code": "SR",
       "item_name": "学生证补办",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     },
     {
       "item_id": "UG_COURSE_SELECTION",
       "item_code": "CS",
       "item_name": "本科选课",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     },
     {
       "item_id": "UG_LEAVE_REQUEST",
       "item_code": "LR",
       "item_name": "本科生请假",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     },
     {
       "item_id": "UG_MAJOR_CHANGE",
       "item_code": "MC",
       "item_name": "本科生转专业",
-      "data_baseline_status": "planned",
+      "data_baseline_status": "verified",
       "sample_quota": 25
     }
   ],
@@ -129,8 +129,8 @@
   },
   "freeze_policy": {
     "allocation_frozen_at": "2026-07-30T22:52:58+08:00",
-    "content_freeze_status": "pending",
-    "content_freeze_version": null,
+    "content_freeze_status": "frozen",
+    "content_freeze_version": "1.0.0-frozen",
     "sample_id_rule": "S2E-<事项两字母代码>-<事项内三位顺序号>；编号一经分配不复用，被拒绝样本保留编号与拒绝记录。",
     "version_rule": {
       "major": "事项范围、评测定义、金标准字段语义或泄漏边界发生变化。",
@@ -160,7 +160,8 @@
       "supporting_evidence_ids"
     ],
     "method_tuning_boundary": "冻结测试样本的对话、金标准、证据绑定和裁决记录不得用于提示词、检索参数、模型选择或规则阈值调试；调试仅使用测试集外开发样本。",
-    "hash_algorithm": "sha256"
+    "hash_algorithm": "sha256",
+    "content_frozen_at": "2026-10-10T10:45:00+08:00"
   },
   "upstream_baseline": {
     "stage1_data_commit": "cb243dd46b04e4ab113bdaf754894482af999ff6",
@@ -170,5 +171,13 @@
     "evidence_units_sha256": "8ccf3e5783b6bdea345fc077a7c33b10ce5ad8815c9886aa0a415ce6f33e7c0a",
     "candidate_survey_path": "data/research/candidate-item-survey.csv",
     "candidate_survey_sha256": "c88cb1ad8c4be41abfed293dd97449bd389ff6b532b6266cc5e1cdb1de45e8e7"
+  },
+  "content_artifacts": {
+    "samples_path": "data/evaluation/stage2_samples.jsonl",
+    "samples_sha256": "0e299d933e832b924498cbd07a77addff48612c3972e72aa9a16105dd1e1a495",
+    "reviews_path": "data/evaluation/stage2_reviews.jsonl",
+    "reviews_sha256": "02c083819dbccfb0d36e2f09cd69c61480dd872793d1fc12051d6e6d7e9cbe8a",
+    "leakage_report_path": "data/evaluation/stage2-leakage-report.json",
+    "leakage_report_sha256": "e6e6bc8bd116b47c1fc48bf1d4bda3171a53f96090dfc8d52b6c386cedd49fbe"
   }
 }

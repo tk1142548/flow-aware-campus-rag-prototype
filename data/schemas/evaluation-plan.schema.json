@@ -19,7 +19,8 @@
     "allocation",
     "review_policy",
     "freeze_policy",
-    "upstream_baseline"
+    "upstream_baseline",
+    "content_artifacts"
   ],
   "properties": {
     "schema_version": {
@@ -32,7 +33,10 @@
       "const": "D-017"
     },
     "status": {
-      "const": "allocation_frozen"
+      "enum": [
+        "allocation_frozen",
+        "content_frozen"
+      ]
     },
     "confirmed_on": {
       "const": "2026-07-30"
@@ -41,7 +45,7 @@
       "const": "CAMPUS_RAG_STAGE2_EVAL"
     },
     "dataset_release_version": {
-      "const": "0.1.0-allocation"
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$"
     },
     "formal_items": {
       "type": "array",
@@ -289,10 +293,17 @@
           "format": "date-time"
         },
         "content_freeze_status": {
-          "const": "pending"
+          "enum": [
+            "pending",
+            "frozen"
+          ]
         },
         "content_freeze_version": {
-          "type": "null"
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$"
         },
         "sample_id_rule": {
           "type": "string",
@@ -345,6 +356,13 @@
         },
         "hash_algorithm": {
           "const": "sha256"
+        },
+        "content_frozen_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
         }
       }
     },
@@ -381,6 +399,44 @@
         },
         "candidate_survey_sha256": {
           "const": "c88cb1ad8c4be41abfed293dd97449bd389ff6b532b6266cc5e1cdb1de45e8e7"
+        }
+      }
+    },
+    "content_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "samples_path",
+        "samples_sha256",
+        "reviews_path",
+        "reviews_sha256",
+        "leakage_report_path",
+        "leakage_report_sha256"
+      ],
+      "properties": {
+        "samples_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "samples_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reviews_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviews_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "leakage_report_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "leakage_report_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
         }
       }
     }

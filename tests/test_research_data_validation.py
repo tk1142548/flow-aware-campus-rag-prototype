@@ -562,7 +562,7 @@ class ResearchDataValidationTests(unittest.TestCase):
         self.assertEqual(7, summary["stage2_source_migration_rows"])
         self.assertEqual(100, summary["stage2_second_review_target_percent"])
         self.assertEqual(1, summary["stage2_allocation_frozen"])
-        self.assertEqual(0, summary["stage2_content_frozen"])
+        self.assertEqual(1, summary["stage2_content_frozen"])
         self.assertEqual(1, summary["stage2_fixture_link_sets_validated"])
 
     def test_stage2_fixture_links_reject_cross_field_inconsistency(self) -> None:
@@ -660,12 +660,12 @@ class ResearchDataValidationTests(unittest.TestCase):
         errors, summary = validate_target_repository(ROOT)
 
         self.assertEqual([], errors)
-        self.assertEqual(25, summary["target_source_records"])
-        self.assertEqual(21, summary["captured_source_files"])
-        self.assertEqual(25, summary["verified_source_records"])
-        self.assertEqual(249, summary["target_evidence_units"])
-        self.assertEqual(249, summary["verified_target_evidence_units"])
-        self.assertEqual(249, summary["source_located_evidence_units"])
+        self.assertEqual(34, summary["target_source_records"])
+        self.assertEqual(29, summary["captured_source_files"])
+        self.assertEqual(31, summary["verified_source_records"])
+        self.assertEqual(309, summary["target_evidence_units"])
+        self.assertEqual(309, summary["verified_target_evidence_units"])
+        self.assertEqual(309, summary["source_located_evidence_units"])
 
 
 if __name__ == "__main__":

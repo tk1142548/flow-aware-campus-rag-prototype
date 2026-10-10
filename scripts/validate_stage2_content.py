@@ -21,6 +21,10 @@ def main():
     evidence={x["evidence_id"] for x in load_jsonl(ROOT/"data/research/evidence_units.jsonl")}
     processes={x["process_id"]:x for x in load_jsonl(ROOT/"data/research/process_records.jsonl")}
     for x in samples:
+        if x['review_status'] not in {'second_review_complete', 'adjudicated', 'frozen'}:
+            errors.append(f"{x['sample_id']}: current sample review incomplete")
+        if x['leakage_control']['check_status'] != 'passed':
+            errors.append(f"{x['sample_id']}: current leakage check incomplete")
         if x["scenario_type"]!="out_of_scope":
             if x["process_id"] not in processes or processes[x["process_id"]]["review"]["status"]!="verified": errors.append(f"{x['sample_id']}: process not verified")
             if not set(x["gold"]["supporting_evidence_ids"]).issubset(evidence): errors.append(f"{x['sample_id']}: evidence reference missing")

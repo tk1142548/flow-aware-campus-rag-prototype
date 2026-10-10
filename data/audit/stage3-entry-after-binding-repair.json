@@ -1,0 +1,7 @@
+{
+  "status": "阻塞",
+  "sample_count": 200,
+  "unique_conversations": 64,
+  "duplicate_excess": 136,
+  "link_errors": []
+}

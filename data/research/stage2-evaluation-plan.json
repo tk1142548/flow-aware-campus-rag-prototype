@@ -2,10 +2,10 @@
   "schema_version": "1.0",
   "plan_id": "STAGE2_EVAL_200_V1",
   "decision_id": "D-017",
-  "status": "content_frozen",
+  "status": "allocation_frozen",
   "confirmed_on": "2026-07-30",
   "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
-  "dataset_release_version": "1.0.0-frozen",
+  "dataset_release_version": "0.1.0-content",
   "formal_items": [
     {
       "item_id": "UG_PROOF_PRINT",
@@ -129,8 +129,8 @@
   },
   "freeze_policy": {
     "allocation_frozen_at": "2026-07-30T22:52:58+08:00",
-    "content_freeze_status": "frozen",
-    "content_freeze_version": "1.0.0-frozen",
+    "content_freeze_status": "pending",
+    "content_freeze_version": null,
     "sample_id_rule": "S2E-<事项两字母代码>-<事项内三位顺序号>；编号一经分配不复用，被拒绝样本保留编号与拒绝记录。",
     "version_rule": {
       "major": "事项范围、评测定义、金标准字段语义或泄漏边界发生变化。",
@@ -161,7 +161,7 @@
     ],
     "method_tuning_boundary": "冻结测试样本的对话、金标准、证据绑定和裁决记录不得用于提示词、检索参数、模型选择或规则阈值调试；调试仅使用测试集外开发样本。",
     "hash_algorithm": "sha256",
-    "content_frozen_at": "2026-10-10T10:45:00+08:00"
+    "content_frozen_at": null
   },
   "upstream_baseline": {
     "stage1_data_commit": "cb243dd46b04e4ab113bdaf754894482af999ff6",

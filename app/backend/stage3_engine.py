@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .research_data import ResearchRepository
 from .sparse_retrieval import SparseRetriever
+from .claim_validation import validate_claims
 
 
 class Stage3Engine:
@@ -31,6 +32,9 @@ class Stage3Engine:
             claims = self.repository.supported_claims(
                 process_id, {row["evidence"]["evidence_id"] for row in hit_rows}
             )
+            errors = validate_claims(process, {row['evidence']['evidence_id'] for row in hit_rows}, claims)
+            if errors:
+                raise ValueError(f'invalid process claim bindings: {errors}')
         return {"item_id": item_id, "query": query,
                 "source_ids": sorted(source_ids) if source_ids else None,
                 "hits": hit_rows, "supported_claims": claims}

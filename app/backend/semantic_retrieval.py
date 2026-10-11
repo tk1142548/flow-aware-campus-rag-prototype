@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import math
 import os
+import time
 from typing import Callable
 
 import requests
@@ -23,10 +24,18 @@ def dashscope_embed(texts: list[str], api_key: str | None = None, model: str = '
         raise RuntimeError('DASHSCOPE_API_KEY is required for semantic retrieval')
     if not 1 <= len(texts) <= 10:
         raise ValueError('DashScope embedding batch size must be between 1 and 10')
-    response = requests.post(ENDPOINT, headers={'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'},
-                             json={'model': model, 'input': texts}, timeout=90)
-    response.raise_for_status()
-    return [row['embedding'] for row in sorted(response.json()['data'], key=lambda row: row['index'])]
+    last_error = None
+    for attempt in range(5):
+        try:
+            response = requests.post(ENDPOINT, headers={'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'},
+                                     json={'model': model, 'input': texts}, timeout=90)
+            response.raise_for_status()
+            return [row['embedding'] for row in sorted(response.json()['data'], key=lambda row: row['index'])]
+        except requests.RequestException as error:
+            last_error = error
+            if attempt < 4:
+                time.sleep(2 ** attempt)
+    raise last_error
 
 
 class SemanticRetriever:

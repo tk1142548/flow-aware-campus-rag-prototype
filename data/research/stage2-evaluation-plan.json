@@ -2,10 +2,10 @@
   "schema_version": "1.0",
   "plan_id": "STAGE2_EVAL_200_V1",
   "decision_id": "D-017",
-  "status": "allocation_frozen",
+  "status": "content_frozen",
   "confirmed_on": "2026-07-30",
   "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
-  "dataset_release_version": "0.1.0-content",
+  "dataset_release_version": "1.0.1-frozen",
   "formal_items": [
     {
       "item_id": "UG_PROOF_PRINT",
@@ -129,8 +129,8 @@
   },
   "freeze_policy": {
     "allocation_frozen_at": "2026-07-30T22:52:58+08:00",
-    "content_freeze_status": "pending",
-    "content_freeze_version": null,
+    "content_freeze_status": "frozen",
+    "content_freeze_version": "1.0.1-frozen",
     "sample_id_rule": "S2E-<事项两字母代码>-<事项内三位顺序号>；编号一经分配不复用，被拒绝样本保留编号与拒绝记录。",
     "version_rule": {
       "major": "事项范围、评测定义、金标准字段语义或泄漏边界发生变化。",
@@ -161,7 +161,7 @@
     ],
     "method_tuning_boundary": "冻结测试样本的对话、金标准、证据绑定和裁决记录不得用于提示词、检索参数、模型选择或规则阈值调试；调试仅使用测试集外开发样本。",
     "hash_algorithm": "sha256",
-    "content_frozen_at": null
+    "content_frozen_at": "2026-10-11T23:46:14+08:00"
   },
   "upstream_baseline": {
     "stage1_data_commit": "cb243dd46b04e4ab113bdaf754894482af999ff6",
@@ -174,10 +174,10 @@
   },
   "content_artifacts": {
     "samples_path": "data/evaluation/stage2_samples.jsonl",
-    "samples_sha256": "911c883e06a42443d6dd7c4f7e02c9ec6687d2f0c7b3f4aed0e68a62156d2e9e",
+    "samples_sha256": "acb38f73abb98ca6b7329e867688a789f243135316064422ad0495a1372e7e9a",
     "reviews_path": "data/evaluation/stage2_reviews.jsonl",
-    "reviews_sha256": "02c083819dbccfb0d36e2f09cd69c61480dd872793d1fc12051d6e6d7e9cbe8a",
+    "reviews_sha256": "d8dad910503002a3ec0306f2eca00fde7e755f9171d732e6463675c03dd67815",
     "leakage_report_path": "data/evaluation/stage2-leakage-report.json",
-    "leakage_report_sha256": "dabb5969982a5863c3c1a2a27a933472bc97afaa49f174bc0475459a587b18ce"
+    "leakage_report_sha256": "405d560c5535fba182aad21d9a06efe78621b8da83ffa18ccb3c3f6328a70a5f"
   }
 }

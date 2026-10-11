@@ -8,8 +8,8 @@
   "semantic_cluster_count": 64,
   "status": "pending",
   "checked_at": "2026-10-10T10:30:00+08:00",
-  "checker": "阶段 2D 泄漏检查",
-  "actual_duplicate_conversations": 136,
-  "unique_conversations": 64,
+  "checker": "阶段 2 内容修订入口检查",
+  "actual_duplicate_conversations": 0,
+  "unique_conversations": 200,
   "review_status": "pending"
 }

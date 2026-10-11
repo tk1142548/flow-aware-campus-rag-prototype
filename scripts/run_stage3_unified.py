@@ -13,6 +13,8 @@ from app.backend.answer_strategy import build_answer_context
 from app.backend.claim_validation import validate_claims
 from app.backend.flow_constraints import supported_process_context
 from app.backend.hybrid_retrieval import HybridRetriever
+from app.backend.experiment_logging import build_experiment_record
+from app.backend.generation_strategies import direct_answer_context
 from app.backend.research_data import ResearchRepository
 from app.backend.semantic_retrieval import SemanticRetriever, dashscope_embed
 from app.backend.sparse_retrieval import SparseRetriever
@@ -53,11 +55,14 @@ def main():
                          'supported_claim_ids': context['claim_ids'],
                          'flow_context': context,
                          'answer_context': build_answer_context(process, claims, context),
+                         'direct_context': direct_answer_context(hits),
                          'validation_errors': errors}
     payload = {'status': '已验证', 'config_id': 'STAGE3_UNIFIED_DEV_V1', 'formal_evaluation_enabled': False,
                'item_id': args.item, 'process_id': args.process, 'query': args.query,
                'top_k': args.top_k, 'alpha': args.alpha, 'source_ids': args.source,
-               'results': results, 'api_key_logged': False}
+               'results': results, 'experiment_record': build_experiment_record(
+                   'STAGE3_UNIFIED_DEV_V1', 'development_queries', args.query, results, 'text-embedding-v4'),
+               'api_key_logged': False}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({name: len(result['hits']) for name, result in results.items()}, ensure_ascii=False))

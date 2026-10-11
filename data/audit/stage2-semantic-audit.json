@@ -7,256 +7,255 @@
   "near_duplicate_pairs": [],
   "nearest_neighbors": [
     {
-      "sample_id": "S2E-WD-020",
-      "nearest_sample_id": "S2E-WD-018",
-      "cosine": 0.97860879
-    },
-    {
-      "sample_id": "S2E-WD-017",
-      "nearest_sample_id": "S2E-WD-015",
-      "cosine": 0.96748281
-    },
-    {
-      "sample_id": "S2E-SC-019",
-      "nearest_sample_id": "S2E-SC-018",
-      "cosine": 0.96515989
-    },
-    {
-      "sample_id": "S2E-PP-008",
-      "nearest_sample_id": "S2E-PP-006",
-      "cosine": 0.96200287
-    },
-    {
-      "sample_id": "S2E-WD-024",
-      "nearest_sample_id": "S2E-WD-023",
-      "cosine": 0.9614405
-    },
-    {
-      "sample_id": "S2E-MC-019",
-      "nearest_sample_id": "S2E-MC-018",
-      "cosine": 0.95939177
-    },
-    {
-      "sample_id": "S2E-SR-020",
-      "nearest_sample_id": "S2E-SR-018",
-      "cosine": 0.95867044
-    },
-    {
-      "sample_id": "S2E-SC-007",
-      "nearest_sample_id": "S2E-SC-006",
-      "cosine": 0.95653105
-    },
-    {
-      "sample_id": "S2E-SC-004",
-      "nearest_sample_id": "S2E-SC-001",
-      "cosine": 0.95636898
-    },
-    {
-      "sample_id": "S2E-SC-008",
-      "nearest_sample_id": "S2E-SC-006",
-      "cosine": 0.95535982
-    },
-    {
-      "sample_id": "S2E-PP-010",
-      "nearest_sample_id": "S2E-PP-001",
-      "cosine": 0.95503575
-    },
-    {
-      "sample_id": "S2E-SC-010",
-      "nearest_sample_id": "S2E-SC-001",
-      "cosine": 0.95296115
-    },
-    {
-      "sample_id": "S2E-SR-017",
-      "nearest_sample_id": "S2E-SR-016",
-      "cosine": 0.95293647
-    },
-    {
-      "sample_id": "S2E-CS-008",
-      "nearest_sample_id": "S2E-CS-006",
-      "cosine": 0.95272142
-    },
-    {
       "sample_id": "S2E-SC-016",
-      "nearest_sample_id": "S2E-SC-015",
-      "cosine": 0.9519453
+      "nearest_sample_id": "S2E-SC-003",
+      "cosine": 0.93343771
     },
     {
-      "sample_id": "S2E-PP-020",
-      "nearest_sample_id": "S2E-PP-017",
-      "cosine": 0.95185554
-    },
-    {
-      "sample_id": "S2E-SR-008",
-      "nearest_sample_id": "S2E-SR-006",
-      "cosine": 0.95173573
-    },
-    {
-      "sample_id": "S2E-WD-008",
-      "nearest_sample_id": "S2E-WD-006",
-      "cosine": 0.95173258
-    },
-    {
-      "sample_id": "S2E-CS-007",
-      "nearest_sample_id": "S2E-CS-006",
-      "cosine": 0.95169479
-    },
-    {
-      "sample_id": "S2E-MC-006",
-      "nearest_sample_id": "S2E-MC-005",
-      "cosine": 0.94976008
-    },
-    {
-      "sample_id": "S2E-PP-004",
-      "nearest_sample_id": "S2E-PP-001",
-      "cosine": 0.94964796
-    },
-    {
-      "sample_id": "S2E-CR-019",
-      "nearest_sample_id": "S2E-CR-018",
-      "cosine": 0.94905591
-    },
-    {
-      "sample_id": "S2E-SC-006",
-      "nearest_sample_id": "S2E-SC-005",
-      "cosine": 0.9479816
-    },
-    {
-      "sample_id": "S2E-CR-020",
-      "nearest_sample_id": "S2E-CR-019",
-      "cosine": 0.94747567
-    },
-    {
-      "sample_id": "S2E-WD-007",
-      "nearest_sample_id": "S2E-WD-006",
-      "cosine": 0.94622606
-    },
-    {
-      "sample_id": "S2E-SR-006",
-      "nearest_sample_id": "S2E-SR-005",
-      "cosine": 0.94589341
-    },
-    {
-      "sample_id": "S2E-WD-010",
-      "nearest_sample_id": "S2E-WD-001",
-      "cosine": 0.94476885
+      "sample_id": "S2E-SC-025",
+      "nearest_sample_id": "S2E-SC-003",
+      "cosine": 0.92297548
     },
     {
       "sample_id": "S2E-MC-008",
-      "nearest_sample_id": "S2E-MC-006",
-      "cosine": 0.94452918
-    },
-    {
-      "sample_id": "S2E-WD-014",
-      "nearest_sample_id": "S2E-WD-012",
-      "cosine": 0.9444589
-    },
-    {
-      "sample_id": "S2E-MC-020",
-      "nearest_sample_id": "S2E-MC-019",
-      "cosine": 0.94407642
-    },
-    {
-      "sample_id": "S2E-CR-006",
-      "nearest_sample_id": "S2E-CR-005",
-      "cosine": 0.94394231
+      "nearest_sample_id": "S2E-MC-005",
+      "cosine": 0.92098993
     },
     {
       "sample_id": "S2E-WD-006",
       "nearest_sample_id": "S2E-WD-005",
-      "cosine": 0.94372302
+      "cosine": 0.90187109
     },
     {
-      "sample_id": "S2E-LR-020",
-      "nearest_sample_id": "S2E-LR-019",
-      "cosine": 0.94329274
+      "sample_id": "S2E-LR-023",
+      "nearest_sample_id": "S2E-LR-005",
+      "cosine": 0.89057493
+    },
+    {
+      "sample_id": "S2E-SR-023",
+      "nearest_sample_id": "S2E-SR-007",
+      "cosine": 0.88867974
+    },
+    {
+      "sample_id": "S2E-WD-020",
+      "nearest_sample_id": "S2E-WD-017",
+      "cosine": 0.88459063
+    },
+    {
+      "sample_id": "S2E-MC-024",
+      "nearest_sample_id": "S2E-MC-004",
+      "cosine": 0.88277102
+    },
+    {
+      "sample_id": "S2E-SR-018",
+      "nearest_sample_id": "S2E-SR-005",
+      "cosine": 0.87755913
+    },
+    {
+      "sample_id": "S2E-MC-007",
+      "nearest_sample_id": "S2E-MC-005",
+      "cosine": 0.87607241
+    },
+    {
+      "sample_id": "S2E-WD-011",
+      "nearest_sample_id": "S2E-WD-005",
+      "cosine": 0.87584555
     },
     {
       "sample_id": "S2E-CR-008",
       "nearest_sample_id": "S2E-CR-006",
-      "cosine": 0.94301635
+      "cosine": 0.87576455
     },
     {
-      "sample_id": "S2E-CR-016",
-      "nearest_sample_id": "S2E-CR-015",
-      "cosine": 0.94285023
+      "sample_id": "S2E-CS-007",
+      "nearest_sample_id": "S2E-CS-003",
+      "cosine": 0.87513965
     },
     {
-      "sample_id": "S2E-SR-022",
-      "nearest_sample_id": "S2E-CR-022",
-      "cosine": 0.9426437
+      "sample_id": "S2E-SR-009",
+      "nearest_sample_id": "S2E-SR-001",
+      "cosine": 0.87276793
     },
     {
-      "sample_id": "S2E-PP-006",
-      "nearest_sample_id": "S2E-PP-005",
-      "cosine": 0.94260651
+      "sample_id": "S2E-WD-007",
+      "nearest_sample_id": "S2E-WD-005",
+      "cosine": 0.87189227
+    },
+    {
+      "sample_id": "S2E-MC-012",
+      "nearest_sample_id": "S2E-MC-001",
+      "cosine": 0.86981255
+    },
+    {
+      "sample_id": "S2E-MC-015",
+      "nearest_sample_id": "S2E-MC-008",
+      "cosine": 0.86960244
+    },
+    {
+      "sample_id": "S2E-WD-023",
+      "nearest_sample_id": "S2E-WD-007",
+      "cosine": 0.86911047
+    },
+    {
+      "sample_id": "S2E-WD-025",
+      "nearest_sample_id": "S2E-WD-020",
+      "cosine": 0.86776674
+    },
+    {
+      "sample_id": "S2E-CS-023",
+      "nearest_sample_id": "S2E-CS-005",
+      "cosine": 0.86636859
+    },
+    {
+      "sample_id": "S2E-PP-024",
+      "nearest_sample_id": "S2E-PP-018",
+      "cosine": 0.8651036
+    },
+    {
+      "sample_id": "S2E-SR-011",
+      "nearest_sample_id": "S2E-SR-010",
+      "cosine": 0.86407155
+    },
+    {
+      "sample_id": "S2E-MC-011",
+      "nearest_sample_id": "S2E-MC-010",
+      "cosine": 0.86371779
+    },
+    {
+      "sample_id": "S2E-CS-024",
+      "nearest_sample_id": "S2E-CS-007",
+      "cosine": 0.86362994
     },
     {
       "sample_id": "S2E-SR-007",
-      "nearest_sample_id": "S2E-SR-006",
-      "cosine": 0.94248235
+      "nearest_sample_id": "S2E-SR-005",
+      "cosine": 0.86218327
     },
     {
-      "sample_id": "S2E-SC-013",
-      "nearest_sample_id": "S2E-SC-012",
-      "cosine": 0.94113582
+      "sample_id": "S2E-CR-024",
+      "nearest_sample_id": "S2E-CR-002",
+      "cosine": 0.86082959
     },
     {
-      "sample_id": "S2E-CS-020",
-      "nearest_sample_id": "S2E-CS-019",
-      "cosine": 0.94104755
+      "sample_id": "S2E-CR-014",
+      "nearest_sample_id": "S2E-CR-004",
+      "cosine": 0.85826975
     },
     {
-      "sample_id": "S2E-LR-017",
-      "nearest_sample_id": "S2E-LR-016",
-      "cosine": 0.94060743
+      "sample_id": "S2E-SR-014",
+      "nearest_sample_id": "S2E-SR-004",
+      "cosine": 0.85707051
     },
     {
-      "sample_id": "S2E-CR-017",
-      "nearest_sample_id": "S2E-CR-016",
-      "cosine": 0.9402774
+      "sample_id": "S2E-SC-019",
+      "nearest_sample_id": "S2E-SC-014",
+      "cosine": 0.85188633
     },
     {
-      "sample_id": "S2E-SR-024",
-      "nearest_sample_id": "S2E-SR-023",
-      "cosine": 0.93988842
+      "sample_id": "S2E-SC-018",
+      "nearest_sample_id": "S2E-SC-002",
+      "cosine": 0.8515442
     },
     {
-      "sample_id": "S2E-WD-016",
-      "nearest_sample_id": "S2E-WD-015",
-      "cosine": 0.93906343
+      "sample_id": "S2E-WD-024",
+      "nearest_sample_id": "S2E-WD-004",
+      "cosine": 0.85134029
     },
     {
-      "sample_id": "S2E-SR-021",
-      "nearest_sample_id": "S2E-CR-021",
-      "cosine": 0.93888092
+      "sample_id": "S2E-CR-011",
+      "nearest_sample_id": "S2E-CR-009",
+      "cosine": 0.85104096
     },
     {
-      "sample_id": "S2E-CR-007",
-      "nearest_sample_id": "S2E-CR-006",
-      "cosine": 0.93764484
+      "sample_id": "S2E-PP-007",
+      "nearest_sample_id": "S2E-PP-005",
+      "cosine": 0.84924191
     },
     {
-      "sample_id": "S2E-WD-019",
-      "nearest_sample_id": "S2E-WD-018",
-      "cosine": 0.93685776
+      "sample_id": "S2E-WD-010",
+      "nearest_sample_id": "S2E-WD-009",
+      "cosine": 0.84900689
     },
     {
-      "sample_id": "S2E-SR-010",
+      "sample_id": "S2E-LR-024",
+      "nearest_sample_id": "S2E-LR-023",
+      "cosine": 0.84874886
+    },
+    {
+      "sample_id": "S2E-CR-025",
+      "nearest_sample_id": "S2E-CR-008",
+      "cosine": 0.84852767
+    },
+    {
+      "sample_id": "S2E-CR-023",
+      "nearest_sample_id": "S2E-CR-018",
+      "cosine": 0.84790987
+    },
+    {
+      "sample_id": "S2E-SR-006",
+      "nearest_sample_id": "S2E-SR-005",
+      "cosine": 0.84730232
+    },
+    {
+      "sample_id": "S2E-WD-015",
+      "nearest_sample_id": "S2E-WD-005",
+      "cosine": 0.84695137
+    },
+    {
+      "sample_id": "S2E-SC-024",
+      "nearest_sample_id": "S2E-SC-020",
+      "cosine": 0.84321904
+    },
+    {
+      "sample_id": "S2E-WD-014",
+      "nearest_sample_id": "S2E-WD-004",
+      "cosine": 0.84244031
+    },
+    {
+      "sample_id": "S2E-CS-005",
+      "nearest_sample_id": "S2E-CS-002",
+      "cosine": 0.84119779
+    },
+    {
+      "sample_id": "S2E-SR-015",
       "nearest_sample_id": "S2E-SR-001",
-      "cosine": 0.93616241
+      "cosine": 0.84007221
     },
     {
-      "sample_id": "S2E-WD-021",
-      "nearest_sample_id": "S2E-SC-021",
-      "cosine": 0.93578613
+      "sample_id": "S2E-MC-019",
+      "nearest_sample_id": "S2E-MC-004",
+      "cosine": 0.83992004
     },
     {
-      "sample_id": "S2E-MC-016",
-      "nearest_sample_id": "S2E-MC-015",
-      "cosine": 0.9353441
+      "sample_id": "S2E-SC-017",
+      "nearest_sample_id": "S2E-SC-015",
+      "cosine": 0.83913255
+    },
+    {
+      "sample_id": "S2E-MC-009",
+      "nearest_sample_id": "S2E-MC-001",
+      "cosine": 0.83569556
+    },
+    {
+      "sample_id": "S2E-WD-017",
+      "nearest_sample_id": "S2E-WD-004",
+      "cosine": 0.83537567
+    },
+    {
+      "sample_id": "S2E-PP-023",
+      "nearest_sample_id": "S2E-PP-005",
+      "cosine": 0.83475661
+    },
+    {
+      "sample_id": "S2E-CR-012",
+      "nearest_sample_id": "S2E-CR-002",
+      "cosine": 0.8331483
+    },
+    {
+      "sample_id": "S2E-LR-019",
+      "nearest_sample_id": "S2E-LR-002",
+      "cosine": 0.83312035
     }
   ],
-  "api_key_logged": false,
-  "max_nearest_neighbor_cosine": 0.97860879
+  "api_key_logged": false
 }

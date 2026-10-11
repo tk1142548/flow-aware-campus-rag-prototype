@@ -562,7 +562,7 @@ class ResearchDataValidationTests(unittest.TestCase):
         self.assertEqual(7, summary["stage2_source_migration_rows"])
         self.assertEqual(100, summary["stage2_second_review_target_percent"])
         self.assertEqual(1, summary["stage2_allocation_frozen"])
-        self.assertEqual(0, summary["stage2_content_frozen"])
+        self.assertEqual(1, summary["stage2_content_frozen"])
         self.assertEqual(1, summary["stage2_fixture_link_sets_validated"])
 
     def test_stage2_fixture_links_reject_cross_field_inconsistency(self) -> None:

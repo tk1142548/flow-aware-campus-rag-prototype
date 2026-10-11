@@ -11,10 +11,13 @@
   "checker": "阶段 2 内容修订入口检查",
   "actual_duplicate_conversations": 0,
   "unique_conversations": 200,
-  "review_status": "pending",
+  "review_status": "accepted",
   "semantic_model": "text-embedding-v4",
   "semantic_threshold": 0.98,
   "semantic_near_duplicate_pair_count": 0,
   "semantic_near_duplicate_status": "passed",
-  "max_nearest_neighbor_cosine": 0.97860879
+  "max_nearest_neighbor_cosine": 0.97860879,
+  "freeze_version": "1.0.1-frozen",
+  "reviewed_at": "2026-10-11T23:46:14+08:00",
+  "semantic_audit": "data/audit/stage2-semantic-audit.json"
 }

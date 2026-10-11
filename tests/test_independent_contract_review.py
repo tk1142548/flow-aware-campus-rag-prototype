@@ -15,11 +15,11 @@ class IndependentContractReviewTests(unittest.TestCase):
                 'leakage_control': {'check_status': 'passed'}}
 
     def test_pass_is_still_human_review_required(self):
-        result = review(self.sample(), {'P': self.process()}, {'E': {}})
+        result = review(self.sample(), {'P': self.process()}, {'E': {'source_id': 'SRC'}})
         self.assertEqual('pass', result['status'])
         self.assertTrue(result['human_review_required'])
 
     def test_mismatch_fails(self):
         sample = self.sample()
         sample['gold']['supporting_evidence_ids'] = []
-        self.assertEqual('fail', review(sample, {'P': self.process()}, {'E': {}})['status'])
+        self.assertEqual('fail', review(sample, {'P': self.process()}, {'E': {'source_id': 'SRC'}})['status'])

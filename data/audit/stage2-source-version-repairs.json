@@ -1,0 +1,236 @@
+{
+  "status": "已完成待验证",
+  "changed_sample_count": 23,
+  "changes": [
+    {
+      "sample_id": "S2E-WD-001",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-002",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-003",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-004",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-005",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-006",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-007",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-008",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-009",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-010",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-011",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-012",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-013",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-014",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-015",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-016",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-017",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-018",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-019",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-020",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-023",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-024",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    },
+    {
+      "sample_id": "S2E-WD-025",
+      "old_source_ids": [
+        "SRC_UG_WITHDRAWAL_INDEX_20250716",
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ],
+      "new_source_ids": [
+        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+      ]
+    }
+  ]
+}

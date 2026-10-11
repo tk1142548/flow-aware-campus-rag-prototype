@@ -27,11 +27,26 @@ def review(sample: dict, processes: dict, evidence: dict) -> dict:
                 errors.append('evidence_outside_process')
             if any(identity not in evidence for identity in actual):
                 errors.append('evidence_missing')
+            slot_ids = {slot['slot_id'] for slot in process.get('slots', [])}
+            required = set(sample['gold'].get('required_slot_ids', []))
+            missing = set(sample['gold'].get('missing_slot_ids', []))
+            if not required <= slot_ids or not missing <= required:
+                errors.append('slot_reference_mismatch')
+            if missing and not sample['gold'].get('follow_up_question'):
+                errors.append('missing_follow_up_question')
+            if not missing and sample['gold'].get('follow_up_question'):
+                errors.append('unexpected_follow_up_question')
+            source_ids = {evidence[evidence_id]['source_id'] for evidence_id in actual if evidence_id in evidence}
+            requested_sources = set(sample.get('input_context', {}).get('source_version_ids', []))
+            if not requested_sources <= {evidence[evidence_id]['source_id'] for evidence_id in snapshot if evidence_id in evidence}:
+                errors.append('source_version_outside_process')
+            if requested_sources and not source_ids <= requested_sources:
+                errors.append('evidence_source_version_mismatch')
     return {'sample_id': sample['sample_id'], 'status': 'pass' if not errors else 'fail',
             'dimensions': {'item_mapping': 'pass' if not errors else 'fail',
-                           'slot_and_follow_up': 'pending', 'process_structure': 'pass' if not errors else 'fail',
+                           'slot_and_follow_up': 'pass' if not errors else 'fail', 'process_structure': 'pass' if not errors else 'fail',
                            'claim_and_evidence': 'pass' if not errors else 'fail',
-                           'version_applicability': 'pending', 'leakage_control': 'pass' if sample['leakage_control']['check_status'] == 'passed' else 'fail'},
+                           'version_applicability': 'pass' if not errors else 'fail', 'leakage_control': 'pass' if sample['leakage_control']['check_status'] == 'passed' else 'fail'},
             'errors': errors, 'reviewer': 'stage2-independent-contract-validator',
             'human_review_required': True}
 

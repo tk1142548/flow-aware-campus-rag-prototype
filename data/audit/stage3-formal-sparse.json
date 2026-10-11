@@ -4178,5 +4178,7 @@
       }
     }
   ],
-  "api_key_logged": false
+  "api_key_logged": false,
+  "random_seed": 0,
+  "semantic_model": null
 }

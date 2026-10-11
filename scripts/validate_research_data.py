@@ -3004,7 +3004,7 @@ def validate_stage2b_withdrawal_contract(
         },
         project_memory_path: {
             "阶段 2 内容冻结版本 1.0.1-frozen 已验证",
-            "阶段 3 进行中",
+            "阶段 3 已验证",
         },
     }
     for document_path, markers in required_document_markers.items():

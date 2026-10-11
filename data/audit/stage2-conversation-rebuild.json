@@ -1,0 +1,8 @@
+{
+  "status": "已完成待验证",
+  "sample_count": 200,
+  "unique_conversations": 200,
+  "duplicate_excess": 0,
+  "review_reset_count": 200,
+  "basis": "蓝图事项、场景、难度和版本风险"
+}

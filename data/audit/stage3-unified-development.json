@@ -122,6 +122,39 @@
         ],
         "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
       },
+      "direct_context": {
+        "strategy": "direct",
+        "claims": [
+          {
+            "evidence_id": "UGC009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。"
+          },
+          {
+            "evidence_id": "UGC005",
+            "text": "学籍科收到材料后在10个工作日内通知领取学位证明书。"
+          },
+          {
+            "evidence_id": "UGC008",
+            "text": "须提供彩色大1寸蓝底近照2张。"
+          },
+          {
+            "evidence_id": "UGC006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。"
+          },
+          {
+            "evidence_id": "UGC007",
+            "text": "须填写学士学位证明书申请表。"
+          }
+        ],
+        "evidence_ids": [
+          "UGC009",
+          "UGC005",
+          "UGC008",
+          "UGC006",
+          "UGC007"
+        ],
+        "answer_boundary": "仅展示检索候选声明，未应用流程步骤和材料约束。"
+      },
       "validation_errors": []
     },
     "semantic": {
@@ -226,6 +259,39 @@
           "UGC009"
         ],
         "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
+      },
+      "direct_context": {
+        "strategy": "direct",
+        "claims": [
+          {
+            "evidence_id": "UGC006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。"
+          },
+          {
+            "evidence_id": "UGC002",
+            "text": "学位证明书办理地点为教务处学籍科。"
+          },
+          {
+            "evidence_id": "UGC009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。"
+          },
+          {
+            "evidence_id": "UGC003",
+            "text": "学位证明书受理时间为每年3月至6月、9月至12月。"
+          },
+          {
+            "evidence_id": "UGC001",
+            "text": "学位证明书办理对象为1994年及以后毕业并获学士学位的全日制本科学生。"
+          }
+        ],
+        "evidence_ids": [
+          "UGC006",
+          "UGC002",
+          "UGC009",
+          "UGC003",
+          "UGC001"
+        ],
+        "answer_boundary": "仅展示检索候选声明，未应用流程步骤和材料约束。"
       },
       "validation_errors": []
     },
@@ -338,7 +404,62 @@
         ],
         "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
       },
+      "direct_context": {
+        "strategy": "direct",
+        "claims": [
+          {
+            "evidence_id": "UGC009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。"
+          },
+          {
+            "evidence_id": "UGC006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。"
+          },
+          {
+            "evidence_id": "UGC005",
+            "text": "学籍科收到材料后在10个工作日内通知领取学位证明书。"
+          },
+          {
+            "evidence_id": "UGC008",
+            "text": "须提供彩色大1寸蓝底近照2张。"
+          },
+          {
+            "evidence_id": "UGC002",
+            "text": "学位证明书办理地点为教务处学籍科。"
+          }
+        ],
+        "evidence_ids": [
+          "UGC009",
+          "UGC006",
+          "UGC005",
+          "UGC008",
+          "UGC002"
+        ],
+        "answer_boundary": "仅展示检索候选声明，未应用流程步骤和材料约束。"
+      },
       "validation_errors": []
+    }
+  },
+  "experiment_record": {
+    "config_id": "STAGE3_UNIFIED_DEV_V1",
+    "input_kind": "development_queries",
+    "query": "学位证明书照片材料",
+    "model": "text-embedding-v4",
+    "formal_evaluation_enabled": false,
+    "created_at_utc": "2026-10-11T10:31:53.913052+00:00",
+    "results": {
+      "sparse": {
+        "hit_count": 5,
+        "validation_error_count": 0
+      },
+      "semantic": {
+        "hit_count": 5,
+        "validation_error_count": 0
+      },
+      "hybrid": {
+        "hit_count": 5,
+        "validation_error_count": 0
+      }
     }
   },
   "api_key_logged": false

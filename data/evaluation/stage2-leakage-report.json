@@ -15,5 +15,6 @@
   "semantic_model": "text-embedding-v4",
   "semantic_threshold": 0.98,
   "semantic_near_duplicate_pair_count": 0,
-  "semantic_near_duplicate_status": "passed"
+  "semantic_near_duplicate_status": "passed",
+  "max_nearest_neighbor_cosine": 0.97860879
 }

@@ -257,5 +257,6 @@
       "cosine": 0.9353441
     }
   ],
-  "api_key_logged": false
+  "api_key_logged": false,
+  "max_nearest_neighbor_cosine": 0.97860879
 }

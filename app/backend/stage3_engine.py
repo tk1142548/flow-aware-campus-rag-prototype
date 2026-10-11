@@ -6,6 +6,7 @@ from pathlib import Path
 from .research_data import ResearchRepository
 from .sparse_retrieval import SparseRetriever
 from .claim_validation import validate_claims
+from .flow_constraints import supported_process_context
 
 
 class Stage3Engine:
@@ -25,6 +26,7 @@ class Stage3Engine:
         hits = SparseRetriever(evidence).search(query, top_k)
         hit_rows = [{"evidence": row, "score": round(score, 8)} for row, score in hits]
         claims = []
+        flow_context = None
         if process_id is not None:
             process = self.repository.processes.get(process_id)
             if not process or process["item_id"] != item_id:
@@ -35,6 +37,9 @@ class Stage3Engine:
             errors = validate_claims(process, {row['evidence']['evidence_id'] for row in hit_rows}, claims)
             if errors:
                 raise ValueError(f'invalid process claim bindings: {errors}')
+            flow_context = supported_process_context(
+                process, {row['evidence']['evidence_id'] for row in hit_rows})
         return {"item_id": item_id, "query": query,
                 "source_ids": sorted(source_ids) if source_ids else None,
-                "hits": hit_rows, "supported_claims": claims}
+                "hits": hit_rows, "supported_claims": claims,
+                "flow_context": flow_context}

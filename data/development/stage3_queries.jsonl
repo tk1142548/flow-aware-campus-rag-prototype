@@ -1,0 +1,3 @@
+{"query_id":"DEV-001","item_id":"UG_CREDENTIAL_REISSUE","process_id":"PROC_UG_CREDENTIAL_DEGREE_V001","query":"学位证明书需要哪些照片和档案材料","relevant_evidence_ids":["UGC006","UGC008"]}
+{"query_id":"DEV-002","item_id":"UG_WITHDRAWAL","process_id":"PROC_UG_WITHDRAWAL_V001","query":"主动申请退学先把书面申请交到哪里","relevant_evidence_ids":["UGW002","UGW003"]}
+{"query_id":"DEV-003","item_id":"UG_COURSE_SELECTION","process_id":"PROC_UG_COURSE_SELECTION_V001","query":"本科选课第一阶段如何提交选课结果","relevant_evidence_ids":["UGQ003","UGQ004","UGQ008"]}

@@ -14,6 +14,7 @@ from app.backend.claim_validation import validate_claims
 from app.backend.flow_constraints import supported_process_context
 from app.backend.hybrid_retrieval import HybridRetriever
 from app.backend.experiment_logging import build_experiment_record
+from app.backend.error_taxonomy import classify_error
 from app.backend.generation_strategies import direct_answer_context
 from app.backend.research_data import ResearchRepository
 from app.backend.semantic_retrieval import SemanticRetriever, dashscope_embed
@@ -56,6 +57,7 @@ def main():
                          'flow_context': context,
                          'answer_context': build_answer_context(process, claims, context),
                          'direct_context': direct_answer_context(hits),
+                         'error_category': classify_error(None, errors, len(hits)),
                          'validation_errors': errors}
     payload = {'status': '已验证', 'config_id': 'STAGE3_UNIFIED_DEV_V1', 'formal_evaluation_enabled': False,
                'item_id': args.item, 'process_id': args.process, 'query': args.query,

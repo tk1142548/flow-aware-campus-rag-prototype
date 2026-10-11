@@ -1,0 +1,345 @@
+{
+  "status": "已验证",
+  "config_id": "STAGE3_UNIFIED_DEV_V1",
+  "formal_evaluation_enabled": false,
+  "item_id": "UG_CREDENTIAL_REISSUE",
+  "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+  "query": "学位证明书照片材料",
+  "top_k": 5,
+  "alpha": 0.5,
+  "source_ids": [
+    "SRC_UG_CREDENTIAL_DEGREE_20210317"
+  ],
+  "results": {
+    "sparse": {
+      "hits": [
+        {
+          "evidence_id": "UGC009",
+          "score": 2.72181252
+        },
+        {
+          "evidence_id": "UGC005",
+          "score": 2.56362107
+        },
+        {
+          "evidence_id": "UGC008",
+          "score": 2.54301743
+        },
+        {
+          "evidence_id": "UGC006",
+          "score": 1.71056511
+        },
+        {
+          "evidence_id": "UGC007",
+          "score": 1.56087157
+        }
+      ],
+      "supported_claim_ids": [
+        "CLM_005",
+        "CLM_006",
+        "CLM_007",
+        "CLM_008",
+        "CLM_009"
+      ],
+      "flow_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claim_ids": [
+          "CLM_005",
+          "CLM_006",
+          "CLM_007",
+          "CLM_008",
+          "CLM_009"
+        ],
+        "step_ids": [
+          "ST_02"
+        ],
+        "material_ids": [
+          "MAT_01",
+          "MAT_02",
+          "MAT_03"
+        ],
+        "evidence_ids": [
+          "UGC005",
+          "UGC006",
+          "UGC007",
+          "UGC008",
+          "UGC009"
+        ]
+      },
+      "answer_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claims": [
+          {
+            "claim_id": "CLM_005",
+            "text": "学籍科收到材料后在10个工作日内通知领取学位证明书。",
+            "evidence_ids": [
+              "UGC005"
+            ]
+          },
+          {
+            "claim_id": "CLM_006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。",
+            "evidence_ids": [
+              "UGC006"
+            ]
+          },
+          {
+            "claim_id": "CLM_007",
+            "text": "须填写学士学位证明书申请表。",
+            "evidence_ids": [
+              "UGC007"
+            ]
+          },
+          {
+            "claim_id": "CLM_008",
+            "text": "须提供彩色大1寸蓝底近照2张。",
+            "evidence_ids": [
+              "UGC008"
+            ]
+          },
+          {
+            "claim_id": "CLM_009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。",
+            "evidence_ids": [
+              "UGC009"
+            ]
+          }
+        ],
+        "step_ids": [
+          "ST_02"
+        ],
+        "material_ids": [
+          "MAT_01",
+          "MAT_02",
+          "MAT_03"
+        ],
+        "evidence_ids": [
+          "UGC005",
+          "UGC006",
+          "UGC007",
+          "UGC008",
+          "UGC009"
+        ],
+        "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
+      },
+      "validation_errors": []
+    },
+    "semantic": {
+      "hits": [
+        {
+          "evidence_id": "UGC006",
+          "score": 0.85692015
+        },
+        {
+          "evidence_id": "UGC002",
+          "score": 0.74681657
+        },
+        {
+          "evidence_id": "UGC009",
+          "score": 0.72908463
+        },
+        {
+          "evidence_id": "UGC003",
+          "score": 0.70817178
+        },
+        {
+          "evidence_id": "UGC001",
+          "score": 0.68718091
+        }
+      ],
+      "supported_claim_ids": [
+        "CLM_001",
+        "CLM_002",
+        "CLM_003",
+        "CLM_006",
+        "CLM_009"
+      ],
+      "flow_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claim_ids": [
+          "CLM_001",
+          "CLM_002",
+          "CLM_003",
+          "CLM_006",
+          "CLM_009"
+        ],
+        "step_ids": [],
+        "material_ids": [
+          "MAT_01"
+        ],
+        "evidence_ids": [
+          "UGC001",
+          "UGC002",
+          "UGC003",
+          "UGC006",
+          "UGC009"
+        ]
+      },
+      "answer_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claims": [
+          {
+            "claim_id": "CLM_001",
+            "text": "学位证明书办理对象为1994年及以后毕业并获学士学位的全日制本科学生。",
+            "evidence_ids": [
+              "UGC001"
+            ]
+          },
+          {
+            "claim_id": "CLM_002",
+            "text": "学位证明书办理地点为教务处学籍科。",
+            "evidence_ids": [
+              "UGC002"
+            ]
+          },
+          {
+            "claim_id": "CLM_003",
+            "text": "学位证明书受理时间为每年3月至6月、9月至12月。",
+            "evidence_ids": [
+              "UGC003"
+            ]
+          },
+          {
+            "claim_id": "CLM_006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。",
+            "evidence_ids": [
+              "UGC006"
+            ]
+          },
+          {
+            "claim_id": "CLM_009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。",
+            "evidence_ids": [
+              "UGC009"
+            ]
+          }
+        ],
+        "step_ids": [],
+        "material_ids": [
+          "MAT_01"
+        ],
+        "evidence_ids": [
+          "UGC001",
+          "UGC002",
+          "UGC003",
+          "UGC006",
+          "UGC009"
+        ],
+        "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
+      },
+      "validation_errors": []
+    },
+    "hybrid": {
+      "hits": [
+        {
+          "evidence_id": "UGC009",
+          "score": 0.7669948
+        },
+        {
+          "evidence_id": "UGC006",
+          "score": 0.68938152
+        },
+        {
+          "evidence_id": "UGC005",
+          "score": 0.55343137
+        },
+        {
+          "evidence_id": "UGC008",
+          "score": 0.50501253
+        },
+        {
+          "evidence_id": "UGC002",
+          "score": 0.33720364
+        }
+      ],
+      "supported_claim_ids": [
+        "CLM_002",
+        "CLM_005",
+        "CLM_006",
+        "CLM_008",
+        "CLM_009"
+      ],
+      "flow_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claim_ids": [
+          "CLM_002",
+          "CLM_005",
+          "CLM_006",
+          "CLM_008",
+          "CLM_009"
+        ],
+        "step_ids": [
+          "ST_02"
+        ],
+        "material_ids": [
+          "MAT_01",
+          "MAT_03"
+        ],
+        "evidence_ids": [
+          "UGC002",
+          "UGC005",
+          "UGC006",
+          "UGC008",
+          "UGC009"
+        ]
+      },
+      "answer_context": {
+        "process_id": "PROC_UG_CREDENTIAL_DEGREE_V001",
+        "claims": [
+          {
+            "claim_id": "CLM_002",
+            "text": "学位证明书办理地点为教务处学籍科。",
+            "evidence_ids": [
+              "UGC002"
+            ]
+          },
+          {
+            "claim_id": "CLM_005",
+            "text": "学籍科收到材料后在10个工作日内通知领取学位证明书。",
+            "evidence_ids": [
+              "UGC005"
+            ]
+          },
+          {
+            "claim_id": "CLM_006",
+            "text": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。",
+            "evidence_ids": [
+              "UGC006"
+            ]
+          },
+          {
+            "claim_id": "CLM_008",
+            "text": "须提供彩色大1寸蓝底近照2张。",
+            "evidence_ids": [
+              "UGC008"
+            ]
+          },
+          {
+            "claim_id": "CLM_009",
+            "text": "缺少包含学位证书编号的材料时无法办理学位证明书。",
+            "evidence_ids": [
+              "UGC009"
+            ]
+          }
+        ],
+        "step_ids": [
+          "ST_02"
+        ],
+        "material_ids": [
+          "MAT_01",
+          "MAT_03"
+        ],
+        "evidence_ids": [
+          "UGC002",
+          "UGC005",
+          "UGC006",
+          "UGC008",
+          "UGC009"
+        ],
+        "answer_boundary": "仅生成上述声明、步骤和材料；每条声明必须保留对应证据编号。"
+      },
+      "validation_errors": []
+    }
+  },
+  "api_key_logged": false
+}

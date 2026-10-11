@@ -63,3 +63,18 @@ class SemanticRetriever:
         query_vector = self.embedder([query])[0]
         ranked = [(row, cosine(query_vector, vector)) for row, vector in zip(self.rows, self.vectors)]
         return sorted(ranked, key=lambda hit: (-hit[1], hit[0]['evidence_id']))[:top_k]
+
+    def search_many(self, queries: list[str], top_k: int = 5) -> list[list[tuple[dict, float]]]:
+        """Embed a query batch in groups of ten and rank without extra API calls."""
+        if not queries or any(not query.strip() for query in queries):
+            raise ValueError('queries must not be empty')
+        if top_k < 1:
+            raise ValueError('top_k must be positive')
+        vectors = []
+        for start in range(0, len(queries), 10):
+            vectors.extend(self.embedder(queries[start:start + 10]))
+        return [self._rank(vector, top_k) for vector in vectors]
+
+    def _rank(self, query_vector: list[float], top_k: int) -> list[tuple[dict, float]]:
+        ranked = [(row, cosine(query_vector, vector)) for row, vector in zip(self.rows, self.vectors)]
+        return sorted(ranked, key=lambda hit: (-hit[1], hit[0]['evidence_id']))[:top_k]

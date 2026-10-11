@@ -14,29 +14,47 @@ ITEM_NAMES = {
 }
 
 
-def rebuild(sample: dict) -> dict:
+def rebuild(sample: dict, process: dict | None = None) -> dict:
     result = copy.deepcopy(sample)
     number = int(sample['sample_id'][-3:])
     item = ITEM_NAMES[sample['allocation_item_id']]
     scenario = sample['scenario_type']
     difficulty = sample['difficulty']
     risk = sample['version_risk']
+    claims = sample.get('gold', {}).get('allowed_claim_ids', [])
+    focus = claims[(number - 1) % len(claims)] if claims else None
+    claim_text = ''
+    if process and focus:
+        claim_text = next((c['text'] for c in process['allowed_claims'] if c['claim_id'] == focus), '')
     if scenario == 'direct':
-        text = f'请说明{item}的办理流程，我重点想了解第{number}条场景中的申请对象和办理入口。'
+        focus_type = ['适用对象', '办理地点', '办理时限', '所需材料'][(number - 1) % 4]
+        text = f'我准备办理{item}，这次最关心{focus_type}。请核对以下流程声明并说明它在整体流程中的位置：{claim_text}'
     elif scenario == 'condition_missing':
-        text = f'我想办理{item}，当前只知道事项名称，能否先说明第{number}条场景还缺少哪项条件？'
+        slot = (sample.get('gold', {}).get('required_slot_ids') or ['办理类型'])[0]
+        missing_questions = [
+            f'我只知道事项名称，不确定本人是否符合{item}的适用对象条件。',
+            f'我没有说明{item}的具体办理类型，系统应先追问哪一项。',
+            f'我尚未提供与{item}有关的当前学期、日期或状态，是否必须先补充。',
+            f'我没有说明{item}的办理渠道和地点，流程应如何处理这个缺口。',
+        ]
+        values = [] if not process else [v for s in process.get('slots', []) if s['slot_id'] == slot for v in s.get('allowed_values', [])]
+        value_hint = '、'.join(values) if values else '具体值'
+        text = f'我想办理{item}，当前没有提供{slot}。{missing_questions[(number - 1) % len(missing_questions)]}已知可能值包括{value_hint}，请说明需要补充什么条件以及为什么。'
     elif scenario == 'object_mismatch':
-        text = f'我的身份或办理对象与{item}的常规对象不同，第{number}条场景是否仍能直接套用该流程？'
+        alternatives = ['交换生', '研究生', '校外人员', '已毕业校友']
+        text = f'我的办理对象是{alternatives[(number - 1) % len(alternatives)]}，与{item}流程中的适用对象不同，请结合这条流程声明判断能否适用，并限定回答范围：{claim_text}'
     elif scenario == 'version_conflict':
-        text = f'我看到{item}存在不同时间或版本的要求，请按第{number}条{risk}场景说明适用版本和差异。'
+        dates = ['2019年流程页', '2025年表格', '当前办理日期']
+        text = f'我看到{item}在{dates[(number - 1) % len(dates)]}存在要求，请围绕这条声明说明{risk}场景下的适用版本和差异：{claim_text}'
     elif scenario == 'step_error':
-        text = f'办理{item}时我准备跳过前置步骤，第{number}条{difficulty}场景下请指出顺序和后果。'
+        text = f'办理{item}时我准备跳过一个前置环节，请按{difficulty}难度核对以下步骤声明的顺序和证据边界：{claim_text}'
     elif scenario == 'material_confusion':
-        text = f'办理{item}时我只有部分材料，第{number}条{difficulty}场景下请核对缺少的材料及其办理节点。'
+        text = f'办理{item}时我只有部分材料，请核对以下声明对应的材料要求、办理节点和缺失材料处理方式：{claim_text}'
     elif scenario == 'multi_turn':
-        text = f'我想办理{item}，这是第{number}条多轮场景。'
+        text = f'我想办理{item}，先请说明下面这条声明涉及的事项：{claim_text}'
     elif scenario == 'out_of_scope':
-        text = f'我想办理{item}之外的事项，第{number}条场景请判断是否属于当前服务范围。'
+        alternatives = ['住宿证明', '海外签证', '校外就业登记', '科研经费报销']
+        text = f'我想办理{alternatives[(number - 1) % len(alternatives)]}，请判断它是否属于{item}服务范围并说明拒答边界。'
     else:
         raise ValueError(f'unsupported scenario: {scenario}')
     conversation = [{'turn_id': 'T01', 'role': 'user', 'text': text}]
@@ -55,7 +73,9 @@ def rebuild(sample: dict) -> dict:
 def main():
     path = ROOT / 'data/evaluation/stage2_samples.jsonl'
     rows = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
-    rebuilt = [rebuild(row) for row in rows]
+    process_rows = [json.loads(line) for line in (ROOT / 'data/research/process_records.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
+    processes = {row['process_id']: row for row in process_rows}
+    rebuilt = [rebuild(row, processes.get(row['process_id'])) for row in rows]
     keys = [tuple((turn['role'], turn['text']) for turn in row['conversation']) for row in rebuilt]
     if len(keys) != len(set(keys)):
         raise ValueError('rebuild did not produce unique conversations')

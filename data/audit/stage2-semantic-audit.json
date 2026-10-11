@@ -1,0 +1,261 @@
+{
+  "status": "已完成待验证",
+  "model": "text-embedding-v4",
+  "sample_count": 200,
+  "threshold": 0.98,
+  "near_duplicate_pair_count": 0,
+  "near_duplicate_pairs": [],
+  "nearest_neighbors": [
+    {
+      "sample_id": "S2E-WD-020",
+      "nearest_sample_id": "S2E-WD-018",
+      "cosine": 0.97860879
+    },
+    {
+      "sample_id": "S2E-WD-017",
+      "nearest_sample_id": "S2E-WD-015",
+      "cosine": 0.96748281
+    },
+    {
+      "sample_id": "S2E-SC-019",
+      "nearest_sample_id": "S2E-SC-018",
+      "cosine": 0.96515989
+    },
+    {
+      "sample_id": "S2E-PP-008",
+      "nearest_sample_id": "S2E-PP-006",
+      "cosine": 0.96200287
+    },
+    {
+      "sample_id": "S2E-WD-024",
+      "nearest_sample_id": "S2E-WD-023",
+      "cosine": 0.9614405
+    },
+    {
+      "sample_id": "S2E-MC-019",
+      "nearest_sample_id": "S2E-MC-018",
+      "cosine": 0.95939177
+    },
+    {
+      "sample_id": "S2E-SR-020",
+      "nearest_sample_id": "S2E-SR-018",
+      "cosine": 0.95867044
+    },
+    {
+      "sample_id": "S2E-SC-007",
+      "nearest_sample_id": "S2E-SC-006",
+      "cosine": 0.95653105
+    },
+    {
+      "sample_id": "S2E-SC-004",
+      "nearest_sample_id": "S2E-SC-001",
+      "cosine": 0.95636898
+    },
+    {
+      "sample_id": "S2E-SC-008",
+      "nearest_sample_id": "S2E-SC-006",
+      "cosine": 0.95535982
+    },
+    {
+      "sample_id": "S2E-PP-010",
+      "nearest_sample_id": "S2E-PP-001",
+      "cosine": 0.95503575
+    },
+    {
+      "sample_id": "S2E-SC-010",
+      "nearest_sample_id": "S2E-SC-001",
+      "cosine": 0.95296115
+    },
+    {
+      "sample_id": "S2E-SR-017",
+      "nearest_sample_id": "S2E-SR-016",
+      "cosine": 0.95293647
+    },
+    {
+      "sample_id": "S2E-CS-008",
+      "nearest_sample_id": "S2E-CS-006",
+      "cosine": 0.95272142
+    },
+    {
+      "sample_id": "S2E-SC-016",
+      "nearest_sample_id": "S2E-SC-015",
+      "cosine": 0.9519453
+    },
+    {
+      "sample_id": "S2E-PP-020",
+      "nearest_sample_id": "S2E-PP-017",
+      "cosine": 0.95185554
+    },
+    {
+      "sample_id": "S2E-SR-008",
+      "nearest_sample_id": "S2E-SR-006",
+      "cosine": 0.95173573
+    },
+    {
+      "sample_id": "S2E-WD-008",
+      "nearest_sample_id": "S2E-WD-006",
+      "cosine": 0.95173258
+    },
+    {
+      "sample_id": "S2E-CS-007",
+      "nearest_sample_id": "S2E-CS-006",
+      "cosine": 0.95169479
+    },
+    {
+      "sample_id": "S2E-MC-006",
+      "nearest_sample_id": "S2E-MC-005",
+      "cosine": 0.94976008
+    },
+    {
+      "sample_id": "S2E-PP-004",
+      "nearest_sample_id": "S2E-PP-001",
+      "cosine": 0.94964796
+    },
+    {
+      "sample_id": "S2E-CR-019",
+      "nearest_sample_id": "S2E-CR-018",
+      "cosine": 0.94905591
+    },
+    {
+      "sample_id": "S2E-SC-006",
+      "nearest_sample_id": "S2E-SC-005",
+      "cosine": 0.9479816
+    },
+    {
+      "sample_id": "S2E-CR-020",
+      "nearest_sample_id": "S2E-CR-019",
+      "cosine": 0.94747567
+    },
+    {
+      "sample_id": "S2E-WD-007",
+      "nearest_sample_id": "S2E-WD-006",
+      "cosine": 0.94622606
+    },
+    {
+      "sample_id": "S2E-SR-006",
+      "nearest_sample_id": "S2E-SR-005",
+      "cosine": 0.94589341
+    },
+    {
+      "sample_id": "S2E-WD-010",
+      "nearest_sample_id": "S2E-WD-001",
+      "cosine": 0.94476885
+    },
+    {
+      "sample_id": "S2E-MC-008",
+      "nearest_sample_id": "S2E-MC-006",
+      "cosine": 0.94452918
+    },
+    {
+      "sample_id": "S2E-WD-014",
+      "nearest_sample_id": "S2E-WD-012",
+      "cosine": 0.9444589
+    },
+    {
+      "sample_id": "S2E-MC-020",
+      "nearest_sample_id": "S2E-MC-019",
+      "cosine": 0.94407642
+    },
+    {
+      "sample_id": "S2E-CR-006",
+      "nearest_sample_id": "S2E-CR-005",
+      "cosine": 0.94394231
+    },
+    {
+      "sample_id": "S2E-WD-006",
+      "nearest_sample_id": "S2E-WD-005",
+      "cosine": 0.94372302
+    },
+    {
+      "sample_id": "S2E-LR-020",
+      "nearest_sample_id": "S2E-LR-019",
+      "cosine": 0.94329274
+    },
+    {
+      "sample_id": "S2E-CR-008",
+      "nearest_sample_id": "S2E-CR-006",
+      "cosine": 0.94301635
+    },
+    {
+      "sample_id": "S2E-CR-016",
+      "nearest_sample_id": "S2E-CR-015",
+      "cosine": 0.94285023
+    },
+    {
+      "sample_id": "S2E-SR-022",
+      "nearest_sample_id": "S2E-CR-022",
+      "cosine": 0.9426437
+    },
+    {
+      "sample_id": "S2E-PP-006",
+      "nearest_sample_id": "S2E-PP-005",
+      "cosine": 0.94260651
+    },
+    {
+      "sample_id": "S2E-SR-007",
+      "nearest_sample_id": "S2E-SR-006",
+      "cosine": 0.94248235
+    },
+    {
+      "sample_id": "S2E-SC-013",
+      "nearest_sample_id": "S2E-SC-012",
+      "cosine": 0.94113582
+    },
+    {
+      "sample_id": "S2E-CS-020",
+      "nearest_sample_id": "S2E-CS-019",
+      "cosine": 0.94104755
+    },
+    {
+      "sample_id": "S2E-LR-017",
+      "nearest_sample_id": "S2E-LR-016",
+      "cosine": 0.94060743
+    },
+    {
+      "sample_id": "S2E-CR-017",
+      "nearest_sample_id": "S2E-CR-016",
+      "cosine": 0.9402774
+    },
+    {
+      "sample_id": "S2E-SR-024",
+      "nearest_sample_id": "S2E-SR-023",
+      "cosine": 0.93988842
+    },
+    {
+      "sample_id": "S2E-WD-016",
+      "nearest_sample_id": "S2E-WD-015",
+      "cosine": 0.93906343
+    },
+    {
+      "sample_id": "S2E-SR-021",
+      "nearest_sample_id": "S2E-CR-021",
+      "cosine": 0.93888092
+    },
+    {
+      "sample_id": "S2E-CR-007",
+      "nearest_sample_id": "S2E-CR-006",
+      "cosine": 0.93764484
+    },
+    {
+      "sample_id": "S2E-WD-019",
+      "nearest_sample_id": "S2E-WD-018",
+      "cosine": 0.93685776
+    },
+    {
+      "sample_id": "S2E-SR-010",
+      "nearest_sample_id": "S2E-SR-001",
+      "cosine": 0.93616241
+    },
+    {
+      "sample_id": "S2E-WD-021",
+      "nearest_sample_id": "S2E-SC-021",
+      "cosine": 0.93578613
+    },
+    {
+      "sample_id": "S2E-MC-016",
+      "nearest_sample_id": "S2E-MC-015",
+      "cosine": 0.9353441
+    }
+  ],
+  "api_key_logged": false
+}

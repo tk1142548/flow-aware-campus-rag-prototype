@@ -23,4 +23,4 @@ class ConversationRebuildTests(unittest.TestCase):
 
     def test_out_of_scope_is_scoped(self):
         row = rebuild(self.base('out_of_scope'))
-        self.assertIn('之外', row['conversation'][0]['text'])
+        self.assertIn('服务范围', row['conversation'][0]['text'])

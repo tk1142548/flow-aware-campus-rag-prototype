@@ -1,0 +1,46 @@
+{
+  "status": "已验证",
+  "stage": "stage3",
+  "retriever": "semantic",
+  "model": "text-embedding-v4",
+  "item_id": "UG_CREDENTIAL_REISSUE",
+  "query": "学位证明书照片材料",
+  "top_k": 5,
+  "candidate_count": 10,
+  "source_ids": [
+    "SRC_UG_CREDENTIAL_DEGREE_20210317"
+  ],
+  "hits": [
+    {
+      "evidence_id": "UGC006",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "score": 0.85692015,
+      "claim": "学位证明书材料包括档案馆复印的录取名册、学籍表、毕业与学位审批表、证书签收册各1份。"
+    },
+    {
+      "evidence_id": "UGC002",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "score": 0.74681657,
+      "claim": "学位证明书办理地点为教务处学籍科。"
+    },
+    {
+      "evidence_id": "UGC009",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "score": 0.72908463,
+      "claim": "缺少包含学位证书编号的材料时无法办理学位证明书。"
+    },
+    {
+      "evidence_id": "UGC003",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "score": 0.70817178,
+      "claim": "学位证明书受理时间为每年3月至6月、9月至12月。"
+    },
+    {
+      "evidence_id": "UGC001",
+      "source_id": "SRC_UG_CREDENTIAL_DEGREE_20210317",
+      "score": 0.68718091,
+      "claim": "学位证明书办理对象为1994年及以后毕业并获学士学位的全日制本科学生。"
+    }
+  ],
+  "api_key_logged": false
+}

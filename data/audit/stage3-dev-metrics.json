@@ -1,0 +1,154 @@
+{
+  "status": "已验证",
+  "config_id": "STAGE3_DEV_METRICS_V1",
+  "formal_evaluation_enabled": false,
+  "top_k": 5,
+  "query_count": 3,
+  "summary": {
+    "sparse": {
+      "mean_recall_at_k": 0.5,
+      "mean_evidence_precision_at_k": 0.20000000000000004
+    },
+    "semantic": {
+      "mean_recall_at_k": 0.3333333333333333,
+      "mean_evidence_precision_at_k": 0.13333333333333333
+    },
+    "hybrid": {
+      "mean_recall_at_k": 0.5,
+      "mean_evidence_precision_at_k": 0.20000000000000004
+    }
+  },
+  "results": [
+    {
+      "query_id": "DEV-001",
+      "item_id": "UG_CREDENTIAL_REISSUE",
+      "query": "学位证明书需要哪些照片和档案材料",
+      "relevant_evidence_ids": [
+        "UGC006",
+        "UGC008"
+      ],
+      "strategies": {
+        "sparse": {
+          "hit_ids": [
+            "UGC006",
+            "UGC009",
+            "UGC005",
+            "UGC007",
+            "UGC001"
+          ],
+          "recall_at_k": 0.5,
+          "evidence_precision_at_k": 0.2
+        },
+        "semantic": {
+          "hit_ids": [
+            "UGC006",
+            "UGC002",
+            "UGC003",
+            "UGC009",
+            "UGC014"
+          ],
+          "recall_at_k": 0.5,
+          "evidence_precision_at_k": 0.2
+        },
+        "hybrid": {
+          "hit_ids": [
+            "UGC006",
+            "UGC009",
+            "UGC005",
+            "UGC002",
+            "UGC001"
+          ],
+          "recall_at_k": 0.5,
+          "evidence_precision_at_k": 0.2
+        }
+      }
+    },
+    {
+      "query_id": "DEV-002",
+      "item_id": "UG_WITHDRAWAL",
+      "query": "主动申请退学先把书面申请交到哪里",
+      "relevant_evidence_ids": [
+        "UGW002",
+        "UGW003"
+      ],
+      "strategies": {
+        "sparse": {
+          "hit_ids": [
+            "UGW003",
+            "UGW002",
+            "UGW004",
+            "UGW007",
+            "UGW008"
+          ],
+          "recall_at_k": 1.0,
+          "evidence_precision_at_k": 0.4
+        },
+        "semantic": {
+          "hit_ids": [
+            "UGW008",
+            "UGW072",
+            "UGW003",
+            "UGW058",
+            "UGW027"
+          ],
+          "recall_at_k": 0.5,
+          "evidence_precision_at_k": 0.2
+        },
+        "hybrid": {
+          "hit_ids": [
+            "UGW003",
+            "UGW002",
+            "UGW004",
+            "UGW008",
+            "UGW007"
+          ],
+          "recall_at_k": 1.0,
+          "evidence_precision_at_k": 0.4
+        }
+      }
+    },
+    {
+      "query_id": "DEV-003",
+      "item_id": "UG_COURSE_SELECTION",
+      "query": "本科选课第一阶段如何提交选课结果",
+      "relevant_evidence_ids": [
+        "UGCS001"
+      ],
+      "strategies": {
+        "sparse": {
+          "hit_ids": [
+            "UGQ003",
+            "UGQ004",
+            "UGQ005",
+            "UGQ008",
+            "UGQ009"
+          ],
+          "recall_at_k": 0.0,
+          "evidence_precision_at_k": 0.0
+        },
+        "semantic": {
+          "hit_ids": [
+            "UGQ003",
+            "UGQ005",
+            "UGQ008",
+            "UGQ004",
+            "UGQ002"
+          ],
+          "recall_at_k": 0.0,
+          "evidence_precision_at_k": 0.0
+        },
+        "hybrid": {
+          "hit_ids": [
+            "UGQ003",
+            "UGQ005",
+            "UGQ004",
+            "UGQ008",
+            "UGQ009"
+          ],
+          "recall_at_k": 0.0,
+          "evidence_precision_at_k": 0.0
+        }
+      }
+    }
+  ]
+}

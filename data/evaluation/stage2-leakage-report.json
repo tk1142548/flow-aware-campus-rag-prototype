@@ -6,10 +6,14 @@
   "duplicate_metadata_keys": 0,
   "template_family_count": 64,
   "semantic_cluster_count": 64,
-  "status": "pending",
+  "status": "passed",
   "checked_at": "2026-10-10T10:30:00+08:00",
   "checker": "阶段 2 内容修订入口检查",
   "actual_duplicate_conversations": 0,
   "unique_conversations": 200,
-  "review_status": "pending"
+  "review_status": "pending",
+  "semantic_model": "text-embedding-v4",
+  "semantic_threshold": 0.98,
+  "semantic_near_duplicate_pair_count": 0,
+  "semantic_near_duplicate_status": "passed"
 }

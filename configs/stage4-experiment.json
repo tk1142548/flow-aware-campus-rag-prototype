@@ -1,0 +1,20 @@
+{
+  "config_id": "STAGE4_EXPERIMENT_V2",
+  "status": "已完成待验证",
+  "dataset_version": "1.0.1-frozen",
+  "top_k": 12,
+  "hybrid_alpha": 0.5,
+  "random_seed": 0,
+  "statistical_repetitions": 10000,
+  "generator": "deterministic_extractive_v2",
+  "model": null,
+  "study_type": "exploratory",
+  "evaluation_input": "all_200_frozen_conversations",
+  "retrieval_scope": "all_verified_evidence",
+  "retrieval_context": "query_routed_process_evidence_closure",
+  "gold_access": "scoring_only",
+  "ablations": ["direct", "full", "without_flow", "without_validation", "without_version", "without_interaction"],
+  "primary_metrics": ["gold_evidence_recall", "gold_evidence_precision", "claim_recall", "claim_precision", "step_recall", "step_precision", "material_recall", "material_precision", "response_mode_accuracy", "missing_slot_f1", "citation_validity", "process_applicability", "overall_success", "strict_success"],
+  "statistical_plan": "paired_bootstrap_and_item_cluster_bootstrap_with_holm_corrected_sign_flip_tests",
+  "parameter_tuning": "exploratory_frozen_set_diagnostics"
+}

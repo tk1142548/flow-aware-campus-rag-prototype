@@ -42,10 +42,13 @@ CONFIGS = {
     "baseline_c": {"strategy": "hybrid_rerank", "k": 8},
     "ablation_no_flow": {"strategy": "hybrid_rerank", "k": 8},
     "ablation_no_verify": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_no_skeleton": {"strategy": "hybrid_rerank", "k": 8},
+    "method_v2": {"strategy": "hybrid_rerank", "k": 8},
     "method": {"strategy": "hybrid_rerank", "k": 8},
 }
 MODES = ("baseline_a", "baseline_b", "baseline_c",
-         "ablation_no_flow", "ablation_no_verify", "method")
+         "ablation_no_flow", "ablation_no_verify", "ablation_no_skeleton",
+         "method_v2", "method")
 
 
 def question_of(sample: dict) -> str:
@@ -62,7 +65,7 @@ def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiCl
     spec = CONFIGS[config]
     rows = stack.retrieve(question, strategy=spec["strategy"], k=spec["k"])
 
-    if config in ("method", "ablation_no_verify"):
+    if config in ("method", "method_v2", "ablation_no_verify"):
         skeleton = extract_flow(client, question, rows)
         prediction = systems.SYSTEMS[config](client, question, rows, skeleton)
     else:

@@ -112,13 +112,21 @@ BASELINE_C_SYSTEM = (
       "第二步基于这些要点给出面向办事的回答。"
 )
 
+BASELINE_C_USER = """【证据】
+{evidence}
+
+【问题】
+{question}
+
+输出 JSON：
+{{"key_points": [{{"text": "要点", "evidence_ids": ["证据编号"]}}],
+ "answer": "基于要点的完整回答，关键结论后附 [证据编号]"}}"""
+
 
 def baseline_c(client: Any, question: str, evidence: Sequence[dict]) -> Prediction:
-    user = (f"【证据】\n{evidence_block(evidence)}\n\n【问题】\n{question}\n\n"
-            "输出 JSON：\n"
-            '{"key_points": [{"text": "要点", "evidence_ids": ["证据编号"]}],'
-            ' "answer": "基于要点的完整回答，关键结论后附 [证据编号]"}')
-    data = _json_or_empty(client, BASELINE_C_SYSTEM, user)
+    data = _json_or_empty(client, BASELINE_C_SYSTEM,
+                          BASELINE_C_USER.format(evidence=evidence_block(evidence),
+                                                 question=question))
     answer = str(data.get("answer") or "")
     allowed = {row["evidence_id"] for row in evidence}
     return Prediction(
@@ -167,7 +175,8 @@ METHOD_USER = """【流程骨架】
   "response_mode": "answer | scoped_correction | clarification | version_qualified | conversation_resolution | abstention",
   "missing_conditions": ["问题中没有交代、但会改变答案的关键条件"],
   "follow_up_question": "需要追问时的问题；否则 null",
-  "answer": "完整回答；每条实质性结论后附 [证据编号]",
+  "key_points": [{{"text": "逐条精读证据整理出的与问题相关的要点", "evidence_ids": ["证据编号"]}}],
+  "answer": "基于 key_points 的完整回答；每条实质性结论后附 [证据编号]",
   "conflicts": [{{"text": "证据之间对同一事实的互相矛盾之处", "evidence_ids": []}}],
   "dropped": ["因证据不足而未写入回答的内容"]
 }}"""
@@ -241,6 +250,88 @@ def method(client: Any, question: str, evidence: Sequence[dict], skeleton: dict)
     return _method_pass(client, question, evidence, skeleton, verify=True)
 
 
+def ablation_no_skeleton(client: Any, question: str, evidence: Sequence[dict]) -> Prediction:
+    """Identical to `method` except the flow skeleton is withheld.
+
+    ``ablation_no_flow`` also drops the skeleton, but it generates in baseline C's
+    two-step style, so it confounds "no skeleton" with "different prompt shape".
+    This one holds every other part of the method's prompt fixed.
+    """
+    return _method_pass(client, question, evidence, None, verify=True)
+
+
+MODE_ONLY_SYSTEM = (
+    "你是校园办事问答的交互控制模块。只判定本次应当采用哪种响应方式，不写回答内容。"
+)
+
+MODE_ONLY_USER = """【流程骨架】
+{skeleton}
+
+【证据】
+{evidence}
+
+【问题】
+{question}
+
+{mode_guide}
+
+只做判定，不写回答。输出 JSON：
+{{
+  "response_mode": "answer | scoped_correction | clarification | version_qualified | conversation_resolution | abstention",
+  "missing_conditions": ["问题中没有交代、但会改变答案的关键条件"],
+  "follow_up_question": "需要追问时的问题；否则 null"
+}}"""
+
+
+def method_v2(client: Any, question: str, evidence: Sequence[dict], skeleton: dict) -> Prediction:
+    """Flow skeleton drives the interaction decision, not the answer text.
+
+    `method` dumps the skeleton into the generation prompt, where it measurably
+    hurts. Here the skeleton is read once to decide the response mode; the answer
+    is then generated in the same two-step style every other configuration uses,
+    without the skeleton in the prompt.
+    """
+    allowed = {row["evidence_id"] for row in evidence}
+    skeleton_text = "\n".join(
+        f"- {kind}: " + "; ".join(
+            (element.get("text") or "") + f" {element.get('evidence_ids') or []}"
+            for element in skeleton.get(kind, [])
+        )
+        for kind in ("steps", "conditions", "materials", "time_constraints", "entries")
+    ) or "（未抽取到要素）"
+
+    decision = _json_or_empty(client, MODE_ONLY_SYSTEM, MODE_ONLY_USER.format(
+        skeleton=skeleton_text, evidence=evidence_block(evidence), question=question,
+        mode_guide=MODE_GUIDE), 800)
+    mode = str(decision.get("response_mode") or "answer")
+    mode = mode if mode in KNOWN_MODES else "answer"
+    missing = [str(m) for m in (decision.get("missing_conditions") or []) if str(m).strip()]
+    follow_up = decision.get("follow_up_question")
+    follow_up = str(follow_up) if follow_up else None
+
+    data = _json_or_empty(client, BASELINE_C_SYSTEM, BASELINE_C_USER.format(
+        evidence=evidence_block(evidence), question=question), 2000)
+    draft = str(data.get("answer") or "")
+    final = draft
+    if draft and mode in {"answer", "scoped_correction", "version_qualified"}:
+        verified = _json_or_empty(client, VERIFY_SYSTEM, VERIFY_USER.format(
+            evidence=evidence_block(evidence), draft=draft), 1600)
+        candidate = str(verified.get("final_answer") or "").strip()
+        if candidate:
+            final = candidate
+
+    prefix = f"{follow_up}\n" if follow_up else ""
+    return Prediction(
+        answer_text=prefix + final,
+        response_mode=mode,
+        retrieved_evidence_ids=sorted(allowed),
+        citations=cited_ids(prefix + final, allowed),
+        missing_slot_ids=missing,
+        follow_up_question=follow_up,
+        item_id=None,
+    )
+
+
 def ablation_no_verify(client: Any, question: str, evidence: Sequence[dict],
                        skeleton: dict) -> Prediction:
     """Method minus assertion verification: isolates H2."""
@@ -306,5 +397,7 @@ SYSTEMS = {
     "baseline_c": baseline_c,
     "ablation_no_flow": ablation_no_flow,
     "ablation_no_verify": ablation_no_verify,
+    "ablation_no_skeleton": ablation_no_skeleton,
+    "method_v2": method_v2,
     "method": method,
 }

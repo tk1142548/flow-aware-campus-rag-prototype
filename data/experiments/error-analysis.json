@@ -1,0 +1,279 @@
+{
+ "source": "baselines-final.json",
+ "modes": {
+  "baseline_a": {
+   "sample_count": 200,
+   "overall_success": 0.11,
+   "answer_quality": 0.4415811688311689,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 32,
+     "overall_success": 0.0,
+     "answer_quality": 0.39947916666666666
+    },
+    "direct": {
+     "n": 32,
+     "overall_success": 0.375,
+     "answer_quality": 0.6205357142857143
+    },
+    "material_confusion": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.30902777777777773
+    },
+    "multi_turn": {
+     "n": 24,
+     "overall_success": 0.4166666666666667,
+     "answer_quality": 0.6013888888888889
+    },
+    "object_mismatch": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.08333333333333333
+    },
+    "out_of_scope": {
+     "n": 16,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.3920454545454546
+    },
+    "version_conflict": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.2673611111111111
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 53,
+    "partial_retrieval": 49,
+    "step_coverage_gap": 35,
+    "answer_omission": 35,
+    "retrieval_miss": 23,
+    "material_gap": 3,
+    "wrong_response_mode": 2
+   },
+   "failing_layers": {
+    "generation": 88,
+    "retrieval": 72,
+    "process": 38,
+    "interaction": 2
+   }
+  },
+  "baseline_b": {
+   "sample_count": 200,
+   "overall_success": 0.165,
+   "answer_quality": 0.7606506132756132,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 32,
+     "overall_success": 0.0,
+     "answer_quality": 0.8046875
+    },
+    "direct": {
+     "n": 32,
+     "overall_success": 0.625,
+     "answer_quality": 0.7767857142857143
+    },
+    "material_confusion": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.765625
+    },
+    "multi_turn": {
+     "n": 24,
+     "overall_success": 0.5416666666666666,
+     "answer_quality": 0.7576388888888889
+    },
+    "object_mismatch": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.6041666666666666
+    },
+    "out_of_scope": {
+     "n": 16,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7519991582491583
+    },
+    "version_conflict": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.6840277777777777
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 98,
+    "partial_retrieval": 36,
+    "step_coverage_gap": 28,
+    "answer_omission": 20,
+    "retrieval_miss": 11,
+    "wrong_response_mode": 5,
+    "none": 1,
+    "material_gap": 1
+   },
+   "failing_layers": {
+    "generation": 118,
+    "retrieval": 47,
+    "process": 29,
+    "interaction": 5,
+    "none": 1
+   }
+  },
+  "baseline_c": {
+   "sample_count": 200,
+   "overall_success": 0.17,
+   "answer_quality": 0.7564379509379507,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 32,
+     "overall_success": 0.0,
+     "answer_quality": 0.6796875000000001
+    },
+    "direct": {
+     "n": 32,
+     "overall_success": 0.65625,
+     "answer_quality": 0.8251488095238096
+    },
+    "material_confusion": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7951388888888888
+    },
+    "multi_turn": {
+     "n": 24,
+     "overall_success": 0.5416666666666666,
+     "answer_quality": 0.7819444444444446
+    },
+    "object_mismatch": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.548611111111111
+    },
+    "out_of_scope": {
+     "n": 16,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7791456228956228
+    },
+    "version_conflict": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7256944444444443
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 110,
+    "step_coverage_gap": 32,
+    "partial_retrieval": 26,
+    "answer_omission": 25,
+    "retrieval_miss": 4,
+    "material_gap": 2,
+    "wrong_response_mode": 1
+   },
+   "failing_layers": {
+    "generation": 135,
+    "process": 34,
+    "retrieval": 30,
+    "interaction": 1
+   }
+  },
+  "method": {
+   "sample_count": 200,
+   "overall_success": 0.265,
+   "answer_quality": 0.6816702741702741,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 32,
+     "overall_success": 0.0,
+     "answer_quality": 0.36718750000000006
+    },
+    "direct": {
+     "n": 32,
+     "overall_success": 0.71875,
+     "answer_quality": 0.8206845238095238
+    },
+    "material_confusion": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7708333333333334
+    },
+    "multi_turn": {
+     "n": 24,
+     "overall_success": 0.375,
+     "answer_quality": 0.7490079365079366
+    },
+    "object_mismatch": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.3993055555555555
+    },
+    "out_of_scope": {
+     "n": 16,
+     "overall_success": 1.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 24,
+     "overall_success": 0.0,
+     "answer_quality": 0.7713594276094277
+    },
+    "version_conflict": {
+     "n": 24,
+     "overall_success": 0.20833333333333334,
+     "answer_quality": 0.7395833333333334
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 97,
+    "step_coverage_gap": 36,
+    "answer_omission": 35,
+    "partial_retrieval": 26,
+    "retrieval_miss": 4,
+    "material_gap": 2
+   },
+   "failing_layers": {
+    "generation": 132,
+    "process": 38,
+    "retrieval": 30
+   }
+  }
+ },
+ "risk_coverage": {
+  "counts": {
+   "直接问答": 32,
+   "信息缺失": 32,
+   "对象错配": 24,
+   "版本冲突": 24,
+   "步骤错误": 24,
+   "材料混淆": 24,
+   "越界": 16,
+   "多轮": 24
+  },
+  "categories_present": [
+   "信息缺失",
+   "多轮",
+   "对象错配",
+   "材料混淆",
+   "步骤错误",
+   "版本冲突",
+   "直接问答",
+   "越界"
+  ],
+  "categories_missing": [
+   "过期入口"
+  ],
+  "note": "过期入口 在现有证据层中没有任何样本：来源可用性（HTTP 410/403、认证跳转）只记录在 source_records，未进入可检索的 evidence 层，因此系统无法在回答中区分有效与失效入口。这是数据层缺口，不是方法缺陷。"
+ }
+}

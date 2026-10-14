@@ -98,6 +98,21 @@ def resolve_gold_elements(repository: Any, sample: dict) -> list[dict]:
     return elements
 
 
+def resolve_gold_slot_names(repository: Any, sample: dict) -> list[str]:
+    """Map gold slot ids to their slot names, so free text can be compared fairly.
+
+    Systems describe missing conditions in their own words; comparing those words
+    against ids such as ``SL_REQUEST_TYPE`` can only ever produce an empty
+    intersection. The gold side is therefore resolved to a slot *name*.
+    """
+    process = repository.processes.get(sample["process_id"])
+    if process is None:
+        return []
+    names = {slot["slot_id"]: slot.get("name") or slot["slot_id"]
+             for slot in process.get("slots", [])}
+    return [names.get(slot_id, slot_id) for slot_id in sample["gold"]["missing_slot_ids"]]
+
+
 class ElementMatcher:
     """Coverage by content: lexical containment OR embedding similarity."""
 
@@ -174,12 +189,24 @@ def precision(found: Iterable[str], gold: Iterable[str]) -> float:
     return len(found_set & set(gold)) / len(found_set)
 
 
-def _slot_f1(expected: Iterable[str], actual: Iterable[str]) -> float:
-    expected_set, actual_set = set(expected), set(actual)
-    denominator = len(expected_set) + len(actual_set)
-    if denominator == 0:
+def _slot_f1_by_content(gold_names: Sequence[str], predicted: Sequence[str],
+                        matcher: ElementMatcher) -> float:
+    """Slot F1 on content, not on ids — the counterpart of the claim-side fix."""
+    if not gold_names and not predicted:
         return 1.0
-    return 2 * len(expected_set & actual_set) / denominator
+    if not gold_names or not predicted:
+        return 0.0
+
+    gold_elements = [{"kind": "slot", "id": name, "text": name} for name in gold_names]
+    recalled = sum(1 for m in matcher.match("\n".join(predicted), gold_elements) if m["covered"])
+    predicted_elements = [{"kind": "slot", "id": text, "text": text} for text in predicted]
+    precise = sum(1 for m in matcher.match("\n".join(gold_names), predicted_elements)
+                  if m["covered"])
+
+    recall_value = recalled / len(gold_names)
+    precision_value = precise / len(predicted)
+    total = recall_value + precision_value
+    return 2 * recall_value * precision_value / total if total else 0.0
 
 
 def response_mode_matches(predicted: str, gold: str) -> bool:
@@ -218,7 +245,9 @@ def score_prediction(
 
     item_correct = float(prediction.item_id == sample["item_id"])
     mode_ok = float(response_mode_matches(prediction.response_mode, gold["response_mode"]))
-    slot_f1 = _slot_f1(gold["missing_slot_ids"], prediction.missing_slot_ids)
+    slot_f1 = _slot_f1_by_content(
+        resolve_gold_slot_names(repository, sample), prediction.missing_slot_ids, matcher
+    )
     follow_up_ok = float(bool(prediction.follow_up_question) == bool(gold["follow_up_question"]))
 
     metrics = {

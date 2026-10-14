@@ -11,6 +11,7 @@ from app.backend.scoring_v2 import (
     Prediction,
     lexical_containment,
     resolve_gold_elements,
+    resolve_gold_slot_names,
     response_mode_matches,
     score_prediction,
     summarise,
@@ -106,6 +107,52 @@ class ScoringV2Tests(unittest.TestCase):
         self.assertTrue(response_mode_matches("answer", "conversation_resolution"))
         self.assertTrue(response_mode_matches("clarification", "clarification"))
         self.assertFalse(response_mode_matches("answer", "abstention"))
+
+    def test_every_schema_mode_is_reachable(self) -> None:
+        """Guard against taxonomy drift: a mode the scorer does not know makes every
+        sample carrying it unreachable for all systems under test."""
+        schema = json.loads(
+            (self.root / "data/schemas/evaluation-sample.schema.json").read_text(encoding="utf-8")
+        )
+        modes = schema["properties"]["gold"]["properties"]["response_mode"]["enum"]
+
+        self.assertEqual(6, len(modes))
+        for mode in modes:
+            self.assertTrue(response_mode_matches(mode, mode), mode)
+
+    def test_a_scoped_correction_prediction_can_score(self) -> None:
+        sample = next(
+            s for s in self.samples if s["gold"]["response_mode"] == "scoped_correction"
+        )
+        answer = "\n".join(e["text"] for e in resolve_gold_elements(self.repo, sample))
+
+        result = score_prediction(
+            self.repo, sample,
+            Prediction(answer_text=answer, response_mode="scoped_correction",
+                       retrieved_evidence_ids=list(sample["gold"]["supporting_evidence_ids"]),
+                       citations=list(sample["gold"]["supporting_evidence_ids"]),
+                       item_id=sample["item_id"]),
+            ElementMatcher(),
+        )
+
+        self.assertEqual(1.0, result["metrics"]["overall_success"])
+
+    def test_free_text_slot_description_scores_full_slot_f1(self) -> None:
+        """Gold slots are a closed id vocabulary; a system describes them in words.
+        Comparing the two as strings can only ever produce an empty intersection."""
+        sample = next(s for s in self.samples if s["gold"]["missing_slot_ids"])
+        names = resolve_gold_slot_names(self.repo, sample)
+        self.assertNotIn("SL_", "".join(names))
+
+        result = score_prediction(
+            self.repo, sample,
+            Prediction(answer_text="请补充以下信息。", response_mode="clarification",
+                       missing_slot_ids=names, follow_up_question="请补充以下信息。",
+                       item_id=sample["item_id"]),
+            ElementMatcher(),
+        )
+
+        self.assertEqual(1.0, result["metrics"]["missing_slot_f1"])
 
     def test_abstention_is_judged_on_mode_alone(self) -> None:
         sample = next(

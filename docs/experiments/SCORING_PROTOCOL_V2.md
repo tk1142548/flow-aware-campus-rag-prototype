@@ -32,10 +32,10 @@ if cited and local and c.get('claim_id') == local['claim_id']:
 | 字段 | 含义 |
 |---|---|
 | `answer_text` | 自然语言回答全文（不要求任何内部编号） |
-| `response_mode` | `answer` / `clarification` / `abstention` / `version_qualified` / `conversation_resolution` |
+| `response_mode` | `answer` / `scoped_correction` / `clarification` / `abstention` / `version_qualified` / `conversation_resolution` |
 | `retrieved_evidence_ids` | 本次检索实际使用的证据编号（**仅用于检索层指标**） |
 | `citations` | 回答中明确声明的引用编号 |
-| `missing_slot_ids` | 判定为缺失的槽位 |
+| `missing_slot_ids` | 判定为缺失的槽位，**以自然语言描述**；判分侧把金标准槽位 ID 解析为槽位名后按内容匹配 |
 | `follow_up_question` | 追问文本 |
 | `item_id` | 判定的事项 |
 
@@ -81,7 +81,10 @@ cos      =  text-embedding-v4 余弦相似度
 ### 交互层
 
 - `response_mode_accuracy` = 响应方式是否兼容（`answer` 与 `conversation_resolution` 互认）
-- `missing_slot_f1` = 缺失槽位集合的 F1
+- `missing_slot_f1` = 缺失槽位的 F1，**按内容匹配**：金标准的槽位 ID 先由流程标注解析为槽位名
+  （如 `SL_REQUEST_TYPE` → "办理类型"），再与系统输出的自然语言缺失条件双向匹配
+  （召回：每个金标准槽位名是否被某条预测条件覆盖；精确：每条预测条件是否对应某个金标准槽位名）。
+  若直接拿 ID 与自由文本做集合交，交集恒为空，任何生成式系统都无法得分。
 - `follow_up_correct` = 是否该追问时追问、不该追问时不追问
 
 ## 五、整体成功
@@ -98,6 +101,10 @@ overall_success = item_correct
 
 特例：金标准为 `abstention` 的样本**只看响应方式**——不输出内容才算对。
 这样"拒答"不会被"多说几句碰巧命中"蒙对。
+
+`overall_success` 是**7 项精确等于 1 的合取**，属最严口径，只能用来看"完全达标"的比例；
+定位问题必须同时读各分项。2026-10-15 复核发现，它在两处表示不一致时会把 86 条样本压成
+结构性 0 分，详见 `REPRESENTATION_AUDIT.md`。
 
 ## 六、与旧口径的关系
 

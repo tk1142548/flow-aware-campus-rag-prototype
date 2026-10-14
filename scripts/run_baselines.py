@@ -40,9 +40,12 @@ CONFIGS = {
     "baseline_a": {"strategy": "dense", "k": 5},
     "baseline_b": {"strategy": "hybrid_rerank", "k": 5},
     "baseline_c": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_no_flow": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_no_verify": {"strategy": "hybrid_rerank", "k": 8},
     "method": {"strategy": "hybrid_rerank", "k": 8},
 }
-MODES = ("baseline_a", "baseline_b", "baseline_c", "method")
+MODES = ("baseline_a", "baseline_b", "baseline_c",
+         "ablation_no_flow", "ablation_no_verify", "method")
 
 
 def question_of(sample: dict) -> str:
@@ -59,9 +62,9 @@ def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiCl
     spec = CONFIGS[config]
     rows = stack.retrieve(question, strategy=spec["strategy"], k=spec["k"])
 
-    if config == "method":
+    if config in ("method", "ablation_no_verify"):
         skeleton = extract_flow(client, question, rows)
-        prediction = systems.method(client, question, rows, skeleton)
+        prediction = systems.SYSTEMS[config](client, question, rows, skeleton)
     else:
         prediction = systems.SYSTEMS[config](client, question, rows)
 
@@ -140,7 +143,7 @@ def main() -> int:
 
     item_ids = [r["item_id"] for r in results["method"]]
     comparisons = []
-    for mode in ("baseline_a", "baseline_b", "baseline_c"):
+    for mode in [m for m in MODES if m != "method"]:
         aligned_baseline = {r["sample_id"]: r for r in results[mode]}
         aligned_method = {r["sample_id"]: r for r in results["method"]}
         shared = [sid for sid in aligned_method if sid in aligned_baseline]

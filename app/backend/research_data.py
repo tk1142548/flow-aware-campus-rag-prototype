@@ -43,8 +43,12 @@ class ResearchRepository:
                 and self.sources[row["source_id"]]["review"]["status"] == "verified"
                 and (source_ids is None or row["source_id"] in source_ids)]
 
-    def supported_claims(self, process_id: str, retrieved_ids: set[str]) -> list[dict]:
-        process = self.processes[process_id]
-        candidates = {row["evidence_id"] for row in self.verified_evidence(process["item_id"])}
-        return [claim for claim in process["allowed_claims"]
-                if claim["evidence_ids"] and set(claim["evidence_ids"]) <= retrieved_ids & candidates]
+    def all_verified_evidence(self) -> list[dict]:
+        """Every evidence unit whose own review and source review both passed.
+
+        This is the retrieval pool for every experiment; it carries no label and
+        no item hint, so it can be used on the inference side.
+        """
+        return [row for row in self.evidence.values()
+                if row["review"]["status"] == "verified"
+                and self.sources[row["source_id"]]["review"]["status"] == "verified"]

@@ -24,6 +24,10 @@
 
 ## 关键入口
 
+- **后续工作计划**：`docs/project/WORK_PLAN_2026-10.md`（Block 1–7 与其验收条件）
+- **可复现环境**：`docs/project/ENVIRONMENT.md`
+- **一键校验（每轮收尾必跑）**：`powershell -ExecutionPolicy Bypass -File scripts/verify_all.ps1`
+- **首次初始化环境**：`powershell -ExecutionPolicy Bypass -File scripts/setup_env.ps1`
 - 推进方案：`docs/project/PROJECT_PLAN.md`
 - 项目记忆：`docs/project/PROJECT_MEMORY.md`
 - 决策日志：`docs/project/DECISIONS.md`
@@ -35,5 +39,20 @@
 - 现有后端主链路：`app/backend/rag_engine.py`
 - 现有接口：`app/backend/main.py`
 - 现有证据数据：`data/evidence/evidence_units.jsonl`
+
+## 三条不可让步的原则
+
+完整表述见 `skills/advance-campus-rag-research/SKILL.md`，此处只列标题：
+
+1. **人工标注只用于评分，不得进入推理链路。**
+2. **先修判分口径，再谈模型。**
+3. **每个指标必须指向一个可修的动作。**
+
+违反其中任何一条的新增代码都不得提交。
+
+## 已作废的结论
+
+阶段四"整体成功率 0.900 / 直接抽取 0.080"与阶段三"稀疏/语义/混合 Recall@5 =
+0.856 / 0.781 / 0.858"**均不得再被引用**，原因与处置见 `docs/project/DECISIONS.md` D-030。
 
 当前启动脚本含本机绝对路径，在完成可复现环境改造前，必须先检查脚本和本机环境，不能假设其可跨机器运行。

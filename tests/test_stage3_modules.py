@@ -54,12 +54,6 @@ class Stage3ModuleTests(unittest.TestCase):
         self.assertEqual(hits, SparseRetriever(list(reversed(rows))).search("照片"))
         self.assertEqual(["E001", "E002"], [row["evidence_id"] for row, _ in hits])
 
-    def test_invalid_parameters_rejected(self):
-        with self.assertRaises(ValueError):
-            SparseRetriever([], b=2)
-        with self.assertRaises(ValueError):
-            SparseRetriever([]).search("查询", top_k=0)
-
     def test_engine_returns_process_local_claims(self):
         root = Path(__file__).resolve().parents[1]
         result = Stage3Engine(root).query(

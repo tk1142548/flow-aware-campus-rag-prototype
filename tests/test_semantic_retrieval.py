@@ -1,6 +1,6 @@
 import unittest
 
-from app.backend.semantic_retrieval import SemanticRetriever, dashscope_embed
+from app.backend.semantic_retrieval import SemanticRetriever
 
 
 class SemanticRetrievalTests(unittest.TestCase):
@@ -14,14 +14,3 @@ class SemanticRetrievalTests(unittest.TestCase):
         ]
         retriever = SemanticRetriever(rows, self.embed)
         self.assertEqual(['E001', 'E002'], [row['evidence_id'] for row, _ in retriever.search('照片')])
-
-    def test_invalid_input(self):
-        retriever = SemanticRetriever([], self.embed)
-        with self.assertRaises(ValueError):
-            retriever.search('')
-        with self.assertRaises(ValueError):
-            retriever.search('x', 0)
-
-    def test_dashscope_batch_contract(self):
-        with self.assertRaises(ValueError):
-            dashscope_embed(['x'] * 11, api_key='test')

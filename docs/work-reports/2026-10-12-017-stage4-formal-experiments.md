@@ -1,8 +1,31 @@
+> ## ⚠️ 本报告已于 2026-10-14 作废（INVALIDATED）
+>
+> 本报告的全部数字（完整方法整体成功率 0.900、直接抽取 0.080、六变体消融、Holm 校正结果）
+> **不得再被引用**。经代码级复核，该实验存在循环论证：
+>
+> 1. **生成侧读答案册**：`stage4_pipeline.generate()` 中 `result['claims']` 直接取自
+>    人工标注流程记录的 `process['allowed_claims']`，步骤取自 `applicable_step_ids`，
+>    材料取自 `process['materials']`。系统的"回答"就是标好的金标准。
+> 2. **检索侧被绕过**：`run_stage4_experiments.py` 把"路由到的流程的全部证据快照"当作检索结果
+>    并统一给分 1.0；真实 BM25 top-12 本已含 89.5% 的金标准证据，"流程闭包"只把它抬到 98.9%，
+>    检索环节从未承压。
+> 3. **对照被打成 0 分是判分口径造成的**：`score()` 要求 `c['claim_id'] == local['claim_id']`，
+>    而"直接抽取"变体的 `claim_id` 为 `None`，因此在 184 条非越界样本上恒为 0；
+>    其 0.080 = 恰好 16/200，即 16 条越界样本（不输出内容即自动满分）。
+> 4. **意图判定规则是按测试题反写的**：`VERSION_RE` / `WRONG_ACTION_RE` / `OBJECT_RE` /
+>    `UNCERTAINTY_RE` 与 200 道题一一对应（版本冲突题命中 100%、误触发 0%；步骤错题 100%）。
+>
+> 同一轮的分析还显示：严格口径 `strict_success` 仅 0.090，声明精确率仅 0.309。
+>
+> **处置**：已删除 `app/backend/stage4_pipeline.py`、`scripts/run_stage4_experiments.py`、
+> `configs/stage4-experiment.json`、`data/experiments/stage4-final-ablations.json`、
+> `docs/experiments/STAGE4_PROTOCOL.md`。本文件作为历史记录保留，仅供追溯。
+
 # 阶段 4 正式实验与误差分析报告
 
 日期：2026-10-12
 
-状态：已完成待验证
+状态：~~已完成待验证~~ **已作废（2026-10-14）**
 
 ## 目标
 

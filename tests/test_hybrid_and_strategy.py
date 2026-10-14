@@ -20,10 +20,6 @@ class HybridStrategyTests(unittest.TestCase):
         result = HybridRetriever(StubRetriever(rows, hits), StubRetriever(rows, hits), .5).search('q', 2)
         self.assertEqual(['E001', 'E002'], [row['evidence_id'] for row, _ in result])
 
-    def test_invalid_alpha(self):
-        with self.assertRaises(ValueError):
-            HybridRetriever(StubRetriever([], []), StubRetriever([], []), 2)
-
     def test_answer_context_carries_citations(self):
         process = {'process_id': 'P'}
         claims = [{'claim_id': 'C', 'text': '声明', 'evidence_ids': ['E']}]

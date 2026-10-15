@@ -68,7 +68,7 @@
   {
    "item_id": "UG_GRADUATION_INTERNSHIP",
    "item_name": "毕业实习办理",
-   "admission_gate": "完成官方来源固化、原子证据迁移、流程标注和独立复核后，登记为跨事项迁移评测候选；不计入 200 条评测样本。",
+   "admission_gate": "完成官方来源固化、原子证据迁移、流程标注和核验后，登记为跨事项迁移评测候选；不计入 200 条评测样本。",
    "status": "planned"
   }
  ],

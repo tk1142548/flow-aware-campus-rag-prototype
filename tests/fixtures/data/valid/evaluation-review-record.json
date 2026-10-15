@@ -28,7 +28,7 @@
    "version_applicability": "pass",
    "leakage_control": "pass"
   },
-  "notes": "在不查看初次结论的情况下完成独立复核，未发现分歧。"
+  "notes": "在不查看初次结论的情况下完成核验，未发现分歧。"
  },
  "disagreements": [],
  "adjudication": null,

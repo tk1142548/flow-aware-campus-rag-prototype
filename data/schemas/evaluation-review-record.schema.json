@@ -1,8 +1,8 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evaluation-review-record.schema.json",
- "title": "阶段 2 评测样本独立复核与裁决记录",
- "description": "用于记录初次标注、第二次独立复核、字段级分歧和裁决结果。",
+ "title": "阶段 2 评测样本核验与裁决记录",
+ "description": "用于记录初次标注、第二次核验、字段级分歧和裁决结果。",
  "type": "object",
  "additionalProperties": false,
  "required": [

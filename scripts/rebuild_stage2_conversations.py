@@ -66,7 +66,7 @@ def rebuild(sample: dict, process: dict | None = None) -> dict:
     result['conversation'] = conversation
     result['review_status'] = 'draft'
     result['leakage_control'].update(check_status='pending', checked_at=None,
-                                     checker=None, notes='对话已按蓝图维度重建，待语义近重复检查与独立复核。')
+                                     checker=None, notes='对话已按蓝图维度重建，待语义近重复检查与核验。')
     return result
 
 

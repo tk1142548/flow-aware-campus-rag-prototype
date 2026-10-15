@@ -1690,7 +1690,7 @@ def validate_stage1_completion_artifacts(
         "# 阶段 1 数据审计报告",
         "30 条旧证据",
         "136 条目标证据",
-        "第二次独立复核",
+        "第二次核验",
         "候选事项普查",
         "阶段 1 验收结论",
     }:
@@ -2124,7 +2124,7 @@ def validate_stage2a_contract(
         "Q-003",
         "8 类正式事项",
         "200 条",
-        "100% 第二次独立复核",
+        "100% 第二次核验",
         "流程记录标注",
         "评测样本标注",
         "分歧裁决",
@@ -2886,7 +2886,7 @@ def validate_stage2b_withdrawal_contract(
             "状态：已验证",
             "`UGW001` 至 `UGW113`",
             "`PROC_UG_WITHDRAWAL_V005`",
-            "100% 第二次独立复核",
+            "100% 第二次核验",
         },
     }
     for document_path, markers in required_document_markers.items():

@@ -59,6 +59,16 @@ def mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
+class EmptyAnswer(RuntimeError):
+    """The system returned nothing where an answer was required.
+
+    Almost always an upstream call that failed or returned unparsable output. It
+    must surface as a failure: scored as a normal answer it silently deflates the
+    metrics and the failure list stays empty, which is how a quota outage turns
+    into a fake result.
+    """
+
+
 def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiClient,
             matcher: ElementMatcher, sample: dict, config: str) -> dict:
     question = question_of(sample)
@@ -73,6 +83,9 @@ def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiCl
 
     # Shared routing rule for every configuration.
     prediction.item_id = RetrievalStack.guess_item(rows)
+
+    if not prediction.answer_text.strip() and sample["gold"]["response_mode"] != "abstention":
+        raise EmptyAnswer(f"{config} 未产出回答（接口失败或输出无法解析）")
 
     scored = score_prediction(repository, sample, prediction, matcher)
     return {
@@ -108,6 +121,14 @@ def main() -> int:
     repository = ResearchRepository(ROOT)
     client = ApiClient(ROOT / "data/cache")
     matcher = ElementMatcher(client)
+
+    # Preflight: abort before a long run if the model endpoint is unreachable.
+    try:
+        client.chat([{"role": "user", "content": "ping"}], max_tokens=4)
+        print("接口探活：正常", flush=True)
+    except Exception as error:  # noqa: BLE001 - reported, then abort
+        print(f"接口探活失败，已中止：{type(error).__name__}: {error}")
+        return 2
 
     samples = [json.loads(line) for line in
                args.samples.read_text(encoding="utf-8").splitlines()
@@ -190,6 +211,9 @@ def main() -> int:
         "paired_comparisons": comparisons,
         "samples": results,
         "failures": failures,
+        "empty_answers": {mode: sum(1 for r in results[mode]
+                                    if not r["prediction"]["answer_text"].strip())
+                          for mode in MODES},
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "elapsed_seconds": time.perf_counter() - started,
         "cost": client.cost_summary(),
@@ -204,6 +228,12 @@ def main() -> int:
               f"{m['response_mode_accuracy']:>9.4f}{m['citation_validity']:>9.4f}"
               f"{m['evidence_recall']:>9.4f}")
     print(f"\n失败样本: {len(failures)}")
+    if failures:
+        by_mode = {}
+        for failure in failures:
+            by_mode[failure["mode"]] = by_mode.get(failure["mode"], 0) + 1
+        print(f"  按配置: {by_mode}")
+        print("  注意：失败样本被排除在指标之外，存在失败时不得据此下结论")
     print(f"cost: {client.cost_summary()}")
     print(f"elapsed: {payload['elapsed_seconds']:.1f}s")
     return 0

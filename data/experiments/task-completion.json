@@ -1,18 +1,40 @@
 {
  "status": "已汇总",
+ "protocol": {
+  "scale": {
+   "能": 1.0,
+   "勉强": 0.5,
+   "不能": 0.0
+  },
+  "baseline": "method_v2"
+ },
  "item_count": 60,
  "summary": {
   "baseline_c": {
    "labelled": 60,
-   "task_completion_rate": 0.8833333333333333
+   "task_completion_rate": 0.8833333333333333,
+   "distribution": {
+    "未完成": 2,
+    "完成": 48,
+    "部分": 10
+   }
   },
   "ablation_no_flow": {
    "labelled": 60,
-   "task_completion_rate": 0.975
+   "task_completion_rate": 0.975,
+   "distribution": {
+    "部分": 3,
+    "完成": 57
+   }
   },
   "method_v2": {
    "labelled": 60,
-   "task_completion_rate": 0.8666666666666667
+   "task_completion_rate": 0.8666666666666667,
+   "distribution": {
+    "未完成": 3,
+    "完成": 47,
+    "部分": 10
+   }
   }
  },
  "paired_comparisons": [
@@ -65,5 +87,5 @@
    "holm_adjusted_p": 0.0027997200279972004
   }
  ],
- "created_at_utc": "2026-10-15T04:50:34.927192+00:00"
+ "created_at_utc": "2026-10-15T05:58:29.747168+00:00"
 }

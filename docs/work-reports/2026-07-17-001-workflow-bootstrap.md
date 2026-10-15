@@ -65,7 +65,7 @@ Skill 规定：
 - 自主决定与必须请示的边界；
 - 原计划与实际结果冲突时的处理流程。
 
-新增 `scripts/sync_project_skill.ps1`，用于把仓库权威版本复制到 Codex 用户 Skill 目录，并提供哈希一致性检查。
+新增 `scripts/sync_project_skill.ps1`，用于把仓库权威版本复制到用户级 Skill 目录，并提供哈希一致性检查。
 
 ### 3.4 忽略边界
 
@@ -73,7 +73,7 @@ Skill 规定：
 
 - 密钥和本机环境；
 - Python 与 Node.js 本地缓存；
-- Codex 本机状态和本机工具；
+- 本机状态和本机工具；
 - `output/`、`tmp_ppt_extract/` 等可重建产物；
 - 数据下载缓存和逐次实验运行产物。
 

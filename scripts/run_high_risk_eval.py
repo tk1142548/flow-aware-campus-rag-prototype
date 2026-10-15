@@ -62,9 +62,9 @@ def main() -> int:
         for mode in MODES:
             spec = CONFIGS[mode]
             rows = stack.retrieve(question, strategy=spec["strategy"], k=spec["k"])
-            if mode == "method":
+            if mode in ("method", "method_v2", "ablation_no_verify"):
                 skeleton = extract_flow(client, question, rows)
-                prediction = systems.method(client, question, rows, skeleton)
+                prediction = systems.SYSTEMS[mode](client, question, rows, skeleton)
             else:
                 prediction = systems.SYSTEMS[mode](client, question, rows)
             prediction.item_id = RetrievalStack.guess_item(rows)

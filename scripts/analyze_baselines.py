@@ -39,6 +39,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path,
                         default=ROOT / "data/experiments/baselines-final.json")
+    parser.add_argument("--samples", type=Path,
+                        default=ROOT / "data/evaluation/stage2_samples.jsonl")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "data/experiments/error-analysis.json")
     args = parser.parse_args()
@@ -50,8 +52,7 @@ def main() -> int:
     results = json.loads(args.input.read_text(encoding="utf-8"))
     samples = {row["sample_id"]: row for row in
                (json.loads(line) for line in
-                (ROOT / "data/evaluation/stage2_samples.jsonl")
-                .read_text(encoding="utf-8").splitlines() if line)}
+                args.samples.read_text(encoding="utf-8").splitlines() if line)}
 
     report: dict = {"source": str(args.input.name), "modes": {}, "risk_coverage": {}}
     for mode in MODES:

@@ -96,6 +96,10 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument("--samples", type=Path,
+                        default=ROOT / "data/evaluation/stage2_samples.jsonl",
+                        help="evaluation set to run on (development or independent)")
+    parser.add_argument("--dataset-label", default="开发集")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "data/experiments/baselines-final.json")
     args = parser.parse_args()
@@ -106,7 +110,7 @@ def main() -> int:
     matcher = ElementMatcher(client)
 
     samples = [json.loads(line) for line in
-               (ROOT / "data/evaluation/stage2_samples.jsonl").read_text(encoding="utf-8").splitlines()
+               args.samples.read_text(encoding="utf-8").splitlines()
                if line]
     if args.limit:
         samples = samples[: args.limit]
@@ -176,7 +180,9 @@ def main() -> int:
             "scoring": "docs/experiments/SCORING_PROTOCOL_V2.md",
             "note": "基线 A/B/C 不设交互控制，对金标准为 abstention 的样本必然失分，这是设计差异而非缺陷",
         },
-        "dataset": "开发集",
+        "dataset": args.dataset_label,
+        "samples_path": str(args.samples if not args.samples.is_absolute()
+                            else args.samples.relative_to(ROOT)),
         "scoring_clause_thresholds": {"lexical": matcher.lexical_threshold,
                                       "semantic": matcher.semantic_threshold},
         "sample_count": len(samples),

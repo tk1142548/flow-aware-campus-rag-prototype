@@ -28,11 +28,16 @@
    "const": "1.0"
   },
   "dataset_id": {
-   "const": "CAMPUS_RAG_STAGE2_EVAL"
+   "type": "string",
+   "enum": [
+    "CAMPUS_RAG_STAGE2_EVAL",
+    "CAMPUS_RAG_INDEPENDENT_V1"
+   ],
+   "description": "开发集或独立确认性验证集"
   },
   "sample_id": {
    "type": "string",
-   "pattern": "^S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+   "pattern": "^(S2E|ISE)-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
   },
   "allocation_item_id": {
    "type": "string",
@@ -311,7 +316,7 @@
      "uniqueItems": true,
      "items": {
       "type": "string",
-      "pattern": "^S2E-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+      "pattern": "^(S2E|ISE)-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
      }
     },
     "check_status": {

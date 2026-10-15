@@ -1,0 +1,79 @@
+{
+ "status": "已汇总",
+ "protocol": {
+  "scale": {
+   "完成": 1.0,
+   "部分": 0.5,
+   "未完成": 0.0
+  },
+  "baseline": "method_v2",
+  "sheet": "task-completion-sheet.csv"
+ },
+ "item_count": 60,
+ "unlabelled_cells": 0,
+ "summary": {
+  "baseline_c": {
+   "labelled": 60,
+   "task_completion_rate": 0.8833333333333333
+  },
+  "ablation_no_flow": {
+   "labelled": 60,
+   "task_completion_rate": 0.975
+  },
+  "method_v2": {
+   "labelled": 60,
+   "task_completion_rate": 0.8666666666666667
+  }
+ },
+ "paired_comparisons": [
+  {
+   "left": "baseline_c",
+   "right": "method_v2",
+   "metric": "task_completion_rate",
+   "pair_count": 60,
+   "item_cluster_count": 60,
+   "mean_difference": -0.016666666666666666,
+   "wins": 4,
+   "losses": 5,
+   "ties": 51,
+   "sample_bootstrap_ci95": [
+    -0.075,
+    0.03333333333333333
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.075,
+    0.03333333333333333
+   ],
+   "paired_sign_flip_p": 0.7818218178182181,
+   "item_cluster_sign_flip_p": 0.7797220277972203,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.7818218178182181
+  },
+  {
+   "left": "ablation_no_flow",
+   "right": "method_v2",
+   "metric": "task_completion_rate",
+   "pair_count": 60,
+   "item_cluster_count": 60,
+   "mean_difference": -0.10833333333333334,
+   "wins": 0,
+   "losses": 11,
+   "ties": 49,
+   "sample_bootstrap_ci95": [
+    -0.175,
+    -0.05
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.175,
+    -0.05
+   ],
+   "paired_sign_flip_p": 0.0013998600139986002,
+   "item_cluster_sign_flip_p": 0.000999900009999,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.0027997200279972004
+  }
+ ],
+ "created_at_utc": "2026-10-15T04:50:34.927192+00:00"
+}

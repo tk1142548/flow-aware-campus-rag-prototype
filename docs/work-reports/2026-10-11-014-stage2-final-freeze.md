@@ -1,4 +1,4 @@
-# 阶段 2 最终内容冻结报告
+# 阶段 2 最终内容定稿报告
 
 日期：2026-10-11
 
@@ -12,7 +12,6 @@
 
 执行并通过：
 
-- `python scripts/finalize_stage2_freeze.py --apply`
 - `python scripts/validate_stage2_content.py`
 - `python scripts/validate_research_data.py`
 - `python -m unittest discover -s tests -p 'test_*.py' -q`

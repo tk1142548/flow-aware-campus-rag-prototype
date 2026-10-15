@@ -21,9 +21,8 @@ node_modules/
 .next/
 out/
 
-# Codex 与本机工具状态
+# 本机工具状态
 .agents/
-.codex/
 tools/
 
 # 可重建产物、临时提取结果和日志

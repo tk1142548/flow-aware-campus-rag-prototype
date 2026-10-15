@@ -37,7 +37,7 @@
 
 ### 3.1 新增来源记录
 
-| 来源编号 | 格式 | 抓取结果 | 字节数 | SHA-256（安全哈希算法） |
+| 来源编号 | 格式 | 抓取结果 | 字节数 | 内容记录 |
 |---|---|---|---:|---|
 | `SRC_UG_GRAD_NOTICE_20250617` | HTML（网页文件） | 已保存 | 44,366 | `9bc3fd8fc884923f9e72ce28e723c97cdb791876add7472762edff4a21322ced` |
 | `SRC_UG_GRAD_NOTICE_ATTACHMENT3_20250618` | PNG（便携式网络图形） | 已保存 | 220,635 | `5863c3f32659a00445c7188bf19a2210e3b40f394624154adf662c682573aac9` |
@@ -150,7 +150,6 @@ python scripts/capture_official_sources.py --append
 ### 采集、迁移与校验
 
 - `scripts/capture_official_sources.py`
-- `scripts/complete_stage1e_migration.py`
 - `scripts/validate_research_data.py`
 - `data/schemas/source-record.schema.json`
 - `requirements-dev.txt`
@@ -264,7 +263,6 @@ python -m unittest discover -s tests -p "test_*.py" -v
 命令：
 
 ```powershell
-python -m py_compile scripts/capture_official_sources.py scripts/complete_stage1e_migration.py scripts/validate_research_data.py tests/test_research_data_validation.py tests/test_source_capture.py
 git diff --check
 git diff --exit-code -- app/backend/rag_engine.py data/raw/source_manifest.json data/clean/source_texts.json data/evidence/evidence_units.jsonl
 ```

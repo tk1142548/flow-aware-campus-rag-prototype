@@ -1,701 +1,696 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/process-record.schema.json",
-  "title": "校园办事流程记录",
-  "description": "用于保存事项级人工金标准流程、条件槽位、有序步骤、材料、时空约束、例外、后果和证据绑定。",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "schema_version",
-    "process_id",
-    "process_version",
-    "item_id",
-    "title",
-    "audience",
-    "slots",
-    "follow_up_rules",
-    "steps",
-    "materials",
-    "service_points",
-    "time_constraints",
-    "exceptions",
-    "consequences",
-    "allowed_claims",
-    "evidence_snapshot",
-    "review"
-  ],
-  "properties": {
-    "schema_version": {
-      "const": "1.0"
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/process-record.schema.json",
+ "title": "校园办事流程记录",
+ "description": "用于保存事项级人工金标准流程、条件槽位、有序步骤、材料、时空约束、例外、后果和证据绑定。",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "process_id",
+  "process_version",
+  "item_id",
+  "title",
+  "audience",
+  "slots",
+  "follow_up_rules",
+  "steps",
+  "materials",
+  "service_points",
+  "time_constraints",
+  "exceptions",
+  "consequences",
+  "allowed_claims",
+  "evidence_snapshot",
+  "review"
+ ],
+ "properties": {
+  "schema_version": {
+   "const": "1.0"
+  },
+  "process_id": {
+   "type": "string",
+   "pattern": "^PROC_[A-Z][A-Z0-9_]+_V[0-9]{3}$"
+  },
+  "process_version": {
+   "type": "string",
+   "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+  },
+  "item_id": {
+   "type": "string",
+   "pattern": "^[A-Z][A-Z0-9_]+$"
+  },
+  "title": {
+   "type": "string",
+   "minLength": 1
+  },
+  "audience": {
+   "type": "array",
+   "minItems": 1,
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "slots": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/slot"
+   }
+  },
+  "follow_up_rules": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/followUpRule"
+   }
+  },
+  "steps": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/step"
+   }
+  },
+  "materials": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/material"
+   }
+  },
+  "service_points": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/servicePoint"
+   }
+  },
+  "time_constraints": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/timeConstraint"
+   }
+  },
+  "exceptions": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/exception"
+   }
+  },
+  "consequences": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/consequence"
+   }
+  },
+  "allowed_claims": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/allowedClaim"
+   }
+  },
+  "evidence_snapshot": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "dataset_path",
+    "evidence_ids"
+   ],
+   "properties": {
+    "dataset_path": {
+     "const": "data/research/evidence_units.jsonl"
     },
-    "process_id": {
-      "type": "string",
-      "pattern": "^PROC_[A-Z][A-Z0-9_]+_V[0-9]{3}$"
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "review": {
+   "$ref": "#/$defs/review"
+  }
+ },
+ "$defs": {
+  "evidenceIds": {
+   "type": "array",
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+   }
+  },
+  "nonEmptyEvidenceIds": {
+   "type": "array",
+   "minItems": 1,
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+   }
+  },
+  "condition": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "slot_id",
+    "operator",
+    "value"
+   ],
+   "properties": {
+    "slot_id": {
+     "type": "string",
+     "pattern": "^SL_[A-Z0-9_]+$"
     },
-    "process_version": {
-      "type": "string",
-      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    "operator": {
+     "enum": [
+      "equals",
+      "not_equals",
+      "in",
+      "known",
+      "unknown"
+     ]
     },
-    "item_id": {
-      "type": "string",
-      "pattern": "^[A-Z][A-Z0-9_]+$"
+    "value": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "slot": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "slot_id",
+    "name",
+    "value_type",
+    "required_for_resolution",
+    "allowed_values",
+    "unknown_policy",
+    "evidence_ids"
+   ],
+   "properties": {
+    "slot_id": {
+     "type": "string",
+     "pattern": "^SL_[A-Z0-9_]+$"
     },
-    "title": {
+    "name": {
+     "type": "string",
+     "minLength": 1
+    },
+    "value_type": {
+     "enum": [
+      "enum",
+      "boolean",
+      "date",
+      "date_range",
+      "free_text"
+     ]
+    },
+    "required_for_resolution": {
+     "type": "boolean"
+    },
+    "allowed_values": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
       "type": "string",
       "minLength": 1
+     }
     },
-    "audience": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
+    "unknown_policy": {
+     "enum": [
+      "ask",
+      "abstain",
+      "allow_unknown"
+     ]
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "followUpRule": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "rule_id",
+    "when_missing_slot_ids",
+    "question",
+    "priority",
+    "evidence_ids"
+   ],
+   "properties": {
+    "rule_id": {
+     "type": "string",
+     "pattern": "^FU_[0-9]{2}$"
+    },
+    "when_missing_slot_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^SL_[A-Z0-9_]+$"
+     }
+    },
+    "question": {
+     "type": "string",
+     "minLength": 1
+    },
+    "priority": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "step": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "step_id",
+    "order",
+    "actor",
+    "action",
+    "conditions",
+    "required_material_ids",
+    "service_point_ids",
+    "time_constraint_ids",
+    "next_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "step_id": {
+     "type": "string",
+     "pattern": "^ST_[0-9]{2}$"
+    },
+    "order": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "actor": {
+     "type": "string",
+     "minLength": 1
+    },
+    "action": {
+     "type": "string",
+     "minLength": 1
+    },
+    "conditions": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "required_material_ids": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^MAT_[0-9]{2}$"
+     }
+    },
+    "service_point_ids": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^LOC_[0-9]{2}$"
+     }
+    },
+    "time_constraint_ids": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^TIME_[0-9]{2}$"
+     }
+    },
+    "next_step_ids": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "material": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "material_id",
+    "name",
+    "required_when",
+    "required_at_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "material_id": {
+     "type": "string",
+     "pattern": "^MAT_[0-9]{2}$"
+    },
+    "name": {
+     "type": "string",
+     "minLength": 1
+    },
+    "required_when": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "required_at_step_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "servicePoint": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "point_id",
+    "name",
+    "conditions",
+    "applies_to_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "point_id": {
+     "type": "string",
+     "pattern": "^LOC_[0-9]{2}$"
+    },
+    "name": {
+     "type": "string",
+     "minLength": 1
+    },
+    "conditions": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "applies_to_step_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "timeConstraint": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "constraint_id",
+    "text",
+    "conditions",
+    "applies_to_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "constraint_id": {
+     "type": "string",
+     "pattern": "^TIME_[0-9]{2}$"
+    },
+    "text": {
+     "type": "string",
+     "minLength": 1
+    },
+    "conditions": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "applies_to_step_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "exception": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "exception_id",
+    "trigger",
+    "effect",
+    "affected_step_ids",
+    "description",
+    "evidence_ids"
+   ],
+   "properties": {
+    "exception_id": {
+     "type": "string",
+     "pattern": "^EXC_[0-9]{2}$"
+    },
+    "trigger": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "effect": {
+     "enum": [
+      "skip_step",
+      "replace_step",
+      "add_precondition",
+      "add_material",
+      "route",
+      "abstain",
+      "other"
+     ]
+    },
+    "affected_step_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "description": {
+     "type": "string",
+     "minLength": 1
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "consequence": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "consequence_id",
+    "trigger",
+    "text",
+    "applies_after_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "consequence_id": {
+     "type": "string",
+     "pattern": "^CON_[0-9]{2}$"
+    },
+    "trigger": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "text": {
+     "type": "string",
+     "minLength": 1
+    },
+    "applies_after_step_ids": {
+     "type": "array",
+     "minItems": 1,
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "allowedClaim": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "claim_id",
+    "claim_type",
+    "text",
+    "conditions",
+    "applicable_step_ids",
+    "evidence_ids"
+   ],
+   "properties": {
+    "claim_id": {
+     "type": "string",
+     "pattern": "^CLM_[0-9]{3}$"
+    },
+    "claim_type": {
+     "enum": [
+      "applicable_audience",
+      "entry",
+      "precondition",
+      "step",
+      "material",
+      "time_constraint",
+      "service_location",
+      "fee",
+      "contact",
+      "exception",
+      "consequence",
+      "conflict",
+      "note"
+     ]
+    },
+    "text": {
+     "type": "string",
+     "minLength": 1
+    },
+    "conditions": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/condition"
+     }
+    },
+    "applicable_step_ids": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "type": "string",
+      "pattern": "^ST_[0-9]{2}$"
+     }
+    },
+    "evidence_ids": {
+     "$ref": "#/$defs/nonEmptyEvidenceIds"
+    }
+   }
+  },
+  "review": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "status",
+    "annotated_at",
+    "annotator",
+    "reviewed_at",
+    "reviewer",
+    "notes"
+   ],
+   "properties": {
+    "status": {
+     "enum": [
+      "pending",
+      "in_review",
+      "verified",
+      "rejected"
+     ]
+    },
+    "annotated_at": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "format": "date-time"
+    },
+    "annotator": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "reviewed_at": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "format": "date-time"
+    },
+    "reviewer": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "status": {
+        "const": "verified"
+       }
+      },
+      "required": [
+       "status"
+      ]
+     },
+     "then": {
+      "properties": {
+       "annotated_at": {
+        "type": "string",
+        "format": "date-time"
+       },
+       "annotator": {
         "type": "string",
         "minLength": 1
-      }
-    },
-    "slots": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/slot"
-      }
-    },
-    "follow_up_rules": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/followUpRule"
-      }
-    },
-    "steps": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/step"
-      }
-    },
-    "materials": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/material"
-      }
-    },
-    "service_points": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/servicePoint"
-      }
-    },
-    "time_constraints": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/timeConstraint"
-      }
-    },
-    "exceptions": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/exception"
-      }
-    },
-    "consequences": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/consequence"
-      }
-    },
-    "allowed_claims": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/allowedClaim"
-      }
-    },
-    "evidence_snapshot": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "dataset_path",
-        "dataset_sha256",
-        "evidence_ids"
-      ],
-      "properties": {
-        "dataset_path": {
-          "const": "data/research/evidence_units.jsonl"
-        },
-        "dataset_sha256": {
-          "type": "string",
-          "pattern": "^[a-f0-9]{64}$"
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "review": {
-      "$ref": "#/$defs/review"
-    }
-  },
-  "$defs": {
-    "evidenceIds": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
+       },
+       "reviewed_at": {
         "type": "string",
-        "pattern": "^[A-Z]{2,6}[0-9]{3}$"
-      }
-    },
-    "nonEmptyEvidenceIds": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
+        "format": "date-time"
+       },
+       "reviewer": {
         "type": "string",
-        "pattern": "^[A-Z]{2,6}[0-9]{3}$"
+        "minLength": 1
+       }
       }
-    },
-    "condition": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "slot_id",
-        "operator",
-        "value"
-      ],
-      "properties": {
-        "slot_id": {
-          "type": "string",
-          "pattern": "^SL_[A-Z0-9_]+$"
-        },
-        "operator": {
-          "enum": [
-            "equals",
-            "not_equals",
-            "in",
-            "known",
-            "unknown"
-          ]
-        },
-        "value": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
-    "slot": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "slot_id",
-        "name",
-        "value_type",
-        "required_for_resolution",
-        "allowed_values",
-        "unknown_policy",
-        "evidence_ids"
-      ],
-      "properties": {
-        "slot_id": {
-          "type": "string",
-          "pattern": "^SL_[A-Z0-9_]+$"
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "value_type": {
-          "enum": [
-            "enum",
-            "boolean",
-            "date",
-            "date_range",
-            "free_text"
-          ]
-        },
-        "required_for_resolution": {
-          "type": "boolean"
-        },
-        "allowed_values": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "minLength": 1
-          }
-        },
-        "unknown_policy": {
-          "enum": [
-            "ask",
-            "abstain",
-            "allow_unknown"
-          ]
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "followUpRule": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "rule_id",
-        "when_missing_slot_ids",
-        "question",
-        "priority",
-        "evidence_ids"
-      ],
-      "properties": {
-        "rule_id": {
-          "type": "string",
-          "pattern": "^FU_[0-9]{2}$"
-        },
-        "when_missing_slot_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^SL_[A-Z0-9_]+$"
-          }
-        },
-        "question": {
-          "type": "string",
-          "minLength": 1
-        },
-        "priority": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "step": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "step_id",
-        "order",
-        "actor",
-        "action",
-        "conditions",
-        "required_material_ids",
-        "service_point_ids",
-        "time_constraint_ids",
-        "next_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "step_id": {
-          "type": "string",
-          "pattern": "^ST_[0-9]{2}$"
-        },
-        "order": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "actor": {
-          "type": "string",
-          "minLength": 1
-        },
-        "action": {
-          "type": "string",
-          "minLength": 1
-        },
-        "conditions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "required_material_ids": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^MAT_[0-9]{2}$"
-          }
-        },
-        "service_point_ids": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^LOC_[0-9]{2}$"
-          }
-        },
-        "time_constraint_ids": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^TIME_[0-9]{2}$"
-          }
-        },
-        "next_step_ids": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "material": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "material_id",
-        "name",
-        "required_when",
-        "required_at_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "material_id": {
-          "type": "string",
-          "pattern": "^MAT_[0-9]{2}$"
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "required_when": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "required_at_step_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "servicePoint": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "point_id",
-        "name",
-        "conditions",
-        "applies_to_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "point_id": {
-          "type": "string",
-          "pattern": "^LOC_[0-9]{2}$"
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "conditions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "applies_to_step_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "timeConstraint": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "constraint_id",
-        "text",
-        "conditions",
-        "applies_to_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "constraint_id": {
-          "type": "string",
-          "pattern": "^TIME_[0-9]{2}$"
-        },
-        "text": {
-          "type": "string",
-          "minLength": 1
-        },
-        "conditions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "applies_to_step_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "exception": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "exception_id",
-        "trigger",
-        "effect",
-        "affected_step_ids",
-        "description",
-        "evidence_ids"
-      ],
-      "properties": {
-        "exception_id": {
-          "type": "string",
-          "pattern": "^EXC_[0-9]{2}$"
-        },
-        "trigger": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "effect": {
-          "enum": [
-            "skip_step",
-            "replace_step",
-            "add_precondition",
-            "add_material",
-            "route",
-            "abstain",
-            "other"
-          ]
-        },
-        "affected_step_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "description": {
-          "type": "string",
-          "minLength": 1
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "consequence": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "consequence_id",
-        "trigger",
-        "text",
-        "applies_after_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "consequence_id": {
-          "type": "string",
-          "pattern": "^CON_[0-9]{2}$"
-        },
-        "trigger": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "text": {
-          "type": "string",
-          "minLength": 1
-        },
-        "applies_after_step_ids": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "allowedClaim": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "claim_id",
-        "claim_type",
-        "text",
-        "conditions",
-        "applicable_step_ids",
-        "evidence_ids"
-      ],
-      "properties": {
-        "claim_id": {
-          "type": "string",
-          "pattern": "^CLM_[0-9]{3}$"
-        },
-        "claim_type": {
-          "enum": [
-            "applicable_audience",
-            "entry",
-            "precondition",
-            "step",
-            "material",
-            "time_constraint",
-            "service_location",
-            "fee",
-            "contact",
-            "exception",
-            "consequence",
-            "conflict",
-            "note"
-          ]
-        },
-        "text": {
-          "type": "string",
-          "minLength": 1
-        },
-        "conditions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/condition"
-          }
-        },
-        "applicable_step_ids": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "pattern": "^ST_[0-9]{2}$"
-          }
-        },
-        "evidence_ids": {
-          "$ref": "#/$defs/nonEmptyEvidenceIds"
-        }
-      }
-    },
-    "review": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "status",
-        "annotated_at",
-        "annotator",
-        "reviewed_at",
-        "reviewer",
-        "notes"
-      ],
-      "properties": {
-        "status": {
-          "enum": [
-            "pending",
-            "in_review",
-            "verified",
-            "rejected"
-          ]
-        },
-        "annotated_at": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "date-time"
-        },
-        "annotator": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "reviewed_at": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "date-time"
-        },
-        "reviewer": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "notes": {
-          "type": "string"
-        }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "status": {
-                "const": "verified"
-              }
-            },
-            "required": [
-              "status"
-            ]
-          },
-          "then": {
-            "properties": {
-              "annotated_at": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "annotator": {
-                "type": "string",
-                "minLength": 1
-              },
-              "reviewed_at": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "reviewer": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
-          }
-        }
-      ]
+     }
     }
+   ]
   }
+ }
 }

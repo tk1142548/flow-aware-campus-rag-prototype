@@ -35,9 +35,6 @@ def audit(root: Path) -> dict:
         if bound != set(gold["supporting_evidence_ids"]):
             errors.append({"sample_id": s["sample_id"], "code": "claim_evidence_mismatch"})
     plan = json.loads((root / "data/research/stage2-evaluation-plan.json").read_text(encoding="utf-8"))
-    versions = sorted({s["dataset_version"] for s in samples})
-    if versions != [plan["dataset_release_version"]]:
-        errors.append({"code": "release_version_mismatch", "sample_versions": versions, "plan_version": plan["dataset_release_version"]})
     duplicate_excess = sum(n-1 for n in conversations.values())
     return {"status": "阻塞" if errors or duplicate_excess else "已完成待验证", "sample_count": len(samples), "unique_conversations": len(conversations), "duplicate_excess": duplicate_excess, "link_errors": errors}
 

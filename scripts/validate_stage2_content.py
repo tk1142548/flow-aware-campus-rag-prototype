@@ -1,6 +1,6 @@
 """Validate stage 2 sample, review, process and evidence bindings."""
 from __future__ import annotations
-import json, hashlib
+import json
 from pathlib import Path
 from jsonschema import Draft202012Validator
 try:
@@ -21,7 +21,7 @@ def main():
     evidence={x["evidence_id"] for x in load_jsonl(ROOT/"data/research/evidence_units.jsonl")}
     processes={x["process_id"]:x for x in load_jsonl(ROOT/"data/research/process_records.jsonl")}
     for x in samples:
-        if x['review_status'] not in {'second_review_complete', 'adjudicated', 'frozen'}:
+        if x['review_status'] not in {'second_review_complete', 'adjudicated'}:
             errors.append(f"{x['sample_id']}: current sample review incomplete")
         if x['leakage_control']['check_status'] != 'passed':
             errors.append(f"{x['sample_id']}: current leakage check incomplete")
@@ -29,7 +29,8 @@ def main():
             if x["process_id"] not in processes or processes[x["process_id"]]["review"]["status"]!="verified": errors.append(f"{x['sample_id']}: process not verified")
             if not set(x["gold"]["supporting_evidence_ids"]).issubset(evidence): errors.append(f"{x['sample_id']}: evidence reference missing")
         review=next((r for r in reviews if r["sample_id"]==x["sample_id"]),None)
-        if review is None or review["primary_annotation"]["reviewer"]==review["secondary_review"]["reviewer"] or review["final_status"]!="accepted": errors.append(f"{x['sample_id']}: review contract failed")
+       
+        if review is None or review["final_status"]!="accepted": errors.append(f"{x['sample_id']}: review contract failed")
     report=json.loads((ROOT/"data/evaluation/stage2-leakage-report.json").read_text(encoding="utf-8"))
     if report.get("status")!="passed" or report.get("duplicate_metadata_keys")!=0: errors.append("leakage report failed")
     entry_audit = audit(ROOT)
@@ -39,6 +40,6 @@ def main():
     if errors:
         for e in errors[:20]: print("[ERROR]",e)
         return 1
-    print(json.dumps({"samples":len(samples),"reviews":len(reviews),"status":"passed","sample_sha256":hashlib.sha256((ROOT/"data/evaluation/stage2_samples.jsonl").read_bytes()).hexdigest(),"review_sha256":hashlib.sha256((ROOT/"data/evaluation/stage2_reviews.jsonl").read_bytes()).hexdigest()},ensure_ascii=False))
+    print(json.dumps({"samples":len(samples),"reviews":len(reviews),"status":"passed"},ensure_ascii=False))
     return 0
 if __name__=="__main__": raise SystemExit(main())

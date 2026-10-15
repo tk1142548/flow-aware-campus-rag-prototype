@@ -1,241 +1,240 @@
 {
-  "schema_version": "1.0",
-  "process_id": "PROC_UG_PROOF_PRINT_V001",
-  "process_version": "0.1.0",
-  "item_id": "UG_PROOF_PRINT",
-  "title": "在校本科学生自助打印成绩单或在学证明流程示例",
-  "audience": [
+ "schema_version": "1.0",
+ "process_id": "PROC_UG_PROOF_PRINT_V001",
+ "process_version": "0.1.0",
+ "item_id": "UG_PROOF_PRINT",
+ "title": "在校本科学生自助打印成绩单或在学证明流程示例",
+ "audience": [
+  "在校本科学生"
+ ],
+ "slots": [
+  {
+   "slot_id": "SL_STUDENT_STATUS",
+   "name": "学生状态",
+   "value_type": "enum",
+   "required_for_resolution": true,
+   "allowed_values": [
     "在校本科学生"
-  ],
-  "slots": [
-    {
-      "slot_id": "SL_STUDENT_STATUS",
-      "name": "学生状态",
-      "value_type": "enum",
-      "required_for_resolution": true,
-      "allowed_values": [
-        "在校本科学生"
-      ],
-      "unknown_policy": "ask",
-      "evidence_ids": [
-        "UGP001"
-      ]
-    },
-    {
-      "slot_id": "SL_DOCUMENT_TYPE",
-      "name": "文件类型",
-      "value_type": "enum",
-      "required_for_resolution": true,
-      "allowed_values": [
-        "成绩单",
-        "在学证明"
-      ],
-      "unknown_policy": "ask",
-      "evidence_ids": [
-        "UGP001"
-      ]
-    },
-    {
-      "slot_id": "SL_LANGUAGE",
-      "name": "文件语言",
-      "value_type": "enum",
-      "required_for_resolution": false,
-      "allowed_values": [
-        "中文",
-        "英文"
-      ],
-      "unknown_policy": "allow_unknown",
-      "evidence_ids": [
-        "UGP004"
-      ]
-    }
-  ],
-  "follow_up_rules": [
-    {
-      "rule_id": "FU_01",
-      "when_missing_slot_ids": [
-        "SL_STUDENT_STATUS"
-      ],
-      "question": "请确认你是在校本科学生还是已毕业本科学生。",
-      "priority": 1,
-      "evidence_ids": [
-        "UGP001"
-      ]
-    },
-    {
-      "rule_id": "FU_02",
-      "when_missing_slot_ids": [
-        "SL_DOCUMENT_TYPE"
-      ],
-      "question": "请确认需要打印成绩单还是在学证明。",
-      "priority": 2,
-      "evidence_ids": [
-        "UGP001"
-      ]
-    }
-  ],
-  "steps": [
-    {
-      "step_id": "ST_01",
-      "order": 1,
-      "actor": "在校本科学生",
-      "action": "使用学号和页面说明的密码登录全日制本科学生自助打印系统。",
-      "conditions": [
-        {
-          "slot_id": "SL_STUDENT_STATUS",
-          "operator": "equals",
-          "value": "在校本科学生"
-        }
-      ],
-      "required_material_ids": [],
-      "service_point_ids": [],
-      "time_constraint_ids": [],
-      "next_step_ids": [
-        "ST_02"
-      ],
-      "evidence_ids": [
-        "UGP002",
-        "UGP015",
-        "UGP016"
-      ]
-    },
-    {
-      "step_id": "ST_02",
-      "order": 2,
-      "actor": "在校本科学生",
-      "action": "在自助打印系统选择成绩单或在学证明并使用自助设备打印。",
-      "conditions": [],
-      "required_material_ids": [],
-      "service_point_ids": [
-        "LOC_01"
-      ],
-      "time_constraint_ids": [],
-      "next_step_ids": [],
-      "evidence_ids": [
-        "UGP001",
-        "UGP014"
-      ]
-    }
-  ],
-  "materials": [],
-  "service_points": [
-    {
-      "point_id": "LOC_01",
-      "name": "页面在在校本科学生段列明的各校区自助打印设备",
-      "conditions": [
-        {
-          "slot_id": "SL_STUDENT_STATUS",
-          "operator": "equals",
-          "value": "在校本科学生"
-        }
-      ],
-      "applies_to_step_ids": [
-        "ST_02"
-      ],
-      "evidence_ids": [
-        "UGP014"
-      ]
-    }
-  ],
-  "time_constraints": [],
-  "exceptions": [
-    {
-      "exception_id": "EXC_01",
-      "trigger": [
-        {
-          "slot_id": "SL_LANGUAGE",
-          "operator": "equals",
-          "value": "英文"
-        }
-      ],
-      "effect": "add_precondition",
-      "affected_step_ids": [
-        "ST_02"
-      ],
-      "description": "打印英文成绩单或在学证明前检查系统中是否有英文名。",
-      "evidence_ids": [
-        "UGP004"
-      ]
-    }
-  ],
-  "consequences": [],
-  "allowed_claims": [
-    {
-      "claim_id": "CLM_001",
-      "claim_type": "entry",
-      "text": "在校本科学生可登录全日制本科学生自助打印系统选择成绩单或在学证明。",
-      "conditions": [
-        {
-          "slot_id": "SL_STUDENT_STATUS",
-          "operator": "equals",
-          "value": "在校本科学生"
-        }
-      ],
-      "applicable_step_ids": [
-        "ST_01",
-        "ST_02"
-      ],
-      "evidence_ids": [
-        "UGP001",
-        "UGP002"
-      ]
-    },
-    {
-      "claim_id": "CLM_002",
-      "claim_type": "service_location",
-      "text": "页面只在在校本科学生段说明各校区设有自助打印设备。",
-      "conditions": [
-        {
-          "slot_id": "SL_STUDENT_STATUS",
-          "operator": "equals",
-          "value": "在校本科学生"
-        }
-      ],
-      "applicable_step_ids": [
-        "ST_02"
-      ],
-      "evidence_ids": [
-        "UGP014"
-      ]
-    },
-    {
-      "claim_id": "CLM_003",
-      "claim_type": "entry",
-      "text": "页面说明在校本科学生使用学号和身份证后 6 位字符登录自助打印系统。",
-      "conditions": [
-        {
-          "slot_id": "SL_STUDENT_STATUS",
-          "operator": "equals",
-          "value": "在校本科学生"
-        }
-      ],
-      "applicable_step_ids": [
-        "ST_01"
-      ],
-      "evidence_ids": [
-        "UGP015",
-        "UGP016"
-      ]
-    }
-  ],
-  "evidence_snapshot": {
-    "dataset_path": "data/research/evidence_units.jsonl",
-    "dataset_sha256": "8ccf3e5783b6bdea345fc077a7c33b10ce5ad8815c9886aa0a415ce6f33e7c0a",
-    "evidence_ids": [
-      "UGP001",
-      "UGP002",
-      "UGP004",
-      "UGP014",
-      "UGP015",
-      "UGP016"
-    ]
+   ],
+   "unknown_policy": "ask",
+   "evidence_ids": [
+    "UGP001"
+   ]
   },
-  "review": {
-    "status": "in_review",
-    "annotated_at": "2026-07-30T23:00:00+08:00",
-    "annotator": "阶段 2A 模式示例",
-    "reviewed_at": null,
-    "reviewer": null,
-    "notes": "该文件用于验证模式和跨字段约束，不作为已冻结人工金标准流程。"
+  {
+   "slot_id": "SL_DOCUMENT_TYPE",
+   "name": "文件类型",
+   "value_type": "enum",
+   "required_for_resolution": true,
+   "allowed_values": [
+    "成绩单",
+    "在学证明"
+   ],
+   "unknown_policy": "ask",
+   "evidence_ids": [
+    "UGP001"
+   ]
+  },
+  {
+   "slot_id": "SL_LANGUAGE",
+   "name": "文件语言",
+   "value_type": "enum",
+   "required_for_resolution": false,
+   "allowed_values": [
+    "中文",
+    "英文"
+   ],
+   "unknown_policy": "allow_unknown",
+   "evidence_ids": [
+    "UGP004"
+   ]
   }
+ ],
+ "follow_up_rules": [
+  {
+   "rule_id": "FU_01",
+   "when_missing_slot_ids": [
+    "SL_STUDENT_STATUS"
+   ],
+   "question": "请确认你是在校本科学生还是已毕业本科学生。",
+   "priority": 1,
+   "evidence_ids": [
+    "UGP001"
+   ]
+  },
+  {
+   "rule_id": "FU_02",
+   "when_missing_slot_ids": [
+    "SL_DOCUMENT_TYPE"
+   ],
+   "question": "请确认需要打印成绩单还是在学证明。",
+   "priority": 2,
+   "evidence_ids": [
+    "UGP001"
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "step_id": "ST_01",
+   "order": 1,
+   "actor": "在校本科学生",
+   "action": "使用学号和页面说明的密码登录全日制本科学生自助打印系统。",
+   "conditions": [
+    {
+     "slot_id": "SL_STUDENT_STATUS",
+     "operator": "equals",
+     "value": "在校本科学生"
+    }
+   ],
+   "required_material_ids": [],
+   "service_point_ids": [],
+   "time_constraint_ids": [],
+   "next_step_ids": [
+    "ST_02"
+   ],
+   "evidence_ids": [
+    "UGP002",
+    "UGP015",
+    "UGP016"
+   ]
+  },
+  {
+   "step_id": "ST_02",
+   "order": 2,
+   "actor": "在校本科学生",
+   "action": "在自助打印系统选择成绩单或在学证明并使用自助设备打印。",
+   "conditions": [],
+   "required_material_ids": [],
+   "service_point_ids": [
+    "LOC_01"
+   ],
+   "time_constraint_ids": [],
+   "next_step_ids": [],
+   "evidence_ids": [
+    "UGP001",
+    "UGP014"
+   ]
+  }
+ ],
+ "materials": [],
+ "service_points": [
+  {
+   "point_id": "LOC_01",
+   "name": "页面在在校本科学生段列明的各校区自助打印设备",
+   "conditions": [
+    {
+     "slot_id": "SL_STUDENT_STATUS",
+     "operator": "equals",
+     "value": "在校本科学生"
+    }
+   ],
+   "applies_to_step_ids": [
+    "ST_02"
+   ],
+   "evidence_ids": [
+    "UGP014"
+   ]
+  }
+ ],
+ "time_constraints": [],
+ "exceptions": [
+  {
+   "exception_id": "EXC_01",
+   "trigger": [
+    {
+     "slot_id": "SL_LANGUAGE",
+     "operator": "equals",
+     "value": "英文"
+    }
+   ],
+   "effect": "add_precondition",
+   "affected_step_ids": [
+    "ST_02"
+   ],
+   "description": "打印英文成绩单或在学证明前检查系统中是否有英文名。",
+   "evidence_ids": [
+    "UGP004"
+   ]
+  }
+ ],
+ "consequences": [],
+ "allowed_claims": [
+  {
+   "claim_id": "CLM_001",
+   "claim_type": "entry",
+   "text": "在校本科学生可登录全日制本科学生自助打印系统选择成绩单或在学证明。",
+   "conditions": [
+    {
+     "slot_id": "SL_STUDENT_STATUS",
+     "operator": "equals",
+     "value": "在校本科学生"
+    }
+   ],
+   "applicable_step_ids": [
+    "ST_01",
+    "ST_02"
+   ],
+   "evidence_ids": [
+    "UGP001",
+    "UGP002"
+   ]
+  },
+  {
+   "claim_id": "CLM_002",
+   "claim_type": "service_location",
+   "text": "页面只在在校本科学生段说明各校区设有自助打印设备。",
+   "conditions": [
+    {
+     "slot_id": "SL_STUDENT_STATUS",
+     "operator": "equals",
+     "value": "在校本科学生"
+    }
+   ],
+   "applicable_step_ids": [
+    "ST_02"
+   ],
+   "evidence_ids": [
+    "UGP014"
+   ]
+  },
+  {
+   "claim_id": "CLM_003",
+   "claim_type": "entry",
+   "text": "页面说明在校本科学生使用学号和身份证后 6 位字符登录自助打印系统。",
+   "conditions": [
+    {
+     "slot_id": "SL_STUDENT_STATUS",
+     "operator": "equals",
+     "value": "在校本科学生"
+    }
+   ],
+   "applicable_step_ids": [
+    "ST_01"
+   ],
+   "evidence_ids": [
+    "UGP015",
+    "UGP016"
+   ]
+  }
+ ],
+ "evidence_snapshot": {
+  "dataset_path": "data/research/evidence_units.jsonl",
+  "evidence_ids": [
+   "UGP001",
+   "UGP002",
+   "UGP004",
+   "UGP014",
+   "UGP015",
+   "UGP016"
+  ]
+ },
+ "review": {
+  "status": "in_review",
+  "annotated_at": "2026-07-30T23:00:00+08:00",
+  "annotator": "阶段 2A 模式示例",
+  "reviewed_at": null,
+  "reviewer": null,
+  "notes": "该文件用于验证模式和跨字段约束，不作为已冻结人工金标准流程。"
+ }
 }

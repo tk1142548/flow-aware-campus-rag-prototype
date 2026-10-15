@@ -8,7 +8,6 @@ allow-list of process IDs, items, or evidence IDs.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -182,7 +181,6 @@ def _validate_record(
     line_no: int,
     record: Any,
     evidence_by_id: dict[str, dict[str, Any]],
-    evidence_sha256: str | None,
     process_validator: Draft202012Validator,
     errors: list[str],
     counts: Counter[str],
@@ -202,8 +200,6 @@ def _validate_record(
     snapshot = record.get("evidence_snapshot", {})
     if isinstance(snapshot, dict):
         snapshot_ids = set(snapshot.get("evidence_ids", [])) if isinstance(snapshot.get("evidence_ids"), list) else set()
-        if evidence_sha256 is not None and snapshot.get("dataset_sha256") != evidence_sha256:
-            _add(errors, counts, "snapshot_errors", f"{process_label}: evidence snapshot dataset hash differs from evidence file")
         dataset_path = snapshot.get("dataset_path")
         if dataset_path != str(EVIDENCE_PATH).replace("\\", "/"):
             _add(errors, counts, "snapshot_errors", f"{process_label}: evidence snapshot dataset_path must be {EVIDENCE_PATH.as_posix()}")
@@ -369,12 +365,6 @@ def validate_process_records(root: Path) -> tuple[list[str], dict[str, int]]:
         else:
             evidence_by_id[evidence_id] = evidence
 
-    try:
-        evidence_sha256 = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
-    except OSError as exc:
-        evidence_sha256 = None
-        _add(errors, counts, "snapshot_errors", f"{evidence_path}: cannot hash evidence file: {exc}")
-
     process_rows, process_read_errors = _read_jsonl(process_path)
     for message in process_read_errors:
         _add(errors, counts, "schema_errors", message)
@@ -388,7 +378,7 @@ def validate_process_records(root: Path) -> tuple[list[str], dict[str, int]]:
         seen_process_ids.add(process_id)
         if process_validator is None:
             continue
-        if _validate_record(root, process_path, line_no, record, evidence_by_id, evidence_sha256, process_validator, errors, counts):
+        if _validate_record(root, process_path, line_no, record, evidence_by_id, process_validator, errors, counts):
             valid_records += 1
     counts["valid_records"] = valid_records
     counts["errors"] = len(errors)

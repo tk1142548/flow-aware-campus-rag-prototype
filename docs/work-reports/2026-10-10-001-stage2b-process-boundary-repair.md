@@ -12,13 +12,12 @@
 
 - 新增 `scripts/repair_jsonl_boundaries.py`，使用 JSON 解码器识别连续对象边界，原子写回并保存修复前备份；恢复 11 条流程记录，逐条值保持一致。
 - 为边界恢复脚本增加 3 项测试，覆盖转义文本、损坏输入不改原文件、备份唯一性和恢复结果。
-- 新增 `scripts/repair_credential_process_contract.py`，将学位证明书流程的对象、地点、步骤和时限放回对应节点，将毕业证明书的可选毕业证书复印件记录为条件材料槽位。
 - 保持两个服务页面、21 条原子证据、2 条流程记录和现有独立复核清单的来源边界。
 
 ## 验证结果
 
 - `python scripts/validate_process_records.py` 返回 0，11 条记录有效，所有证据、快照、条件、图和声明校验通过。
-- `python scripts/validate_research_data.py` 返回 0，目标数据 34 条来源、309 条证据，阶段 2 正式事项 8 类、分配样本槽位 200 条，内容冻结状态为 0。
+- `python scripts/validate_research_data.py` 返回 0，目标数据 34 条来源、309 条证据，阶段 2 正式事项 8 类、分配样本槽位 200 条，内容定稿状态为 0。
 - `python -m unittest discover -s tests -p 'test_*.py' -q` 返回 0，29 项测试通过。
 
 ## 尚未完成

@@ -176,7 +176,7 @@ def main() -> int:
             "scoring": "docs/experiments/SCORING_PROTOCOL_V2.md",
             "note": "基线 A/B/C 不设交互控制，对金标准为 abstention 的样本必然失分，这是设计差异而非缺陷",
         },
-        "dataset_version": "1.0.1-frozen(开发集)",
+        "dataset": "开发集",
         "scoring_clause_thresholds": {"lexical": matcher.lexical_threshold,
                                       "semantic": matcher.semantic_threshold},
         "sample_count": len(samples),

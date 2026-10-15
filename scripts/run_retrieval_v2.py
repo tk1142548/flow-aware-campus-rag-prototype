@@ -191,7 +191,7 @@ def main() -> int:
                      "note": "检索只看到用户问题，不使用样本的 process_id 或 gold 字段"},
         "sample_count": len(samples),
         "verified_evidence_count": len(verified),
-        "dataset_version": "1.0.1-frozen(开发集)",
+        "dataset": "开发集",
         "summary": summary,
         "paired_comparisons": comparisons,
         "samples": global_rows,

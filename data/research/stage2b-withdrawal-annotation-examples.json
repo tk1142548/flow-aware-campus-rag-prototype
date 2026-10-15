@@ -1,160 +1,160 @@
 {
-  "schema_version": "1.0",
-  "artifact_id": "S2B_WITHDRAWAL_ANNOTATION_EXAMPLES",
-  "item_id": "UG_WITHDRAWAL",
-  "status": "已验证",
-  "version_groups": [
-    {
-      "version_group_id": "VG_WD_2011_11_FORM",
-      "label": "2011 年 11 月历史表格",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR"
-      ],
-      "process_ids": [
-        "PROC_UG_WITHDRAWAL_V003"
-      ],
-      "status": "已验证"
-    },
-    {
-      "version_group_id": "VG_WD_2019_04_PROCESS",
-      "label": "2019 年 4 月流程页",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_PROCESS_20190418"
-      ],
-      "process_ids": [
-        "PROC_UG_WITHDRAWAL_V001",
-        "PROC_UG_WITHDRAWAL_V002"
-      ],
-      "status": "已验证"
-    },
-    {
-      "version_group_id": "VG_WD_2025_01_FORM",
-      "label": "2025 年 1 月表格",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI"
-      ],
-      "process_ids": [
-        "PROC_UG_WITHDRAWAL_V004"
-      ],
-      "status": "已验证"
-    },
-    {
-      "version_group_id": "VG_WD_2026_SPRING_NOTICE",
-      "label": "2026 年春季未注册本科学生联系及清退通知",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_NOTICE_20260320"
-      ],
-      "process_ids": [
-        "PROC_UG_WITHDRAWAL_V005"
-      ],
-      "status": "已验证"
-    }
-  ],
-  "positive_examples": [
-    {
-      "example_id": "S2BWD_POS_001",
-      "process_id": "PROC_UG_WITHDRAWAL_V002",
-      "evidence_ids": [
-        "UGW005",
-        "UGW010",
-        "UGW011",
-        "UGW073"
-      ],
-      "annotation": "2019 年流程页的每学期第四周前和第十五周前提交时限，只标注在违纪违规退学处理分支。"
-    },
-    {
-      "example_id": "S2BWD_POS_002",
-      "process_id": "PROC_UG_WITHDRAWAL_V004",
-      "evidence_ids": [
-        "UGW022",
-        "UGW032",
-        "UGW033"
-      ],
-      "annotation": "2025 年 1 月表格将家长知情同意书和学期初第 1 至第 4 周的审批时限绑定在该表格版本。"
-    },
-    {
-      "example_id": "S2BWD_POS_003",
-      "process_id": "PROC_UG_WITHDRAWAL_V003",
-      "evidence_ids": [
-        "UGW062",
-        "UGW063",
-        "UGW072"
-      ],
-      "annotation": "2011 年历史表格保留期末第 13 至第 16 周和综合教务管理系统的历史表述。"
-    },
-    {
-      "example_id": "S2BWD_POS_004",
-      "process_id": "PROC_UG_WITHDRAWAL_V005",
-      "evidence_ids": [
-        "UGW086",
-        "UGW093",
-        "UGW094",
-        "UGW095"
-      ],
-      "annotation": "2026 年春季通知将不少于 7 天的公示期、新教务管理系统申请理由和 4 月 10 日下午 5 点报送期限绑定在该学期清退流程。"
-    }
-  ],
-  "negative_examples": [
-    {
-      "example_id": "S2BWD_NEG_001",
-      "rejected_claim": "退学申请统一在学期初第 1 至第 4 周受理，并在 6 个工作日内审批。",
-      "reason": "2011 年表格与 2025 年 1 月表格的集中受理周次不同，来源未声明替代关系。",
-      "evidence_ids": [
-        "UGW062",
-        "UGW063",
-        "UGW032",
-        "UGW033"
-      ]
-    },
-    {
-      "example_id": "S2BWD_NEG_002",
-      "rejected_claim": "2025 年 4 月教务处主附件已在本地完成正文核验。",
-      "reason": "主附件公开请求返回 HTTP 403，本轮没有把错误响应或搜索片段作为正文证据。",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
-        "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY"
-      ],
-      "evidence_ids": [
-        "UGW001"
-      ]
-    },
-    {
-      "example_id": "S2BWD_NEG_003",
-      "rejected_claim": "2025 年表格已经明确替代 2019 年流程页和 2011 年表格。",
-      "reason": "已固化来源均未明示三者的版本替代关系。",
-      "evidence_ids": [
-        "UGW002",
-        "UGW054",
-        "UGW021"
-      ]
-    },
-    {
-      "example_id": "S2BWD_NEG_004",
-      "rejected_claim": "违纪违规退学处理分支必须由学生附家长知情同意书。",
-      "reason": "家长知情同意书来自 2025 年 1 月主动申请表，不能跨对象迁移到 2019 年违纪违规处理分支。",
-      "evidence_ids": [
-        "UGW005",
-        "UGW006",
-        "UGW022"
-      ]
-    },
-    {
-      "example_id": "S2BWD_NEG_005",
-      "rejected_claim": "所有学期的未注册学生清退均须在 4 月 10 日下午 5 点前报送材料。",
-      "reason": "该期限来自 2026 年春季时限性通知，不能推广为其他学期统一规则。",
-      "source_ids": [
-        "SRC_UG_WITHDRAWAL_NOTICE_20260320"
-      ],
-      "evidence_ids": [
-        "UGW075",
-        "UGW095"
-      ]
-    }
-  ],
-  "review": {
-    "status": "已验证",
-    "reviewed_at": "2026-07-31T00:35:00+08:00",
-    "reviewer": "Codex 阶段 2B 二次独立复核",
-    "notes": "正反例已逐项核对流程、证据和来源版本边界。"
+ "schema_version": "1.0",
+ "artifact_id": "S2B_WITHDRAWAL_ANNOTATION_EXAMPLES",
+ "item_id": "UG_WITHDRAWAL",
+ "status": "已验证",
+ "version_groups": [
+  {
+   "version_group_id": "VG_WD_2011_11_FORM",
+   "label": "2011 年 11 月历史表格",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_FORM_PDF_201111_MIRROR"
+   ],
+   "process_ids": [
+    "PROC_UG_WITHDRAWAL_V003"
+   ],
+   "status": "已验证"
+  },
+  {
+   "version_group_id": "VG_WD_2019_04_PROCESS",
+   "label": "2019 年 4 月流程页",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_PROCESS_20190418"
+   ],
+   "process_ids": [
+    "PROC_UG_WITHDRAWAL_V001",
+    "PROC_UG_WITHDRAWAL_V002"
+   ],
+   "status": "已验证"
+  },
+  {
+   "version_group_id": "VG_WD_2025_01_FORM",
+   "label": "2025 年 1 月表格",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202501_SIHAI"
+   ],
+   "process_ids": [
+    "PROC_UG_WITHDRAWAL_V004"
+   ],
+   "status": "已验证"
+  },
+  {
+   "version_group_id": "VG_WD_2026_SPRING_NOTICE",
+   "label": "2026 年春季未注册本科学生联系及清退通知",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_NOTICE_20260320"
+   ],
+   "process_ids": [
+    "PROC_UG_WITHDRAWAL_V005"
+   ],
+   "status": "已验证"
   }
+ ],
+ "positive_examples": [
+  {
+   "example_id": "S2BWD_POS_001",
+   "process_id": "PROC_UG_WITHDRAWAL_V002",
+   "evidence_ids": [
+    "UGW005",
+    "UGW010",
+    "UGW011",
+    "UGW073"
+   ],
+   "annotation": "2019 年流程页的每学期第四周前和第十五周前提交时限，只标注在违纪违规退学处理分支。"
+  },
+  {
+   "example_id": "S2BWD_POS_002",
+   "process_id": "PROC_UG_WITHDRAWAL_V004",
+   "evidence_ids": [
+    "UGW022",
+    "UGW032",
+    "UGW033"
+   ],
+   "annotation": "2025 年 1 月表格将家长知情同意书和学期初第 1 至第 4 周的审批时限绑定在该表格版本。"
+  },
+  {
+   "example_id": "S2BWD_POS_003",
+   "process_id": "PROC_UG_WITHDRAWAL_V003",
+   "evidence_ids": [
+    "UGW062",
+    "UGW063",
+    "UGW072"
+   ],
+   "annotation": "2011 年历史表格保留期末第 13 至第 16 周和综合教务管理系统的历史表述。"
+  },
+  {
+   "example_id": "S2BWD_POS_004",
+   "process_id": "PROC_UG_WITHDRAWAL_V005",
+   "evidence_ids": [
+    "UGW086",
+    "UGW093",
+    "UGW094",
+    "UGW095"
+   ],
+   "annotation": "2026 年春季通知将不少于 7 天的公示期、新教务管理系统申请理由和 4 月 10 日下午 5 点报送期限绑定在该学期清退流程。"
+  }
+ ],
+ "negative_examples": [
+  {
+   "example_id": "S2BWD_NEG_001",
+   "rejected_claim": "退学申请统一在学期初第 1 至第 4 周受理，并在 6 个工作日内审批。",
+   "reason": "2011 年表格与 2025 年 1 月表格的集中受理周次不同，来源未声明替代关系。",
+   "evidence_ids": [
+    "UGW062",
+    "UGW063",
+    "UGW032",
+    "UGW033"
+   ]
+  },
+  {
+   "example_id": "S2BWD_NEG_002",
+   "rejected_claim": "2025 年 4 月教务处主附件已在本地完成正文核验。",
+   "reason": "主附件公开请求返回 HTTP 403，本轮没有把错误响应或搜索片段作为正文证据。",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_FORM_PAGE_20250716",
+    "SRC_UG_WITHDRAWAL_FORM_PDF_202504_PRIMARY"
+   ],
+   "evidence_ids": [
+    "UGW001"
+   ]
+  },
+  {
+   "example_id": "S2BWD_NEG_003",
+   "rejected_claim": "2025 年表格已经明确替代 2019 年流程页和 2011 年表格。",
+   "reason": "已固化来源均未明示三者的版本替代关系。",
+   "evidence_ids": [
+    "UGW002",
+    "UGW054",
+    "UGW021"
+   ]
+  },
+  {
+   "example_id": "S2BWD_NEG_004",
+   "rejected_claim": "违纪违规退学处理分支必须由学生附家长知情同意书。",
+   "reason": "家长知情同意书来自 2025 年 1 月主动申请表，不能跨对象迁移到 2019 年违纪违规处理分支。",
+   "evidence_ids": [
+    "UGW005",
+    "UGW006",
+    "UGW022"
+   ]
+  },
+  {
+   "example_id": "S2BWD_NEG_005",
+   "rejected_claim": "所有学期的未注册学生清退均须在 4 月 10 日下午 5 点前报送材料。",
+   "reason": "该期限来自 2026 年春季时限性通知，不能推广为其他学期统一规则。",
+   "source_ids": [
+    "SRC_UG_WITHDRAWAL_NOTICE_20260320"
+   ],
+   "evidence_ids": [
+    "UGW075",
+    "UGW095"
+   ]
+  }
+ ],
+ "review": {
+  "status": "已验证",
+  "reviewed_at": "2026-07-31T00:35:00+08:00",
+  "reviewer": "阶段 2B 二次核验",
+  "notes": "正反例已逐项核对流程、证据和来源版本边界。"
+ }
 }

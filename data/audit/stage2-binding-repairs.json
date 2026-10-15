@@ -1,457 +1,457 @@
 {
-  "status": "已完成待验证",
-  "basis": "流程允许声明的证据集合",
-  "changed_sample_count": 23,
-  "review_reset_count": 200,
-  "changes": [
-    {
-      "sample_id": "S2E-WD-001",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-002",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-003",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-004",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-005",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-006",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-007",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-008",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-009",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-010",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-011",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-012",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-013",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-014",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-015",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-016",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-017",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-018",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-019",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-020",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-023",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-024",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    },
-    {
-      "sample_id": "S2E-WD-025",
-      "process_id": "PROC_UG_WITHDRAWAL_V001",
-      "allowed_claim_ids": [
-        "CLM_001",
-        "CLM_002",
-        "CLM_003"
-      ],
-      "old_evidence_ids": [
-        "UGW001",
-        "UGW002",
-        "UGW003"
-      ],
-      "new_evidence_ids": [
-        "UGW002",
-        "UGW003",
-        "UGW004"
-      ]
-    }
-  ],
-  "previous_leakage_report": {
-    "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
-    "dataset_version": "0.1.0-content",
-    "sample_count": 200,
-    "review_count": 200,
-    "duplicate_metadata_keys": 0,
-    "template_family_count": 64,
-    "semantic_cluster_count": 64,
-    "status": "passed",
-    "checked_at": "2026-10-10T10:30:00+08:00",
-    "checker": "Codex 阶段 2D 泄漏检查"
+ "status": "已完成待验证",
+ "basis": "流程允许声明的证据集合",
+ "changed_sample_count": 23,
+ "review_reset_count": 200,
+ "changes": [
+  {
+   "sample_id": "S2E-WD-001",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-002",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-003",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-004",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-005",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-006",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-007",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-008",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-009",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-010",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-011",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-012",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-013",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-014",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-015",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-016",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-017",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-018",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-019",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-020",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-023",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-024",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
+  },
+  {
+   "sample_id": "S2E-WD-025",
+   "process_id": "PROC_UG_WITHDRAWAL_V001",
+   "allowed_claim_ids": [
+    "CLM_001",
+    "CLM_002",
+    "CLM_003"
+   ],
+   "old_evidence_ids": [
+    "UGW001",
+    "UGW002",
+    "UGW003"
+   ],
+   "new_evidence_ids": [
+    "UGW002",
+    "UGW003",
+    "UGW004"
+   ]
   }
+ ],
+ "previous_leakage_report": {
+  "dataset_id": "CAMPUS_RAG_STAGE2_EVAL",
+  "dataset_version": "0.1.0-content",
+  "sample_count": 200,
+  "review_count": 200,
+  "duplicate_metadata_keys": 0,
+  "template_family_count": 64,
+  "semantic_cluster_count": 64,
+  "status": "passed",
+  "checked_at": "2026-10-10T10:30:00+08:00",
+  "checker": "阶段 2D 泄漏检查"
+ }
 }

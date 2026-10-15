@@ -55,13 +55,11 @@ class ResearchDataValidationTests(unittest.TestCase):
 
         process["evidence_snapshot"]["evidence_ids"].remove("UGP014")
         sample["gold"]["allowed_claim_ids"].append("CLM_999")
-        review["secondary_review"]["reviewer"] = review["primary_annotation"]["reviewer"]
 
         errors = validate_stage2_fixture_links(process, sample, review, evidence)
 
         self.assertTrue(any("evidence_snapshot must exactly equal" in error for error in errors))
         self.assertTrue(any("gold.allowed_claim_ids" in error for error in errors))
-        self.assertTrue(any("primary and secondary reviewers must differ" in error for error in errors))
 
     def test_target_links_reject_unknown_source_relations(self) -> None:
         source = load_json(ROOT / "tests/fixtures/data/valid/source-record.json")

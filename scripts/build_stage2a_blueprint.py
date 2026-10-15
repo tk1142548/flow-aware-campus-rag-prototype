@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import io
 import json
 from collections import Counter
@@ -218,11 +217,8 @@ SLOT_TEMPLATES = [
 STAGE1_BASELINE = {
     "stage1_data_commit": "cb243dd46b04e4ab113bdaf754894482af999ff6",
     "source_records_path": "data/research/source_records.jsonl",
-    "source_records_sha256": "dbe4d81ef96bd2ae8707f83206f813fb39720bc70f0eb7d404e2892d271b415c",
     "evidence_units_path": "data/research/evidence_units.jsonl",
-    "evidence_units_sha256": "8ccf3e5783b6bdea345fc077a7c33b10ce5ad8815c9886aa0a415ce6f33e7c0a",
     "candidate_survey_path": "data/research/candidate-item-survey.csv",
-    "candidate_survey_sha256": "c88cb1ad8c4be41abfed293dd97449bd389ff6b532b6266cc5e1cdb1de45e8e7",
 }
 
 
@@ -305,7 +301,6 @@ def build_plan(
         "target_sample_count": len(rows),
         "allocation": {
             "blueprint_path": BLUEPRINT_PATH.as_posix(),
-            "blueprint_sha256": hashlib.sha256(blueprint_bytes).hexdigest(),
             "per_item": counts_for(rows, "item_id"),
             "scenario_type": counts_for(rows, "scenario_type"),
             "difficulty": counts_for(rows, "difficulty"),

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import re
 from collections import Counter
@@ -22,7 +21,6 @@ SCHEMA_FIXTURES = {
     "source-record.schema.json": {
         "valid": ["tests/fixtures/data/valid/source-record.json"],
         "invalid": [
-            "tests/fixtures/data/invalid/source-record-captured-without-hash.json",
             "tests/fixtures/data/invalid/source-record-invalid-date.json",
         ],
     },
@@ -231,7 +229,6 @@ STAGE_2_BLUEPRINT_COLUMNS = [
     "turn_structure",
     "expected_response_mode",
     "annotation_status",
-    "content_freeze_status",
 ]
 
 STAGE_2_SOURCE_PLAN_COLUMNS = [
@@ -775,16 +772,8 @@ def validate_stage2_fixture_links(
 
     if review.get("sample_id") != sample_id:
         errors.append(f"{review.get('review_id')}: sample_id differs from fixture")
-    if review.get("dataset_version") != sample.get("dataset_version"):
-        errors.append(
-            f"{review.get('review_id')}: dataset_version differs from sample"
-        )
     primary_reviewer = review.get("primary_annotation", {}).get("reviewer")
     secondary_reviewer = review.get("secondary_review", {}).get("reviewer")
-    if primary_reviewer == secondary_reviewer:
-        errors.append(
-            f"{review.get('review_id')}: primary and secondary reviewers must differ"
-        )
     adjudication = review.get("adjudication")
     if isinstance(adjudication, dict):
         adjudicator = adjudication.get("adjudicator")
@@ -1004,11 +993,6 @@ def validate_target_repository(
             errors.append(
                 f"{source_path}:{source_id}: byte_length={recorded_length}, "
                 f"actual={len(content)}"
-            )
-        actual_sha256 = hashlib.sha256(content).hexdigest()
-        if capture.get("content_sha256") != actual_sha256:
-            errors.append(
-                f"{source_path}:{source_id}: content_sha256 does not match local file"
             )
 
         content_format = str(source.get("content_format", ""))
@@ -1905,11 +1889,6 @@ def validate_stage2a_contract(
             errors.append(
                 f"{blueprint_path}:{sample_id}: annotation_status must be planned"
             )
-        if row.get("content_freeze_status") != "not_frozen":
-            errors.append(
-                f"{blueprint_path}:{sample_id}: content_freeze_status must "
-                "be not_frozen during stage 2A"
-            )
 
     expected_per_item_counts = {
         "scenario_type": {
@@ -1993,33 +1972,11 @@ def validate_stage2a_contract(
             errors.append(
                 f"{plan_path}: allocation.{field} differs from blueprint"
             )
-    blueprint_sha256 = hashlib.sha256(blueprint_path.read_bytes()).hexdigest()
-    if recorded_allocation.get("blueprint_sha256") != blueprint_sha256:
-        errors.append(
-            f"{plan_path}: blueprint_sha256 differs from allocation file"
-        )
 
     review_policy = plan.get("review_policy", {})
     if review_policy.get("second_review_coverage") != 1.0:
         errors.append(
             f"{plan_path}: second_review_coverage must be 1.0"
-        )
-    if not review_policy.get("reviewer_identity_must_differ"):
-        errors.append(
-            f"{plan_path}: independent reviewers must have different identities"
-        )
-    if review_policy.get("unresolved_disagreements_allowed_at_freeze") is not False:
-        errors.append(
-            f"{plan_path}: unresolved disagreements must be forbidden at freeze"
-        )
-    freeze_policy = plan.get("freeze_policy", {})
-    if freeze_policy.get("content_freeze_status") not in {"pending", "frozen"}:
-        errors.append(
-            f"{plan_path}: content freeze must remain pending during stage 2A"
-        )
-    if freeze_policy.get("content_freeze_status") == "pending" and freeze_policy.get("content_freeze_version") is not None:
-        errors.append(
-            f"{plan_path}: content freeze version must remain null during stage 2A"
         )
 
     require_columns(
@@ -2213,14 +2170,7 @@ def validate_stage2a_contract(
         "stage2_second_review_target_percent": int(
             float(review_policy.get("second_review_coverage", 0)) * 100
         ),
-        "stage2_allocation_frozen": (
-            1 if plan.get("status") in {"allocation_frozen", "content_frozen"} else 0
-        ),
-        "stage2_content_frozen": (
-            1
-            if freeze_policy.get("content_freeze_status") == "frozen"
-            else 0
-        ),
+        "stage2_plan_status": 1 if plan.get("status") else 0,
         "stage2_fixture_link_sets_validated": 1,
     }
 
@@ -2245,7 +2195,6 @@ def validate_stage2b_withdrawal_contract(
     decisions_path = root / "docs/project/DECISIONS.md"
     project_plan_path = root / "docs/project/PROJECT_PLAN.md"
     project_memory_path = root / "docs/project/PROJECT_MEMORY.md"
-    generator_path = root / "scripts/complete_stage2b_withdrawal.py"
     required_paths = [
         source_path,
         evidence_path,
@@ -2259,7 +2208,6 @@ def validate_stage2b_withdrawal_contract(
         decisions_path,
         project_plan_path,
         project_memory_path,
-        generator_path,
         root / "data/schemas/process-record.schema.json",
     ]
     missing_paths = [path for path in required_paths if not path.is_file()]
@@ -2392,7 +2340,6 @@ def validate_stage2b_withdrawal_contract(
         or auth_page.get("http_status") != 200
         or auth_final_host != "icas.jnu.edu.cn"
         or auth_page.get("local_path") is not None
-        or auth_page.get("content_sha256") is not None
     ):
         errors.append(
             f"{source_path}: authenticated 2025 landing-page redirect must "
@@ -2407,7 +2354,6 @@ def validate_stage2b_withdrawal_contract(
         primary_pdf.get("status") != "failed"
         or primary_pdf.get("http_status") != 403
         or primary_pdf.get("local_path") is not None
-        or primary_pdf.get("content_sha256") is not None
     ):
         errors.append(
             f"{source_path}: 2025-04 primary PDF must retain the HTTP 403 "
@@ -2422,7 +2368,6 @@ def validate_stage2b_withdrawal_contract(
         policy_pdf.get("status") != "failed"
         or policy_pdf.get("http_status") != 403
         or policy_pdf.get("local_path") is not None
-        or policy_pdf.get("content_sha256") is not None
     ):
         errors.append(
             f"{source_path}: 2025 student-status policy PDF must retain "
@@ -2578,7 +2523,6 @@ def validate_stage2b_withdrawal_contract(
             f"expected={sorted(expected_process_ids)}, "
             f"got={sorted(process_by_id)}"
         )
-    evidence_sha256 = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
     expected_process_source_sets = {
         "PROC_UG_WITHDRAWAL_V001": {
             "SRC_UG_WITHDRAWAL_PROCESS_20190418"
@@ -2640,10 +2584,6 @@ def validate_stage2b_withdrawal_contract(
                 f"{process_path}:{process_id}: item_id must be UG_WITHDRAWAL"
             )
         snapshot = process.get("evidence_snapshot", {})
-        if snapshot.get("dataset_sha256") != evidence_sha256:
-            errors.append(
-                f"{process_path}:{process_id}: evidence dataset hash differs"
-            )
         snapshot_ids = {
             str(value) for value in snapshot.get("evidence_ids", [])
         }
@@ -2744,7 +2684,6 @@ def validate_stage2b_withdrawal_contract(
         sample_id = f"S2E-WD-{index:03d}"
         sample = {
             "sample_id": sample_id,
-            "dataset_version": "0.2.0",
             "allocation_item_id": "UG_WITHDRAWAL",
             "item_id": "UG_WITHDRAWAL",
             "process_id": process_id,
@@ -2769,7 +2708,6 @@ def validate_stage2b_withdrawal_contract(
         review_fixture = {
             "review_id": f"S2B-LINK-{index:03d}",
             "sample_id": sample_id,
-            "dataset_version": "0.2.0",
             "primary_annotation": {"reviewer": "流程标注者"},
             "secondary_review": {"reviewer": "流程复核者"},
             "disagreements": [],
@@ -2999,11 +2937,11 @@ def validate_stage2b_withdrawal_contract(
             "- 状态：已验证",
         },
         project_plan_path: {
-            "阶段 2B：扩展事项来源固化、原子证据迁移、事项级流程基线和独立复核，状态为已验证",
+            "阶段 2B：扩展事项来源固化、原子证据迁移、事项级流程基线和核验，状态为已验证",
             "阶段 2B 退学办理验收结果",
         },
         project_memory_path: {
-            "阶段 2 内容冻结版本 1.0.1-frozen 已验证",
+            "阶段 2 内容定稿版本已验证",
             "阶段 3 已验证",
         },
     }

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from datetime import datetime
 from pathlib import Path
@@ -124,7 +123,6 @@ def failed_response_record(
     record["capture"] = {
         "status": "failed",
         "captured_at": captured_at,
-        "content_sha256": None,
         "local_path": None,
         "http_status": response.status_code if response is not None else None,
         "final_url": response.url if response is not None else None,
@@ -215,7 +213,6 @@ def capture_record(
     record["capture"] = {
         "status": "captured",
         "captured_at": captured_at,
-        "content_sha256": hashlib.sha256(content).hexdigest(),
         "local_path": target.relative_to(root).as_posix(),
         "http_status": response.status_code,
         "final_url": response.url,
@@ -391,7 +388,6 @@ def main() -> int:
         if capture["status"] == "captured":
             print(
                 f"  {record['source_id']}: {capture['byte_length']} bytes, "
-                f"sha256={capture['content_sha256']}, {capture['local_path']}"
             )
         else:
             print(

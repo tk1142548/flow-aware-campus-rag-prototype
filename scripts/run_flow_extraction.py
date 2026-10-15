@@ -217,7 +217,7 @@ def main() -> int:
         "protocol": {"evidence_k": EVIDENCE_K, "candidate_k": CANDIDATE_K,
                      "oracle_used": False,
                      "note": "抽取只看到用户问题与本次检索证据；金标准流程仅用于评分"},
-        "dataset_version": "1.0.1-frozen(开发集)",
+        "dataset": "开发集",
         "sample_count": len(records),
         "summary": summary,
         "samples": records,

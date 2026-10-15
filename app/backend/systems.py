@@ -55,13 +55,20 @@ def _chat(client: Any, system: str, user: str, max_tokens: int = 1200) -> str:
 
 
 def _json_or_empty(client: Any, system: str, user: str, max_tokens: int = 1600) -> dict:
+    """Parse the model's JSON reply, tolerating a malformed reply.
+
+    Only a malformed reply is tolerated (ValueError). Transport and quota errors
+    (`ApiError`, a RuntimeError) must propagate: swallowing them turns an outage
+    into an empty answer that then gets scored, so the run looks like the system
+    failed on those items while the failure list stays empty.
+    """
     try:
         return client.chat_json(
             [{"role": "system", "content": system}, {"role": "user", "content": user}],
             temperature=0.0,
             max_tokens=max_tokens,
         )
-    except (ValueError, RuntimeError):
+    except ValueError:
         return {}
 
 

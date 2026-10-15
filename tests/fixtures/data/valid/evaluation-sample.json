@@ -83,7 +83,7 @@
   "check_status": "pending",
   "checked_at": null,
   "checker": null,
-  "notes": "模式正例尚未进入冻结集，冻结前执行模板族、来源版本组和语义近重复检查。"
+  "notes": "模式正例尚未进入评测集，定稿前执行模板族、来源版本组和语义近重复检查。"
  },
  "review_status": "draft"
 }

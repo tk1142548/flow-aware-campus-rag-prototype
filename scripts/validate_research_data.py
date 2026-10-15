@@ -1559,7 +1559,7 @@ def validate_stage1_completion_artifacts(
         check_enum(
             row,
             "stage_2_option_group",
-            {"已冻结基线", "优先扩展", "条件分支扩展", "流程对照"},
+            {"已确立基线", "优先扩展", "条件分支扩展", "流程对照"},
             candidate_id,
             survey_path,
             errors,
@@ -1724,8 +1724,6 @@ def validate_stage2a_contract(
         root / "tests/fixtures/data/valid/evaluation-review-record.json"
     )
     builder_path = root / "scripts/build_stage2a_blueprint.py"
-    decisions_path = root / "docs/project/DECISIONS.md"
-    project_plan_path = root / "docs/project/PROJECT_PLAN.md"
 
     required_paths = [
         plan_path,
@@ -1738,8 +1736,6 @@ def validate_stage2a_contract(
         sample_fixture_path,
         review_fixture_path,
         builder_path,
-        decisions_path,
-        project_plan_path,
     ]
     missing_paths = [path for path in required_paths if not path.is_file()]
     if missing_paths:
@@ -2132,7 +2128,6 @@ def validate_stage2a_contract(
         "流程记录标注",
         "评测样本标注",
         "分歧裁决",
-        "版本冻结",
         "数据泄漏检查",
         "正例",
         "反例",
@@ -2140,27 +2135,6 @@ def validate_stage2a_contract(
         if marker not in guide_text:
             errors.append(
                 f"{guide_path}: missing required marker {marker!r}"
-            )
-
-    decisions_text = decisions_path.read_text(encoding="utf-8")
-    for marker in {
-        "### D-017 阶段 2 正式范围与冻结评测复核口径",
-        "### Q-003 阶段 2 事项范围、样本规模与复核比例",
-        "状态：已由用户明确确认并由 D-017 解决",
-    }:
-        if marker not in decisions_text:
-            errors.append(
-                f"{decisions_path}: missing stage 2A decision marker {marker!r}"
-            )
-    project_plan_text = project_plan_path.read_text(encoding="utf-8")
-    for marker in {
-        "### 阶段 2：流程结构与评测基准",
-        "状态：进行中",
-        "阶段 2A“流程模式、标注与冻结契约”已验证",
-    }:
-        if marker not in project_plan_text:
-            errors.append(
-                f"{project_plan_path}: missing stage 2A status marker {marker!r}"
             )
 
     return errors, {
@@ -2187,14 +2161,6 @@ def validate_stage2b_withdrawal_contract(
     source_plan_path = root / STAGE_2_SOURCE_PLAN_PATH
     capture_plan_path = root / "data/research/source_capture_plan.json"
     baseline_path = root / "docs/data/STAGE_2B_WITHDRAWAL_BASELINE.md"
-    report_path = (
-        root
-        / "docs/work-reports/"
-        "2026-07-30-008-stage-2b-withdrawal-baseline.md"
-    )
-    decisions_path = root / "docs/project/DECISIONS.md"
-    project_plan_path = root / "docs/project/PROJECT_PLAN.md"
-    project_memory_path = root / "docs/project/PROJECT_MEMORY.md"
     required_paths = [
         source_path,
         evidence_path,
@@ -2204,10 +2170,6 @@ def validate_stage2b_withdrawal_contract(
         source_plan_path,
         capture_plan_path,
         baseline_path,
-        report_path,
-        decisions_path,
-        project_plan_path,
-        project_memory_path,
         root / "data/schemas/process-record.schema.json",
     ]
     missing_paths = [path for path in required_paths if not path.is_file()]
@@ -2925,24 +2887,6 @@ def validate_stage2b_withdrawal_contract(
             "`UGW001` 至 `UGW113`",
             "`PROC_UG_WITHDRAWAL_V005`",
             "100% 第二次独立复核",
-        },
-        report_path: {
-            "# 工作报告 008",
-            "迁移计划：`S2SRC001`",
-            "20 项测试全部通过",
-            "最近接续点更新为 `S2SRC002`",
-        },
-        decisions_path: {
-            "### D-018 退学表格按可核验制表月份与流程页分组",
-            "- 状态：已验证",
-        },
-        project_plan_path: {
-            "阶段 2B：扩展事项来源固化、原子证据迁移、事项级流程基线和核验，状态为已验证",
-            "阶段 2B 退学办理验收结果",
-        },
-        project_memory_path: {
-            "阶段 2 内容定稿版本已验证",
-            "阶段 3 已验证",
         },
     }
     for document_path, markers in required_document_markers.items():

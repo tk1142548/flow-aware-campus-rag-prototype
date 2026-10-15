@@ -1,8 +1,8 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evaluation-plan.schema.json",
- "title": "阶段 2 冻结评测规划",
- "description": "用于冻结 Q-003 确认的事项范围、200 个样本槽位、分层配额、复核比例和版本规则。",
+ "title": "阶段 2 评测规划",
+ "description": "用于登记 Q-003 确认的事项范围、200 个样本槽位、分层配额、复核比例和版本规则。",
  "type": "object",
  "additionalProperties": false,
  "required": [

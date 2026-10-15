@@ -1,7 +1,7 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://github.com/tk1142548/flow-aware-campus-rag-prototype/blob/main/data/schemas/evaluation-sample.schema.json",
- "title": "校园办事冻结评测样本",
+ "title": "校园办事评测样本",
  "description": "用于保存分层评测问题、对话上下文、槽位状态、金标准流程、允许声明、证据和泄漏检查元数据。",
  "type": "object",
  "additionalProperties": false,

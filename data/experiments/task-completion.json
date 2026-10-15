@@ -12,28 +12,27 @@
  "summary": {
   "baseline_c": {
    "labelled": 60,
-   "task_completion_rate": 0.8833333333333333,
+   "task_completion_rate": 0.6,
    "distribution": {
-    "未完成": 2,
-    "完成": 48,
-    "部分": 10
+    "未完成": 24,
+    "完成": 36
    }
   },
   "ablation_no_flow": {
    "labelled": 60,
-   "task_completion_rate": 0.975,
+   "task_completion_rate": 0.6833333333333333,
    "distribution": {
-    "部分": 3,
-    "完成": 57
+    "未完成": 15,
+    "完成": 37,
+    "部分": 8
    }
   },
   "method_v2": {
    "labelled": 60,
-   "task_completion_rate": 0.8666666666666667,
+   "task_completion_rate": 0.9833333333333333,
    "distribution": {
-    "未完成": 3,
-    "完成": 47,
-    "部分": 10
+    "完成": 59,
+    "未完成": 1
    }
   }
  },
@@ -44,23 +43,23 @@
    "metric": "task_completion_rate",
    "pair_count": 60,
    "item_cluster_count": 60,
-   "mean_difference": -0.016666666666666666,
-   "wins": 4,
-   "losses": 5,
-   "ties": 51,
+   "mean_difference": 0.38333333333333336,
+   "wins": 23,
+   "losses": 0,
+   "ties": 37,
    "sample_bootstrap_ci95": [
-    -0.075,
-    0.03333333333333333
+    0.26666666666666666,
+    0.5166666666666667
    ],
    "item_cluster_bootstrap_ci95": [
-    -0.075,
-    0.03333333333333333
+    0.26666666666666666,
+    0.5
    ],
-   "paired_sign_flip_p": 0.7818218178182181,
-   "item_cluster_sign_flip_p": 0.7797220277972203,
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 9.999000099990002e-05,
    "repetitions": 10000,
    "seed": 0,
-   "holm_adjusted_p": 0.7818218178182181
+   "holm_adjusted_p": 0.00019998000199980003
   },
   {
    "left": "ablation_no_flow",
@@ -68,24 +67,24 @@
    "metric": "task_completion_rate",
    "pair_count": 60,
    "item_cluster_count": 60,
-   "mean_difference": -0.10833333333333334,
-   "wins": 0,
-   "losses": 11,
-   "ties": 49,
+   "mean_difference": 0.3,
+   "wins": 22,
+   "losses": 0,
+   "ties": 38,
    "sample_bootstrap_ci95": [
-    -0.175,
-    -0.05
+    0.2,
+    0.4083333333333333
    ],
    "item_cluster_bootstrap_ci95": [
-    -0.175,
-    -0.05
+    0.19166666666666668,
+    0.4083333333333333
    ],
-   "paired_sign_flip_p": 0.0013998600139986002,
-   "item_cluster_sign_flip_p": 0.000999900009999,
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 9.999000099990002e-05,
    "repetitions": 10000,
    "seed": 0,
-   "holm_adjusted_p": 0.0027997200279972004
+   "holm_adjusted_p": 0.00019998000199980003
   }
  ],
- "created_at_utc": "2026-10-15T05:58:29.747168+00:00"
+ "created_at_utc": "2026-10-15T07:01:52.541562+00:00"
 }

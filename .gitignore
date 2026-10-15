@@ -40,3 +40,11 @@ data/cache/
 data/downloads/
 data/tmp/
 experiments/runs/
+
+# 内部工作记录：项目管理与进度文档、阶段工作日志、项目专用技能、协作约定。
+# 这些只保留在本地工作区，不进入版本库。
+AGENTS.md
+docs/project/
+docs/work-reports/
+docs/experiments/REPRESENTATION_AUDIT.md
+skills/

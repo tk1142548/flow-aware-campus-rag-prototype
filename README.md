@@ -1,116 +1,79 @@
-# Flow-Aware Campus RAG Prototype
+# 流程感知的校园办事 RAG 问答
 
-面向项目申报和演示截图的“流程感知校园办事 RAG”最小原型。
+面向校园办事场景的检索增强问答研究：把办事事项的官方材料整理成可定位、可区分版本的
+证据层，把办事流程表示为结构化中间形式，并用它决定系统该直接回答、该追问、
+该按版本限定作答、该纠正对象范围，还是该拒答。
 
-当前原型只覆盖两个本科事项：
+## 语料与数据
 
-- `UG_PROOF_PRINT`：本科成绩单 / 在学证明 / 毕业证明打印
-- `UG_STATUS_CHANGE`：本科休学 / 复学
+以暨南大学本科教学相关事项为语料，覆盖 8 类事项：
 
-## 技术栈
+| 事项 | 内容 |
+|---|---|
+| 成绩与证明打印 | 成绩单、在学证明、英文毕业证明打印 |
+| 学籍状态变更 | 休学、复学 |
+| 退学办理 | 主动申请退学、清退 |
+| 学生证补办 | 补办与缴费 |
+| 选课事务 | 选课与课程调整 |
+| 请假事务 | 事假、病假 |
+| 转专业 | 转专业申请 |
+| 证书补办 | 各类证明与证书补办 |
 
-- `FastAPI`：主链路与 `/api/query`
-- `Next.js + Tailwind`：单页前端
-- `JSONL + BM25 + FAISS`：轻量证据检索
-- `OpenAI-compatible API`：槽位补全、流程骨架生成、断言核验、答案润色
+数据分三层：
 
-## 目录
+- **来源层**（`data/research/source_records.jsonl`、`data/sources/`）：34 条来源记录与 29 个
+  本地保存的官方来源文件，按官方发布年份分组，使"同一事项不同时期规定不同"在数据层可区分。
+- **证据层**（`data/research/evidence_units.jsonl`）：309 条可定位的原子证据，
+  每条都能回到原文的具体位置。
+- **流程层**（`data/research/process_records.jsonl`）：13 条流程记录，
+  含五类要素（办理步骤、适用条件、所需材料、时间约束、办理入口）、槽位表与允许声明。
 
-- `app/frontend`：Next.js 前端
-- `app/backend`：FastAPI 后端
-- `data/raw`：来源清单
-- `data/clean`：清洗文本
-- `data/evidence`：evidence units
-- `scripts`：启动脚本
-- `tools/node-v22.14.0-win-x64`：本地 Node 运行时
+评测数据：
 
-## 当前实现
+- `data/evaluation/stage2_samples.jsonl`：200 条评测样本，覆盖 8 类事项与 8 类易错情形。
+  每道题标注了应答方式、应覆盖的要点、所依据的材料与缺失的关键条件。
+- `data/evaluation/high-risk-set.jsonl`：84 条高风险专项题集
+  （信息缺失、对象错配、版本冲突、过期入口四类）。
+- `data/schemas/`：上述记录的 JSON 模式。
+- `data/audit/`：来源与证据的核验记录。
 
-- 规则优先识别事项与关键槽位
-- 在事项内做 `BM25 + FAISS` 混合检索
-- 右侧展示证据包、流程骨架、断言核验和官方入口/下载
-- 支持同一会话内的轻量上下文继承
-  - 例如先问“我想打证明”，再补“本科，在学证明”，系统会继续完成同一事项
-- 若模型不可用，会自动退回证据驱动回答，但不会退回成写死的固定答案
+## 方法与实现
 
-## 数据说明
+- `app/backend/sparse_retrieval.py`、`semantic_retrieval.py`、`hybrid_retrieval.py`：
+  稀疏（BM25）、语义（向量嵌入）、混合检索。
+- `app/backend/rerank.py`：交叉编码器重排序。
+- `app/backend/flow_extractor.py`：由检索到的证据自动抽取流程骨架，每条要素绑定来源证据。
+- `app/backend/systems.py`：基线 A/B/C 与本方法共用的预测契约。
+- `app/backend/scoring_v2.py`：判分（按内容比对，不要求系统输出标注编号）。
+- `app/backend/error_taxonomy.py`：错误分类与失效层归因。
+- `app/frontend`：对话原型（Next.js）。
 
-证据库当前共 30 条 evidence units，主证据来自暨南大学本科生院和研究生院官方页面。
+## 实验
 
-已经修正为稳定可用的关键链接包括：
+| 数据文件 | 内容 |
+|---|---|
+| `data/experiments/retrieval-v2.json` | 检索策略对照（稀疏 / 语义 / 混合 / 混合+重排序） |
+| `data/experiments/flow-extraction.json` | 流程骨架抽取的五类要素覆盖率与证据绑定率 |
+| `data/experiments/baselines-final.json` | 八配置对照的逐样本结果与配对统计 |
+| `data/experiments/error-analysis.json` | 分层误差归因 |
+| `data/experiments/high-risk-results.json` | 高风险题集结果 |
+| `data/experiments/task-completion.json` | 任务完成率（60 题判定） |
 
-- 打印成绩单、证明页：
-  - `https://jwc.jnu.edu.cn/2021/0317/c11805a602515/page.htm`
-- 休学申请表页：
-  - `https://jwc.jnu.edu.cn/2021/0313/c6757a600991/page.htm`
-- 休学申请表 PDF：
-  - `https://jwc.jnu.edu.cn/_upload/article/files/26/18/5fde309f47a3a4eb7f037a4a720b/1b6a2c01-631c-4162-8915-510adeddc284.pdf`
-- 复学申请表页：
-  - `https://jwc.jnu.edu.cn/2021/0313/c6757a600999/page.htm`
-- 复学申请表 PDF：
-  - `https://jwc.jnu.edu.cn/_upload/article/files/85/ed/532b7c2740ea81fbf5515c8eae02/e9589e0b-b39a-4964-a7bf-cc892fe2082e.pdf`
+口径与误差分析见 `docs/experiments/`。
 
-## 环境
+## 环境与运行
 
-根目录 `.env.local` 需要：
-
-- `OPENAI_API_KEY`
-- `OPENAI_BASE_URL`
-- `OPENAI_MODEL`
-
-前端 `app/frontend/.env.local` 需要：
-
-- `BACKEND_API_BASE=http://127.0.0.1:8000`
-
-可参考 `.env.example`。
-
-## 启动
-
-后端：
+见 `docs/ENVIRONMENT.md`。快速开始：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts\run_backend.ps1
+powershell -ExecutionPolicy Bypass -File scripts\setup_env.ps1
+powershell -ExecutionPolicy Bypass -File scripts\verify_all.ps1
 ```
 
-前端：
+服务启动：`scripts\run_backend.ps1`（后端）与 `scripts\run_frontend.ps1`（前端）。
+接口为 `POST /api/query`，前端默认 `http://127.0.0.1:3000`，
+后端健康检查 `http://127.0.0.1:8000/api/health`。
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\run_frontend.ps1
-```
+## 语料来源
 
-访问：
-
-- 前端 [http://127.0.0.1:3000](http://127.0.0.1:3000)
-- 后端健康检查 [http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health)
-
-## API
-
-`POST /api/query`
-
-请求体：
-
-```json
-{
-  "query": "我是本科生，想打印在学证明，需要去哪里？",
-  "session_id": "optional-session-id"
-}
-```
-
-返回字段包括：
-
-- `item_id`
-- `slots`
-- `action`
-- `follow_up_question`
-- `evidence_cards`
-- `official_links`
-- `flow_skeleton`
-- `assertions`
-- `final_answer`
-
-## 固定演示问题
-
-1. 我是本科生，想打印在学证明，需要去哪里？
-2. 本科生办理休学要怎么做，需要准备什么材料？
-3. 我复学是不是开学第二周前都可以提交申请？
-4. 我想打证明。
+官方页面均以公开链接访问并保存本地副本，见 `data/research/source_records.jsonl`。

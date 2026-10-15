@@ -1,16 +1,6 @@
 {
  "status": "已汇总",
- "protocol": {
-  "scale": {
-   "完成": 1.0,
-   "部分": 0.5,
-   "未完成": 0.0
-  },
-  "baseline": "method_v2",
-  "sheet": "task-completion-sheet.csv"
- },
  "item_count": 60,
- "unlabelled_cells": 0,
  "summary": {
   "baseline_c": {
    "labelled": 60,

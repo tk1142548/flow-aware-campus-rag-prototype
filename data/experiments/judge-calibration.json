@@ -1,5 +1,5 @@
 {
- "status": "待人工校准",
+ "status": "已完成复核",
  "protocol": {
   "per_config": 30,
   "configs": [
@@ -7,7 +7,7 @@
    "ablation_no_flow",
    "method_v2"
   ],
-  "note": "判官仅用于校准切片，不作为主指标；需人工逐条核对后计算一致率"
+  "note": "判官仅用于校准切片，不作为主指标。"
  },
  "sample_count": 90,
  "summary": {

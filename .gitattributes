@@ -17,3 +17,5 @@ data/audit/stage2b-withdrawal-second-review.csv text eol=lf
 # 标注表按原样保存，不做换行转换。
 data/evaluation/task-completion-sheet.csv -text
 data/experiments/judge-calibration.csv -text
+data/evaluation/task-completion-review.csv -text
+data/evaluation/judge-calibration-review.csv -text

@@ -1,0 +1,750 @@
+{
+ "source": "independent-baselines.json",
+ "modes": {
+  "baseline_a": {
+   "sample_count": 120,
+   "overall_success": 0.0,
+   "answer_quality": 0.4506845238095237,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.625
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.21285714285714286
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.44277777777777777
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 0.49749999999999994
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.3416666666666667
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.26222222222222225
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.44333333333333336
+    }
+   },
+   "primary_errors": {
+    "partial_retrieval": 40,
+    "retrieval_miss": 30,
+    "step_coverage_gap": 28,
+    "answer_over_generalization": 18,
+    "material_gap": 3,
+    "answer_omission": 1
+   },
+   "failing_layers": {
+    "retrieval": 70,
+    "process": 31,
+    "generation": 19
+   }
+  },
+  "baseline_b": {
+   "sample_count": 120,
+   "overall_success": 0.0,
+   "answer_quality": 0.6198809523809524,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.7333333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.3226190476190477
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.48944444444444446
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 0.7025
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5522222222222222
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6955555555555556
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6788888888888889
+    }
+   },
+   "primary_errors": {
+    "partial_retrieval": 37,
+    "step_coverage_gap": 29,
+    "answer_over_generalization": 27,
+    "retrieval_miss": 25,
+    "material_gap": 2
+   },
+   "failing_layers": {
+    "retrieval": 62,
+    "process": 31,
+    "generation": 27
+   }
+  },
+  "baseline_c": {
+   "sample_count": 120,
+   "overall_success": 0.008333333333333333,
+   "answer_quality": 0.6053968253968253,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6666666666666667
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.3932142857142858
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5838888888888889
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6858333333333333
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6566666666666667
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.47666666666666674
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5888888888888888
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 37,
+    "answer_over_generalization": 29,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 7,
+    "answer_omission": 3
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 44,
+    "generation": 32
+   }
+  },
+  "ablation_no_flow": {
+   "sample_count": 120,
+   "overall_success": 0.13333333333333333,
+   "answer_quality": 0.5944742063492062,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.5833333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.30559523809523814
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.6283333333333334
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6816666666666666
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.4366666666666666
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.7,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.26666666666666666,
+     "answer_quality": 0.7288888888888889
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6555555555555556
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 40,
+    "answer_over_generalization": 30,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 3,
+    "answer_omission": 3
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 43,
+    "generation": 33
+   }
+  },
+  "ablation_no_verify": {
+   "sample_count": 120,
+   "overall_success": 0.08333333333333333,
+   "answer_quality": 0.6205158730158727,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6916666666666667
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.36226190476190473
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5366666666666667
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6300000000000001
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5233333333333333
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.8,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.7611111111111112
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6511111111111111
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 35,
+    "answer_over_generalization": 32,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 4
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 40,
+    "generation": 36
+   }
+  },
+  "ablation_no_skeleton": {
+   "sample_count": 120,
+   "overall_success": 0.11666666666666667,
+   "answer_quality": 0.6735515873015872,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.7083333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.4504761904761905
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.675
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.765
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.6527777777777779
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.8,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.59
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.7488888888888889
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 38,
+    "step_coverage_gap": 33,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 3,
+    "answer_omission": 2
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "generation": 40,
+    "process": 36
+   }
+  },
+  "ablation_v2_no_verify": {
+   "sample_count": 120,
+   "overall_success": 0.09166666666666666,
+   "answer_quality": 0.5950198412698412,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6583333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.38428571428571434
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5783333333333334
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6458333333333334
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5355555555555556
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.6,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.5433333333333333
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6155555555555556
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 40,
+    "answer_over_generalization": 27,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 4
+   },
+   "failing_layers": {
+    "process": 45,
+    "retrieval": 44,
+    "generation": 31
+   }
+  },
+  "ablation_v2_no_skeleton": {
+   "sample_count": 120,
+   "overall_success": 0.08333333333333333,
+   "answer_quality": 0.5981547619047618,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6583333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.4080952380952382
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5616666666666668
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.0,
+     "answer_quality": 0.6258333333333334
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5355555555555556
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.7,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5533333333333333
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6288888888888889
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 39,
+    "answer_over_generalization": 27,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 5
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 44,
+    "generation": 32
+   }
+  },
+  "ablation_no_version_limit": {
+   "sample_count": 120,
+   "overall_success": 0.09166666666666666,
+   "answer_quality": 0.5932936507936507,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6583333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.3914285714285715
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5616666666666668
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6258333333333334
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5188888888888888
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.7,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5533333333333333
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6288888888888889
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 39,
+    "answer_over_generalization": 27,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 5
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 44,
+    "generation": 32
+   }
+  },
+  "method_v2": {
+   "sample_count": 120,
+   "overall_success": 0.08333333333333333,
+   "answer_quality": 0.595376984126984,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6583333333333333
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.3914285714285715
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5616666666666668
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.6258333333333334
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5355555555555556
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.6,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.5533333333333333
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6288888888888889
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 39,
+    "answer_over_generalization": 27,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 5
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 44,
+    "generation": 32
+   }
+  },
+  "method_v3": {
+   "sample_count": 120,
+   "overall_success": 0.09166666666666666,
+   "answer_quality": 0.668313492063492,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.7416666666666667
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.05,
+     "answer_quality": 0.46071428571428574
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.5805555555555555
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.7391666666666666
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.06666666666666667,
+     "answer_quality": 0.6066666666666667
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.6,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.7311111111111113
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6655555555555556
+    }
+   },
+   "primary_errors": {
+    "answer_over_generalization": 33,
+    "step_coverage_gap": 32,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 6,
+    "answer_omission": 5
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "generation": 38,
+    "process": 38
+   }
+  },
+  "method": {
+   "sample_count": 120,
+   "overall_success": 0.09166666666666666,
+   "answer_quality": 0.6123908730158728,
+   "by_scenario": {
+    "condition_missing": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.6666666666666666
+    },
+    "direct": {
+     "n": 20,
+     "overall_success": 0.0,
+     "answer_quality": 0.34559523809523807
+    },
+    "material_confusion": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6
+    },
+    "multi_turn": {
+     "n": 10,
+     "overall_success": 0.1,
+     "answer_quality": 0.5108333333333335
+    },
+    "object_mismatch": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.49
+    },
+    "out_of_scope": {
+     "n": 10,
+     "overall_success": 0.8,
+     "answer_quality": 1.0
+    },
+    "step_error": {
+     "n": 15,
+     "overall_success": 0.13333333333333333,
+     "answer_quality": 0.7777777777777779
+    },
+    "version_conflict": {
+     "n": 15,
+     "overall_success": 0.0,
+     "answer_quality": 0.6744444444444444
+    }
+   },
+   "primary_errors": {
+    "step_coverage_gap": 35,
+    "answer_over_generalization": 33,
+    "partial_retrieval": 23,
+    "retrieval_miss": 21,
+    "material_gap": 5,
+    "answer_omission": 3
+   },
+   "failing_layers": {
+    "retrieval": 44,
+    "process": 40,
+    "generation": 36
+   }
+  }
+ },
+ "risk_coverage": {
+  "counts": {
+   "直接问答": 20,
+   "信息缺失": 20,
+   "对象错配": 15,
+   "步骤错误": 15,
+   "材料混淆": 15,
+   "越界": 10,
+   "多轮": 10,
+   "版本冲突": 15
+  },
+  "categories_present": [
+   "信息缺失",
+   "多轮",
+   "对象错配",
+   "材料混淆",
+   "步骤错误",
+   "版本冲突",
+   "直接问答",
+   "越界"
+  ],
+  "categories_missing": [
+   "过期入口"
+  ],
+  "note": "过期入口 在现有证据层中没有任何样本：来源可用性（HTTP 410/403、认证跳转）只记录在 source_records，未进入可检索的 evidence 层，因此系统无法在回答中区分有效与失效入口。这是数据层缺口，不是方法缺陷。"
+ }
+}

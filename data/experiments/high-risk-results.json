@@ -20,7 +20,19 @@
   "ablation_no_skeleton": {
    "overall_success": 0.25
   },
+  "ablation_v2_no_verify": {
+   "overall_success": 0.25
+  },
+  "ablation_v2_no_skeleton": {
+   "overall_success": 0.25
+  },
+  "ablation_no_version_limit": {
+   "overall_success": 0.0
+  },
   "method_v2": {
+   "overall_success": 0.25
+  },
+  "method_v3": {
    "overall_success": 0.25
   },
   "method": {
@@ -160,21 +172,21 @@
       "missing_slot_f1": 1.0,
       "follow_up_correct": 1.0,
       "citation_validity": 1.0,
-      "claim_coverage": 0.0,
+      "claim_coverage": 1.0,
       "step_coverage": 1.0,
       "material_coverage": 1.0,
-      "answer_quality": 0.0,
+      "answer_quality": 1.0,
       "overall_success": 0.0
      },
-     "answer_text": "",
+     "answer_text": "教务处集中受理时间为期末第 13 至第 16 周，此时间段内提交，教务处将于 6 个工作日内完成审批。教务处集中受理时间也为学期初第 1 至第 4 周，此时间段内提交，教务处同样于 6 个工作日内完成审批。其他时段提交的申请，审批一般至少需要 12 个工作日以上。",
      "elements": [
       {
        "kind": "claim",
        "id": "CLM_009",
        "text": "教务处集中受理时间为期末第 13 至第 16 周。",
-       "covered": false,
-       "lexical": 0.0,
-       "semantic": 0.0
+       "covered": true,
+       "lexical": 0.9474,
+       "semantic": 0.9532
       }
      ]
     },
@@ -207,6 +219,93 @@
       }
      ]
     },
+    "ablation_v2_no_verify": {
+     "response_mode": "version_qualified",
+     "overall_success": 1.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 1.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 1.0
+     },
+     "answer_text": "无法确认现在是否仍沿用2011年退学申请表上所写的期末第13至第16周作为集中受理时间，因为【证据】中既存在期末第13–16周的说法[UGW062][UGW063]，也存在学期初第1–4周的说法[UGW032][UGW033]，但未说明二者适用条件、时效范围或历史变更情况，也未指明当前执行的是哪一个时间段。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_009",
+       "text": "教务处集中受理时间为期末第 13 至第 16 周。",
+       "covered": true,
+       "lexical": 0.6842,
+       "semantic": 0.8176
+      }
+     ]
+    },
+    "ablation_v2_no_skeleton": {
+     "response_mode": "version_qualified",
+     "overall_success": 1.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 1.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 1.0
+     },
+     "answer_text": "无法确认现在是否仍沿用2011年退学申请表上所写的期末第13至第16周作为集中受理时间，因为【证据】中既存在期末第13–16周的说法[UGW062][UGW063]，也存在学期初第1–4周的说法[UGW032][UGW033]，但未说明二者适用条件、时效范围或历史变更情况，也未指明当前执行的是哪一个时间段。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_009",
+       "text": "教务处集中受理时间为期末第 13 至第 16 周。",
+       "covered": true,
+       "lexical": 0.6842,
+       "semantic": 0.8176
+      }
+     ]
+    },
+    "ablation_no_version_limit": {
+     "response_mode": "scoped_correction",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "无法确认现在是否仍沿用2011年退学申请表上所写的期末第13至第16周作为集中受理时间，因为【证据】中既存在期末第13–16周的说法[UGW062][UGW063]，也存在学期初第1–4周的说法[UGW032][UGW033]，但未说明二者适用条件、时效范围或历史变更情况，也未指明当前执行的是哪一个时间段。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_009",
+       "text": "教务处集中受理时间为期末第 13 至第 16 周。",
+       "covered": true,
+       "lexical": 0.6842,
+       "semantic": 0.8176
+      }
+     ]
+    },
     "method_v2": {
      "response_mode": "version_qualified",
      "overall_success": 1.0,
@@ -236,6 +335,35 @@
       }
      ]
     },
+    "method_v3": {
+     "response_mode": "version_qualified",
+     "overall_success": 1.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 1.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 1.0
+     },
+     "answer_text": "【证据】中存在期末第13至第16周作为教务处集中受理时间的说法。[UGW062][UGW063]\n【证据】中存在学期初第1至第4周作为教务处集中受理时间的说法。[UGW032][UGW033]\n【证据】未说明期末第13–16周与学期初第1–4周这两种集中受理时间段的适用条件。[UGW062][UGW063][UGW032][UGW033]\n【证据】未说明期末第13–16周与学期初第1–4周这两种集中受理时间段的时效范围。[UGW062][UGW063][UGW032][UGW033]\n【证据】未说明期末第13–16周与学期初第1–4周这两种集中受理时间段的历史变更情况。[UGW062][UGW063][UGW032][UGW033]\n【证据】未指明当前执行的是期末第13–16周还是学期初第1–4周作为集中受理时间。[UGW062][UGW063][UGW032][UGW033]",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_009",
+       "text": "教务处集中受理时间为期末第 13 至第 16 周。",
+       "covered": true,
+       "lexical": 0.8421,
+       "semantic": 0.8257
+      }
+     ]
+    },
     "method": {
      "response_mode": "answer",
      "overall_success": 0.0,
@@ -247,21 +375,21 @@
       "missing_slot_f1": 1.0,
       "follow_up_correct": 1.0,
       "citation_validity": 1.0,
-      "claim_coverage": 0.0,
+      "claim_coverage": 1.0,
       "step_coverage": 1.0,
       "material_coverage": 1.0,
-      "answer_quality": 0.0,
+      "answer_quality": 1.0,
       "overall_success": 0.0
      },
-     "answer_text": "",
+     "answer_text": "教务处集中受理时间为期末第 13 至第 16 周，此时间段内提交，教务处将于 6 个工作日内完成审批 [UGW062][UGW063]。教务处集中受理时间为学期初第 1 至第 4 周，此时间段内提交，教务处将于 6 个工作日内完成审批 [UGW032][UGW033]。其他时段提交的申请，审批一般至少需要 12 个工作日以上 [UGW064]。",
      "elements": [
       {
        "kind": "claim",
        "id": "CLM_009",
        "text": "教务处集中受理时间为期末第 13 至第 16 周。",
-       "covered": false,
-       "lexical": 0.0,
-       "semantic": 0.0
+       "covered": true,
+       "lexical": 0.9474,
+       "semantic": 0.9081
       }
      ]
     }
@@ -446,6 +574,93 @@
       }
      ]
     },
+    "ablation_v2_no_verify": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "不是每年4月10日下午5点前。该截止时间仅适用于2026年春季清退工作[UGW095]；其他清退类型（如违纪违规退学）按学期节点执行，如每学期第四周前和第十五周前提交[UGW010]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_021",
+       "text": "学院须在 2026 年 4 月 10 日下午 5 点前报送清退材料。",
+       "covered": true,
+       "lexical": 0.4,
+       "semantic": 0.7446
+      }
+     ]
+    },
+    "ablation_v2_no_skeleton": {
+     "response_mode": "scoped_correction",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "不是每年4月10日下午5点前。该截止时间仅适用于2026年春季清退工作[UGW095]；其他清退类型（如违纪违规退学）按学期节点执行，如每学期第四周前和第十五周前提交[UGW010]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_021",
+       "text": "学院须在 2026 年 4 月 10 日下午 5 点前报送清退材料。",
+       "covered": true,
+       "lexical": 0.4,
+       "semantic": 0.7446
+      }
+     ]
+    },
+    "ablation_no_version_limit": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "不是每年4月10日下午5点前。该截止时间仅适用于2026年春季清退工作[UGW095]；其他清退类型（如违纪违规退学）按学期节点执行，如每学期第四周前和第十五周前提交[UGW010]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_021",
+       "text": "学院须在 2026 年 4 月 10 日下午 5 点前报送清退材料。",
+       "covered": true,
+       "lexical": 0.4,
+       "semantic": 0.7446
+      }
+     ]
+    },
     "method_v2": {
      "response_mode": "answer",
      "overall_success": 0.0,
@@ -472,6 +687,35 @@
        "covered": true,
        "lexical": 0.4,
        "semantic": 0.7446
+      }
+     ]
+    },
+    "method_v3": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "2026年春季清退工作的材料报送截止时间为2026年4月10日下午5点前。[UGW095]\n2026年4月10日下午5点前这一截止时间仅适用于2026年春季清退工作。[UGW095]\n违纪违规退学处理材料须在每学期第四周前和第十五周前提交。[UGW010]",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_021",
+       "text": "学院须在 2026 年 4 月 10 日下午 5 点前报送清退材料。",
+       "covered": true,
+       "lexical": 0.68,
+       "semantic": 0.8816
       }
      ]
     },
@@ -685,6 +929,93 @@
       }
      ]
     },
+    "ablation_v2_no_verify": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，学生证补办仍需前往石牌校区行政办公楼827扫码缴纳3元工本费，该入口当前仍有效 [UGT006]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_006",
+       "text": "学生持新证到石牌校区行政办公楼827扫码缴纳3元工本费。",
+       "covered": true,
+       "lexical": 0.7778,
+       "semantic": 0.897
+      }
+     ]
+    },
+    "ablation_v2_no_skeleton": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，学生证补办仍需前往石牌校区行政办公楼827扫码缴纳3元工本费 [UGT006]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_006",
+       "text": "学生持新证到石牌校区行政办公楼827扫码缴纳3元工本费。",
+       "covered": true,
+       "lexical": 0.7778,
+       "semantic": 0.8841
+      }
+     ]
+    },
+    "ablation_no_version_limit": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，学生证补办仍需前往石牌校区行政办公楼827扫码缴纳3元工本费 [UGT006]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_006",
+       "text": "学生持新证到石牌校区行政办公楼827扫码缴纳3元工本费。",
+       "covered": true,
+       "lexical": 0.7778,
+       "semantic": 0.8841
+      }
+     ]
+    },
     "method_v2": {
      "response_mode": "answer",
      "overall_success": 0.0,
@@ -711,6 +1042,35 @@
        "covered": true,
        "lexical": 0.7778,
        "semantic": 0.8841
+      }
+     ]
+    },
+    "method_v3": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "学生证补办需前往石牌校区行政办公楼827扫码缴纳3元工本费。[UGT006]",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_006",
+       "text": "学生持新证到石牌校区行政办公楼827扫码缴纳3元工本费。",
+       "covered": true,
+       "lexical": 0.7778,
+       "semantic": 0.8707
       }
      ]
     },
@@ -877,21 +1237,21 @@
       "missing_slot_f1": 1.0,
       "follow_up_correct": 1.0,
       "citation_validity": 1.0,
-      "claim_coverage": 0.0,
+      "claim_coverage": 1.0,
       "step_coverage": 1.0,
       "material_coverage": 1.0,
-      "answer_quality": 0.0,
+      "answer_quality": 1.0,
       "overall_success": 0.0
      },
-     "answer_text": "",
+     "answer_text": "本科学生主动申请退学，应先将书面申请交至学院教务秘书处。学院教务秘书负责指导申请人填写《暨南大学本科学生退学申请表》。学院审批后，将申请交教务处学籍科；同时，学院教科办也统一将申请交至教务处。教务处审核并报校长办公会批准，之后发文并将退学通知发放到学院教科办。申请人最终到学院教科办领取退学通知并办理离校手续。",
      "elements": [
       {
        "kind": "claim",
        "id": "CLM_002",
        "text": "主动申请退学者先将书面申请交学院教务秘书处。",
-       "covered": false,
-       "lexical": 0.0,
-       "semantic": 0.0
+       "covered": true,
+       "lexical": 0.8,
+       "semantic": 0.8943
       }
      ]
     },
@@ -906,21 +1266,108 @@
       "missing_slot_f1": 1.0,
       "follow_up_correct": 1.0,
       "citation_validity": 1.0,
-      "claim_coverage": 0.0,
+      "claim_coverage": 1.0,
       "step_coverage": 1.0,
       "material_coverage": 1.0,
-      "answer_quality": 0.0,
+      "answer_quality": 1.0,
       "overall_success": 0.0
      },
-     "answer_text": "",
+     "answer_text": "主动申请退学的本科学生，应先将书面申请交至学院教务秘书处[UGW003][UGW002]。学院教务秘书负责指导申请人填写《暨南大学本科学生退学申请表》[UGW004]。申请人填写申请表后，交所在院系审核并签署意见，再交至学院教科办，由教科办统一将申请交至教务处[UGW057][UGW027]。教务处审核后，将退学通知发放到学院教科办，申请人到教科办领取通知并办理离校手续[UGW029]。2019年流程页的主动申请分支明确适用于申请退学的本科学生，且其起始步骤为向学院教务秘书处提交书面申请[UGW002]。",
      "elements": [
       {
        "kind": "claim",
        "id": "CLM_002",
        "text": "主动申请退学者先将书面申请交学院教务秘书处。",
-       "covered": false,
-       "lexical": 0.0,
-       "semantic": 0.0
+       "covered": true,
+       "lexical": 0.8,
+       "semantic": 0.8206
+      }
+     ]
+    },
+    "ablation_v2_no_verify": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，退学仍需先把书面申请交给学院教务秘书处，由其指导填写《暨南大学本科学生退学申请表》[UGW003][UGW002][UGW004]；2019年流程页的主动申请分支正是针对本科学生退学，其第一步即为此要求[UGW002]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_002",
+       "text": "主动申请退学者先将书面申请交学院教务秘书处。",
+       "covered": true,
+       "lexical": 0.55,
+       "semantic": 0.7638
+      }
+     ]
+    },
+    "ablation_v2_no_skeleton": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，退学需先把书面申请交给学院教务秘书处，由其指导填写《暨南大学本科学生退学申请表》[UGW003][UGW002][UGW004]；2019年流程页的主动申请分支适用于申请退学的本科学生[UGW002]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_002",
+       "text": "主动申请退学者先将书面申请交学院教务秘书处。",
+       "covered": true,
+       "lexical": 0.55,
+       "semantic": 0.7709
+      }
+     ]
+    },
+    "ablation_no_version_limit": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "是的，退学需先把书面申请交给学院教务秘书处，由其指导填写《暨南大学本科学生退学申请表》[UGW003][UGW002][UGW004]；2019年流程页的主动申请分支适用于申请退学的本科学生[UGW002]。",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_002",
+       "text": "主动申请退学者先将书面申请交学院教务秘书处。",
+       "covered": true,
+       "lexical": 0.55,
+       "semantic": 0.7709
       }
      ]
     },
@@ -953,6 +1400,35 @@
       }
      ]
     },
+    "method_v3": {
+     "response_mode": "answer",
+     "overall_success": 0.0,
+     "metrics": {
+      "item_correct": 1.0,
+      "response_mode_accuracy": 0.0,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.125,
+      "missing_slot_f1": 1.0,
+      "follow_up_correct": 1.0,
+      "citation_validity": 1.0,
+      "claim_coverage": 1.0,
+      "step_coverage": 1.0,
+      "material_coverage": 1.0,
+      "answer_quality": 1.0,
+      "overall_success": 0.0
+     },
+     "answer_text": "退学需先把书面申请交给学院教务秘书处。[UGW003][UGW002][UGW004]\n学院教务秘书处指导主动申请退学者填写《暨南大学本科学生退学申请表》。[UGW003][UGW002][UGW004]\n2019年流程页的主动申请分支适用于申请退学的本科学生。[UGW002]",
+     "elements": [
+      {
+       "kind": "claim",
+       "id": "CLM_002",
+       "text": "主动申请退学者先将书面申请交学院教务秘书处。",
+       "covered": true,
+       "lexical": 0.6,
+       "semantic": 0.8478
+      }
+     ]
+    },
     "method": {
      "response_mode": "answer",
      "overall_success": 0.0,
@@ -964,21 +1440,21 @@
       "missing_slot_f1": 1.0,
       "follow_up_correct": 1.0,
       "citation_validity": 1.0,
-      "claim_coverage": 0.0,
+      "claim_coverage": 1.0,
       "step_coverage": 1.0,
       "material_coverage": 1.0,
-      "answer_quality": 0.0,
+      "answer_quality": 1.0,
       "overall_success": 0.0
      },
-     "answer_text": "",
+     "answer_text": "本科学生主动申请退学，应先将书面申请交至学院教务秘书处[UGW003][UGW002][UGW004]。学院教务秘书负责指导申请人填写《暨南大学本科学生退学申请表》[UGW003][UGW002][UGW004]。学院审批后，将申请交教务处学籍科[UGW008]；同时，学院教科办也统一将申请交至教务处[UGW057][UGW027]。教务处审核并报校长办公会批准，之后发文并将退学通知发放到学院教科办[UGW012][UGW029]。申请人最终到学院教科办领取退学通知并办理离校手续[UGW057][UGW027][UGW029]。",
      "elements": [
       {
        "kind": "claim",
        "id": "CLM_002",
        "text": "主动申请退学者先将书面申请交学院教务秘书处。",
-       "covered": false,
-       "lexical": 0.0,
-       "semantic": 0.0
+       "covered": true,
+       "lexical": 0.8,
+       "semantic": 0.8381
       }
      ]
     }

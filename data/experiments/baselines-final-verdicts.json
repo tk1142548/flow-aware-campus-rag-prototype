@@ -1,0 +1,489 @@
+{
+ "input": "baselines-final.json",
+ "dataset": "开发集",
+ "sample_count": 200,
+ "failures": 0,
+ "empty_answers": {
+  "baseline_a": 0,
+  "baseline_b": 0,
+  "baseline_c": 0,
+  "ablation_no_flow": 0,
+  "ablation_no_verify": 0,
+  "ablation_no_skeleton": 1,
+  "ablation_v2_no_verify": 0,
+  "ablation_v2_no_skeleton": 0,
+  "ablation_no_version_limit": 0,
+  "method_v2": 0,
+  "method_v3": 0,
+  "method": 0
+ },
+ "alpha": 0.05,
+ "primary": [
+  {
+   "label": "H3 交互控制",
+   "left": "baseline_c",
+   "right": "ablation_no_flow",
+   "metric": "response_mode_accuracy",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": 0.495,
+   "wins": 105,
+   "losses": 6,
+   "ties": 89,
+   "sample_bootstrap_ci95": [
+    0.415,
+    0.57
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.44,
+    0.54
+   ],
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.00039996000399960006
+  },
+  {
+   "label": "H1 流程中间表示",
+   "left": "ablation_v2_no_skeleton",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": -0.045,
+   "wins": 1,
+   "losses": 10,
+   "ties": 189,
+   "sample_bootstrap_ci95": [
+    -0.08,
+    -0.015
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.085,
+    -0.01
+   ],
+   "paired_sign_flip_p": 0.0108989101089891,
+   "item_cluster_sign_flip_p": 0.125,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.0217978202179782
+  },
+  {
+   "label": "H2 断言核验（强形态）",
+   "left": "ablation_v2_no_verify",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": -0.005,
+   "wins": 7,
+   "losses": 8,
+   "ties": 185,
+   "sample_bootstrap_ci95": [
+    -0.045,
+    0.035
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.03,
+    0.02
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 1.0
+  },
+  {
+   "label": "版本限定",
+   "left": "ablation_no_version_limit",
+   "right": "method_v2",
+   "metric": "response_mode_accuracy",
+   "subset": "version_conflict",
+   "direction": "up",
+   "pair_count": 24,
+   "item_cluster_count": 8,
+   "mean_difference": 0.8333333333333334,
+   "wins": 20,
+   "losses": 0,
+   "ties": 4,
+   "sample_bootstrap_ci95": [
+    0.6666666666666666,
+    0.9583333333333334
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.6666666666666666,
+    0.9583333333333334
+   ],
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.00039996000399960006
+  }
+ ],
+ "supporting": [
+  {
+   "label": "本方法 vs 基线C 整体成功率",
+   "left": "baseline_c",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": 0.195,
+   "wins": 40,
+   "losses": 1,
+   "ties": 159,
+   "sample_bootstrap_ci95": [
+    0.14,
+    0.255
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.14,
+    0.245
+   ],
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "本方法 vs 基线C 应答方式",
+   "left": "baseline_c",
+   "right": "method_v2",
+   "metric": "response_mode_accuracy",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": 0.445,
+   "wins": 92,
+   "losses": 3,
+   "ties": 105,
+   "sample_bootstrap_ci95": [
+    0.37,
+    0.515
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.395,
+    0.49
+   ],
+   "paired_sign_flip_p": 9.999000099990002e-05,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "本方法 vs 无骨架对照 整体成功率",
+   "left": "ablation_no_flow",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": -0.025,
+   "wins": 12,
+   "losses": 17,
+   "ties": 171,
+   "sample_bootstrap_ci95": [
+    -0.075,
+    0.03
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.1,
+    0.035
+   ],
+   "paired_sign_flip_p": 0.45425457454254575,
+   "item_cluster_sign_flip_p": 0.6875,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "强核验 vs 弱核验 整体成功率",
+   "left": "method_v2",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": 0.0,
+   "wins": 7,
+   "losses": 7,
+   "ties": 186,
+   "sample_bootstrap_ci95": [
+    -0.035,
+    0.035
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.03,
+    0.025
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "强核验 vs 无核验 整体成功率",
+   "left": "ablation_v2_no_verify",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": -0.005,
+   "wins": 7,
+   "losses": 8,
+   "ties": 185,
+   "sample_bootstrap_ci95": [
+    -0.045,
+    0.035
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.03,
+    0.02
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "原设计 vs 骨架驱动决策 整体成功率",
+   "left": "method",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 200,
+   "item_cluster_count": 8,
+   "mean_difference": 0.04,
+   "wins": 22,
+   "losses": 14,
+   "ties": 164,
+   "sample_bootstrap_ci95": [
+    -0.02,
+    0.1
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.03,
+    0.105
+   ],
+   "paired_sign_flip_p": 0.24917508249175083,
+   "item_cluster_sign_flip_p": 0.3828125,
+   "repetitions": 10000,
+   "seed": 0
+  }
+ ],
+ "summary": {
+  "baseline_a": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.4415811688311689,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.47766666666666674,
+    "evidence_precision": 0.22,
+    "evidence_recall": 0.7654166666666667,
+    "follow_up_correct": 0.84,
+    "item_correct": 0.855,
+    "material_coverage": 0.9125,
+    "missing_slot_f1": 0.84,
+    "overall_success": 0.11,
+    "response_mode_accuracy": 0.28,
+    "step_coverage": 0.6529166666666666
+   }
+  },
+  "baseline_b": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7606506132756132,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8225,
+    "evidence_precision": 0.25800000000000006,
+    "evidence_recall": 0.8609166666666667,
+    "follow_up_correct": 0.84,
+    "item_correct": 0.89,
+    "material_coverage": 0.9625,
+    "missing_slot_f1": 0.84,
+    "overall_success": 0.165,
+    "response_mode_accuracy": 0.28,
+    "step_coverage": 0.8020833333333333
+   }
+  },
+  "baseline_c": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7799579725829726,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8266666666666667,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.84,
+    "item_correct": 0.89,
+    "material_coverage": 0.965,
+    "missing_slot_f1": 0.84,
+    "overall_success": 0.18,
+    "response_mode_accuracy": 0.28,
+    "step_coverage": 0.8269166666666666
+   }
+  },
+  "ablation_no_flow": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7438472222222222,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7986666666666666,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.99,
+    "item_correct": 0.89,
+    "material_coverage": 0.955,
+    "missing_slot_f1": 0.9116666666666666,
+    "overall_success": 0.4,
+    "response_mode_accuracy": 0.775,
+    "step_coverage": 0.7879166666666666
+   }
+  },
+  "ablation_no_verify": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7820312049062049,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8371666666666668,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.9625,
+    "missing_slot_f1": 0.9066666666666666,
+    "overall_success": 0.34,
+    "response_mode_accuracy": 0.71,
+    "step_coverage": 0.8231666666666666
+   }
+  },
+  "ablation_no_skeleton": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.8030214646464647,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8533333333333334,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.9725,
+    "missing_slot_f1": 0.8966666666666666,
+    "overall_success": 0.41,
+    "response_mode_accuracy": 0.745,
+    "step_coverage": 0.823
+   }
+  },
+  "ablation_v2_no_verify": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7809698773448774,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8391666666666666,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.96,
+    "missing_slot_f1": 0.9266666666666667,
+    "overall_success": 0.38,
+    "response_mode_accuracy": 0.725,
+    "step_coverage": 0.8119166666666666
+   }
+  },
+  "ablation_v2_no_skeleton": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7727198773448773,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8258333333333333,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.99,
+    "item_correct": 0.89,
+    "material_coverage": 0.9575,
+    "missing_slot_f1": 0.93,
+    "overall_success": 0.42,
+    "response_mode_accuracy": 0.78,
+    "step_coverage": 0.8169166666666666
+   }
+  },
+  "ablation_no_version_limit": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7752198773448774,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8258333333333333,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.985,
+    "item_correct": 0.89,
+    "material_coverage": 0.9575,
+    "missing_slot_f1": 0.9233333333333335,
+    "overall_success": 0.33,
+    "response_mode_accuracy": 0.63,
+    "step_coverage": 0.8219166666666666
+   }
+  },
+  "method_v2": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7752198773448774,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8258333333333333,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.9575,
+    "missing_slot_f1": 0.9266666666666667,
+    "overall_success": 0.375,
+    "response_mode_accuracy": 0.725,
+    "step_coverage": 0.8219166666666666
+   }
+  },
+  "method_v3": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7659990981240982,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.818,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.965,
+    "missing_slot_f1": 0.9266666666666667,
+    "overall_success": 0.375,
+    "response_mode_accuracy": 0.725,
+    "step_coverage": 0.81175
+   }
+  },
+  "method": {
+   "sample_count": 200,
+   "metrics": {
+    "answer_quality": 0.7846383477633476,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.8413333333333334,
+    "evidence_precision": 0.17625,
+    "evidence_recall": 0.9191666666666667,
+    "follow_up_correct": 0.98,
+    "item_correct": 0.89,
+    "material_coverage": 0.9675,
+    "missing_slot_f1": 0.9066666666666666,
+    "overall_success": 0.335,
+    "response_mode_accuracy": 0.71,
+    "step_coverage": 0.8177500000000001
+   }
+  }
+ }
+}

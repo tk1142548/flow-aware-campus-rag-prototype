@@ -33,17 +33,21 @@ def question_of(sample: dict) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--size", type=int, default=60)
+    parser.add_argument("--results", type=Path,
+                        default=ROOT / "data/experiments/baselines-final.json",
+                        help="configuration results to draw answers from")
+    parser.add_argument("--samples", type=Path,
+                        default=ROOT / "data/evaluation/stage2_samples.jsonl")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "data/evaluation/task-completion-sheet.csv")
     args = parser.parse_args()
 
     repository = ResearchRepository(ROOT)
-    results = json.loads(
-        (ROOT / "data/experiments/baselines-final.json").read_text(encoding="utf-8"))
+    results = json.loads(args.results.read_text(encoding="utf-8"))
     samples = {row["sample_id"]: row for row in
                (json.loads(line) for line in
-                (ROOT / "data/evaluation/stage2_samples.jsonl")
-                .read_text(encoding="utf-8").splitlines() if line)}
+                args.samples.read_text(encoding="utf-8").splitlines() if line)}
+    print(f"结果：{args.results.name}（{results.get('dataset')}）　样本：{args.samples.name}")
 
     # Stratify by scenario so no single risk category dominates the sheet.
     buckets: dict[str, list[str]] = defaultdict(list)

@@ -134,7 +134,7 @@ def baseline_c(client: Any, question: str, evidence: Sequence[dict]) -> Predicti
     data = _json_or_empty(client, BASELINE_C_SYSTEM,
                           BASELINE_C_USER.format(evidence=evidence_block(evidence),
                                                  question=question))
-    answer = str(data.get("answer") or "")
+    answer = answer_of(data)
     allowed = {row["evidence_id"] for row in evidence}
     return Prediction(
         answer_text=answer,
@@ -153,17 +153,44 @@ METHOD_SYSTEM = (
       "回答必须按「适用对象—办理步骤—所需材料—时间要求—办理入口」组织。"
 )
 
-MODE_GUIDE = """先判定响应方式，再作答（response_mode 必填）：
-- answer：条件完整，且提问的前提与证据的适用范围一致。
-- scoped_correction：提问中的对象、步骤或材料前提与证据的适用范围不符（例如把研究生当成本科生、
-  按已不适用的步骤办理、把两种材料各自的适用条件混在一起），必须先明确指出哪一部分不适用，
-  再给出适用于正确对象或条件的回答。
-- clarification：问题缺少会改变答案的关键条件（对象、学历层次、学籍状态、时间等），必须先问清楚。
-- version_qualified：证据中同一事项存在不同版本且互相矛盾，或问题涉及未经正式文件确认的新版本；
-  此时说明依据的是哪个来源版本，并明确未获证据确认的部分不能当事实。
-- conversation_resolution：多轮对话，需先合并前一轮遗留的条件或指代，再作答。
-- abstention：证据中没有任何内容能回答该问题。
-不要为了回避而滥用 clarification 或 abstention；也不要把前提不符当成 answer 直接作答。"""
+MODE_GUIDE_INTRO = "先判定响应方式，再作答（response_mode 必填）："
+MODE_GUIDE_BULLETS = (
+    ("answer", "answer：条件完整，且提问的前提与证据的适用范围一致。"),
+    ("scoped_correction",
+     "scoped_correction：提问中的对象、步骤或材料前提与证据的适用范围不符（例如把研究生当成本科生、\n"
+     "  按已不适用的步骤办理、把两种材料各自的适用条件混在一起），必须先明确指出哪一部分不适用，\n"
+     "  再给出适用于正确对象或条件的回答。"),
+    ("clarification",
+     "clarification：问题缺少会改变答案的关键条件（对象、学历层次、学籍状态、时间等），必须先问清楚。"),
+    ("version_qualified",
+     "version_qualified：证据中同一事项存在不同版本且互相矛盾，或问题涉及未经正式文件确认的新版本；\n"
+     "  此时说明依据的是哪个来源版本，并明确未获证据确认的部分不能当事实。"),
+    ("conversation_resolution",
+     "conversation_resolution：多轮对话，需先合并前一轮遗留的条件或指代，再作答。"),
+    ("abstention", "abstention：证据中没有任何内容能回答该问题。"),
+)
+MODE_GUIDE_FOOTER = "不要为了回避而滥用 clarification 或 abstention；也不要把前提不符当成 answer 直接作答。"
+
+ALL_MODE_NAMES = tuple(key for key, _ in MODE_GUIDE_BULLETS)
+MODE_OPTIONS = " | ".join(ALL_MODE_NAMES)
+
+
+def build_mode_guide(drop: tuple[str, ...] = ()) -> tuple[str, str]:
+    """Compose the response-mode guide and its option list.
+
+    ``drop`` removes whole response modes, which is how the registered ablations
+    ("without version qualification") switch a single component off while every
+    other prompt stays identical.
+    """
+    bullets = [text for key, text in MODE_GUIDE_BULLETS if key not in drop]
+    names = [key for key, _ in MODE_GUIDE_BULLETS if key not in drop]
+    footer = MODE_GUIDE_FOOTER
+    if {"clarification", "abstention"} <= set(drop):
+        footer = "不要把前提不符当成 answer 直接作答。"
+    return "\n".join([MODE_GUIDE_INTRO, *(f"- {text}" for text in bullets), footer]), " | ".join(names)
+
+
+MODE_GUIDE, MODE_OPTIONS_DEFAULT = build_mode_guide()
 
 METHOD_USER = """【流程骨架】
 {skeleton}
@@ -207,25 +234,27 @@ KNOWN_MODES = {"answer", "scoped_correction", "clarification", "version_qualifie
                "conversation_resolution", "abstention"}
 
 
+def _skeleton_text(skeleton: Any) -> str:
+    """Render the extracted skeleton for a prompt; ``None`` means it is withheld."""
+    if skeleton is None:
+        return "（本次未使用流程骨架）"
+    return "\n".join(
+        f"- {kind}: " + "; ".join(
+            (element.get("text") or "") + f" {element.get('evidence_ids') or []}"
+            for element in skeleton.get(kind, [])
+        )
+        for kind in ("steps", "conditions", "materials", "time_constraints", "entries")
+    ) or "（未抽取到要素）"
+
+
 def _method_pass(client: Any, question: str, evidence: Sequence[dict], skeleton: Any,
                  *, verify: bool) -> Prediction:
     allowed = {row["evidence_id"] for row in evidence}
-    if skeleton is None:
-        skeleton_text = "（本次未使用流程骨架）"
-    else:
-        skeleton_text = "\n".join(
-            f"- {kind}: " + "; ".join(
-                (element.get("text") or "") + f" {element.get('evidence_ids') or []}"
-                for element in skeleton.get(kind, [])
-            )
-            for kind in ("steps", "conditions", "materials", "time_constraints", "entries")
-        ) or "（未抽取到要素）"
-
     data = _json_or_empty(client, METHOD_SYSTEM, METHOD_USER.format(
-        skeleton=skeleton_text, evidence=evidence_block(evidence), question=question,
-        mode_guide=MODE_GUIDE), 2000)
+        skeleton=_skeleton_text(skeleton), evidence=evidence_block(evidence),
+        question=question, mode_guide=MODE_GUIDE), 2000)
 
-    draft = str(data.get("answer") or "")
+    draft = answer_of(data)
     mode = str(data.get("response_mode") or "answer")
     mode = mode if mode in KNOWN_MODES else "answer"
     missing = [str(m) for m in (data.get("missing_conditions") or []) if str(m).strip()]
@@ -284,10 +313,22 @@ MODE_ONLY_USER = """【流程骨架】
 
 只做判定，不写回答。输出 JSON：
 {{
-  "response_mode": "answer | scoped_correction | clarification | version_qualified | conversation_resolution | abstention",
+  "response_mode": "{mode_options}",
   "missing_conditions": ["问题中没有交代、但会改变答案的关键条件"],
   "follow_up_question": "需要追问时的问题；否则 null"
 }}"""
+
+
+def _skeleton_text(skeleton: Any) -> str:
+    if skeleton is None:
+        return "（本次未使用流程骨架）"
+    return "\n".join(
+        f"- {kind}: " + "; ".join(
+            (element.get("text") or "") + f" {element.get('evidence_ids') or []}"
+            for element in skeleton.get(kind, [])
+        )
+        for kind in ("steps", "conditions", "materials", "time_constraints", "entries")
+    ) or "（未抽取到要素）"
 
 
 def method_v2(client: Any, question: str, evidence: Sequence[dict], skeleton: dict) -> Prediction:
@@ -298,34 +339,167 @@ def method_v2(client: Any, question: str, evidence: Sequence[dict], skeleton: di
     is then generated in the same two-step style every other configuration uses,
     without the skeleton in the prompt.
     """
+    return _v2_pass(client, question, evidence, skeleton, verify="weak")
+
+
+def ablation_no_verify(client: Any, question: str, evidence: Sequence[dict],
+                       skeleton: dict) -> Prediction:
+    """Original method design minus assertion verification: isolates H2 there."""
+    return _method_pass(client, question, evidence, skeleton, verify=False)
+
+
+# ------------------------------------------- claim-level (strong form) verification
+
+CLAIM_VERIFY_SYSTEM = (
+    "你是断言级核验员。把【草稿回答】拆成互不重叠的原子断言，逐条判定它是否被【证据】直接支持。"
+    "判定只看证据中是否有文字能直接支撑该断言，不使用你自己的常识补充。"
+)
+
+CLAIM_VERIFY_USER = """【证据】
+{evidence}
+
+【草稿回答】
+{draft}
+
+输出 JSON：
+{{"claims": [
+  {{"text": "原子断言的原文",
+    "verdict": "supported | partial | unsupported",
+    "evidence_ids": ["直接支撑该断言的证据编号"]}}
+]}}
+
+要求：
+- 把草稿拆成原子断言，一条只讲一件事；合并重复的表述。
+- verdict=supported 仅当证据中有文字能直接支撑它；只是常识上说得通、或需要从证据外推的，判 partial 或 unsupported。
+- 每条 supported 的断言必须给出至少一个证据编号；给不出证据编号的按 unsupported 处理。
+- 不要新增草稿中不存在的内容，也不要改写断言的意思。"""
+
+CITATION_PATTERN = re.compile(r"\[(UG[A-Z]+\d+)\]")
+SENTENCE_END = ("。", "；", "！", "？", ".", ";", "!", "?")
+
+# Emitted when the assertion check runs and finds nothing it can stand behind.
+NO_SUPPORTED_CLAIM_NOTE = "（核验后没有留下可由证据直接支持的断言。）"
+
+
+def _join_points(points: Any) -> str:
+    """Render a reply's `key_points` back into prose, in order."""
+    if not isinstance(points, list):
+        return ""
+    parts: list[str] = []
+    for point in points:
+        text = (str(point.get("text") or "") if isinstance(point, dict)
+                else str(point or "")).strip()
+        if not text:
+            continue
+        parts.append(text if text.endswith(SENTENCE_END) else text + "。")
+    return "".join(parts)
+
+
+def answer_of(data: dict) -> str:
+    """Read the answer out of a structured reply, tolerating one model habit.
+
+    The prompts ask for both `key_points` (the close reading) and `answer` (the
+    prose built from them). Models occasionally fill `key_points` with answer
+    prose and omit `answer` altogether; the reply is then complete and valid but
+    the answer field is empty. Reading only `answer` turns that into an empty
+    response, which the runner has to treat as a failure — a formatting slip
+    becomes a missing answer and silently depresses the configuration's score.
+    The content is present, so it is read from `key_points` instead.
+
+    This applies to every configuration, so it cannot advantage one of them.
+    """
+    answer = str(data.get("answer") or "").strip()
+    return answer or _join_points(data.get("key_points"))
+
+
+def _rebuild_from_claims(claims: Sequence[Any], allowed: set[str]) -> str:
+    """Keep only assertions the retrieved evidence supports, in their original order.
+
+    Recomposition is deterministic: the model is never asked to rewrite the answer,
+    so a dropped assertion cannot reappear in a paraphrase. Every surviving
+    assertion carries the evidence ids that were checked against it.
+    """
+    lines: list[str] = []
+    for claim in claims:
+        if not isinstance(claim, dict):
+            continue
+        if str(claim.get("verdict") or "").strip() != "supported":
+            continue
+        body = CITATION_PATTERN.sub("", str(claim.get("text") or "")).strip()
+        if not body:
+            continue
+        ids: list[str] = []
+        for identity in claim.get("evidence_ids") or []:
+            identity = str(identity)
+            if identity in allowed and identity not in ids:
+                ids.append(identity)
+        if not ids:
+            continue
+        closing = "" if body.endswith(SENTENCE_END) else "。"
+        lines.append(body + closing + "".join(f"[{i}]" for i in ids))
+    return "\n".join(lines)
+
+
+def verify_claims(client: Any, evidence: Sequence[dict], draft: str) -> str:
+    """Strong form of assertion verification.
+
+    Returns the rebuilt answer. Falls back to the draft only when the check could
+    not be run at all (unparsable reply, or no assertions reported), never when it
+    ran and found claims unsupported.
+
+    When the check runs and no assertion survives, the reply says so instead of
+    being empty: an empty answer is indistinguishable from a failed call, and the
+    runner would record a deliberate result as an outage.
+    """
     allowed = {row["evidence_id"] for row in evidence}
-    skeleton_text = "\n".join(
-        f"- {kind}: " + "; ".join(
-            (element.get("text") or "") + f" {element.get('evidence_ids') or []}"
-            for element in skeleton.get(kind, [])
-        )
-        for kind in ("steps", "conditions", "materials", "time_constraints", "entries")
-    ) or "（未抽取到要素）"
+    data = _json_or_empty(client, CLAIM_VERIFY_SYSTEM, CLAIM_VERIFY_USER.format(
+        evidence=evidence_block(evidence), draft=draft), 2000)
+    claims = data.get("claims")
+    if not isinstance(claims, list) or not claims:
+        return draft
+    return _rebuild_from_claims(claims, allowed) or NO_SUPPORTED_CLAIM_NOTE
+
+
+def _v2_pass(client: Any, question: str, evidence: Sequence[dict], skeleton: Any,
+             *, verify: str | None, drop_modes: tuple[str, ...] = ()) -> Prediction:
+    """The v2 design with a switchable verification stage.
+
+    ``verify`` is ``None`` (no verification), ``"weak"`` (the model deletes
+    unsupported sentences) or ``"strong"`` (assertions are checked one by one and
+    the answer is rebuilt deterministically from those that passed). Holding the
+    decision, retrieval and generation prompts fixed while varying only this
+    switch is what makes the verification contrast interpretable.
+
+    ``drop_modes`` removes whole response modes from the interaction guide, which
+    is how "without version qualification" is switched off while everything else
+    in the prompt stays byte-identical.
+    """
+    allowed = {row["evidence_id"] for row in evidence}
+    skeleton_text = _skeleton_text(skeleton)
+    mode_guide, mode_options = build_mode_guide(drop_modes)
 
     decision = _json_or_empty(client, MODE_ONLY_SYSTEM, MODE_ONLY_USER.format(
         skeleton=skeleton_text, evidence=evidence_block(evidence), question=question,
-        mode_guide=MODE_GUIDE), 800)
+        mode_guide=mode_guide, mode_options=mode_options), 800)
     mode = str(decision.get("response_mode") or "answer")
-    mode = mode if mode in KNOWN_MODES else "answer"
+    mode = mode if mode in KNOWN_MODES and mode not in drop_modes else "answer"
     missing = [str(m) for m in (decision.get("missing_conditions") or []) if str(m).strip()]
     follow_up = decision.get("follow_up_question")
     follow_up = str(follow_up) if follow_up else None
 
     data = _json_or_empty(client, BASELINE_C_SYSTEM, BASELINE_C_USER.format(
         evidence=evidence_block(evidence), question=question), 2000)
-    draft = str(data.get("answer") or "")
+    draft = answer_of(data)
     final = draft
-    if draft and mode in {"answer", "scoped_correction", "version_qualified"}:
+    verifiable = draft and mode in {"answer", "scoped_correction", "version_qualified"}
+    if verifiable and verify == "weak":
         verified = _json_or_empty(client, VERIFY_SYSTEM, VERIFY_USER.format(
             evidence=evidence_block(evidence), draft=draft), 1600)
         candidate = str(verified.get("final_answer") or "").strip()
         if candidate:
             final = candidate
+    elif verifiable and verify == "strong":
+        final = verify_claims(client, evidence, draft)
 
     prefix = f"{follow_up}\n" if follow_up else ""
     return Prediction(
@@ -339,10 +513,31 @@ def method_v2(client: Any, question: str, evidence: Sequence[dict], skeleton: di
     )
 
 
-def ablation_no_verify(client: Any, question: str, evidence: Sequence[dict],
-                       skeleton: dict) -> Prediction:
-    """Method minus assertion verification: isolates H2."""
-    return _method_pass(client, question, evidence, skeleton, verify=False)
+def method_v3(client: Any, question: str, evidence: Sequence[dict], skeleton: dict) -> Prediction:
+    """v2 design with the strong form of assertion verification."""
+    return _v2_pass(client, question, evidence, skeleton, verify="strong")
+
+
+def ablation_v2_no_verify(client: Any, question: str, evidence: Sequence[dict],
+                          skeleton: dict) -> Prediction:
+    """v2 design minus verification: the clean floor for the H2 contrast."""
+    return _v2_pass(client, question, evidence, skeleton, verify=None)
+
+
+def ablation_v2_no_skeleton(client: Any, question: str, evidence: Sequence[dict]) -> Prediction:
+    """v2 design minus the skeleton: the clean floor for the H1 contrast."""
+    return _v2_pass(client, question, evidence, None, verify="weak")
+
+
+def ablation_no_version_limit(client: Any, question: str, evidence: Sequence[dict],
+                              skeleton: dict) -> Prediction:
+    """v2 design minus version qualification: the contrast for the version rule.
+
+    Everything else — retrieval, skeleton, generation, verification — is
+    identical to `method_v2`; only the version_qualified mode is withheld.
+    """
+    return _v2_pass(client, question, evidence, skeleton, verify="weak",
+                    drop_modes=("version_qualified",))
 
 
 # ------------------------------------------------- ablation: interaction control only
@@ -379,7 +574,7 @@ def ablation_no_flow(client: Any, question: str, evidence: Sequence[dict]) -> Pr
     "flow-aware machinery" from "merely having a response-mode decision at all"."""
     data = _json_or_empty(client, ABLATION_NO_FLOW_SYSTEM, ABLATION_NO_FLOW_USER.format(
         evidence=evidence_block(evidence), question=question, mode_guide=MODE_GUIDE), 2000)
-    answer = str(data.get("answer") or "")
+    answer = answer_of(data)
     mode = str(data.get("response_mode") or "answer")
     mode = mode if mode in KNOWN_MODES else "answer"
     missing = [str(m) for m in (data.get("missing_conditions") or []) if str(m).strip()]
@@ -405,6 +600,10 @@ SYSTEMS = {
     "ablation_no_flow": ablation_no_flow,
     "ablation_no_verify": ablation_no_verify,
     "ablation_no_skeleton": ablation_no_skeleton,
+    "ablation_v2_no_verify": ablation_v2_no_verify,
+    "ablation_v2_no_skeleton": ablation_v2_no_skeleton,
+    "ablation_no_version_limit": ablation_no_version_limit,
     "method_v2": method_v2,
+    "method_v3": method_v3,
     "method": method,
 }

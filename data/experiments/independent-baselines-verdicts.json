@@ -1,0 +1,489 @@
+{
+ "input": "independent-baselines.json",
+ "dataset": "独立验证集",
+ "sample_count": 120,
+ "failures": 0,
+ "empty_answers": {
+  "baseline_a": 0,
+  "baseline_b": 0,
+  "baseline_c": 0,
+  "ablation_no_flow": 0,
+  "ablation_no_verify": 2,
+  "ablation_no_skeleton": 2,
+  "ablation_v2_no_verify": 0,
+  "ablation_v2_no_skeleton": 0,
+  "ablation_no_version_limit": 0,
+  "method_v2": 0,
+  "method_v3": 0,
+  "method": 2
+ },
+ "alpha": 0.05,
+ "primary": [
+  {
+   "label": "H3 交互控制",
+   "left": "baseline_c",
+   "right": "ablation_no_flow",
+   "metric": "response_mode_accuracy",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.225,
+   "wins": 41,
+   "losses": 14,
+   "ties": 65,
+   "sample_bootstrap_ci95": [
+    0.10833333333333334,
+    0.3333333333333333
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.14166666666666666,
+    0.325
+   ],
+   "paired_sign_flip_p": 0.00029997000299970003,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 0.0011998800119988001
+  },
+  {
+   "label": "H1 流程中间表示",
+   "left": "ablation_v2_no_skeleton",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.0,
+   "wins": 2,
+   "losses": 2,
+   "ties": 116,
+   "sample_bootstrap_ci95": [
+    -0.03333333333333333,
+    0.03333333333333333
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.03333333333333333,
+    0.03333333333333333
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 1.0
+  },
+  {
+   "label": "H2 断言核验（强形态）",
+   "left": "ablation_v2_no_verify",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "direction": "up",
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.0,
+   "wins": 0,
+   "losses": 0,
+   "ties": 120,
+   "sample_bootstrap_ci95": [
+    0.0,
+    0.0
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.0,
+    0.0
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 1.0
+  },
+  {
+   "label": "版本限定",
+   "left": "ablation_no_version_limit",
+   "right": "method_v2",
+   "metric": "response_mode_accuracy",
+   "subset": "version_conflict",
+   "direction": "up",
+   "pair_count": 15,
+   "item_cluster_count": 3,
+   "mean_difference": 0.06666666666666667,
+   "wins": 1,
+   "losses": 0,
+   "ties": 14,
+   "sample_bootstrap_ci95": [
+    0.0,
+    0.2
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.0,
+    0.2
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0,
+   "holm_adjusted_p": 1.0
+  }
+ ],
+ "supporting": [
+  {
+   "label": "本方法 vs 基线C 整体成功率",
+   "left": "baseline_c",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.075,
+   "wins": 9,
+   "losses": 0,
+   "ties": 111,
+   "sample_bootstrap_ci95": [
+    0.03333333333333333,
+    0.125
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.03333333333333333,
+    0.11666666666666667
+   ],
+   "paired_sign_flip_p": 0.0047995200479952005,
+   "item_cluster_sign_flip_p": 0.03125,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "本方法 vs 基线C 应答方式",
+   "left": "baseline_c",
+   "right": "method_v2",
+   "metric": "response_mode_accuracy",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.14166666666666666,
+   "wins": 28,
+   "losses": 11,
+   "ties": 81,
+   "sample_bootstrap_ci95": [
+    0.041666666666666664,
+    0.24166666666666667
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.1,
+    0.18333333333333332
+   ],
+   "paired_sign_flip_p": 0.008899110088991101,
+   "item_cluster_sign_flip_p": 0.0078125,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "本方法 vs 无骨架对照 整体成功率",
+   "left": "ablation_no_flow",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": -0.05,
+   "wins": 1,
+   "losses": 7,
+   "ties": 112,
+   "sample_bootstrap_ci95": [
+    -0.1,
+    -0.008333333333333333
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.10833333333333334,
+    0.0
+   ],
+   "paired_sign_flip_p": 0.0714928507149285,
+   "item_cluster_sign_flip_p": 0.25,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "强核验 vs 弱核验 整体成功率",
+   "left": "method_v2",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.008333333333333333,
+   "wins": 1,
+   "losses": 0,
+   "ties": 119,
+   "sample_bootstrap_ci95": [
+    0.0,
+    0.025
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.0,
+    0.025
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "强核验 vs 无核验 整体成功率",
+   "left": "ablation_v2_no_verify",
+   "right": "method_v3",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": 0.0,
+   "wins": 0,
+   "losses": 0,
+   "ties": 120,
+   "sample_bootstrap_ci95": [
+    0.0,
+    0.0
+   ],
+   "item_cluster_bootstrap_ci95": [
+    0.0,
+    0.0
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0
+  },
+  {
+   "label": "原设计 vs 骨架驱动决策 整体成功率",
+   "left": "method",
+   "right": "method_v2",
+   "metric": "overall_success",
+   "subset": null,
+   "pair_count": 120,
+   "item_cluster_count": 8,
+   "mean_difference": -0.008333333333333333,
+   "wins": 3,
+   "losses": 4,
+   "ties": 113,
+   "sample_bootstrap_ci95": [
+    -0.05,
+    0.03333333333333333
+   ],
+   "item_cluster_bootstrap_ci95": [
+    -0.041666666666666664,
+    0.025
+   ],
+   "paired_sign_flip_p": 1.0,
+   "item_cluster_sign_flip_p": 1.0,
+   "repetitions": 10000,
+   "seed": 0
+  }
+ ],
+ "summary": {
+  "baseline_a": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.4506845238095237,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.525,
+    "evidence_precision": 0.17166666666666647,
+    "evidence_recall": 0.5833333333333334,
+    "follow_up_correct": 0.7833333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.7206944444444444,
+    "missing_slot_f1": 0.8333333333333334,
+    "overall_success": 0.0,
+    "response_mode_accuracy": 0.25,
+    "step_coverage": 0.40277777777777773
+   }
+  },
+  "baseline_b": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.6198809523809524,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.6958333333333333,
+    "evidence_precision": 0.19666666666666643,
+    "evidence_recall": 0.6375,
+    "follow_up_correct": 0.7833333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.7551388888888888,
+    "missing_slot_f1": 0.8333333333333334,
+    "overall_success": 0.0,
+    "response_mode_accuracy": 0.25,
+    "step_coverage": 0.5819444444444445
+   }
+  },
+  "baseline_c": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.6053968253968253,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7833333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.783888888888889,
+    "missing_slot_f1": 0.8333333333333334,
+    "overall_success": 0.008333333333333333,
+    "response_mode_accuracy": 0.25,
+    "step_coverage": 0.5361111111111112
+   }
+  },
+  "ablation_no_flow": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.5944742063492062,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.6833333333333333,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.75,
+    "item_correct": 0.875,
+    "material_coverage": 0.771388888888889,
+    "missing_slot_f1": 0.7666666666666667,
+    "overall_success": 0.13333333333333333,
+    "response_mode_accuracy": 0.475,
+    "step_coverage": 0.5305555555555556
+   }
+  },
+  "ablation_no_verify": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.6205158730158727,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.6875,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.75,
+    "item_correct": 0.875,
+    "material_coverage": 0.7462500000000001,
+    "missing_slot_f1": 0.7666666666666667,
+    "overall_success": 0.08333333333333333,
+    "response_mode_accuracy": 0.4,
+    "step_coverage": 0.6069444444444445
+   }
+  },
+  "ablation_no_skeleton": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.6735515873015872,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.725,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7666666666666667,
+    "item_correct": 0.875,
+    "material_coverage": 0.7873611111111111,
+    "missing_slot_f1": 0.75,
+    "overall_success": 0.11666666666666667,
+    "response_mode_accuracy": 0.4,
+    "step_coverage": 0.6569444444444443
+   }
+  },
+  "ablation_v2_no_verify": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.5950198412698412,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7333333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.7769444444444445,
+    "missing_slot_f1": 0.7583333333333333,
+    "overall_success": 0.09166666666666666,
+    "response_mode_accuracy": 0.39166666666666666,
+    "step_coverage": 0.5319444444444444
+   }
+  },
+  "ablation_v2_no_skeleton": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.5981547619047618,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.6958333333333333,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.6916666666666667,
+    "item_correct": 0.875,
+    "material_coverage": 0.7783333333333334,
+    "missing_slot_f1": 0.6840476190476191,
+    "overall_success": 0.08333333333333333,
+    "response_mode_accuracy": 0.4166666666666667,
+    "step_coverage": 0.5388888888888889
+   }
+  },
+  "ablation_no_version_limit": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.5932936507936507,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7041666666666667,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7583333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.77,
+    "missing_slot_f1": 0.7666666666666667,
+    "overall_success": 0.09166666666666666,
+    "response_mode_accuracy": 0.4083333333333333,
+    "step_coverage": 0.5263888888888889
+   }
+  },
+  "method_v2": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.595376984126984,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7041666666666667,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7333333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.77,
+    "missing_slot_f1": 0.7583333333333333,
+    "overall_success": 0.08333333333333333,
+    "response_mode_accuracy": 0.39166666666666666,
+    "step_coverage": 0.5305555555555556
+   }
+  },
+  "method_v3": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.668313492063492,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.7083333333333334,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.7333333333333333,
+    "item_correct": 0.875,
+    "material_coverage": 0.8038888888888888,
+    "missing_slot_f1": 0.7583333333333333,
+    "overall_success": 0.09166666666666666,
+    "response_mode_accuracy": 0.39166666666666666,
+    "step_coverage": 0.6680555555555555
+   }
+  },
+  "method": {
+   "sample_count": 120,
+   "metrics": {
+    "answer_quality": 0.6123908730158728,
+    "citation_validity": 1.0,
+    "claim_coverage": 0.6875,
+    "evidence_precision": 0.14270833333333333,
+    "evidence_recall": 0.7291666666666666,
+    "follow_up_correct": 0.75,
+    "item_correct": 0.875,
+    "material_coverage": 0.7254166666666667,
+    "missing_slot_f1": 0.7666666666666667,
+    "overall_success": 0.09166666666666666,
+    "response_mode_accuracy": 0.4,
+    "step_coverage": 0.5972222222222221
+   }
+  }
+ }
+}

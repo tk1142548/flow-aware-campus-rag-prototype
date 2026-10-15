@@ -17,7 +17,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MODES = ("baseline_a", "baseline_b", "baseline_c", "ablation_no_flow",
-         "ablation_no_verify", "ablation_no_skeleton", "method_v2", "method")
+         "ablation_no_verify", "ablation_no_skeleton",
+         "ablation_v2_no_verify", "ablation_v2_no_skeleton",
+         "ablation_no_version_limit",
+         "method_v2", "method_v3", "method")
 RISK_CATEGORY = {
     "version_conflict": "版本冲突",
     "object_mismatch": "对象错配",

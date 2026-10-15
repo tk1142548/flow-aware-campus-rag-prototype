@@ -25,7 +25,7 @@ from app.backend.retrieval_stack import RetrievalStack
 from app.backend.scoring_v2 import ElementMatcher, score_prediction
 from app.backend import systems
 
-from scripts.run_baselines import CONFIGS, MODES, question_of
+from scripts.run_baselines import CONFIGS, MODES, USES_SKELETON, question_of
 
 
 def main() -> int:
@@ -62,7 +62,7 @@ def main() -> int:
         for mode in MODES:
             spec = CONFIGS[mode]
             rows = stack.retrieve(question, strategy=spec["strategy"], k=spec["k"])
-            if mode in ("method", "method_v2", "ablation_no_verify"):
+            if mode in USES_SKELETON:
                 skeleton = extract_flow(client, question, rows)
                 prediction = systems.SYSTEMS[mode](client, question, rows, skeleton)
             else:

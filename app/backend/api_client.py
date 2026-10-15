@@ -77,6 +77,7 @@ class ApiClient:
             "completion_tokens": 0,
             "embed_tokens": 0,
             "cost_cny": 0.0,
+            "json_repairs": 0,
         }
 
     @property
@@ -190,11 +191,20 @@ class ApiClient:
         temperature: float = 0.0,
         max_tokens: int = 1024,
     ) -> Any:
-        """Chat and parse a JSON object out of the reply."""
+        """Chat and parse a JSON object out of the reply.
+
+        A reply that is not valid JSON as written is repaired by `extract_json`.
+        The reply is scored on what it says, not on how it punctuates, so a stray
+        aside or a missing closing bracket must not turn a good answer into a
+        missing one. A reply that cannot be repaired still raises, as before.
+        """
         text = self.chat(
             messages, model=model, temperature=temperature, max_tokens=max_tokens
         )
-        return extract_json(text)
+        value, repaired = parse_json_reply(text)
+        if repaired:
+            self._bump(json_repairs=1)
+        return value
 
     # ---------------------------------------------------------------- embed
 
@@ -274,16 +284,128 @@ class ApiClient:
 
 def extract_json(text: str) -> Any:
     """Pull a JSON value out of a model reply that may be fenced or padded."""
+    return parse_json_reply(text)[0]
+
+
+def parse_json_reply(text: str) -> tuple[Any, bool]:
+    """Return the reply's JSON value and whether a repair was needed.
+
+    Three shapes of near-miss are recovered, in order: text that sits outside any
+    string and could not be legal JSON, and a reply cut off before its closing
+    bracket. Both were observed on real runs and both leave the answer itself
+    intact, so scoring must not treat them as a missing answer.
+    """
+    candidate = _json_candidate(text)
+    attempts = [
+        candidate,
+        strip_text_outside_strings(candidate),
+        close_truncated(candidate),
+        close_truncated(strip_text_outside_strings(candidate)),
+    ]
+    for index, attempt in enumerate(attempts):
+        try:
+            return json.loads(attempt), index > 0
+        except json.JSONDecodeError:
+            continue
+    raise ValueError(f"no parsable JSON object in reply: {text[:200]}")
+
+
+def _json_candidate(text: str) -> str:
+    """Slice out the first complete JSON value, or all of it if it is unfinished.
+
+    The slice stops where bracket depth returns to zero, so a bracket appearing
+    inside a string cannot end it early — which is what a plain "last closing
+    bracket" rule does when the reply is truncated.
+    """
     stripped = text.strip()
     if stripped.startswith("```"):
         stripped = stripped.split("```")[1]
         if stripped.lstrip().lower().startswith("json"):
             stripped = stripped.lstrip()[4:]
-    start_candidates = [i for i in (stripped.find("{"), stripped.find("[")) if i != -1]
-    if not start_candidates:
+    starts = [i for i in (stripped.find("{"), stripped.find("[")) if i != -1]
+    if not starts:
         raise ValueError(f"no JSON value in reply: {text[:200]}")
-    start = min(start_candidates)
-    end = max(stripped.rfind("}"), stripped.rfind("]"))
-    if end <= start:
-        raise ValueError(f"unterminated JSON in reply: {text[:200]}")
-    return json.loads(stripped[start : end + 1])
+    start = min(starts)
+    depth = 0
+    in_string = False
+    escaped = False
+    for index in range(start, len(stripped)):
+        character = stripped[index]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+        if character == '"':
+            in_string = True
+        elif character in "{[":
+            depth += 1
+        elif character in "}]":
+            depth -= 1
+            if depth <= 0:
+                return stripped[start : index + 1]
+    return stripped[start:]
+
+
+def close_truncated(text: str) -> str:
+    """Finish a reply that was cut off: close the open string, then the brackets."""
+    out: list[str] = []
+    stack: list[str] = []
+    in_string = False
+    escaped = False
+    for character in text:
+        out.append(character)
+        if in_string:
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+        if character == '"':
+            in_string = True
+        elif character in "{[":
+            stack.append("}" if character == "{" else "]")
+        elif character in "}]" and stack:
+            stack.pop()
+    if in_string:
+        out.append('"')
+    while stack:
+        out.append(stack.pop())
+    return "".join(out)
+
+
+_STRUCTURAL = set('{}[]:,"')
+
+
+def strip_text_outside_strings(text: str) -> str:
+    """Drop everything outside a string literal that JSON syntax cannot contain.
+
+    A reply such as ``["所需材料", "办理入口"（因证据中没有相关内容）]`` is one
+    stray parenthetical away from being valid; the parenthesis and the aside that
+    follows it are not part of any string, so removing them restores the object.
+    Characters inside strings are never touched.
+    """
+    out: list[str] = []
+    in_string = False
+    escaped = False
+    for character in text:
+        if in_string:
+            out.append(character)
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+        if character == '"':
+            in_string = True
+            out.append(character)
+        elif character in _STRUCTURAL or character.isascii():
+            out.append(character)
+    return "".join(out)

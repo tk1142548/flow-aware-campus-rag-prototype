@@ -43,12 +43,32 @@ CONFIGS = {
     "ablation_no_flow": {"strategy": "hybrid_rerank", "k": 8},
     "ablation_no_verify": {"strategy": "hybrid_rerank", "k": 8},
     "ablation_no_skeleton": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_v2_no_verify": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_v2_no_skeleton": {"strategy": "hybrid_rerank", "k": 8},
+    "ablation_no_version_limit": {"strategy": "hybrid_rerank", "k": 8},
     "method_v2": {"strategy": "hybrid_rerank", "k": 8},
+    "method_v3": {"strategy": "hybrid_rerank", "k": 8},
     "method": {"strategy": "hybrid_rerank", "k": 8},
 }
 MODES = ("baseline_a", "baseline_b", "baseline_c",
          "ablation_no_flow", "ablation_no_verify", "ablation_no_skeleton",
-         "method_v2", "method")
+         "ablation_v2_no_verify", "ablation_v2_no_skeleton",
+         "ablation_no_version_limit",
+         "method_v2", "method_v3", "method")
+
+# Configurations that read an extracted flow skeleton before answering.
+USES_SKELETON = ("method", "method_v2", "method_v3",
+                 "ablation_no_verify", "ablation_v2_no_verify",
+                 "ablation_no_version_limit")
+
+# Every metric the scorer returns, listed explicitly so that a checkpoint written
+# while some configurations are still running still has a stable set of columns.
+SAMPLE_METRIC_KEYS = (
+    "item_correct", "response_mode_accuracy", "evidence_recall", "evidence_precision",
+    "missing_slot_f1", "follow_up_correct", "citation_validity",
+    "claim_coverage", "step_coverage", "material_coverage",
+    "answer_quality", "overall_success",
+)
 
 
 def question_of(sample: dict) -> str:
@@ -75,7 +95,7 @@ def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiCl
     spec = CONFIGS[config]
     rows = stack.retrieve(question, strategy=spec["strategy"], k=spec["k"])
 
-    if config in ("method", "method_v2", "ablation_no_verify"):
+    if config in USES_SKELETON:
         skeleton = extract_flow(client, question, rows)
         prediction = systems.SYSTEMS[config](client, question, rows, skeleton)
     else:
@@ -115,6 +135,10 @@ def main() -> int:
     parser.add_argument("--dataset-label", default="开发集")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "data/experiments/baselines-final.json")
+    parser.add_argument("--resume", action="store_true",
+                        help="skip runs already recorded in the output file")
+    parser.add_argument("--checkpoint-every", type=int, default=50,
+                        help="write a partial result file every N completed runs")
     args = parser.parse_args()
 
     started = time.perf_counter()
@@ -141,7 +165,89 @@ def main() -> int:
 
     results: dict[str, list[dict]] = {mode: [] for mode in MODES}
     failures: list[dict] = []
-    jobs = [(sample, mode) for mode in MODES for sample in samples]
+    done: set[tuple[str, str]] = set()
+    if args.resume and args.output.exists():
+        previous = json.loads(args.output.read_text(encoding="utf-8"))
+        for mode, rows in (previous.get("samples") or {}).items():
+            if mode in results:
+                results[mode] = rows
+                done.update((mode, row["sample_id"]) for row in rows)
+        failures = previous.get("failures") or []
+        print(f"续跑：已有 {len(done)} 条记录", flush=True)
+
+    jobs = [(sample, mode) for mode in MODES for sample in samples
+            if (mode, sample["sample_id"]) not in done]
+    # A resumed run retries what failed last time, so those failure entries are
+    # dropped first; otherwise the list would grow a duplicate on every attempt.
+    retrying = {(mode, sample["sample_id"]) for sample, mode in jobs}
+    failures = [failure for failure in failures
+                if (failure["mode"], failure["sample_id"]) not in retrying]
+    print(f"待跑 {len(jobs)} / {len(MODES) * len(samples)}", flush=True)
+
+    metric_keys = sorted(SAMPLE_METRIC_KEYS)
+
+    def build_payload(complete: bool) -> dict:
+        summary = {}
+        for mode in MODES:
+            rows = results[mode]
+            summary[mode] = {
+                "sample_count": len(rows),
+                "metrics": {key: mean([r["metrics"][key] for r in rows]) for key in metric_keys},
+            }
+
+        comparisons = []
+        for mode in [m for m in MODES if m != "method"]:
+            aligned_left = {r["sample_id"]: r for r in results[mode]}
+            aligned_right = {r["sample_id"]: r for r in results["method"]}
+            shared = [sid for sid in aligned_right if sid in aligned_left]
+            if not shared:
+                continue
+            for metric in ("overall_success", "answer_quality", "response_mode_accuracy",
+                           "citation_validity", "evidence_recall"):
+                stat = paired_analysis(
+                    [aligned_left[sid]["metrics"][metric] for sid in shared],
+                    [aligned_right[sid]["metrics"][metric] for sid in shared],
+                    [aligned_right[sid]["item_id"] for sid in shared],
+                    10000, 0,
+                )
+                comparisons.append({"left": mode, "right": "method", "metric": metric, **stat})
+        for comparison, adjusted in zip(
+            comparisons, holm_adjust([c["paired_sign_flip_p"] for c in comparisons])
+        ):
+            comparison["holm_adjusted_p"] = adjusted
+
+        return {
+            "status": "已验证" if complete else "进行中",
+            "protocol": {
+                "configs": CONFIGS,
+                "shared_item_routing": "top-3 majority of retrieved evidence",
+                "oracle_used": False,
+                "gold_access": "scoring_only",
+                "scoring": "docs/experiments/SCORING_PROTOCOL_V2.md",
+                "note": "基线 A/B/C 不设交互控制，对金标准为 abstention 的样本必然失分，这是设计差异而非缺陷",
+            },
+            "dataset": args.dataset_label,
+            "samples_path": str(args.samples if not args.samples.is_absolute()
+                                else args.samples.relative_to(ROOT)),
+            "scoring_clause_thresholds": {"lexical": matcher.lexical_threshold,
+                                          "semantic": matcher.semantic_threshold},
+            "sample_count": len(samples),
+            "summary": summary,
+            "paired_comparisons": comparisons,
+            "samples": results,
+            "failures": failures,
+            "empty_answers": {mode: sum(1 for r in results[mode]
+                                        if not r["prediction"]["answer_text"].strip())
+                              for mode in MODES},
+            "created_at_utc": datetime.now(timezone.utc).isoformat(),
+            "elapsed_seconds": time.perf_counter() - started,
+            "cost": client.cost_summary(),
+        }
+
+    def write_payload(complete: bool) -> None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(build_payload(complete), ensure_ascii=False, indent=1),
+                               encoding="utf-8")
 
     def worker(job):
         sample, mode = job
@@ -151,79 +257,28 @@ def main() -> int:
             return mode, None, {"sample_id": sample["sample_id"], "mode": mode,
                                 "error": f"{type(error).__name__}: {error}"[:300]}
 
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        for done, (mode, record, error) in enumerate(pool.map(worker, jobs), 1):
-            if error:
-                failures.append(error)
-            else:
-                results[mode].append(record)
-            if done % 50 == 0:
-                print(f"  {done}/{len(jobs)}", flush=True)
+    # A long run is checkpointed as it goes: a crash must not throw away every
+    # completed call, and the caller can resume from what was written.
+    if jobs:
+        write_payload(complete=False)
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            for done_count, (mode, record, error) in enumerate(pool.map(worker, jobs), 1):
+                if error:
+                    failures.append(error)
+                else:
+                    results[mode].append(record)
+                if done_count % args.checkpoint_every == 0:
+                    write_payload(complete=False)
+                if done_count % 100 == 0:
+                    print(f"  {done_count}/{len(jobs)}", flush=True)
 
-    summary = {}
-    metric_keys = sorted(results["baseline_a"][0]["metrics"]) if results["baseline_a"] else []
-    for mode in MODES:
-        rows = results[mode]
-        summary[mode] = {
-            "sample_count": len(rows),
-            "metrics": {key: mean([r["metrics"][key] for r in rows]) for key in metric_keys},
-        }
+    incomplete = [mode for mode in MODES if len(results[mode]) != len(samples)]
+    write_payload(complete=not incomplete)
 
-    item_ids = [r["item_id"] for r in results["method"]]
-    comparisons = []
-    for mode in [m for m in MODES if m != "method"]:
-        aligned_baseline = {r["sample_id"]: r for r in results[mode]}
-        aligned_method = {r["sample_id"]: r for r in results["method"]}
-        shared = [sid for sid in aligned_method if sid in aligned_baseline]
-        if not shared:
-            continue
-        for metric in ("overall_success", "answer_quality", "response_mode_accuracy",
-                       "citation_validity", "evidence_recall"):
-            stat = paired_analysis(
-                [aligned_baseline[sid]["metrics"][metric] for sid in shared],
-                [aligned_method[sid]["metrics"][metric] for sid in shared],
-                [aligned_method[sid]["item_id"] for sid in shared],
-                10000, 0,
-            )
-            comparisons.append({"left": mode, "right": "method", "metric": metric, **stat})
-    for comparison, adjusted in zip(
-        comparisons, holm_adjust([c["paired_sign_flip_p"] for c in comparisons])
-    ):
-        comparison["holm_adjusted_p"] = adjusted
-
-    payload = {
-        "status": "已验证",
-        "protocol": {
-            "configs": CONFIGS,
-            "shared_item_routing": "top-3 majority of retrieved evidence",
-            "oracle_used": False,
-            "gold_access": "scoring_only",
-            "scoring": "docs/experiments/SCORING_PROTOCOL_V2.md",
-            "note": "基线 A/B/C 不设交互控制，对金标准为 abstention 的样本必然失分，这是设计差异而非缺陷",
-        },
-        "dataset": args.dataset_label,
-        "samples_path": str(args.samples if not args.samples.is_absolute()
-                            else args.samples.relative_to(ROOT)),
-        "scoring_clause_thresholds": {"lexical": matcher.lexical_threshold,
-                                      "semantic": matcher.semantic_threshold},
-        "sample_count": len(samples),
-        "summary": summary,
-        "paired_comparisons": comparisons,
-        "samples": results,
-        "failures": failures,
-        "empty_answers": {mode: sum(1 for r in results[mode]
-                                    if not r["prediction"]["answer_text"].strip())
-                          for mode in MODES},
-        "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "elapsed_seconds": time.perf_counter() - started,
-        "cost": client.cost_summary(),
-    }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
-
+    final_summary = build_payload(complete=True)["summary"]
     print(f"\n{'config':12s}{'overall':>9s}{'quality':>9s}{'mode':>9s}{'cit':>9s}{'evR':>9s}")
     for mode in MODES:
-        m = summary[mode]["metrics"]
+        m = final_summary[mode]["metrics"]
         print(f"{mode:12s}{m['overall_success']:>9.4f}{m['answer_quality']:>9.4f}"
               f"{m['response_mode_accuracy']:>9.4f}{m['citation_validity']:>9.4f}"
               f"{m['evidence_recall']:>9.4f}")
@@ -234,9 +289,11 @@ def main() -> int:
             by_mode[failure["mode"]] = by_mode.get(failure["mode"], 0) + 1
         print(f"  按配置: {by_mode}")
         print("  注意：失败样本被排除在指标之外，存在失败时不得据此下结论")
+    if incomplete:
+        print(f"未跑完的配置: {incomplete}；用 --resume 续跑")
     print(f"cost: {client.cost_summary()}")
-    print(f"elapsed: {payload['elapsed_seconds']:.1f}s")
-    return 0
+    print(f"elapsed: {time.perf_counter() - started:.1f}s")
+    return 1 if incomplete else 0
 
 
 if __name__ == "__main__":

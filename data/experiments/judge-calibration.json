@@ -4325,5 +4325,63 @@
   "completion_tokens": 24138,
   "embed_tokens": 0,
   "cost_cny": 0.0803976
+ },
+ "human_review": {
+  "criterion": "以判官当时拿到的证据为准，证据中须有文字能直接支撑该陈述（与判官的提示词一致）；仅\"常识上成立\"不计为支持。",
+  "rows_reviewed": 52,
+  "distribution": {
+   "不支持": 30,
+   "部分": 13,
+   "支持": 9
+  },
+  "exact_agreement": 0.5769230769230769,
+  "partial_credit_agreement": 0.7019230769230769,
+  "judge_precision_on_flags": 0.7019230769230769,
+  "per_config": {
+   "ablation_no_flow": {
+    "flags_reviewed": 8,
+    "distribution": {
+     "不支持": 7,
+     "支持": 1
+    },
+    "confirmed_unsupported": 7,
+    "judge_precision": 0.875
+   },
+   "baseline_c": {
+    "flags_reviewed": 19,
+    "distribution": {
+     "不支持": 12,
+     "部分": 6,
+     "支持": 1
+    },
+    "confirmed_unsupported": 12,
+    "judge_precision": 0.631578947368421
+   },
+   "method_v2": {
+    "flags_reviewed": 25,
+    "distribution": {
+     "不支持": 11,
+     "部分": 7,
+     "支持": 7
+    },
+    "confirmed_unsupported": 11,
+    "judge_precision": 0.44
+   }
+  },
+  "calibrated_unsupported_rate": {
+   "ablation_no_flow": {
+    "raw_unsupported_rate": 0.058823529411764705,
+    "calibrated_unsupported_rate": 0.051470588235294115
+   },
+   "baseline_c": {
+    "raw_unsupported_rate": 0.12751677852348994,
+    "calibrated_unsupported_rate": 0.08053691275167785
+   },
+   "method_v2": {
+    "raw_unsupported_rate": 0.1592356687898089,
+    "calibrated_unsupported_rate": 0.07006369426751592
+   }
+  },
+  "reviewed_at_utc": "2026-10-15T07:47:57.833330+00:00"
  }
 }

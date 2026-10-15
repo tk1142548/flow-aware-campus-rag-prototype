@@ -33,6 +33,7 @@ JC_REVIEW = ROOT / 'data/evaluation/judge-calibration-review.csv'
 TC_SHEET = ROOT / 'data/evaluation/task-completion-sheet.csv'
 JC_SHEET = ROOT / 'data/experiments/judge-calibration.csv'
 TC_JSON = ROOT / 'data/experiments/task-completion.json'
+JC_JSON = ROOT / 'data/experiments/judge-calibration.json'
 
 TC_COL = '照着这份回答，下一步能直接办吗？（填：能 / 勉强 / 不能）'
 TC_SCALE = {'能': 1.0, '勉强': 0.5, '不能': 0.0}
@@ -49,6 +50,17 @@ def sheet_column(config: str) -> str:
 def load(path: Path) -> list[dict]:
     with path.open(encoding='utf-8-sig', newline='') as handle:
         return list(csv.DictReader(handle))
+
+
+def judge_configs() -> list[str]:
+    """Config of each flagged claim, in the order build_review_sheets.py emitted."""
+    result = json.loads(JC_JSON.read_text(encoding='utf-8'))
+    order = []
+    for row in result.get('rows', []):
+        for item in row.get('judge_items', []):
+            if item.get('verdict') == 'unsupported':
+                order.append(row['config'])
+    return order
 
 
 def main() -> int:
@@ -138,6 +150,49 @@ def main() -> int:
         print(f"  仍判不支持 {agree} / 部分 {counts['部分']} / 判为支持 {counts['支持']}")
         print(f"  完全一致率 {agree / total:.4f}，部分计半一致率 "
               f"{(agree + counts['部分'] * 0.5) / total:.4f}")
+
+        flagged_configs = judge_configs()[:total]
+        per_config = {}
+        for config in sorted(set(flagged_configs)):
+            rows_of_config = [r for r, c in zip(filled, flagged_configs) if c == config]
+            dist = Counter(r[JC_COL].strip() for r in rows_of_config)
+            per_config[config] = {
+                'flags_reviewed': len(rows_of_config),
+                'distribution': dict(dist),
+                'confirmed_unsupported': dist['不支持'],
+                'judge_precision': dist['不支持'] / len(rows_of_config) if rows_of_config else None,
+            }
+
+        result = json.loads(JC_JSON.read_text(encoding='utf-8'))
+        summary = result.get('summary') or {}
+        calibrated = {}
+        for config, entry in per_config.items():
+            judged = (summary.get(config) or {}).get('claims_judged')
+            flagged = (summary.get(config) or {}).get('claims_unsupported')
+            if judged and flagged is not None:
+                calibrated[config] = {
+                    'raw_unsupported_rate': flagged / judged,
+                    'calibrated_unsupported_rate':
+                        flagged * entry['judge_precision'] / judged,
+                }
+        result['status'] = '已完成复核'
+        result['human_review'] = {
+            'criterion': '以判官当时拿到的证据为准，证据中须有文字能直接支撑该陈述'
+                         '（与判官的提示词一致）；仅"常识上成立"不计为支持。',
+            'rows_reviewed': total,
+            'distribution': dict(counts),
+            'exact_agreement': agree / total,
+            'partial_credit_agreement': (agree + counts['部分'] * 0.5) / total,
+            'judge_precision_on_flags': (agree + counts['部分'] * 0.5) / total,
+            'per_config': per_config,
+            'calibrated_unsupported_rate': calibrated,
+            'reviewed_at_utc': datetime.now(timezone.utc).isoformat(),
+        }
+        JC_JSON.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding='utf-8')
+        for config, entry in per_config.items():
+            print(f"    {config:<18} 复核 {entry['flags_reviewed']:>2} 条，"
+                  f"确认不支持 {entry['confirmed_unsupported']:>2} 条，"
+                  f"命中率 {entry['judge_precision']:.3f}")
     return 0
 
 

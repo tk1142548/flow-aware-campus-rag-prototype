@@ -77,6 +77,9 @@ cos      =  text-embedding-v4 余弦相似度
 - `unsupported_ratio` = LLM 判官（`judge_support`）判定为"无证据支持"的实质陈述占比。
   **判官只用于校准切片，不作为主指标**——TREC 2024 RAG Track 测得 GPT-4o 与人工的
   支持性判定一致率仅 56%，人工后编辑后 72%，单独使用不可靠。
+  运行方式：`python scripts/run_judge_calibration.py`，产出
+  `data/experiments/judge-calibration.json` 与同名 `.csv`。CSV 留有"人工判定"两列，
+  逐条核对后即可算出判官与人工的一致率；**一致率出来之前，`unsupported_ratio` 不得对外引用。**
 
 ### 交互层
 

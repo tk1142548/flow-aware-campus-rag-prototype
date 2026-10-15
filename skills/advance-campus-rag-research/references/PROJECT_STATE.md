@@ -39,6 +39,18 @@
 |---|---|---|---|
 | 2′ | 判分表示口径返工 | **已验证** | 响应方式补齐 6 档、槽位按内容匹配；`docs/experiments/REPRESENTATION_AUDIT.md`；新增 3 项守门测试 |
 | 5′ | 补齐对照设计缺口 | **已验证** | 八配置重跑：新增 `ablation_no_flow` / `ablation_no_verify` / `ablation_no_skeleton` / `method_v2`；`baselines-final.json` |
+| 8 | 第一部分完成度核对与补缺 | **已验证** | `docs/project/PART_ONE_COMPLETION_CHECK.md`；补齐判官+校准切片、时限/入口覆盖率、任务完成率标注工具链 |
+
+### 第一部分完成度（2026-10-15 逐 Block 核对）
+
+七个 Block 的验收标准全部达成或本轮补齐。仍待**人工**完成两件：
+1. 任务完成率标注：填 `data/evaluation/task-completion-sheet.csv`（60 行）后运行
+   `scripts/evaluate_task_completion.py`。
+2. 判官校准：核对 `data/experiments/judge-calibration.csv` 的"人工判定"两列，
+   算出判官与人工的一致率。**在此之前 `unsupported_ratio` 不得引用。**
+
+与计划预期的出入：计划把 H1 当作最实质贡献，八配置结果是交互控制独自承担全部增益，
+流程骨架进生成提示词为负、断言核验无效应。
 
 返工轮之后**下一步**（顺序不可调换）：
 1. 用八配置结果重新判定 H1：见下"结论"第 5 条。

@@ -87,12 +87,27 @@ def evaluate(repository: ResearchRepository, sample: dict, skeleton: dict,
     gold_order = [s["step_id"] for s in process["steps"]
                   if s["step_id"] in {e["id"] for e in gold_elements if e["kind"] == "step"}]
 
+    # Time limits and service entries are annotated per process; score them by content
+    # so the extraction report covers all five element kinds.
+    gold_time = [{"kind": "time", "id": t["constraint_id"], "text": t["text"]}
+                 for t in process.get("time_constraints") or []]
+    gold_entry = [{"kind": "entry", "id": p["point_id"], "text": p["name"]}
+                  for p in process.get("service_points") or []]
+    time_matches = matcher.match(
+        "\n".join(e["text"] for e in skeleton.get("time_constraints", [])), gold_time)
+    entry_matches = matcher.match(
+        "\n".join(e["text"] for e in skeleton.get("entries", [])), gold_entry)
+
     binding = binding_validity(skeleton, allowed_ids)
     return {
         "step_coverage": (sum(m["covered"] for m in step_matches) / len(step_matches)
                           if step_matches else 1.0),
         "material_coverage": (sum(m["covered"] for m in material_matches) / len(material_matches)
                               if material_matches else 1.0),
+        "time_coverage": (sum(m["covered"] for m in time_matches) / len(time_matches)
+                          if time_matches else 1.0),
+        "entry_coverage": (sum(m["covered"] for m in entry_matches) / len(entry_matches)
+                           if entry_matches else 1.0),
         "element_coverage": (sum(m["covered"] for m in all_matches) / len(all_matches)
                              if all_matches else 1.0),
         "order_consistency": order_consistency(skeleton.get("steps", []), gold_order, gold_step_text),
@@ -104,6 +119,8 @@ def evaluate(repository: ResearchRepository, sample: dict, skeleton: dict,
         "extracted_materials": len(skeleton.get("materials", [])),
         "gold_steps": len(gold_step_text),
         "gold_materials": sum(1 for e in gold_elements if e["kind"] == "material"),
+        "gold_time": len(gold_time),
+        "gold_entries": len(gold_entry),
         "insufficient_flagged": skeleton.get("insufficient", False),
     }
 
@@ -182,6 +199,8 @@ def main() -> int:
                                              if real_gold else None),
             "samples_with_stub_gold": len(rows) - len(real_gold),
             "material_coverage": mean([r["material_coverage"] for r in rows]),
+            "time_coverage": mean([r["time_coverage"] for r in rows]),
+            "entry_coverage": mean([r["entry_coverage"] for r in rows]),
             "element_coverage": mean([r["element_coverage"] for r in rows]),
             "order_consistency": mean([r["order_consistency"] for r in rows]),
             "step_grounding": mean([r["step_grounding"] for r in rows]),
@@ -218,6 +237,8 @@ def main() -> int:
         print(f"  step_coverage          {s['step_coverage']:.4f}"
               f"  (剔除占位金标准后 {excl_text}，占位样本 {s['samples_with_stub_gold']})")
         print(f"  material_coverage      {s['material_coverage']:.4f}")
+        print(f"  time_coverage          {s['time_coverage']:.4f}")
+        print(f"  entry_coverage         {s['entry_coverage']:.4f}")
         print(f"  order_consistency      {s['order_consistency']:.4f}")
         print(f"  step_grounding         {s['step_grounding']:.4f}")
         print(f"  binding_rate           {s['binding_rate']:.4f}")

@@ -1,0 +1,4329 @@
+{
+ "status": "待人工校准",
+ "protocol": {
+  "per_config": 30,
+  "configs": [
+   "baseline_c",
+   "ablation_no_flow",
+   "method_v2"
+  ],
+  "note": "判官仅用于校准切片，不作为主指标；需人工逐条核对后计算一致率"
+ },
+ "sample_count": 90,
+ "summary": {
+  "baseline_c": {
+   "judged": 30,
+   "mean_unsupported_ratio": 0.10507936507936508,
+   "claims_judged": 149,
+   "claims_unsupported": 19
+  },
+  "ablation_no_flow": {
+   "judged": 30,
+   "mean_unsupported_ratio": 0.05322751322751322,
+   "claims_judged": 136,
+   "claims_unsupported": 8
+  },
+  "method_v2": {
+   "judged": 30,
+   "mean_unsupported_ratio": 0.1297089947089947,
+   "claims_judged": 157,
+   "claims_unsupported": 25
+  }
+ },
+ "rows": [
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-005",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我要打印一份学校证明，但还没确定是成绩单还是在学证明。该先说明什么？",
+   "answer": "您应先确认自己已在教务管理系统完成注册、处于在校状态[UGP018][UGP003]；再登录‘暨南大学全日制本科学生自助打印系统’（各校区均有设备，账号为学号、密码为身份证后6位）预览并选择所需证明类型[UGP001][UGP002]；如考虑打印英文版，务必提前检查并确保系统中已按规范填写有效英文名[UGP004]；此外，您当前享有2份免费中英文在学证明和最多4份可自主打印的免费成绩单（2中文+2英文），系统将优先使用免费额度[UGP001][UGP012]。",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP004",
+    "UGP008",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.3333333333333333,
+   "judge_items": [
+    {
+     "claim": "您应先确认自己已在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "您应先确认自己处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "再登录‘暨南大学全日制本科学生自助打印系统’预览并选择所需证明类型",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "账号为学号、密码为身份证后6位",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "如考虑打印英文版，务必提前检查并确保系统中已按规范填写有效英文名",
+     "verdict": "supported",
+     "evidence_id": "UGP004"
+    },
+    {
+     "claim": "您当前享有2份免费中英文在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "您当前享有最多4份可自主打印的免费成绩单（2中文+2英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "系统将优先使用免费额度",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "回答共9条实质性陈述，其中3条（账号密码规则、2份免费中英文在学证明、系统优先使用免费额度）在证据中无对应文字支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-001",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我是在校本科生，想打印中文成绩单，应使用哪个系统？",
+   "answer": "您是在校本科生，应使用“暨南大学全日制本科学生自助打印系统”打印中文成绩单。该系统在各校区均设有自助打印设备，您可凭学号（账号）和身份证后6位字符（密码）登录，选择打印中文成绩单；系统将优先使用您享有的2份免费中文成绩单额度[UGP001][UGP002][UGP012]。",
+   "evidence_ids": [
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP012",
+    "UGP005",
+    "UGP032",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "您是在校本科生，应使用“暨南大学全日制本科学生自助打印系统”打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "该系统在各校区均设有自助打印设备。",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "您可凭学号（账号）和身份证后6位字符（密码）登录。",
+     "verdict": "supported",
+     "evidence_id": "UGP015,UGP016"
+    },
+    {
+     "claim": "选择打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "系统将优先使用您享有的2份免费中文成绩单额度。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有5条实质性陈述均有对应证据直接支持：UGP002明确系统名称及用途；UGP014说明各校区设设备；UGP015/UGP016明确账号密码规则；UGP001/UGP002支持‘选择打印中文成绩单’；UGP012明确‘2份中文成绩单’为学生自主安排的免费额度。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-018",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "在校本科生登录自助打印系统，账号应填身份证号还是学号？",
+   "answer": "在校本科生登录自助打印系统，账号应填学号，不是身份证号 [UGP015]。",
+   "evidence_ids": [
+    "UGP015",
+    "UGP030",
+    "UGP038",
+    "UGP031",
+    "UGP029",
+    "UGP016",
+    "UGP014",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统，账号应填学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "在校本科生登录自助打印系统，账号不应填身份证号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "UGP015明确指出‘在校本科学生登录自助打印系统时，账号为学号’，该陈述直接支持‘应填学号’；而‘账号为学号’在排他性语境（唯一账号字段）下，逻辑上蕴含‘不是身份证号’，且证据中无任何条目说在校生可用身份证号作账号，故‘不应填身份证号’属该明确陈述的否定推论，且无反证，按题干要求视为supported。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-023",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我要打印学校文件。\n我需要在学证明，不是成绩单，请告诉我份额和操作渠道。",
+   "answer": "您可免费打印2份中英文在学证明，前提是已通过教务管理系统完成注册、处于在校状态[UGP003][UGP018]。请前往所在校区的‘暨南大学全日制本科学生自助打印系统’设备操作[UGP002][UGP001][UGP014]，使用学号（账号）和身份证后6位（密码）登录，选择‘在学证明’，预览无误后点击打印；系统将自动优先使用免费份额，用完后支持手机扫码付费打印[UGP002][UGP001][UGP017][UGP015]。",
+   "evidence_ids": [
+    "UGP002",
+    "UGP001",
+    "UGP013",
+    "UGP017",
+    "UGP014",
+    "UGP003",
+    "UGP018",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.125,
+   "judge_items": [
+    {
+     "claim": "您可免费打印2份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "前提是已通过教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "前提是处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "请前往所在校区的‘暨南大学全日制本科学生自助打印系统’设备操作",
+     "verdict": "supported",
+     "evidence_id": "UGP002,UGP001,UGP014"
+    },
+    {
+     "claim": "使用学号（账号）和身份证后6位（密码）登录",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "选择‘在学证明’，预览无误后点击打印",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "系统将自动优先使用免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "‘使用身份证后6位（密码）登录’在所有证据中均未提及；‘选择在学证明，预览无误后点击打印’属操作细节，证据仅说明可选择打印在学证明，未描述界面交互步骤，故为unclear；其余陈述均有直接对应证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-009",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，可以直接使用页面写的全日制本科自助打印系统吗？",
+   "answer": "不可以。页面所列‘全日制本科学生自助打印系统’的适用对象仅为在校本科学生或2006年及以后入学的已毕业本科学生，所有证据均未提及研究生可使用该系统 [UGP014, UGP005, UGP029, UGP007, UGP001, UGP002, UGP031, UGP037]。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP005",
+    "UGP029",
+    "UGP007",
+    "UGP001",
+    "UGP002",
+    "UGP031",
+    "UGP037"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面所列‘全日制本科学生自助打印系统’的适用对象仅为在校本科学生或2006年及以后入学的已毕业本科学生",
+     "verdict": "supported",
+     "evidence_id": "UGP014, UGP005, UGP007, UGP001, UGP002"
+    },
+    {
+     "claim": "所有证据均未提及研究生可使用该系统",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "两条实质性陈述均被证据支持：前一条由多条证据明确限定适用对象为‘在校本科学生’或‘2006年及以后入学的已毕业本科学生’，无任何证据扩展至研究生；后一条是证据覆盖范围的事实性描述，八条证据确未出现‘研究生’‘硕士’‘博士’或任何指向研究生群体的表述。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-021",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我需要申请宿舍入住，能在本科自助打印系统中办理住宿证明吗？",
+   "answer": "本科自助打印系统仅支持打印成绩单、在学证明和英文毕业证明，未提及可办理或打印住宿证明。因此，不能在本科自助打印系统中办理住宿证明。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP029",
+    "UGP037",
+    "UGP007",
+    "UGP040",
+    "UGP016",
+    "UGP032",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.3333333333333333,
+   "judge_items": [
+    {
+     "claim": "本科自助打印系统仅支持打印成绩单、在学证明和英文毕业证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "未提及可办理或打印住宿证明",
+     "verdict": "supported",
+     "evidence_id": "UGP014, UGP029, UGP037, UGP007, UGP040, UGP016, UGP032, UGP005"
+    },
+    {
+     "claim": "不能在本科自助打印系统中办理住宿证明",
+     "verdict": "supported",
+     "evidence_id": "UGP014, UGP029, UGP037, UGP007, UGP040, UGP016, UGP032, UGP005"
+    }
+   ],
+   "judge_reason": "证据明确列举了自助打印系统支持的材料类型（成绩单、英文毕业证明），并说明在校生有自助打印设备（UGP014），但未提及其支持‘在学证明’；且所有证据均未出现‘住宿证明’，故‘未提及’和‘不能办理’可被证据整体支持；而‘仅支持打印成绩单、在学证明和英文毕业证明’中‘在学证明’无任何证据支撑，属 unsupported。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-015",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我想打印成绩单，打算不登录系统直接使用账号功能。页面给出的登录账号是什么？",
+   "answer": "页面给出的登录账号是学号[UGP030][UGP015][UGP031][UGP016][UGP005][UGP038]。需要说明的是，‘不登录系统直接使用账号功能’不可行，因为所有自助打印操作均须先登录系统，账号（学号）是登录所必需的凭证。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP031",
+    "UGP029",
+    "UGP014",
+    "UGP016",
+    "UGP005",
+    "UGP038"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP030"
+    },
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP038"
+    },
+    {
+     "claim": "'不登录系统直接使用账号功能'不可行",
+     "verdict": "supported",
+     "evidence_id": "UGP030, UGP015, UGP031, UGP016, UGP005, UGP038"
+    },
+    {
+     "claim": "所有自助打印操作均须先登录系统",
+     "verdict": "supported",
+     "evidence_id": "UGP030, UGP015, UGP031, UGP016, UGP005, UGP038"
+    },
+    {
+     "claim": "账号（学号）是登录所必需的凭证",
+     "verdict": "supported",
+     "evidence_id": "UGP030, UGP015, UGP038"
+    }
+   ],
+   "judge_reason": "所有6条实质性陈述均被证据直接支持：UGP030/UGP015/UGP038明确账号为学号；所有证据均描述‘登录...系统’，隐含登录为必要前提，且无任何证据提及‘不登录即可使用账号功能’，故‘不可行’及‘须先登录’‘账号是必需凭证’均被整体证据链直接支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-012",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "我拿到的打印说明是2021年3月17日页面。能否凭这一页保证2026年免费成绩单份额仍然相同？",
+   "answer": "不能凭2021年3月17日的页面保证2026年免费成绩单份额仍然相同，因为所有证据均未说明该政策的有效期限、是否长期执行或对未来年份的约束力，仅反映当时在校学生的权益安排 [UGP012][UGP013][UGP014][UGP015][UGP016][UGP017][UGP001][UGP002]",
+   "evidence_ids": [
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP017",
+    "UGP012",
+    "UGP001",
+    "UGP002",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能凭2021年3月17日的页面保证2026年免费成绩单份额仍然相同",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有证据均未说明该政策的有效期限",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据均未说明该政策是否长期执行",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据均未说明该政策对未来年份的约束力",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据仅反映当时在校学生的权益安排",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    }
+   ],
+   "judge_reason": "回答中5条实质性陈述均被证据整体状态所支撑：各证据编号均仅描述2021年页面所载的静态政策内容，未出现任何关于时效性、有效期、未来适用性或修订机制的表述，故‘未说明’类陈述成立；首句结论性主张亦由该缺失直接推出。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-006",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想使用本科自助打印服务，材料名称记不清了。请先问我需要哪种证明。",
+   "answer": "请问您需要打印哪种证明？例如：中文成绩单、英文成绩单、中英文在学证明，还是英文毕业证明？您的身份是在校本科生，还是已毕业的本科生？如果是已毕业，您的入学年份是否为2006年及以后、毕业年份是否为2010年以后？这些信息将帮助我们确认您可使用的打印类型、设备位置及是否享有免费份额 [UGP014][UGP001][UGP002][UGP007][UGP040][UGP037][UGP010]。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP001",
+    "UGP007",
+    "UGP002",
+    "UGP040",
+    "UGP037",
+    "UGP038",
+    "UGP010"
+   ],
+   "unsupported_ratio": 0.2857142857142857,
+   "judge_items": [
+    {
+     "claim": "请问您需要打印哪种证明？例如：中文成绩单、英文成绩单、中英文在学证明，还是英文毕业证明？",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "您的身份是在校本科生，还是已毕业的本科生？",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002,UGP007"
+    },
+    {
+     "claim": "如果是已毕业，您的入学年份是否为2006年及以后",
+     "verdict": "supported",
+     "evidence_id": "UGP007,UGP040,UGP037,UGP038"
+    },
+    {
+     "claim": "毕业年份是否为2010年以后",
+     "verdict": "supported",
+     "evidence_id": "UGP010"
+    },
+    {
+     "claim": "这些信息将帮助我们确认您可使用的打印类型",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002,UGP007,UGP010"
+    },
+    {
+     "claim": "设备位置",
+     "verdict": "supported",
+     "evidence_id": "UGP037"
+    },
+    {
+     "claim": "是否享有免费份额",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "回答中‘中文成绩单’‘英文成绩单’‘中英文在学证明’‘英文毕业证明’及‘免费份额’均无证据直接支持；证据仅明确提及‘成绩单’（未分中英文）、‘在学证明’（未提中英文版本）、‘英文毕业证明’（有），但未提‘中文成绩单’‘英文成绩单’‘中英文在学证明’等具体名称，也未出现‘免费’或‘免费份额’字样。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-002",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校本科生的五份免费成绩单分别是什么语言、由谁领取或打印？",
+   "answer": "在校本科生的五份免费成绩单包括：1份中文成绩单，由教务处统一打印，学生毕业时与毕业证书同时领取 [UGP012]；其余4份为学生自主安排打印的2份中文成绩单和2份英文成绩单 [UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016",
+    "UGP013",
+    "UGP017"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生的五份免费成绩单包括1份中文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "1份中文成绩单由教务处统一打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "1份中文成绩单学生毕业时与毕业证书同时领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份为学生自主安排打印的2份中文成绩单和2份英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "回答中四条实质性陈述均被UGP012直接、明确文字支持，无额外推断或未证内容。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-019",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我把两份在学证明记成五份免费成绩单，这两个份额如何区分？",
+   "answer": "在学证明和成绩单是两类独立文件，各自配额互不占用：你享有 2 份中英文在学证明（即每份含中英文各一版，共可打 2 次），以及 5 份免费成绩单（其中 1 份由教务处毕业时统发，另 4 份可自主打印：2 份中文 + 2 份英文）[UGP013][UGP012][UGP001]。自助打印系统按所选文件类型分别扣减对应免费份额——选‘在学证明’只消耗在学证明的 2 份额度，选‘成绩单’只消耗成绩单的 5 份额度，二者完全分离，不会混淆[UGP017][UGP013]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP012",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在学证明和成绩单是两类独立文件",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP012,UGP001"
+    },
+    {
+     "claim": "各自配额互不占用",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP012,UGP017"
+    },
+    {
+     "claim": "你享有 2 份中英文在学证明（即每份含中英文各一版，共可打 2 次）",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "你享有 5 份免费成绩单（其中 1 份由教务处毕业时统发，另 4 份可自主打印：2 份中文 + 2 份英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "自助打印系统按所选文件类型分别扣减对应免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "选‘在学证明’只消耗在学证明的 2 份额度",
+     "verdict": "supported",
+     "evidence_id": "UGP017,UGP013"
+    },
+    {
+     "claim": "选‘成绩单’只消耗成绩单的 5 份额度",
+     "verdict": "supported",
+     "evidence_id": "UGP017,UGP012"
+    },
+    {
+     "claim": "二者完全分离，不会混淆",
+     "verdict": "supported",
+     "evidence_id": "UGP017,UGP013,UGP012"
+    }
+   ],
+   "judge_reason": "所有8条实质性陈述均能在证据中找到直接文字支撑：UGP013明确2份在学证明；UGP012明确5份成绩单构成（1份统发+4份自主打印，且说明2中2英）；UGP017明确系统‘先使用免费份额’且按所选文件类型扣减，结合UGP013/UGP012即得份额分离结论。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-024",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我不清楚自助打印时该输入什么。\n我是在校本科生，要打印成绩单，登录时账号是什么？",
+   "answer": "在校本科生登录自助打印系统时，账号是你的学号 [UGP015]。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP016",
+    "UGP031",
+    "UGP029",
+    "UGP032",
+    "UGP014",
+    "UGP001"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统时，账号是你的学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "回答中唯一实质性陈述（在校本科生、账号、学号）被证据[UGP015]直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-010",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我已经毕业，还能按在校本科生账号为学号的说明直接操作吗？请限定结论对象。",
+   "answer": "能。2006年及以后入学的已毕业本科学生，可按‘账号为学号、密码为身份证后6位字符’的说明，直接登录‘暨南大学全日制本科学生自助打印系统’办理英文毕业证明或本科成绩单打印业务 [UGP038][UGP030][UGP007][UGP005]。",
+   "evidence_ids": [
+    "UGP038",
+    "UGP015",
+    "UGP030",
+    "UGP007",
+    "UGP005",
+    "UGP029",
+    "UGP037",
+    "UGP039"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "2006年及以后入学的已毕业本科学生，可按‘账号为学号、密码为身份证后6位字符’的说明，直接登录‘暨南大学全日制本科学生自助打印系统’",
+     "verdict": "supported",
+     "evidence_id": "UGP038,UGP039,UGP007,UGP005"
+    },
+    {
+     "claim": "2006年及以后入学的已毕业本科学生可办理英文毕业证明打印业务",
+     "verdict": "supported",
+     "evidence_id": "UGP007,UGP038"
+    },
+    {
+     "claim": "2006年及以后入学的已毕业本科学生可办理本科成绩单打印业务",
+     "verdict": "supported",
+     "evidence_id": "UGP005,UGP030"
+    }
+   ],
+   "judge_reason": "所有三条实质性陈述均被证据直接支持：UGP038和UGP039共同支撑账号与密码规则；UGP007和UGP038支撑英文毕业证明办理；UGP005和UGP030支撑成绩单办理；系统名称‘暨南大学全日制本科学生自助打印系统’虽未在证据中完整出现，但UGP007和UGP005中‘全日制本科学生自助打印系统’即指该系统，且上下文唯一对应，属证据中术语的合理指代，不构成新增实质主张。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-022",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我要取得海外签证，能否由本科成绩打印服务直接审批签证？",
+   "answer": "不能。本科成绩打印服务仅为自助式学业证明打印渠道，不具有签证审批职能，也不提供签证所需的官方认证、公证、使馆认可格式或额外审核服务。您需自行将打印的成绩单按签证要求进行翻译、公证或认证，并向相应国家使领馆提交完整签证申请材料 [UGP005, UGP001, UGP010].",
+   "evidence_ids": [
+    "UGP005",
+    "UGP029",
+    "UGP032",
+    "UGP030",
+    "UGP010",
+    "UGP031",
+    "UGP001",
+    "UGP014"
+   ],
+   "unsupported_ratio": 0.8,
+   "judge_items": [
+    {
+     "claim": "本科成绩打印服务仅为自助式学业证明打印渠道",
+     "verdict": "supported",
+     "evidence_id": "UGP005"
+    },
+    {
+     "claim": "不具有签证审批职能",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "不提供签证所需的官方认证、公证、使馆认可格式或额外审核服务",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "您需自行将打印的成绩单按签证要求进行翻译、公证或认证",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "并向相应国家使领馆提交完整签证申请材料",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据仅描述成绩单自助打印的适用对象、地点、账号密码、缴费方式等操作细节（如UGP005/UGP001/UGP010），未提及签证审批、认证、公证、翻译或使领馆提交等任何与签证流程相关的内容，故除首条‘仅为自助式学业证明打印渠道’可由系统功能定位间接支持外，其余四条均无证据支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-016",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我把毕业时领取的那份中文成绩单当作自己应立即自助打印的份额，这个安排对吗？",
+   "answer": "不对。毕业时领取的那份中文成绩单由教务处统一打印，与学生自主安排的自助打印完全分离，不占用您在自助打印系统中的任何免费份额；您可自主安排打印的免费份额为2份中文+2份英文成绩单，共4份，另加2份中英文在学证明[UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP013",
+    "UGP017",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "毕业时领取的那份中文成绩单由教务处统一打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "毕业时领取的那份中文成绩单与学生自主安排的自助打印完全分离",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "毕业时领取的那份中文成绩单不占用您在自助打印系统中的任何免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "您可自主安排打印的免费份额为2份中文+2份英文成绩单，共4份",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "您可自主安排打印的免费份额另加2份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有5条实质性陈述均被UGP012直接、明确支持：该条明确区分‘1份中文成绩单由教务处统一打印并在毕业时随证书领取’（即不占自助份额），以及‘其余4份为2份中文和2份英文成绩单，由学生自主安排打印’，并隐含‘另加2份中英文在学证明’系独立份额（UGP013单独列明该额度，但回答中将其与成绩单份额并列表述为‘另加’；而UGP012未提在学证明，故该条实际未被UGP012支持——需修正。重新核查：回答中‘另加2份中英文在学证明[UGP012]’错误引用证据，UGP012未提及在学证明；UGP013才规定‘在校学生享有2份中英文在学证明份额’。因此该条claim与所引evidence_id不匹配，属unsupported。但题目要求verdict仅看‘是否被证据支持’，不看引用标注是否正确；即只要证据中存在文字支撑该陈述，即supported。UGP013支持‘2份中英文在学证明’，但回答中将该条归于[UGP012]，且未在supported列表中引用UGP013——然而任务说明是‘只依据给定证据’，且‘verdict=supported 仅当证据中有文字能直接支撑’，不限定必须用所标id。所以只要任意一条给定证据（UGP013）包含该内容，即算supported。UGP013确载‘在校学生享有2份中英文在学证明份额’，故该陈述受UGP013支持；虽回答误标[UGP012]，但陈述本身被证据支持。因此仍为supported。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-013",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人说新版规定在学证明无限次免费，我只找到2021年3月17日页面。页面实际支持多少份，能确认所谓新版吗？",
+   "answer": "不能确认所谓‘新版规定在学证明无限次免费’。所有提供的证据页面均明确且一致地规定：在校本科学生仅有2份中英文在学证明的免费打印份额，超出后须按10元/份扫码付费 [UGP013][UGP014][UGP001][UGP016][UGP054]；无任何证据提及‘新版’或‘无限次免费’，该说法与全部现有证据矛盾。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP054",
+    "UGP014",
+    "UGP080",
+    "UGP003",
+    "UGP018",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能确认所谓‘新版规定在学证明无限次免费’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有提供的证据页面均明确且一致地规定：在校本科学生仅有2份中英文在学证明的免费打印份额",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "超出后须按10元/份扫码付费",
+     "verdict": "supported",
+     "evidence_id": "UGP054"
+    },
+    {
+     "claim": "无任何证据提及‘新版’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "无任何证据提及‘无限次免费’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该说法与全部现有证据矛盾",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP054"
+    }
+   ],
+   "judge_reason": "回答中6条实质性陈述均被证据直接支持或可由证据必然推出（如‘无任何证据提及’属对给定证据集的穷举否定，而所列证据确实未出现‘新版’‘无限次免费’字样；‘矛盾’由UGP013限定2份+UGP054明示收费共同否定‘无限次免费’）",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-007",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我需要打印文件申请实习，暂时无法确定文件属于成绩单还是在学证明。请先核实办理类型。",
+   "answer": "实习申请需证明您当前为在校就读的本科学生，因此应办理‘在学证明’。该文件仅面向已完成教务系统注册、处于在校状态的学生，且您享有2份免费中英文在学证明，可通过各校区的‘暨南大学全日制本科学生自助打印系统’（账号为学号，密码为身份证后6位）自助打印 [UGP002][UGP001][UGP018][UGP003]。",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP002",
+    "UGP001",
+    "UGP008",
+    "UGP011",
+    "UGP014",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.4,
+   "judge_items": [
+    {
+     "claim": "实习申请需证明您当前为在校就读的本科学生，因此应办理‘在学证明’",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该文件仅面向已完成教务系统注册、处于在校状态的学生",
+     "verdict": "supported",
+     "evidence_id": "UGP018, UGP003"
+    },
+    {
+     "claim": "您享有2份免费中英文在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "可通过各校区的‘暨南大学全日制本科学生自助打印系统’自助打印",
+     "verdict": "supported",
+     "evidence_id": "UGP002, UGP001, UGP014"
+    },
+    {
+     "claim": "账号为学号，密码为身份证后6位",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据未提及实习申请对应文件类型（'在学证明'是唯一合理选择）、未说明在学证明有2份免费额度（仅成绩单明确有2份中文+2份英文共4份免费）、未提供自助打印系统的登录凭证规则（学号+身份证后6位）",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-003",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校学生可打印几份在学证明？份额是否包含中英文？",
+   "answer": "在校学生可打印 2 份在学证明，且每份均为中英文版本 [UGP013]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP014",
+    "UGP016",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校学生可打印 2 份在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "每份在学证明均为中英文版本",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "UGP013 明确表述‘在校学生享有 2 份中英文在学证明份额’，直接支持两条实质性陈述：份数（2份）和版本（中英文）",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-020",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我准备把五份免费成绩单都打成英文版。请核对中文和英文各自份数。",
+   "answer": "不可以将五份免费成绩单都打成英文版。免费成绩单总份数为5份，但构成是刚性固定的：其中1份中文成绩单由教务处统一打印、毕业时随证书发放，学生无法自主选择其语言版本；其余4份为学生自主打印的免费份额，明确限定为2份中文和2份英文，不可更改配比 [UGP012]。因此，中文成绩单实际共3份（1份教务处统印 + 2份自助打印），英文成绩单仅2份（全部来自自助打印） [UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不可以将五份免费成绩单都打成英文版",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "免费成绩单总份数为5份",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其中1份中文成绩单由教务处统一打印、毕业时随证书发放",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生无法自主选择其语言版本",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份为学生自主打印的免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份明确限定为2份中文和2份英文，不可更改配比",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "中文成绩单实际共3份（1份教务处统印 + 2份自助打印）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "英文成绩单仅2份（全部来自自助打印）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有8条实质性陈述均被[UGP012]直接、明确文字支持：'在校学生享有 5 份免费成绩单：1 份中文成绩单由教务处统一打印并在毕业时随证书领取，其余 4 份为 2 份中文和 2 份英文成绩单，由学生自主安排打印。'",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-025",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我需要安排毕业时的成绩材料。\n我需要成绩单，想区分毕业领取与自己打印的中文、英文份额。",
+   "answer": "毕业时，您将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取[UGP012]；此外，您还可自主安排打印4份免费成绩单，包括2份中文和2份英文，通过‘暨南大学全日制本科学生自助打印系统’（各校区均有设备）操作，登录账号为学号、密码为身份证后6位字符[UGP012]；系统会优先扣除免费份额，用完后支持手机扫码付费打印[UGP017]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP002",
+    "UGP013",
+    "UGP001",
+    "UGP017",
+    "UGP016",
+    "UGP079"
+   ],
+   "unsupported_ratio": 0.125,
+   "judge_items": [
+    {
+     "claim": "毕业时，您将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "此外，您还可自主安排打印4份免费成绩单，包括2份中文和2份英文",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "通过‘暨南大学全日制本科学生自助打印系统’操作",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统会优先扣除免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "回答中‘登录账号为学号’无任何证据提及；其余7条均有对应证据直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-011",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是校外人员，能否享受页面所列在校学生两份在学证明的份额？",
+   "answer": "不能。页面所列2份中英文在学证明份额仅限在校本科学生享有，校外人员既无学号无法登录‘暨南大学全日制本科学生自助打印系统’，也不在政策适用对象范围内 [UGP013][UGP014][UGP001][UGP002][UGP015]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP016",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.25,
+   "judge_items": [
+    {
+     "claim": "页面所列2份中英文在学证明份额仅限在校本科学生享有",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "校外人员无学号",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "校外人员无法登录‘暨南大学全日制本科学生自助打印系统’",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "校外人员不在政策适用对象范围内",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "‘校外人员无学号’在证据中无任何表述，属推断性陈述，未被任何证据直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-SC-021",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我要更换宿舍门禁卡，这属于本科休学复学服务吗？",
+   "answer": "更换宿舍门禁卡不属于本科休学复学服务。【证据】中所有条目均围绕休学申请、复学申请、休学通知书、体检证明、复学流程及学籍处理等事项展开，未提及宿舍门禁卡相关事宜 [UGS001, UGS013, UGS050, UGS015, UGS011, UGS037, UGS016, UGS051].",
+   "evidence_ids": [
+    "UGS001",
+    "UGS013",
+    "UGS050",
+    "UGS015",
+    "UGS011",
+    "UGS037",
+    "UGS016",
+    "UGS051"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "更换宿舍门禁卡不属于本科休学复学服务",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "【证据】中所有条目均围绕休学申请、复学申请、休学通知书、体检证明、复学流程及学籍处理等事项展开",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS013, UGS050, UGS015, UGS011, UGS037, UGS016, UGS051"
+    },
+    {
+     "claim": "【证据】中未提及宿舍门禁卡相关事宜",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS013, UGS050, UGS015, UGS011, UGS037, UGS016, UGS051"
+    }
+   ],
+   "judge_reason": "三条实质性陈述均被证据直接支持：第一条为否定性归类判断，其成立依据正是全部证据条目均未覆盖门禁卡事项；第二、三条分别是对证据内容主题的概括和缺失项确认，而所列全部证据编号（UGS001等）确均未出现‘宿舍’‘门禁’‘卡’等关键词或相关操作描述。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-017",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我以为在学证明只能由教务处统一发放，因此准备跳过自助打印系统。这与页面渠道相符吗？",
+   "answer": "不相符。在学证明并非仅由教务处统一发放；本科学生须通过‘暨南大学全日制本科学生自助打印系统’自主打印，各校区均设有该设备，且享有2份免费中英文在学证明额度，系统优先使用免费份额，用完后支持扫码付费打印 [UGP014][UGP002][UGP001]。教务处仅统一打印1份中文成绩单（毕业时发放），未承担在学证明的统一发放职能 [UGP014]。此外，打印前提是学生已在教务管理系统完成注册、处于在校状态 [UGP003][UGP018]，而非跳过系统等待人工发放。",
+   "evidence_ids": [
+    "UGP080",
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP002",
+    "UGP003",
+    "UGP001",
+    "UGP018"
+   ],
+   "unsupported_ratio": 0.3,
+   "judge_items": [
+    {
+     "claim": "在学证明并非仅由教务处统一发放",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "本科学生须通过‘暨南大学全日制本科学生自助打印系统’自主打印",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "各校区均设有该设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "享有2份免费中英文在学证明额度",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "系统优先使用免费份额，用完后支持扫码付费打印",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "教务处仅统一打印1份中文成绩单（毕业时发放）",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "未承担在学证明的统一发放职能",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "打印前提是学生已在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "打印前提还包括学生处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "而非跳过系统等待人工发放",
+     "verdict": "unclear",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "回答共10条实质性陈述，其中3条（扫码付费、教务处仅统打成绩单、未承担在学证明统一发放）无证据支持；1条（‘而非跳过系统等待人工发放’）属推论性否定表述，证据未明确排除人工发放可能性（如UGP080提及‘无法自助打印时到行政楼427办理’），故为unclear；其余6条均有直接证据支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-014",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人把毕业生的办理办法当作新版本要求在校生提交纸质申请。2021年3月17日页面对在校本科生实际给出什么渠道？",
+   "answer": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可直接通过就近校区自助打印设备打印中英文成绩单、本科生毕业证明（英文）或中英文在学证明，无需提交纸质申请或前往教务处现场办理 [UGP060][UGP061][UGP062][UGP059]。",
+   "evidence_ids": [
+    "UGP061",
+    "UGP062",
+    "UGP060",
+    "UGP011",
+    "UGP043",
+    "UGP070",
+    "UGC007",
+    "UGP059"
+   ],
+   "unsupported_ratio": 0.2,
+   "judge_items": [
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可直接通过就近校区自助打印设备打印中英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP060"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可直接通过就近校区自助打印设备打印本科生毕业证明（英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP061"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可直接通过就近校区自助打印设备打印中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP062"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：无需提交纸质申请或前往教务处现场办理",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该渠道适用于在校本科生",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据[UGP060][UGP061][UGP062]均表述为‘符合通知对象条件的学生’，但未明示‘在校本科生’属于该对象；[UGP011]明确页面对象为研究生；[UGP043]指向‘已毕业本科学生’；无任何证据表明在校本科生被纳入自助打印服务对象。‘无需提交纸质申请或前往教务处’属否定性断言，证据未排除其他办理方式，亦未声明该渠道为唯一或排他方式。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-008",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想了解不同证明的份数，尚未说明需要打印哪一种。请先确认我的需求。",
+   "answer": "您当前仅需了解不同证明的免费份数：在校本科学生共有2份免费中英文在学证明（每份含中、英双语）[UGP013]；另享5份免费成绩单，其中1份中文成绩单由教务处统一打印、毕业时与证书一并发放，其余4份（2份中文+2份英文）可自主打印[UGP012]。所有打印均通过‘暨南大学全日制本科学生自助打印系统’完成，各校区均有设备，登录账号为学号、密码为身份证后6位[UGP015][UGP016]；系统优先扣除免费份额，用完后支持扫码付费打印[UGP017]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP012",
+    "UGP016",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科学生共有2份免费中英文在学证明（每份含中、英双语）",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "在校本科学生享5份免费成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其中1份中文成绩单由教务处统一打印、毕业时与证书一并发放",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份（2份中文+2份英文）可自主打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "所有打印均通过‘暨南大学全日制本科学生自助打印系统’完成",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "密码为身份证后6位",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统优先扣除免费份额，用完后支持扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "所有9条实质性陈述均能在证据中找到直接文字支撑，无 unsupported 或 unclear 条目。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-PP-004",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我在另一个校区上课，打印成绩单的设备是否只有石牌校区有？登录账号是什么？",
+   "answer": "不是只有石牌校区有打印成绩单的设备，各校区均设有全日制本科学生自助打印设备 [UGP014]；登录账号为本人学号 [UGP015]。",
+   "evidence_ids": [
+    "UGP063",
+    "UGP014",
+    "UGP015",
+    "UGP030",
+    "UGP073",
+    "UGP002",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不是只有石牌校区有打印成绩单的设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "各校区均设有全日制本科学生自助打印设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为本人学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "三条实质性陈述均被对应证据直接支持：UGP014明确说明‘各校区均设有全日制本科学生自助打印设备’，UGP015明确说明‘在校本科学生登录自助打印系统时，账号为学号’。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-SC-018",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "material_confusion",
+   "question": "健康原因休学，普通情况说明能直接替代对应证明材料吗？",
+   "answer": "不能。健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明，且需经校门诊核签；仅作普通情况说明不符合规定，无法替代证明材料 [UGS003][UGS043][UGS007]。",
+   "evidence_ids": [
+    "UGS003",
+    "UGS025",
+    "UGS043",
+    "UGS026",
+    "UGS023",
+    "UGS029",
+    "UGS050",
+    "UGS007"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明",
+     "verdict": "supported",
+     "evidence_id": "UGS025"
+    },
+    {
+     "claim": "健康原因休学需经校门诊核签",
+     "verdict": "supported",
+     "evidence_id": "UGS043"
+    },
+    {
+     "claim": "仅作普通情况说明不符合规定，无法替代证明材料",
+     "verdict": "supported",
+     "evidence_id": "UGS003"
+    },
+    {
+     "claim": "学生办理休学流程时填写休学申请表",
+     "verdict": "supported",
+     "evidence_id": "UGS007"
+    }
+   ],
+   "judge_reason": "四条实质性陈述均被证据直接支持：UGS025明确复学时健康证明要求（反向印证休学亦需同类证明），UGS043明示‘因病须经校门诊核签’，UGS003明确‘健康原因需附对应证明’（即普通说明不能替代），UGS007确认填写申请表是流程环节。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-SC-023",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "multi_turn",
+   "question": "我要办理学籍变更。\n我申请复学，休学通知书只有复印件，可以使用吗？",
+   "answer": "可以使用休学通知书复印件办理复学手续，原件和复印件二者择一即可 [UGS013]。",
+   "evidence_ids": [
+    "UGS013",
+    "UGS023",
+    "UGS050",
+    "UGS011",
+    "UGS037",
+    "UGS051",
+    "UGS032",
+    "UGS033"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "可以使用休学通知书复印件办理复学手续",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    },
+    {
+     "claim": "原件和复印件二者择一即可",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    }
+   ],
+   "judge_reason": "回答中两条实质性陈述（允许用复印件、原件与复印件二者择一）均被[UGS013]原文直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-SC-009",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，能否直接套用本科休学申请表的材料规则？",
+   "answer": "不能。该《休学申请表》明确限定为本科学生使用 [UGS001]，所有相关流程和填写要求均基于本科生身份设定，证据中无任何信息表明研究生可直接套用该表或其规则。",
+   "evidence_ids": [
+    "UGS001",
+    "UGS007",
+    "UGS002",
+    "UGS020",
+    "UGS008",
+    "UGS045",
+    "UGS030",
+    "UGS043"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "该《休学申请表》明确限定为本科学生使用",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    },
+    {
+     "claim": "所有相关流程和填写要求均基于本科生身份设定",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    },
+    {
+     "claim": "证据中无任何信息表明研究生可直接套用该表或其规则",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "UGS001 明确指出该表为‘本科学生申请休学使用’，构成对使用主体的明确限定；‘基于本科生身份设定’是UGS001的合理推论（因文件标题及编号前缀UGS即University Undergraduate System）；‘无任何信息表明研究生可套用’属证据缺席陈述，且全文证据均未提及研究生休学流程或该表适用于研究生，故该否定性陈述被证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "baseline_c",
+   "sample_id": "S2E-SC-022",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我想报销一次差旅费用，能否用休学申请流程办理？",
+   "answer": "不能用休学申请流程报销差旅费用。休学申请流程专用于办理学籍异动，其表格、审批环节和制度依据均不涵盖财务报销功能，且所有证据均未显示该流程与差旅报销存在任何关联 [UGS001, UGS002, UGS007, UGS020, UGS029, UGS030, UGS043, UGS045].",
+   "evidence_ids": [
+    "UGS007",
+    "UGS029",
+    "UGS043",
+    "UGS020",
+    "UGS001",
+    "UGS002",
+    "UGS045",
+    "UGS030"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能用休学申请流程报销差旅费用",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "休学申请流程专用于办理学籍异动",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS007, UGS020, UGS029, UGS030, UGS043, UGS045"
+    },
+    {
+     "claim": "休学申请流程的表格、审批环节和制度依据均不涵盖财务报销功能",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS002, UGS007, UGS020, UGS029, UGS030, UGS043, UGS045"
+    },
+    {
+     "claim": "所有证据均未显示该流程与差旅报销存在任何关联",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS002, UGS007, UGS020, UGS029, UGS030, UGS043, UGS045"
+    }
+   ],
+   "judge_reason": "四条实质性陈述均被证据整体支持：证据全部围绕休学申请的学籍管理属性（如表单用途UGS001/UGS007、审批路径UGS030/UGS045、适用情形UGS029/UGS043），无一条提及差旅、报销、财务或费用处理；故‘不涵盖财务报销功能’和‘无任何关联’属证据沉默可直接支撑的否定性结论。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-005",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我要打印一份学校证明，但还没确定是成绩单还是在学证明。该先说明什么？",
+   "answer": "请问您是暨南大学在校本科学生吗？是否已在教务管理系统完成本学期注册？另外，您需要的是中文版、英文版，还是中英文版的证明？\n",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP004",
+    "UGP008",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "请问您是暨南大学在校本科学生吗？",
+     "verdict": "supported",
+     "evidence_id": "UGP001"
+    },
+    {
+     "claim": "是否已在教务管理系统完成本学期注册？",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "您需要的是中文版、英文版，还是中英文版的证明？",
+     "verdict": "supported",
+     "evidence_id": "UGP004"
+    }
+   ],
+   "judge_reason": "三条实质性陈述分别对应证据中关于在校本科学生身份（UGP001）、注册要求（UGP003）、英文名检查（UGP004，隐含需区分中/英文版本）的明确支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-001",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我是在校本科生，想打印中文成绩单，应使用哪个系统？",
+   "answer": "您是在校本科生，应使用“暨南大学全日制本科学生自助打印系统”打印中文成绩单。该系统在各校区均有设备，登录账号为您的学号，密码为身份证后6位字符；系统支持选择打印中文成绩单，且您享有2份免费中文成绩单额度（属于4份自主打印的免费成绩单之一）[UGP001][UGP012][UGP014]。",
+   "evidence_ids": [
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP012",
+    "UGP005",
+    "UGP032",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "您是在校本科生，应使用“暨南大学全日制本科学生自助打印系统”打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "该系统在各校区均有设备。",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为您的学号。",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "密码为身份证后6位字符。",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统支持选择打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP001"
+    },
+    {
+     "claim": "您享有2份免费中文成绩单额度（属于4份自主打印的免费成绩单之一）。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "回答中6条实质性陈述均被证据直接支持：UGP002明确系统名称及用途；UGP014说明各校区设设备；UGP015、UGP016分别确认账号密码规则；UGP001指出可选打印成绩单；UGP012明确在校生有4份免费自主打印额度（含2份中文）",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-018",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "在校本科生登录自助打印系统，账号应填身份证号还是学号？",
+   "answer": "在校本科生登录自助打印系统，账号应填学号，不是身份证号 [UGP015]。",
+   "evidence_ids": [
+    "UGP015",
+    "UGP030",
+    "UGP038",
+    "UGP031",
+    "UGP029",
+    "UGP016",
+    "UGP014",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统，账号应填学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "在校本科生登录自助打印系统，账号不应填身份证号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "UGP015明确指出‘在校本科学生登录自助打印系统时，账号为学号’，该陈述直接支持‘应填学号’；而‘账号为学号’在排他性语境（唯一账号字段）下，逻辑上蕴含‘不是身份证号’，且证据中无任何条目说在校生可用身份证号作账号，故‘不应填身份证号’属该明确陈述的否定推论，且无反证，按题干要求视为supported。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-023",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我要打印学校文件。\n我需要在学证明，不是成绩单，请告诉我份额和操作渠道。",
+   "answer": "在校本科学生可免费打印2份中英文在学证明[UGP002][UGP001][UGP013]；打印前须先在教务管理系统完成注册，确保处于在校状态[UGP003][UGP018]；操作渠道为‘暨南大学全日制本科学生自助打印系统’，各校区均设有该设备，登录账号为学号、密码为身份证后6位字符，选择‘在学证明’并预览无误后点击打印；系统优先使用免费份额，用完后支持手机扫码付费打印[UGP002][UGP001][UGP017][UGP014][UGP015]。",
+   "evidence_ids": [
+    "UGP002",
+    "UGP001",
+    "UGP013",
+    "UGP017",
+    "UGP014",
+    "UGP003",
+    "UGP018",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.1111111111111111,
+   "judge_items": [
+    {
+     "claim": "在校本科学生可免费打印2份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "打印前须先在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "打印前须确保处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "操作渠道为‘暨南大学全日制本科学生自助打印系统’",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "各校区均设有该设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "选择‘在学证明’并预览无误后点击打印",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "系统优先使用免费份额，用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据中未提及登录密码规则（身份证后6位），亦未明确说明‘选择在学证明并预览无误后点击打印’这一操作步骤细节。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-009",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，可以直接使用页面写的全日制本科自助打印系统吗？",
+   "answer": "不可以。您是研究生，而该‘全日制本科学生自助打印系统’仅面向在校或已毕业的全日制本科学生开放，所有证据均未授权或说明研究生可使用该系统[UGP014][UGP005][UGP029][UGP007][UGP001][UGP002][UGP031][UGP037]。研究生如需成绩单或在学/毕业证明，请咨询研究生院或查看面向研究生的办事指南。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP005",
+    "UGP029",
+    "UGP007",
+    "UGP001",
+    "UGP002",
+    "UGP031",
+    "UGP037"
+   ],
+   "unsupported_ratio": 0.5,
+   "judge_items": [
+    {
+     "claim": "该‘全日制本科学生自助打印系统’仅面向在校或已毕业的全日制本科学生开放",
+     "verdict": "supported",
+     "evidence_id": "UGP014,UGP001,UGP002,UGP005,UGP007"
+    },
+    {
+     "claim": "所有证据均未授权或说明研究生可使用该系统",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "您是研究生",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "研究生如需成绩单或在学/毕业证明，请咨询研究生院或查看面向研究生的办事指南",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据中未提及用户身份（研究生）及研究生办事渠道；仅明确系统服务对象为全日制本科学生（在校或已毕业），但未否定其他群体、亦未提供研究生替代方案。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-021",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我需要申请宿舍入住，能在本科自助打印系统中办理住宿证明吗？",
+   "answer": "证据中未提及宿舍入住申请或住宿证明的办理方式，也未说明本科自助打印系统支持打印住宿证明[UGP014][UGP029][UGP037][UGP007][UGP040][UGP016][UGP032][UGP005]",
+   "evidence_ids": [
+    "UGP014",
+    "UGP029",
+    "UGP037",
+    "UGP007",
+    "UGP040",
+    "UGP016",
+    "UGP032",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "证据中未提及宿舍入住申请或住宿证明的办理方式",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "证据中未说明本科自助打印系统支持打印住宿证明",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有实质性陈述均为对证据内容的否定性描述（‘未提及’‘未说明’），而所列8条证据确实均未出现‘宿舍’‘入住’‘住宿证明’等关键词或相关办理信息，该否定性断言被全部证据共同支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-015",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我想打印成绩单，打算不登录系统直接使用账号功能。页面给出的登录账号是什么？",
+   "answer": "页面给出的登录账号是学号[UGP015][UGP030]。需注意：账号必须用于登录系统，不存在不登录系统而直接使用账号功能的操作方式；所有适用情形下，账号均为学号。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP031",
+    "UGP029",
+    "UGP014",
+    "UGP016",
+    "UGP005",
+    "UGP038"
+   ],
+   "unsupported_ratio": 0.3333333333333333,
+   "judge_items": [
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015,UGP030"
+    },
+    {
+     "claim": "账号必须用于登录系统，不存在不登录系统而直接使用账号功能的操作方式",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有适用情形下，账号均为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015,UGP030,UGP038"
+    }
+   ],
+   "judge_reason": "证据明确支持‘页面给出的登录账号是学号’（UGP015、UGP030）及‘所有适用情形下账号均为学号’（UGP015、UGP030、UGP038），但未提及‘必须登录系统’或否定‘不登录系统直接使用账号功能’的可能性，该陈述无任何证据支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-012",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "我拿到的打印说明是2021年3月17日页面。能否凭这一页保证2026年免费成绩单份额仍然相同？",
+   "answer": "不能凭当前证据保证2026年免费成绩单份额仍然相同。所有证据均未注明生效时间、有效期或修订状态，亦未确认其是否为2021年3月17日版本，更未对2026年政策延续性作出任何说明[UGP014][UGP013][UGP016][UGP017][UGP012][UGP001][UGP002][UGP015]。因此，该问题所涉时间跨度超出证据覆盖范围，未获证据确认的部分不能当事实。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP017",
+    "UGP012",
+    "UGP001",
+    "UGP002",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能凭当前证据保证2026年免费成绩单份额仍然相同",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有证据均未注明生效时间、有效期或修订状态",
+     "verdict": "supported",
+     "evidence_id": "UGP014,UGP013,UGP016,UGP017,UGP012,UGP001,UGP002,UGP015"
+    },
+    {
+     "claim": "所有证据均未确认其是否为2021年3月17日版本",
+     "verdict": "supported",
+     "evidence_id": "UGP014,UGP013,UGP016,UGP017,UGP012,UGP001,UGP002,UGP015"
+    },
+    {
+     "claim": "所有证据均未对2026年政策延续性作出任何说明",
+     "verdict": "supported",
+     "evidence_id": "UGP014,UGP013,UGP016,UGP017,UGP012,UGP001,UGP002,UGP015"
+    },
+    {
+     "claim": "该问题所涉时间跨度超出证据覆盖范围",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "未获证据确认的部分不能当事实",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有6条实质性陈述均被证据整体缺失性（无时间信息、无未来承诺、无版本标识）所支持，符合‘supported’判定标准：否定性断言（如‘未注明’‘未确认’‘未说明’‘超出覆盖范围’‘不能当事实’）可由证据内容的客观缺席直接证实。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-006",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想使用本科自助打印服务，材料名称记不清了。请先问我需要哪种证明。",
+   "answer": "请问您是：1）在校本科学生，还是 2）已毕业的本科学生？如果是已毕业，请问您的入学年份是否为2006年及以后？毕业年份是否为2010年以后？另外，您具体需要打印哪类材料？（例如：中文/英文成绩单、中英文在学证明、英文毕业证明）\n",
+   "evidence_ids": [
+    "UGP014",
+    "UGP001",
+    "UGP007",
+    "UGP002",
+    "UGP040",
+    "UGP037",
+    "UGP038",
+    "UGP010"
+   ],
+   "unsupported_ratio": 0.2,
+   "judge_items": [
+    {
+     "claim": "在校本科学生可以使用自助打印服务",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "已毕业的本科学生可能适用自助打印服务",
+     "verdict": "supported",
+     "evidence_id": "UGP007"
+    },
+    {
+     "claim": "2006年及以后入学的已毕业本科学生可通过自助系统办理英文毕业证明",
+     "verdict": "supported",
+     "evidence_id": "UGP007"
+    },
+    {
+     "claim": "2010年以后毕业的本科学生适用2025年暑假跨校区自助打印服务",
+     "verdict": "supported",
+     "evidence_id": "UGP010"
+    },
+    {
+     "claim": "自助打印材料包括中文/英文成绩单、中英文在学证明、英文毕业证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据仅明确列出‘成绩单’‘在学证明’（UGP001, UGP002）和‘英文毕业证明’（UGP007），未提及其语言版本（如‘中文成绩单’‘英文成绩单’‘中英文在学证明’），亦未出现‘中文成绩单’‘英文成绩单’‘中英文在学证明’等具体表述；所有材料的语言属性均属额外推断，无直接证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-002",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校本科生的五份免费成绩单分别是什么语言、由谁领取或打印？",
+   "answer": "在校本科生的五份免费成绩单包括：1份中文成绩单，由教务处统一打印，学生毕业时与证书同时领取[UGP012]；其余4份为2份中文成绩单和2份英文成绩单，由学生通过“暨南大学全日制本科学生自助打印系统”自主安排打印[UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016",
+    "UGP013",
+    "UGP017"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生的五份免费成绩单包括：1份中文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "1份中文成绩单由教务处统一打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "1份中文成绩单学生毕业时与证书同时领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份为2份中文成绩单和2份英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份由学生通过“暨南大学全日制本科学生自助打印系统”自主安排打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "回答中5条实质性陈述均在UGP012中有直接、明确的文字支撑，未引入证据外信息，且无任何陈述与证据矛盾或无法验证。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-019",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我把两份在学证明记成五份免费成绩单，这两个份额如何区分？",
+   "answer": "两份在学证明和五份免费成绩单是完全独立的两类免费打印额度，不可相互替代或混用。其中，5份免费成绩单包括：1份由教务处统一打印、毕业时随证书发放的中文成绩单，以及学生可自主打印的2份中文+2份英文成绩单；而2份中英文在学证明是单独配额，仅用于打印在学证明。自助打印系统会按所选材料类型（成绩单或在学证明）分别调用对应免费份额，先用尽该类免费额度后才转为付费打印[UGP013][UGP012][UGP001][UGP014][UGP002][UGP017]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP012",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "两份在学证明和五份免费成绩单是完全独立的两类免费打印额度，不可相互替代或混用。",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP012"
+    },
+    {
+     "claim": "5份免费成绩单包括：1份由教务处统一打印、毕业时随证书发放的中文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5份免费成绩单包括：学生可自主打印的2份中文+2份英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "2份中英文在学证明是单独配额，仅用于打印在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "自助打印系统会按所选材料类型（成绩单或在学证明）分别调用对应免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "先用尽该类免费额度后才转为付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "所有6条实质性陈述均能在证据中找到直接文字支撑：UGP013明确2份在学证明配额；UGP012明确定义5份成绩单构成及归属；UGP017明确按材料类型分别调用免费份额并用尽后付费；其他陈述均为前述证据的直接复述或逻辑必然推导（如‘不可相互替代’由分列不同条款UGP013/UGP012支持），无额外添加信息。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-024",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我不清楚自助打印时该输入什么。\n我是在校本科生，要打印成绩单，登录时账号是什么？",
+   "answer": "在校本科生登录自助打印系统时，账号为学号[UGP015]。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP016",
+    "UGP031",
+    "UGP029",
+    "UGP032",
+    "UGP014",
+    "UGP001"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统时，账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "回答中唯一实质性陈述‘在校本科生登录自助打印系统时，账号为学号’被证据[UGP015]直接、明确支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-010",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我已经毕业，还能按在校本科生账号为学号的说明直接操作吗？请限定结论对象。",
+   "answer": "可以。2006年及以后入学的已毕业本科学生，仍可按‘账号为学号、密码为身份证后6位字符’的规则，直接登录‘暨南大学全日制本科学生自助打印系统’办理英文毕业证明或本科成绩单[UGP038][UGP007][UGP005]。该登录方式适用于该群体，无需另行注册或变更账号形式[UGP030][UGP039]。",
+   "evidence_ids": [
+    "UGP038",
+    "UGP015",
+    "UGP030",
+    "UGP007",
+    "UGP005",
+    "UGP029",
+    "UGP037",
+    "UGP039"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "2006年及以后入学的已毕业本科学生，仍可按‘账号为学号、密码为身份证后6位字符’的规则，直接登录‘暨南大学全日制本科学生自助打印系统’办理英文毕业证明或本科成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP038,UGP007,UGP005,UGP039"
+    },
+    {
+     "claim": "该登录方式适用于该群体，无需另行注册或变更账号形式",
+     "verdict": "supported",
+     "evidence_id": "UGP030"
+    }
+   ],
+   "judge_reason": "所有实质性陈述均被证据直接支持：UGP038和UGP039共同支撑账号为学号、密码为身份证后6位；UGP007和UGP005支撑可办理英文毕业证明和成绩单；UGP030支撑‘账号为学号’延续适用，即无需变更账号形式。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-022",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我要取得海外签证，能否由本科成绩打印服务直接审批签证？",
+   "answer": "证据中未提及本科成绩单打印服务与海外签证审批之间的任何关联，也未说明该服务具备签证审批职能或可替代签证审批流程[UGP005][UGP029][UGP032][UGP030][UGP010][UGP031][UGP001][UGP014]。成绩单自助打印仅为材料获取服务，不涉及审批、认证、签证办理等行政许可或外交事务功能。",
+   "evidence_ids": [
+    "UGP005",
+    "UGP029",
+    "UGP032",
+    "UGP030",
+    "UGP010",
+    "UGP031",
+    "UGP001",
+    "UGP014"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "证据中未提及本科成绩单打印服务与海外签证审批之间的任何关联",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "证据中未说明该服务具备签证审批职能或可替代签证审批流程",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "成绩单自助打印仅为材料获取服务",
+     "verdict": "supported",
+     "evidence_id": "UGP005, UGP029, UGP032, UGP030, UGP010, UGP031, UGP001, UGP014"
+    },
+    {
+     "claim": "不涉及审批、认证、签证办理等行政许可或外交事务功能",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有四条实质性陈述均被证据整体内容所支持：证据仅描述自助打印成绩单的适用对象、地点、账号密码、缴费方式等操作性信息，全篇未出现‘签证’‘审批’‘认证’‘外交’‘行政许可’等关键词，亦无任何语句暗示该服务具有超出材料输出的功能。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-016",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我把毕业时领取的那份中文成绩单当作自己应立即自助打印的份额，这个安排对吗？",
+   "answer": "不对。毕业时由教务处统一打印并随证书领取的那1份中文成绩单，是独立于学生自主安排打印的免费份额之外的，不占用也不等同于自助系统中的任何免费打印份额；学生可自主打印的免费成绩单共4份（2份中文+2份英文），须通过自助打印系统操作[UGP012]。将统发的那份视为需自行打印的份额，混淆了两种不同发放机制[UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP013",
+    "UGP017",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "毕业时由教务处统一打印并随证书领取的那1份中文成绩单，是独立于学生自主安排打印的免费份额之外的",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "毕业时由教务处统一打印并随证书领取的那1份中文成绩单，不占用也不等同于自助系统中的任何免费打印份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生可自主打印的免费成绩单共4份（2份中文+2份英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生须通过自助打印系统操作来打印这4份免费成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "将统发的那份视为需自行打印的份额，混淆了两种不同发放机制",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有5条实质性陈述均被UGP012直接、明确支持：该条证据明确定义了‘1份中文成绩单由教务处统一打印并在毕业时随证书领取’与‘其余4份为2份中文和2份英文成绩单，由学生自主安排打印’的并列、互斥关系，即前者独立于后者、不占用后者份额，且后者须‘自主安排打印’——结合UGP001/UGP002/UGP014可知‘自主安排打印’即指通过自助打印系统操作；‘混淆两种不同发放机制’是该条证据所作分类的自然推论，属文本直接蕴含。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-013",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人说新版规定在学证明无限次免费，我只找到2021年3月17日页面。页面实际支持多少份，能确认所谓新版吗？",
+   "answer": "目前所有可查证据均不支持‘新版规定在学证明无限次免费’的说法；相反，全部证据一致表明：在校本科学生仅有2份中英文在学证明免费份额，用完后须按10元/份扫码付费[UGP013][UGP014][UGP001][UGP016][UGP054]。证据中未出现任何晚于2021年3月17日的官方版本，也无任何条文修改或废止原有免费份额限制；所谓‘新版’及‘无限次免费’未获任何证据确认，不能作为办事依据。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP054",
+    "UGP014",
+    "UGP080",
+    "UGP003",
+    "UGP018",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.14285714285714285,
+   "judge_items": [
+    {
+     "claim": "目前所有可查证据均不支持‘新版规定在学证明无限次免费’的说法",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP054"
+    },
+    {
+     "claim": "在校本科学生仅有2份中英文在学证明免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "用完后须按10元/份扫码付费",
+     "verdict": "supported",
+     "evidence_id": "UGP054"
+    },
+    {
+     "claim": "证据中未出现任何晚于2021年3月17日的官方版本",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "也无任何条文修改或废止原有免费份额限制",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所谓‘新版’及‘无限次免费’未获任何证据确认",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP054"
+    },
+    {
+     "claim": "不能作为办事依据",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "‘不能作为办事依据’属规范性结论，证据仅列事实条款，未授权或禁止以某说法为办事依据；‘未出现晚于2021年3月17日版本’和‘无条文修改废止’属证据未载明事项，无法从给定证据反向证实其不存在。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-007",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我需要打印文件申请实习，暂时无法确定文件属于成绩单还是在学证明。请先核实办理类型。",
+   "answer": "请问您申请实习单位明确要求的是‘在学证明’还是‘成绩单’？另外，您是本科还是研究生？目前是否已完成本学期教务系统注册并处于在校状态？\n",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP002",
+    "UGP001",
+    "UGP008",
+    "UGP011",
+    "UGP014",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "申请实习单位可能要求‘在学证明’或‘成绩单’",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "在校本科学生可通过自助打印系统选择打印成绩单或在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "在学证明要求学生处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "打印在学证明前须先在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "研究生也涉及成绩单业务（中英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP011"
+    }
+   ],
+   "judge_reason": "回答中5条实质性陈述（含隐含的研究生业务存在、本科/研究生区分必要性、在校状态与注册要求、两类文件并存）均被证据直接支持；无 unsupported 条目。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-003",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校学生可打印几份在学证明？份额是否包含中英文？",
+   "answer": "在校学生可免费打印 2 份在学证明，且这 2 份均为中英文版本 [UGP013][UGP001][UGP002][UGP017][UGP014][UGP016][UGP012]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP014",
+    "UGP016",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校学生可免费打印 2 份在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "这 2 份均为中英文版本",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "UGP013 明确指出‘在校学生享有 2 份中英文在学证明份额’，直接支持两条实质性陈述；其余引用证据（UGP001、UGP002等）仅说明可打印在学证明及系统使用方式，不涉及份数或中英文属性，但因未对这两条主张产生否定或削弱，且主支撑已充分，故无 unsupported 条目。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-020",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我准备把五份免费成绩单都打成英文版。请核对中文和英文各自份数。",
+   "answer": "您不能将五份免费成绩单全部打成英文版。根据规定，5份免费成绩单中：1份为教务处统一打印的中文成绩单，不通过自助系统打印，也不可选为英文版；其余4份自助打印份额严格限定为2份中文和2份英文，不可调整语种配比[UGP012]。因此，中文成绩单共3份（1份教务处统印 + 2份自助打印），英文成绩单共2份（全部来自自助打印）[UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "您不能将五份免费成绩单全部打成英文版。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5份免费成绩单中：1份为教务处统一打印的中文成绩单，不通过自助系统打印，也不可选为英文版。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份自助打印份额严格限定为2份中文和2份英文，不可调整语种配比。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "中文成绩单共3份（1份教务处统印 + 2份自助打印）。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "英文成绩单共2份（全部来自自助打印）。",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有5条实质性陈述均被UGP012原文直接、明确支持：'在校学生享有5份免费成绩单：1份中文成绩单由教务处统一打印并在毕业时随证书领取，其余4份为2份中文和2份英文成绩单，由学生自主安排打印。'",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-025",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我需要安排毕业时的成绩材料。\n我需要成绩单，想区分毕业领取与自己打印的中文、英文份额。",
+   "answer": "作为在校本科学生，您毕业时将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取[UGP012]；此外，您还可自主安排打印2份中文和2份英文成绩单，全部通过‘暨南大学全日制本科学生自助打印系统’完成，该系统在各校区均有部署，登录账号为学号、密码为身份证后6位字符[UGP012][UGP014][UGP002][UGP013][UGP001][UGP017][UGP016]。请注意，这4份（2中+2英）属于您的免费份额，系统会优先调用；免费份额用尽后，如需额外打印，须手机扫码付费[UGP017]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP002",
+    "UGP013",
+    "UGP001",
+    "UGP017",
+    "UGP016",
+    "UGP079"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "作为在校本科学生，您毕业时将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "此外，您还可自主安排打印2份中文和2份英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "全部通过‘暨南大学全日制本科学生自助打印系统’完成",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "该系统在各校区均有部署",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "这4份（2中+2英）属于您的免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "系统会优先调用免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "免费份额用尽后，如需额外打印，须手机扫码付费",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "共9条实质性陈述，其中8条有直接证据支持，1条（登录账号为学号）在所有证据中均未提及，故为unclear；无unsupported条目，unsupported_ratio=0.0",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-011",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是校外人员，能否享受页面所列在校学生两份在学证明的份额？",
+   "answer": "不能。页面所列2份中英文在学证明的免费份额仅限在校本科学生使用，校外人员不属于适用对象，且无法登录‘暨南大学全日制本科学生自助打印系统’（该系统要求学号和身份证后6位作为凭证）[UGP013][UGP014][UGP001][UGP015][UGP016]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP016",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面所列2份中英文在学证明的免费份额仅限在校本科学生使用",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "校外人员不属于适用对象",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "校外人员无法登录‘暨南大学全日制本科学生自助打印系统’",
+     "verdict": "supported",
+     "evidence_id": "UGP015,UGP016"
+    },
+    {
+     "claim": "该系统要求学号和身份证后6位作为凭证",
+     "verdict": "supported",
+     "evidence_id": "UGP015,UGP016"
+    }
+   ],
+   "judge_reason": "所有四条实质性陈述均被证据直接支持：UGP013明确限定‘在校学生’享有2份在学证明；UGP015和UGP016分别指出账号为学号、密码为身份证后6位，校外人员无学号故无法登录。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-SC-021",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我要更换宿舍门禁卡，这属于本科休学复学服务吗？",
+   "answer": "证据中未提及宿舍门禁卡更换事宜，亦未将该事项与本科休学复学服务建立任何关联[UGS001][UGS011][UGS013][UGS015][UGS016][UGS037][UGS050][UGS051]。",
+   "evidence_ids": [
+    "UGS001",
+    "UGS013",
+    "UGS050",
+    "UGS015",
+    "UGS011",
+    "UGS037",
+    "UGS016",
+    "UGS051"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "证据中未提及宿舍门禁卡更换事宜",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "证据中未将宿舍门禁卡更换与本科休学复学服务建立任何关联",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有实质性陈述均为对证据内容的否定性描述（‘未提及’‘未建立关联’），而所列8项证据[UGS001]–[UGS051]确实均未出现‘宿舍’‘门禁卡’‘更换’等关键词，亦无任何条款将门禁卡事务纳入休学或复学流程，故该否定性断言被全部证据共同默示支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-017",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我以为在学证明只能由教务处统一发放，因此准备跳过自助打印系统。这与页面渠道相符吗？",
+   "answer": "不相符。在学证明并非仅由教务处统一发放；全日制本科学生可自行登录‘暨南大学全日制本科学生自助打印系统’打印中英文在学证明，每人享有2份免费份额[UGP014][UGP013][UGP002][UGP001]。教务处统一打印的仅为1份中文成绩单（毕业时发放），不包括在学证明[UGP014]。此外，打印前提是在教务管理系统完成注册、处于在校状态[UGP003][UGP018]。因此，跳过自助打印系统不符合页面所列渠道。",
+   "evidence_ids": [
+    "UGP080",
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP002",
+    "UGP003",
+    "UGP001",
+    "UGP018"
+   ],
+   "unsupported_ratio": 0.14285714285714285,
+   "judge_items": [
+    {
+     "claim": "在学证明并非仅由教务处统一发放",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "全日制本科学生可自行登录‘暨南大学全日制本科学生自助打印系统’打印中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "每人享有2份免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "教务处统一打印的仅为1份中文成绩单（毕业时发放），不包括在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "打印前提是在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "打印前提是要处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "跳过自助打印系统不符合页面所列渠道",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    }
+   ],
+   "judge_reason": "回答中‘教务处统一打印的仅为1份中文成绩单（毕业时发放），不包括在学证明’无任何证据支持；其余6条均有对应证据直接支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-014",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人把毕业生的办理办法当作新版本要求在校生提交纸质申请。2021年3月17日页面对在校本科生实际给出什么渠道？",
+   "answer": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可通过就近校区自助打印设备直接打印中英文成绩单、本科生毕业证明（英文）和中英文在学证明，无需提交纸质申请[UGP060][UGP061][UGP062][UGP059]。将毕业生（尤其是2006年前入学者）的线下申请流程套用于在校生，属于对象与条件错配，不符合该页面所载规定。",
+   "evidence_ids": [
+    "UGP061",
+    "UGP062",
+    "UGP060",
+    "UGP011",
+    "UGP043",
+    "UGP070",
+    "UGC007",
+    "UGP059"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可通过就近校区自助打印设备直接打印中英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP060"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可通过就近校区自助打印设备直接打印本科生毕业证明（英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP061"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道是：暑假期间可通过就近校区自助打印设备直接打印中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP062"
+    },
+    {
+     "claim": "2021年3月17日页面对在校本科生实际给出的渠道无需提交纸质申请",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该页面所述跨校区打印服务适用于暑假期间",
+     "verdict": "supported",
+     "evidence_id": "UGP059"
+    },
+    {
+     "claim": "将毕业生（尤其是2006年前入学者）的线下申请流程套用于在校生，属于对象与条件错配",
+     "verdict": "supported",
+     "evidence_id": "UGP043"
+    },
+    {
+     "claim": "不符合该页面所载规定",
+     "verdict": "unclear",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有实质性陈述中，无一条被证据明确否定；‘无需提交纸质申请’和‘不符合该页面所载规定’在证据中无直接文字支撑，故判unclear；其余五条均有对应证据编号直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-008",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想了解不同证明的份数，尚未说明需要打印哪一种。请先确认我的需求。",
+   "answer": "在校本科学生可免费打印：2 份中英文在学证明[UGP013]；以及 5 份成绩单，其中 1 份中文成绩单由教务处统一打印、毕业时与证书同时领取，其余 4 份（2 份中文 + 2 份英文）由学生自主安排打印[UGP012]。所有打印均通过‘暨南大学全日制本科学生自助打印系统’完成，各校区均设有该设备，登录账号为学号、密码为身份证后 6 位字符[UGP015][UGP016]；系统优先使用免费份额，用完后支持手机扫码付费打印[UGP017]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP012",
+    "UGP016",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科学生可免费打印：2 份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "在校本科学生可免费打印：5 份成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5 份成绩单中，1 份中文成绩单由教务处统一打印并在毕业时随证书领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5 份成绩单中，其余 4 份为 2 份中文和 2 份英文成绩单，由学生自主安排打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "所有打印均通过‘暨南大学全日制本科学生自助打印系统’完成",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "各校区均设有该设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "登录密码为身份证后 6 位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统优先使用免费份额，用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "回答中全部9条实质性陈述均有对应证据直接支撑，无 unsupported 或 unclear 条目。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-PP-004",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我在另一个校区上课，打印成绩单的设备是否只有石牌校区有？登录账号是什么？",
+   "answer": "不是只有石牌校区有打印设备，各校区均设有全日制本科学生自助打印设备 [UGP014][UGP002][UGP001]；在校本科学生登录账号为学号 [UGP015][UGP002][UGP001]。",
+   "evidence_ids": [
+    "UGP063",
+    "UGP014",
+    "UGP015",
+    "UGP030",
+    "UGP073",
+    "UGP002",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不是只有石牌校区有打印设备，各校区均设有全日制本科学生自助打印设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "在校本科学生登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "两条实质性陈述均被对应证据直接支持：UGP014明确说明'各校区均设有全日制本科学生自助打印设备'；UGP015明确说明'在校本科学生登录自助打印系统时，账号为学号'。其他引用证据[UGP002][UGP001]虽与自助打印系统相关，但未重复说明'各校区均有设备'或'账号为学号'，属冗余引用，不影响支撑判定。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-SC-018",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "material_confusion",
+   "question": "健康原因休学，普通情况说明能直接替代对应证明材料吗？",
+   "answer": "不能。健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明，普通情况说明不能替代该证明材料 [UGS003]；且因病休学须经校门诊核签，说明需有医疗机构的专业确认，仅文字说明不符合要求 [UGS043][UGS007]。",
+   "evidence_ids": [
+    "UGS003",
+    "UGS025",
+    "UGS043",
+    "UGS026",
+    "UGS023",
+    "UGS029",
+    "UGS050",
+    "UGS007"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明",
+     "verdict": "supported",
+     "evidence_id": "UGS003"
+    },
+    {
+     "claim": "普通情况说明不能替代该证明材料",
+     "verdict": "supported",
+     "evidence_id": "UGS003"
+    },
+    {
+     "claim": "因病休学须经校门诊核签",
+     "verdict": "supported",
+     "evidence_id": "UGS043"
+    },
+    {
+     "claim": "仅文字说明不符合要求",
+     "verdict": "unclear",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "前三条均有直接证据支撑：UGS003明确健康原因需附对应证明，UGS043明确须经校门诊核签；第四条‘仅文字说明不符合要求’是推论，证据未出现‘文字说明’‘不符合要求’等表述，亦未明示否定普通说明的效力，故属unclear；无unsupported条目，unsupported_ratio=0.0",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-SC-023",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "multi_turn",
+   "question": "我要办理学籍变更。\n我申请复学，休学通知书只有复印件，可以使用吗？",
+   "answer": "可以使用休学通知书复印件办理复学手续，原件和复印件二者择一即可 [UGS013]。",
+   "evidence_ids": [
+    "UGS013",
+    "UGS023",
+    "UGS050",
+    "UGS011",
+    "UGS037",
+    "UGS051",
+    "UGS032",
+    "UGS033"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "可以使用休学通知书复印件办理复学手续",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    },
+    {
+     "claim": "原件和复印件二者择一即可",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    }
+   ],
+   "judge_reason": "回答中两条实质性陈述（允许用复印件、原件与复印件二者择一）均被[UGS013]原文直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-SC-009",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，能否直接套用本科休学申请表的材料规则？",
+   "answer": "不能。本科休学申请表及其配套规则仅适用于本科学生，文件标题已明确限定为‘休学申请表(本科学生)’[UGS001]；证据中所有填写要求、流程环节和审核主体均基于本科生设定，未提供研究生适用的依据或转用说明[UGS001][UGS002][UGS020]。研究生休学应依据专门面向研究生的规定办理，本证据不支持套用。",
+   "evidence_ids": [
+    "UGS001",
+    "UGS007",
+    "UGS002",
+    "UGS020",
+    "UGS008",
+    "UGS045",
+    "UGS030",
+    "UGS043"
+   ],
+   "unsupported_ratio": 0.16666666666666666,
+   "judge_items": [
+    {
+     "claim": "本科休学申请表及其配套规则仅适用于本科学生",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    },
+    {
+     "claim": "文件标题已明确限定为‘休学申请表(本科学生)’",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    },
+    {
+     "claim": "证据中所有填写要求、流程环节和审核主体均基于本科生设定",
+     "verdict": "supported",
+     "evidence_id": "UGS002,UGS020,UGS007,UGS008,UGS045,UGS030,UGS043"
+    },
+    {
+     "claim": "未提供研究生适用的依据或转用说明",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "研究生休学应依据专门面向研究生的规定办理",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "本证据不支持套用",
+     "verdict": "supported",
+     "evidence_id": "UGS001,UGS002,UGS020,UGS007,UGS008,UGS045,UGS030,UGS043"
+    }
+   ],
+   "judge_reason": "回答中‘研究生休学应依据专门面向研究生的规定办理’这一陈述在所给证据中无任何提及，既未出现‘研究生’，也未提及其休学规定，属 unsupported；其余五条均可由证据直接或组合支撑（如多条证据共同支撑‘基于本科生设定’）",
+   "judge_error": null
+  },
+  {
+   "config": "ablation_no_flow",
+   "sample_id": "S2E-SC-022",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我想报销一次差旅费用，能否用休学申请流程办理？",
+   "answer": "证据中未提及差旅费用报销事项，也未说明休学申请流程与费用报销之间存在任何关联 [abstention]",
+   "evidence_ids": [
+    "UGS007",
+    "UGS029",
+    "UGS043",
+    "UGS020",
+    "UGS001",
+    "UGS002",
+    "UGS045",
+    "UGS030"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "证据中未提及差旅费用报销事项",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "证据中未说明休学申请流程与费用报销之间存在任何关联",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有陈述均为对证据内容的否定性描述（即‘未提及’‘未说明’），而所提供的全部7条证据（UGS007/029/043/020/001/002/045/030）确实均未出现‘差旅’‘费用’‘报销’等关键词或相关操作指引，故两项否定性陈述均被证据整体所支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-005",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我要打印一份学校证明，但还没确定是成绩单还是在学证明。该先说明什么？",
+   "answer": "您应先确认自己已在教务管理系统完成注册、处于在校状态[UGP018][UGP003]；再登录‘暨南大学全日制本科学生自助打印系统’（各校区均有设备，账号为学号、密码为身份证后6位）预览并选择所需证明类型[UGP001][UGP002]；如考虑打印英文版，务必提前检查并确保系统中已按规范填写有效英文名[UGP004]；此外，您当前享有2份免费中英文在学证明[UGP001][UGP012]，系统将优先使用免费额度[UGP001][UGP012]。",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP004",
+    "UGP008",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.375,
+   "judge_items": [
+    {
+     "claim": "您应先确认自己已在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "您应先确认自己处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "再登录‘暨南大学全日制本科学生自助打印系统’预览并选择所需证明类型",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "账号为学号、密码为身份证后6位",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "如考虑打印英文版，务必提前检查并确保系统中已按规范填写有效英文名",
+     "verdict": "supported",
+     "evidence_id": "UGP004"
+    },
+    {
+     "claim": "您当前享有2份免费中英文在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "系统将优先使用免费额度",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "回答共8条实质性陈述；其中3条（账号密码规则、享有2份免费中英文在学证明、系统优先使用免费额度）在证据中无对应文字支撑：证据UGP012仅提5份免费成绩单（含2中2英+1统发中文），未提在学证明有免费额度；UGP001/UGP002未提免费额度或优先使用机制；所有证据均未说明账号密码规则。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-001",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我是在校本科生，想打印中文成绩单，应使用哪个系统？",
+   "answer": "您是在校本科生，应使用‘暨南大学全日制本科学生自助打印系统’打印中文成绩单。该系统在各校区均设有自助打印设备[UGP001][UGP014]，您可凭学号[UGP015]和身份证后6位字符[UGP016]登录，选择打印中文成绩单[UGP002]；系统将优先使用您享有的2份免费中文成绩单额度[UGP001][UGP012]。",
+   "evidence_ids": [
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP012",
+    "UGP005",
+    "UGP032",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.16666666666666666,
+   "judge_items": [
+    {
+     "claim": "您是在校本科生，应使用‘暨南大学全日制本科学生自助打印系统’打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "该系统在各校区均设有自助打印设备。",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "您可凭学号登录。",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "您可凭身份证后6位字符登录。",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "您可在系统中选择打印中文成绩单。",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "系统将优先使用您享有的2份免费中文成绩单额度。",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据UGP012明确说明在校生共有5份免费成绩单：1份由教务处统一打印（毕业时随证书领取），其余4份为2份中文+2份英文，由学生自主安排打印；但证据未说明系统‘优先使用’该2份免费中文额度（如是否自动扣减、是否需手动选择、是否存在额度冻结或顺序逻辑等），‘优先使用’属推断性操作规则，无直接证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-018",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "在校本科生登录自助打印系统，账号应填身份证号还是学号？",
+   "answer": "在校本科生登录自助打印系统，账号应填学号，不是身份证号 [UGP015]。",
+   "evidence_ids": [
+    "UGP015",
+    "UGP030",
+    "UGP038",
+    "UGP031",
+    "UGP029",
+    "UGP016",
+    "UGP014",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统，账号应填学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "在校本科生登录自助打印系统，账号不应填身份证号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "UGP015明确指出‘在校本科学生登录自助打印系统时，账号为学号’，该陈述直接支持‘应填学号’；而‘账号为学号’在排他性语境（唯一账号字段）下，逻辑上蕴含‘不是身份证号’，且证据中无任何条目说在校生可用身份证号作账号，故‘不应填身份证号’属该明确陈述的否定推论，且无反证，按题干要求视为supported。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-023",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我要打印学校文件。\n我需要在学证明，不是成绩单，请告诉我份额和操作渠道。",
+   "answer": "您可免费打印2份中英文在学证明，通过‘暨南大学全日制本科学生自助打印系统’办理，该系统在各校区均有设备[UGP002][UGP001][UGP014]；登录账号为您的学号[UGP002][UGP001][UGP015]，密码为身份证号后6位字符[UGP002][UGP001][UGP015]；打印前请务必先在教务管理系统完成注册，确保学籍状态为在校[UGP003][UGP018]；系统将自动优先使用免费份额，用完后支持手机扫码付费打印[UGP002][UGP001][UGP017]。",
+   "evidence_ids": [
+    "UGP002",
+    "UGP001",
+    "UGP013",
+    "UGP017",
+    "UGP014",
+    "UGP003",
+    "UGP018",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.1111111111111111,
+   "judge_items": [
+    {
+     "claim": "您可免费打印2份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "通过‘暨南大学全日制本科学生自助打印系统’办理",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "该系统在各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为您的学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "密码为身份证号后6位字符",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "打印前请务必先在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "确保学籍状态为在校",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "系统将自动优先使用免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "回答中‘密码为身份证号后6位字符’无任何证据支持；其余8条均有对应证据直接支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-009",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，可以直接使用页面写的全日制本科自助打印系统吗？",
+   "answer": "不可以。页面所写的全日制本科学生自助打印系统仅面向全日制本科学生（含在校生及2006年后入学的已毕业本科生）[UGP014][UGP005][UGP029][UGP007][UGP001][UGP002][UGP031][UGP037]。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP005",
+    "UGP029",
+    "UGP007",
+    "UGP001",
+    "UGP002",
+    "UGP031",
+    "UGP037"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面所写的全日制本科学生自助打印系统仅面向全日制本科学生（含在校生及2006年后入学的已毕业本科生）",
+     "verdict": "supported",
+     "evidence_id": "UGP014,UGP005,UGP007,UGP001,UGP002"
+    }
+   ],
+   "judge_reason": "证据明确限定系统使用主体为在校本科学生（UGP001、UGP002、UGP014）和2006年后入学的已毕业本科学生（UGP005、UGP007、UGP029、UGP031、UGP037），未提及研究生可用；因此‘不可以’这一结论被证据整体支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-021",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我需要申请宿舍入住，能在本科自助打印系统中办理住宿证明吗？",
+   "answer": "本科自助打印系统仅支持打印成绩单、在学证明和英文毕业证明，未提及可办理或打印住宿证明。因此，不能在本科自助打印系统中办理住宿证明。",
+   "evidence_ids": [
+    "UGP014",
+    "UGP029",
+    "UGP037",
+    "UGP007",
+    "UGP040",
+    "UGP016",
+    "UGP032",
+    "UGP005"
+   ],
+   "unsupported_ratio": 0.3333333333333333,
+   "judge_items": [
+    {
+     "claim": "本科自助打印系统仅支持打印成绩单、在学证明和英文毕业证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "未提及可办理或打印住宿证明",
+     "verdict": "supported",
+     "evidence_id": "UGP014, UGP029, UGP037, UGP007, UGP040, UGP016, UGP032, UGP005"
+    },
+    {
+     "claim": "不能在本科自助打印系统中办理住宿证明",
+     "verdict": "supported",
+     "evidence_id": "UGP014, UGP029, UGP037, UGP007, UGP040, UGP016, UGP032, UGP005"
+    }
+   ],
+   "judge_reason": "证据明确列举了自助打印系统支持的材料类型（成绩单、英文毕业证明），并说明在校生有自助打印设备（UGP014），但未提及其支持‘在学证明’；且所有证据均未出现‘住宿证明’，故‘未提及’和‘不能办理’可被证据整体支持；而‘仅支持打印成绩单、在学证明和英文毕业证明’中‘在学证明’无任何证据支撑，属 unsupported。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-015",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我想打印成绩单，打算不登录系统直接使用账号功能。页面给出的登录账号是什么？",
+   "answer": "页面给出的登录账号是学号[UGP030][UGP015][UGP031][UGP016][UGP005][UGP038]。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP031",
+    "UGP029",
+    "UGP014",
+    "UGP016",
+    "UGP005",
+    "UGP038"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP030"
+    },
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "页面给出的登录账号是学号",
+     "verdict": "supported",
+     "evidence_id": "UGP038"
+    }
+   ],
+   "judge_reason": "回答中唯一实质性陈述是‘页面给出的登录账号是学号’，该陈述被UGP030（2006年后入学已毕业本科生）、UGP015（在校本科生）、UGP038（2006年及以后入学已毕业本科生英文毕业证明系统）三条证据直接支持；UGP031、UGP016仅说明密码规则，不涉及账号；UGP005未提账号；所有引用证据中无任何一条否定该陈述，且至少三条明确支持，故unsupported_ratio=0。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-012",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "我拿到的打印说明是2021年3月17日页面。能否凭这一页保证2026年免费成绩单份额仍然相同？",
+   "answer": "不能凭2021年3月17日的页面保证2026年免费成绩单份额仍然相同，因为所有证据均未说明该政策的有效期限、是否长期执行或对未来年份的约束力，仅反映当时在校学生的权益安排 [UGP012][UGP013][UGP014][UGP015][UGP016][UGP017][UGP001][UGP002]",
+   "evidence_ids": [
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP017",
+    "UGP012",
+    "UGP001",
+    "UGP002",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能凭2021年3月17日的页面保证2026年免费成绩单份额仍然相同",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有证据均未说明该政策的有效期限",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据均未说明该政策是否长期执行",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据均未说明该政策对未来年份的约束力",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    },
+    {
+     "claim": "所有证据仅反映当时在校学生的权益安排",
+     "verdict": "supported",
+     "evidence_id": "UGP012,UGP013,UGP014,UGP015,UGP016,UGP017,UGP001,UGP002"
+    }
+   ],
+   "judge_reason": "回答中5条实质性陈述均被证据整体状态所支撑：各证据编号均仅描述2021年页面所载的静态政策内容，未出现任何关于时效性、有效期、未来适用性或修订机制的表述，故‘未说明’类陈述成立；首句结论性主张亦由该缺失直接推出。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-006",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想使用本科自助打印服务，材料名称记不清了。请先问我需要哪种证明。",
+   "answer": "请问您是当前在校的本科学生，还是已经毕业的本科学生？另外，您需要打印的是成绩单、在学证明，还是英文毕业证明？\n请问您需要打印以下哪种材料？\n- 中文成绩单\n- 英文成绩单\n- 中英文在学证明\n- 英文毕业证明\n（提示：在校生可免费打印部分成绩单和在学证明；已毕业学生中，2006年及以后入学的可打英文毕业证明，2010年以后毕业的还可暑期跨校区打印多项材料）",
+   "evidence_ids": [
+    "UGP014",
+    "UGP001",
+    "UGP007",
+    "UGP002",
+    "UGP040",
+    "UGP037",
+    "UGP038",
+    "UGP010"
+   ],
+   "unsupported_ratio": 0.4444444444444444,
+   "judge_items": [
+    {
+     "claim": "在校本科学生可打印成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP001"
+    },
+    {
+     "claim": "在校本科学生可打印在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP001"
+    },
+    {
+     "claim": "2006年及以后入学的已毕业本科学生可打印英文毕业证明",
+     "verdict": "supported",
+     "evidence_id": "UGP007"
+    },
+    {
+     "claim": "2010年以后毕业的本科学生可暑期跨校区打印多项材料",
+     "verdict": "supported",
+     "evidence_id": "UGP010"
+    },
+    {
+     "claim": "在校生可免费打印部分成绩单和在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "中文成绩单",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "英文成绩单",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "中英文在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "英文毕业证明",
+     "verdict": "supported",
+     "evidence_id": "UGP007"
+    }
+   ],
+   "judge_reason": "证据仅明确提及‘成绩单’（未区分中英文）、‘在学证明’（未说明是否中英文）、‘英文毕业证明’；未提‘中文成绩单’‘英文成绩单’‘中英文在学证明’；未提任何费用信息（如‘免费’），故‘在校生可免费打印部分成绩单和在学证明’无支撑",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-002",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校本科生的五份免费成绩单分别是什么语言、由谁领取或打印？",
+   "answer": "在校本科生享有5份免费成绩单：1份中文成绩单由教务处统一打印并在毕业时随证书领取 [UGP012]；其余4份为2份中文和2份英文成绩单，由学生自主安排打印 [UGP012]。学生可通过‘暨南大学全日制本科学生自助打印系统’打印成绩单 [UGP001][UGP002]，该系统各校区均有部署 [UGP014]，登录账号为学号 [UGP015]，密码为身份证后6位字符 [UGP016]。系统首先打印免费份额，免费份额用完后，可用手机扫码付费打印 [UGP017]。在校学生还享有2份中英文在学证明的免费打印份额 [UGP013]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016",
+    "UGP013",
+    "UGP017"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生享有5份免费成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "1份中文成绩单由教务处统一打印并在毕业时随证书领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份为2份中文和2份英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份由学生自主安排打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生可通过‘暨南大学全日制本科学生自助打印系统’打印成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "该系统各校区均有部署",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统首先使用免费份额，免费份额用完后，可用手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "在校学生还享有2份中英文在学证明的免费打印份额",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "所有10条实质性陈述均能在证据中找到直接文字支撑，无推断、无常识补充，全部对应明确证据编号。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-019",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我把两份在学证明记成五份免费成绩单，这两个份额如何区分？",
+   "answer": "在校学生享有 2 份中英文在学证明 [UGP013][UGP012][UGP001][UGP014][UGP002]；享有 5 份免费成绩单（其中 1 份为中文成绩单，由教务处统一打印，学生毕业时与证书同时领取；其他 4 份为 2 份中文 + 2 份英文成绩单，学生自主安排打印）[UGP013][UGP012][UGP001]。学生需要时，可登陆“暨南大学全日制本科学生自助打印系统”（各校区均有该设备 [UGP014]；登陆账号为学号 [UGP015]，密码为身份证后 6 位字符 [UGP016]）选择打印成绩单或在学证明 [UGP001][UGP002]，预览无误后点击打印；系统首先打印免费份额，免费份额用完后，可用手机扫码付费打印 [UGP017][UGP013][UGP012][UGP001][UGP014][UGP002]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP012",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.2857142857142857,
+   "judge_items": [
+    {
+     "claim": "在校学生享有 2 份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "在校学生享有 5 份免费成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5 份免费成绩单中，1 份为中文成绩单，由教务处统一打印，并在毕业时随证书领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "5 份免费成绩单中，其余 4 份为 2 份中文和 2 份英文成绩单，由学生自主安排打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生可登录“暨南大学全日制本科学生自助打印系统”选择打印成绩单或在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "各校区均设有全日制本科学生自助打印设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录自助打印系统时，账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "登录自助打印系统时，密码为身份证后 6 位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统先使用免费份额；免费份额用完后，学生可用手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "在校本科学生可通过全日制本科学生自助打印系统选择打印成绩单或在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP001"
+    },
+    {
+     "claim": "预览无误后点击打印",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "在校学生享有 2 份中英文在学证明 [UGP013][UGP012][UGP001][UGP014][UGP002]",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "享有 5 份免费成绩单（其中 1 份为中文成绩单，由教务处统一打印，学生毕业时与证书同时领取；其他 4 份为 2 份中文 + 2 份英文成绩单，学生自主安排打印）[UGP013][UGP012][UGP001]",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "学生需要时，可登陆“暨南大学全日制本科学生自助打印系统”（各校区均有该设备 [UGP014]；登陆账号为学号 [UGP015]，密码为身份证后 6 位字符 [UGP016]）选择打印成绩单或在学证明 [UGP001][UGP002]，预览无误后点击打印；系统首先打印免费份额，免费份额用完后，可用手机扫码付费打印 [UGP017][UGP013][UGP012][UGP001][UGP014][UGP002]",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "回答中包含4条实质性陈述（'预览无误后点击打印'、以及三处将多个证据编号并列引用的复合声明）未被任何证据直接文字支撑；其中'预览无误后点击打印'步骤在全部证据中完全未提及；其余三处为对证据的错误归因式引用（如UGP013不涉及成绩单，UGP001不说明5份构成），属 unsupported。共14条实质性陈述，4条 unsupported。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-024",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我不清楚自助打印时该输入什么。\n我是在校本科生，要打印成绩单，登录时账号是什么？",
+   "answer": "在校本科生登录自助打印系统时，账号是您的学号 [UGP015]。",
+   "evidence_ids": [
+    "UGP030",
+    "UGP015",
+    "UGP016",
+    "UGP031",
+    "UGP029",
+    "UGP032",
+    "UGP014",
+    "UGP001"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科生登录自助打印系统时，账号是您的学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "回答中唯一实质性陈述‘在校本科生登录自助打印系统时，账号是您的学号’被证据[UGP015]直接、明确支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-010",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我已经毕业，还能按在校本科生账号为学号的说明直接操作吗？请限定结论对象。",
+   "answer": "可以。2006年及以后入学的已毕业本科学生，可使用学号作为账号登录‘暨南大学全日制本科学生自助打印系统’办理英文毕业证明或本科成绩单打印业务，密码为身份证后6位字符，需手机扫码缴费；英文毕业证明和本科成绩单自助打印机均位于本部行政办公楼129门口 [UGP038][UGP030][UGP007][UGP005][UGP029][UGP037][UGP039]。",
+   "evidence_ids": [
+    "UGP038",
+    "UGP015",
+    "UGP030",
+    "UGP007",
+    "UGP005",
+    "UGP029",
+    "UGP037",
+    "UGP039"
+   ],
+   "unsupported_ratio": 0.25,
+   "judge_items": [
+    {
+     "claim": "2006年及以后入学的已毕业本科学生，可使用学号作为账号登录‘暨南大学全日制本科学生自助打印系统’办理英文毕业证明或本科成绩单打印业务",
+     "verdict": "supported",
+     "evidence_id": "UGP038,UGP030,UGP007,UGP005"
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP039"
+    },
+    {
+     "claim": "英文毕业证明和本科成绩单自助打印机均位于本部行政办公楼129门口",
+     "verdict": "supported",
+     "evidence_id": "UGP029,UGP037"
+    },
+    {
+     "claim": "需手机扫码缴费",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据中未出现任何关于‘手机扫码缴费’的表述，该陈述无支撑。其余三条均有直接对应证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-022",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "out_of_scope",
+   "question": "我要取得海外签证，能否由本科成绩打印服务直接审批签证？",
+   "answer": "不能。本科成绩打印服务仅为自助式学业证明打印渠道，不具有签证审批职能，也不提供签证所需的官方认证、公证、使馆认可格式或额外审核服务。您需自行将打印的成绩单按签证要求进行翻译、公证或认证，并向相应国家使领馆提交完整签证申请材料 [UGP005, UGP001, UGP010].",
+   "evidence_ids": [
+    "UGP005",
+    "UGP029",
+    "UGP032",
+    "UGP030",
+    "UGP010",
+    "UGP031",
+    "UGP001",
+    "UGP014"
+   ],
+   "unsupported_ratio": 0.8,
+   "judge_items": [
+    {
+     "claim": "本科成绩打印服务仅为自助式学业证明打印渠道",
+     "verdict": "supported",
+     "evidence_id": "UGP005"
+    },
+    {
+     "claim": "不具有签证审批职能",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "不提供签证所需的官方认证、公证、使馆认可格式或额外审核服务",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "您需自行将打印的成绩单按签证要求进行翻译、公证或认证",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "并向相应国家使领馆提交完整签证申请材料",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据仅描述成绩单自助打印的适用对象、地点、账号密码、缴费方式等操作细节（如UGP005/UGP001/UGP010），未提及签证审批、认证、公证、翻译或使领馆提交等任何与签证流程相关的内容，故除首条‘仅为自助式学业证明打印渠道’可由系统功能定位间接支持外，其余四条均无证据支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-016",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我把毕业时领取的那份中文成绩单当作自己应立即自助打印的份额，这个安排对吗？",
+   "answer": "不对。毕业时领取的那份中文成绩单是由教务处统一打印、随证书一并发放的，它独立于学生可自主安排打印的4份免费成绩单（2份中文+2份英文），不占用自助打印系统的免费份额 [UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP013",
+    "UGP017",
+    "UGP001",
+    "UGP015",
+    "UGP002",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "毕业时领取的那份中文成绩单是由教务处统一打印、随证书一并发放的",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "它独立于学生可自主安排打印的4份免费成绩单（2份中文+2份英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "它不占用自助打印系统的免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "回答中三条实质性陈述均被UGP012明确支持：该条证据指出‘1份中文成绩单由教务处统一打印并在毕业时随证书领取，其余4份为2份中文和2份英文成绩单，由学生自主安排打印’，直接表明毕业领取的1份是独立于自主打印的4份，且不占用后者份额。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-013",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人说新版规定在学证明无限次免费，我只找到2021年3月17日页面。页面实际支持多少份，能确认所谓新版吗？",
+   "answer": "不能确认所谓‘新版规定在学证明无限次免费’。所有提供的证据页面均明确且一致地规定：在校本科学生仅有2份中英文在学证明的免费打印份额，超出后须按10元/份扫码付费 [UGP013][UGP014][UGP001][UGP016][UGP054]；无任何证据提及‘新版’或‘无限次免费’，该说法与全部现有证据矛盾。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP054",
+    "UGP014",
+    "UGP080",
+    "UGP003",
+    "UGP018",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不能确认所谓‘新版规定在学证明无限次免费’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有提供的证据页面均明确且一致地规定：在校本科学生仅有2份中英文在学证明的免费打印份额",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "超出后须按10元/份扫码付费",
+     "verdict": "supported",
+     "evidence_id": "UGP054"
+    },
+    {
+     "claim": "无任何证据提及‘新版’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "无任何证据提及‘无限次免费’",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该说法与全部现有证据矛盾",
+     "verdict": "supported",
+     "evidence_id": "UGP013,UGP054"
+    }
+   ],
+   "judge_reason": "回答中6条实质性陈述均被证据直接支持或可由证据必然推出（如‘无任何证据提及’属对给定证据集的穷举否定，而所列证据确实未出现‘新版’‘无限次免费’字样；‘矛盾’由UGP013限定2份+UGP054明示收费共同否定‘无限次免费’）",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-007",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我需要打印文件申请实习，暂时无法确定文件属于成绩单还是在学证明。请先核实办理类型。",
+   "answer": "实习申请需证明您当前为在校就读学生，因此应选择打印‘在学证明’；该文件专门用于证明学生在校状态，且打印前提为已完成教务系统注册、处于在校状态 [UGP018][UGP003]。您可登录‘暨南大学全日制本科学生自助打印系统’（各校区均有设备，账号为学号，密码为身份证后6位）选择打印中英文在学证明，享有2份免费额度 [UGP002][UGP001]。",
+   "evidence_ids": [
+    "UGP018",
+    "UGP003",
+    "UGP002",
+    "UGP001",
+    "UGP008",
+    "UGP011",
+    "UGP014",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.25,
+   "judge_items": [
+    {
+     "claim": "实习申请需证明您当前为在校就读学生，因此应选择打印‘在学证明’",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该文件专门用于证明学生在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "打印前提为已完成教务系统注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "打印前提为处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    },
+    {
+     "claim": "您可登录‘暨南大学全日制本科学生自助打印系统’选择打印中英文在学证明",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "账号为学号，密码为身份证后6位",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "享有2份免费额度",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "证据未提及‘实习申请需用在学证明’的业务逻辑；未说明自助系统支持打印‘中英文在学证明’（仅提‘在学证明’或‘成绩单’，未限定语言版本）；未提供账号密码规则；未给出在学证明的免费份数（UGP012仅规定成绩单免费份数）",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-003",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "在校学生可打印几份在学证明？份额是否包含中英文？",
+   "answer": "在校学生可打印2份在学证明，且每份均为中英文合版的在学证明 [UGP013]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP014",
+    "UGP016",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校学生可打印2份在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "每份均为中英文合版的在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "UGP013明确指出‘在校学生享有2份中英文在学证明份额’，其中‘中英文’直接支持‘中英文合版’，‘2份’直接支持份数；两条陈述均可由同一证据文字直接、无歧义支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-020",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "material_confusion",
+   "question": "我准备把五份免费成绩单都打成英文版。请核对中文和英文各自份数。",
+   "answer": "不可以将五份免费成绩单都打成英文版。免费成绩单总份数为5份，但构成是刚性固定的：其中1份中文成绩单由教务处统一打印、毕业时随证书发放，学生无法自主选择其语言版本；其余4份为学生自主打印的免费份额，明确限定为2份中文和2份英文，不可更改配比 [UGP012]。因此，中文成绩单实际共3份（1份教务处统印 + 2份自助打印） [UGP012]，英文成绩单仅2份（全部来自自助打印） [UGP012]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不可以将五份免费成绩单都打成英文版",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "免费成绩单总份数为5份",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其中1份中文成绩单由教务处统一打印、毕业时随证书发放",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "学生无法自主选择其语言版本",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份为学生自主打印的免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份明确限定为2份中文和2份英文，不可更改配比",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "中文成绩单实际共3份（1份教务处统印 + 2份自助打印）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "英文成绩单仅2份（全部来自自助打印）",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    }
+   ],
+   "judge_reason": "所有8条实质性陈述均被UGP012直接、明确文字支持，无任何陈述需外部常识或未提供证据支撑",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-025",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "multi_turn",
+   "question": "我需要安排毕业时的成绩材料。\n我需要成绩单，想区分毕业领取与自己打印的中文、英文份额。",
+   "answer": "毕业时，您将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取[UGP012]；此外，您还可自主安排打印4份免费成绩单，包括2份中文和2份英文，通过‘暨南大学全日制本科学生自助打印系统’（各校区均有设备）操作，登录账号为学号、密码为身份证后6位字符[UGP012][UGP014][UGP016]；系统会优先扣除免费份额，用完后支持手机扫码付费打印[UGP017]。",
+   "evidence_ids": [
+    "UGP012",
+    "UGP014",
+    "UGP002",
+    "UGP013",
+    "UGP001",
+    "UGP017",
+    "UGP016",
+    "UGP079"
+   ],
+   "unsupported_ratio": 0.125,
+   "judge_items": [
+    {
+     "claim": "毕业时，您将自动获得1份由教务处统一打印的中文成绩单，随毕业证书一并领取",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "此外，您还可自主安排打印4份免费成绩单，包括2份中文和2份英文",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "通过‘暨南大学全日制本科学生自助打印系统’操作",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "各校区均有设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统会优先扣除免费份额",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    },
+    {
+     "claim": "用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "‘登录账号为学号’在所有证据中均未提及；其余7条均有对应证据直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-011",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "object_mismatch",
+   "question": "我是校外人员，能否享受页面所列在校学生两份在学证明的份额？",
+   "answer": "不能。页面所列2份中英文在学证明份额仅限在校本科学生享有，校外人员既无学号无法登录‘暨南大学全日制本科学生自助打印系统’，也不属于政策适用对象 [UGP013][UGP014][UGP001][UGP002]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP014",
+    "UGP001",
+    "UGP016",
+    "UGP002",
+    "UGP017",
+    "UGP015",
+    "UGP012"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "页面所列2份中英文在学证明份额仅限在校本科学生享有",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "校外人员无学号无法登录‘暨南大学全日制本科学生自助打印系统’",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "校外人员不属于政策适用对象",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    }
+   ],
+   "judge_reason": "三条实质性陈述均被证据直接支持：UGP013明确‘在校学生’享有2份在学证明，隐含排除校外人员；UGP015规定登录账号为‘学号’，校外人员无学号故无法登录；UGP013的主体限定与UGP014/UGP001/UGP002中反复出现的‘在校本科学生’表述一致，共同支撑校外人员非适用对象。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-SC-021",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我要更换宿舍门禁卡，这属于本科休学复学服务吗？",
+   "answer": "更换宿舍门禁卡不属于本科休学复学服务。所有【证据】中提及的内容均围绕休学、复学的申请流程、所需材料、体检要求、审批环节等展开，未涉及宿舍门禁卡更换事项。",
+   "evidence_ids": [
+    "UGS001",
+    "UGS013",
+    "UGS050",
+    "UGS015",
+    "UGS011",
+    "UGS037",
+    "UGS016",
+    "UGS051"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "更换宿舍门禁卡不属于本科休学复学服务",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "所有【证据】中提及的内容均围绕休学、复学的申请流程、所需材料、体检要求、审批环节等展开",
+     "verdict": "supported",
+     "evidence_id": "UGS001, UGS013, UGS050, UGS015, UGS011, UGS037, UGS016, UGS051"
+    },
+    {
+     "claim": "【证据】未涉及宿舍门禁卡更换事项",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "三条实质性陈述均被证据支持：第一条为否定性归类判断，证据全集未出现‘宿舍’‘门禁卡’‘更换’等关键词，故可确认其不在休学复学服务范围内；第二条可由全部证据编号对应文件标题及描述直接验证（如UGS001为休学申请表、UGS011为复学申请表等）；第三条是第二条的推论，且证据列表确无任何条目提及门禁卡相关事项。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-017",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "step_error",
+   "question": "我以为在学证明只能由教务处统一发放，因此准备跳过自助打印系统。这与页面渠道相符吗？",
+   "answer": "不相符。在学证明并非仅由教务处统一发放；本科学生须通过‘暨南大学全日制本科学生自助打印系统’自主打印，各校区均设有该设备 [UGP014][UGP002][UGP001]，且享有2份中英文在学证明免费额度 [UGP013][UGP014]，系统优先使用免费份额，用完后支持扫码付费打印 [UGP014][UGP002][UGP001]。教务处仅统一打印1份中文成绩单（毕业时发放） [UGP014]。此外，打印前提是学生已在教务管理系统完成注册、处于在校状态 [UGP003][UGP018]。",
+   "evidence_ids": [
+    "UGP080",
+    "UGP014",
+    "UGP013",
+    "UGP016",
+    "UGP002",
+    "UGP003",
+    "UGP001",
+    "UGP018"
+   ],
+   "unsupported_ratio": 0.25,
+   "judge_items": [
+    {
+     "claim": "在学证明并非仅由教务处统一发放",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "本科学生须通过‘暨南大学全日制本科学生自助打印系统’自主打印",
+     "verdict": "supported",
+     "evidence_id": "UGP002"
+    },
+    {
+     "claim": "各校区均设有该设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "享有2份中英文在学证明免费额度",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "系统优先使用免费份额，用完后支持扫码付费打印",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "教务处仅统一打印1份中文成绩单（毕业时发放）",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "打印前提是学生已在教务管理系统完成注册",
+     "verdict": "supported",
+     "evidence_id": "UGP003"
+    },
+    {
+     "claim": "打印前提还包括学生处于在校状态",
+     "verdict": "supported",
+     "evidence_id": "UGP018"
+    }
+   ],
+   "judge_reason": "回答中‘系统优先使用免费份额，用完后支持扫码付费打印’及‘教务处仅统一打印1份中文成绩单（毕业时发放）’在证据中无对应文字支撑；其余6条均有直接证据支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-014",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "version_conflict",
+   "question": "有人把毕业生的办理办法当作新版本要求在校生提交纸质申请。2021年3月17日页面对在校本科生实际给出什么渠道？",
+   "answer": "暑假期间可直接通过就近校区自助打印设备打印中英文成绩单 [UGP060]、本科生毕业证明（英文） [UGP061] 或中英文在学证明 [UGP062]；该跨校区自助打印服务适用于暑假期间 [UGP059]。",
+   "evidence_ids": [
+    "UGP061",
+    "UGP062",
+    "UGP060",
+    "UGP011",
+    "UGP043",
+    "UGP070",
+    "UGC007",
+    "UGP059"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "暑假期间可直接通过就近校区自助打印设备打印中英文成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP060"
+    },
+    {
+     "claim": "暑假期间可直接通过就近校区自助打印设备打印本科生毕业证明（英文）",
+     "verdict": "supported",
+     "evidence_id": "UGP061"
+    },
+    {
+     "claim": "暑假期间可直接通过就近校区自助打印设备打印中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP062"
+    },
+    {
+     "claim": "该跨校区自助打印服务适用于暑假期间",
+     "verdict": "supported",
+     "evidence_id": "UGP059"
+    }
+   ],
+   "judge_reason": "四条实质性陈述均被对应证据编号直接、明确支持，且未引入额外主体、时间、条件或限制（如‘在校本科生’未被证据限定为唯一适用对象，但问题问的是‘页面对在校本科生实际给出什么渠道’，而证据[UGP060][UGP061][UGP062][UGP059]未排除在校生，且明确列出服务内容与时间，属页面实际提供的渠道；所有陈述均未添加证据未提及的要素（如费用、申请表、缴费等），故全部supported。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-008",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "condition_missing",
+   "question": "我想了解不同证明的份数，尚未说明需要打印哪一种。请先确认我的需求。",
+   "answer": "在校本科学生可免费获取2份中英文在学证明（每份均为中英文合版），以及5份免费成绩单（其中1份中文成绩单由教务处统一打印、毕业时与证书一并发放；其余4份含2份中文+2份英文，由学生自主通过自助打印系统打印）[UGP013]。所有免费打印均通过‘暨南大学全日制本科学生自助打印系统’完成，该系统在各校区均有部署[UGP014]，登录账号为学号[UGP015]、密码为身份证后6位字符[UGP016]；系统优先使用免费份额，用完后支持手机扫码付费打印[UGP017]。",
+   "evidence_ids": [
+    "UGP013",
+    "UGP001",
+    "UGP014",
+    "UGP002",
+    "UGP017",
+    "UGP012",
+    "UGP016",
+    "UGP015"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "在校本科学生可免费获取2份中英文在学证明",
+     "verdict": "supported",
+     "evidence_id": "UGP013"
+    },
+    {
+     "claim": "每份在学证明均为中英文合版",
+     "verdict": "unclear",
+     "evidence_id": ""
+    },
+    {
+     "claim": "在校本科学生可免费获取5份免费成绩单",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其中1份中文成绩单由教务处统一打印、毕业时与证书一并发放",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "其余4份含2份中文+2份英文，由学生自主通过自助打印系统打印",
+     "verdict": "supported",
+     "evidence_id": "UGP012"
+    },
+    {
+     "claim": "所有免费打印均通过‘暨南大学全日制本科学生自助打印系统’完成",
+     "verdict": "supported",
+     "evidence_id": "UGP001,UGP002"
+    },
+    {
+     "claim": "该系统在各校区均有部署",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    },
+    {
+     "claim": "密码为身份证后6位字符",
+     "verdict": "supported",
+     "evidence_id": "UGP016"
+    },
+    {
+     "claim": "系统优先使用免费份额，用完后支持手机扫码付费打印",
+     "verdict": "supported",
+     "evidence_id": "UGP017"
+    }
+   ],
+   "judge_reason": "共10条实质性陈述，其中9条有直接证据支持，1条（‘每份均为中英文合版’）证据未说明在学证明的版式结构，属unclear；无unsupported条目，故unsupported_ratio=0.0",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-PP-004",
+   "item_id": "UG_PROOF_PRINT",
+   "scenario_type": "direct",
+   "question": "我在另一个校区上课，打印成绩单的设备是否只有石牌校区有？登录账号是什么？",
+   "answer": "不是只有石牌校区有打印成绩单的设备；各校区均设有全日制本科学生自助打印设备 [UGP014]。登录账号为本人学号 [UGP015]。",
+   "evidence_ids": [
+    "UGP063",
+    "UGP014",
+    "UGP015",
+    "UGP030",
+    "UGP073",
+    "UGP002",
+    "UGP001",
+    "UGP016"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "不是只有石牌校区有打印成绩单的设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "各校区均设有全日制本科学生自助打印设备",
+     "verdict": "supported",
+     "evidence_id": "UGP014"
+    },
+    {
+     "claim": "登录账号为本人学号",
+     "verdict": "supported",
+     "evidence_id": "UGP015"
+    }
+   ],
+   "judge_reason": "三条实质性陈述均被对应证据直接、明确支持：UGP014明确指出‘各校区均设有全日制本科学生自助打印设备’，可直接推出‘不是只有石牌校区有’；UGP015明确说明‘在校本科学生登录自助打印系统时，账号为学号’，即登录账号为本人学号。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-SC-018",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "material_confusion",
+   "question": "健康原因休学，普通情况说明能直接替代对应证明材料吗？",
+   "answer": "不能。健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明 [UGS003][UGS025]，且需经校门诊核签 [UGS043][UGS007]。",
+   "evidence_ids": [
+    "UGS003",
+    "UGS025",
+    "UGS043",
+    "UGS026",
+    "UGS023",
+    "UGS029",
+    "UGS050",
+    "UGS007"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "健康原因休学必须附县级以上医院（外招生为所在地有资质医院）最近半个月内的体格检查诊断证明",
+     "verdict": "supported",
+     "evidence_id": "UGS003,UGS025"
+    },
+    {
+     "claim": "健康原因休学需经校门诊核签",
+     "verdict": "supported",
+     "evidence_id": "UGS043"
+    },
+    {
+     "claim": "健康原因休学需填写休学申请表",
+     "verdict": "supported",
+     "evidence_id": "UGS007"
+    }
+   ],
+   "judge_reason": "回答中三条实质性陈述均被证据直接支持：UGS003+UGS025共同支撑诊断证明要求；UGS043明确‘因病申请休学须经校门诊核签’；UGS007明确‘学生办理休学流程时填写休学申请表’，虽未明说‘健康原因休学’也需填此表，但UGS003将休学理由分类并规定健康原因需附证明，结合UGS007的‘办理休学流程’属全口径流程，且无任何证据排除健康原因不适用该表，故‘需填写休学申请表’为流程必经环节，属UGS007直接支撑。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-SC-023",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "multi_turn",
+   "question": "我要办理学籍变更。\n我申请复学，休学通知书只有复印件，可以使用吗？",
+   "answer": "可以使用休学通知书复印件办理复学手续，原件和复印件二者择一即可 [UGS013]。",
+   "evidence_ids": [
+    "UGS013",
+    "UGS023",
+    "UGS050",
+    "UGS011",
+    "UGS037",
+    "UGS051",
+    "UGS032",
+    "UGS033"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "可以使用休学通知书复印件办理复学手续",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    },
+    {
+     "claim": "原件和复印件二者择一即可",
+     "verdict": "supported",
+     "evidence_id": "UGS013"
+    }
+   ],
+   "judge_reason": "回答中两条实质性陈述（允许用复印件、原件与复印件二者择一）均被[UGS013]原文直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-SC-009",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "object_mismatch",
+   "question": "我是研究生，能否直接套用本科休学申请表的材料规则？",
+   "answer": "不能。该《休学申请表》明确限定为本科学生使用 [UGS001]。",
+   "evidence_ids": [
+    "UGS001",
+    "UGS007",
+    "UGS002",
+    "UGS020",
+    "UGS008",
+    "UGS045",
+    "UGS030",
+    "UGS043"
+   ],
+   "unsupported_ratio": 0.5,
+   "judge_items": [
+    {
+     "claim": "不能。",
+     "verdict": "unsupported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "该《休学申请表》明确限定为本科学生使用。",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    }
+   ],
+   "judge_reason": "‘不能’是结论性判断，但证据中无任何条目说明研究生不得使用该表或存在专用表，亦未禁止跨学生类别使用；仅UGS001指出该表‘为本科学生申请休学使用’，属用途描述，不等价于‘明确限定为本科学生使用’的排他性规范，但该陈述本身被UGS001直接支持。",
+   "judge_error": null
+  },
+  {
+   "config": "method_v2",
+   "sample_id": "S2E-SC-022",
+   "item_id": "UG_STATUS_CHANGE",
+   "scenario_type": "out_of_scope",
+   "question": "我想报销一次差旅费用，能否用休学申请流程办理？",
+   "answer": "休学申请流程仅适用于学生办理休学手续，与差旅费用报销无关；证据中未提及任何关于差旅报销的内容，因此不能用休学申请流程办理差旅费用报销。",
+   "evidence_ids": [
+    "UGS007",
+    "UGS029",
+    "UGS043",
+    "UGS020",
+    "UGS001",
+    "UGS002",
+    "UGS045",
+    "UGS030"
+   ],
+   "unsupported_ratio": 0.0,
+   "judge_items": [
+    {
+     "claim": "休学申请流程仅适用于学生办理休学手续",
+     "verdict": "supported",
+     "evidence_id": "UGS001"
+    },
+    {
+     "claim": "休学申请流程与差旅费用报销无关",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "证据中未提及任何关于差旅报销的内容",
+     "verdict": "supported",
+     "evidence_id": ""
+    },
+    {
+     "claim": "不能用休学申请流程办理差旅费用报销",
+     "verdict": "supported",
+     "evidence_id": ""
+    }
+   ],
+   "judge_reason": "所有四条实质性陈述均被证据直接或间接支持：UGS001明确休学申请表专用于休学；其余三条为否定性陈述（‘无关’‘未提及’‘不能用’），而全部证据确实完全未出现‘差旅’‘报销’‘费用’等任何相关字眼，故该类否定性陈述在证据零支持的情况下仍属可验证的supported（即证据集穷尽且不含反例）",
+   "judge_error": null
+  }
+ ],
+ "created_at_utc": "2026-10-15T04:11:06.783673+00:00",
+ "elapsed_seconds": 82.62224379999998,
+ "cost": {
+  "chat_calls": 72,
+  "chat_cache_hits": 18,
+  "embed_calls": 0,
+  "embed_cache_hits": 0,
+  "rerank_calls": 0,
+  "rerank_cache_hits": 0,
+  "prompt_tokens": 40152,
+  "completion_tokens": 24138,
+  "embed_tokens": 0,
+  "cost_cny": 0.0803976
+ }
+}

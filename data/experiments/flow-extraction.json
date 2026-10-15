@@ -15,6 +15,8 @@
    "step_coverage_excl_stub_gold": 0.8654891304347826,
    "samples_with_stub_gold": 0,
    "material_coverage": 0.9021739130434783,
+   "time_coverage": 0.6268115942028988,
+   "entry_coverage": 0.6956521739130435,
    "element_coverage": 0.8684782608695653,
    "order_consistency": 0.9993961352657005,
    "step_grounding": 0.9859601449275364,
@@ -30,6 +32,8 @@
    "step_coverage_excl_stub_gold": 0.8709239130434783,
    "samples_with_stub_gold": 0,
    "material_coverage": 0.907608695652174,
+   "time_coverage": 0.6512681159420293,
+   "entry_coverage": 0.7228260869565217,
    "element_coverage": 0.8630434782608696,
    "order_consistency": 0.9993961352657005,
    "step_grounding": 0.9846014492753624,
@@ -125,6 +129,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -135,6 +141,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -215,6 +223,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -225,6 +235,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -334,6 +346,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -344,6 +358,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -445,6 +461,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -455,6 +473,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -534,6 +554,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -544,6 +566,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -615,6 +639,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -625,6 +651,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -698,6 +726,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -708,6 +738,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -773,6 +805,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -783,6 +817,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -881,6 +917,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -891,6 +929,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -981,6 +1021,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -991,6 +1033,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -1113,6 +1157,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1123,6 +1169,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -1237,6 +1285,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1247,6 +1297,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -1331,6 +1383,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1341,6 +1395,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -1417,6 +1473,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1427,6 +1485,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -1506,6 +1566,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1516,6 +1578,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -1587,6 +1651,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1597,6 +1663,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -1657,6 +1725,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1667,6 +1737,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -1719,6 +1791,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1729,6 +1803,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -1845,6 +1921,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1855,6 +1933,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -1963,6 +2043,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -1973,6 +2055,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -2023,6 +2107,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2033,6 +2119,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -2075,6 +2163,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2085,6 +2175,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -2121,6 +2213,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2131,6 +2225,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -2159,6 +2255,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2169,6 +2267,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -2267,6 +2367,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2277,6 +2379,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -2367,6 +2471,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2377,6 +2483,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -2457,6 +2565,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2467,6 +2577,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -2524,6 +2636,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2534,6 +2648,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -2604,6 +2720,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2614,6 +2732,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -2676,6 +2796,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2686,6 +2808,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -2793,6 +2917,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2803,6 +2929,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -2902,6 +3030,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -2912,6 +3042,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3020,6 +3152,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3030,6 +3164,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3130,6 +3266,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3140,6 +3278,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3191,6 +3331,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3201,6 +3343,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3244,6 +3388,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3254,6 +3400,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3355,6 +3503,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.6666666666666666,
@@ -3365,6 +3515,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3446,6 +3598,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.5,
@@ -3456,6 +3610,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3507,6 +3663,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3517,6 +3675,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3560,6 +3720,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3570,6 +3732,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3667,6 +3831,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3677,6 +3843,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3766,6 +3934,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3776,6 +3946,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -3840,6 +4012,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3850,6 +4024,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -3906,6 +4082,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -3916,6 +4094,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4031,6 +4211,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4041,6 +4223,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4148,6 +4332,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4158,6 +4344,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4194,6 +4382,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4204,6 +4394,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4232,6 +4424,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4242,6 +4436,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4325,6 +4521,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4335,6 +4533,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4410,6 +4610,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4420,6 +4622,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4479,6 +4683,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4489,6 +4695,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4540,6 +4748,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4550,6 +4760,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4614,6 +4826,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4624,6 +4838,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4702,6 +4918,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4712,6 +4930,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -4824,6 +5044,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4834,6 +5056,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -4914,6 +5138,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -4924,6 +5150,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -5021,6 +5249,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5031,6 +5261,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -5110,6 +5342,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5120,6 +5354,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -5228,6 +5464,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5238,6 +5476,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -5367,6 +5607,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5377,6 +5619,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -5494,6 +5738,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5504,6 +5750,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -5613,6 +5861,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5623,6 +5873,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -5674,6 +5926,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5684,6 +5938,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -5727,6 +5983,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5737,6 +5995,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -5787,6 +6047,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5797,6 +6059,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -5839,6 +6103,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5849,6 +6115,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -5921,6 +6189,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -5931,6 +6201,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -5995,6 +6267,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6005,6 +6279,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -6085,6 +6361,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6095,6 +6373,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6123,6 +6403,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6133,6 +6415,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -6246,6 +6530,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6256,6 +6542,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6361,6 +6649,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6371,6 +6661,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -6414,6 +6706,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6424,6 +6718,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6459,6 +6755,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6469,6 +6767,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -6542,6 +6842,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6552,6 +6854,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6588,6 +6892,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6598,6 +6904,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -6677,6 +6985,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6687,6 +6997,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6758,6 +7070,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6768,6 +7082,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -6826,6 +7142,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6836,6 +7154,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -6864,6 +7184,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6874,6 +7196,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -6937,6 +7261,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -6947,6 +7273,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7002,6 +7330,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7012,6 +7342,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -7083,6 +7415,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7093,6 +7427,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7156,6 +7492,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7166,6 +7504,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -7250,6 +7590,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7260,6 +7602,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7336,6 +7680,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7346,6 +7692,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -7455,6 +7803,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7465,6 +7815,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7566,6 +7918,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7576,6 +7930,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -7675,6 +8031,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7685,6 +8043,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7775,6 +8135,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7785,6 +8147,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -7885,6 +8249,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7895,6 +8261,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -7987,6 +8355,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -7997,6 +8367,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -8076,6 +8448,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8086,6 +8460,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -8157,6 +8533,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8167,6 +8545,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -8232,6 +8612,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8242,6 +8624,8 @@
       "extracted_materials": 0,
       "gold_steps": 4,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -8299,6 +8683,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8309,6 +8695,8 @@
       "extracted_materials": 0,
       "gold_steps": 4,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -8376,6 +8764,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8386,6 +8776,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -8449,6 +8841,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8459,6 +8853,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -8532,6 +8928,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.75,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8542,6 +8940,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -8607,6 +9007,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.75,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8617,6 +9019,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -8711,6 +9115,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8721,6 +9127,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -8807,6 +9215,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8817,6 +9227,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -8951,6 +9363,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -8961,6 +9375,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -9087,6 +9503,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9097,6 +9515,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -9213,6 +9633,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9223,6 +9645,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -9331,6 +9755,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9341,6 +9767,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -9439,6 +9867,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9449,6 +9879,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -9539,6 +9971,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9549,6 +9983,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -9702,6 +10138,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9712,6 +10150,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -9857,6 +10297,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -9867,6 +10309,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -10023,6 +10467,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10033,6 +10479,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -10181,6 +10629,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10191,6 +10641,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -10286,6 +10738,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10296,6 +10750,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -10383,6 +10839,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10393,6 +10851,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -10466,6 +10926,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10476,6 +10938,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -10550,6 +11014,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10560,6 +11026,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -10668,6 +11136,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10678,6 +11148,8 @@
       "extracted_materials": 1,
       "gold_steps": 3,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -10798,6 +11270,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10808,6 +11282,8 @@
       "extracted_materials": 1,
       "gold_steps": 3,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -10873,6 +11349,8 @@
      "metrics": {
       "step_coverage": 0.5,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.5,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10883,6 +11361,8 @@
       "extracted_materials": 0,
       "gold_steps": 2,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -10933,6 +11413,8 @@
      "metrics": {
       "step_coverage": 0.5,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.5,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -10943,6 +11425,8 @@
       "extracted_materials": 0,
       "gold_steps": 2,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -11072,6 +11556,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 0.8888888888888888,
       "step_grounding": 1.0,
@@ -11082,6 +11568,8 @@
       "extracted_materials": 2,
       "gold_steps": 5,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -11203,6 +11691,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 0.8888888888888888,
       "step_grounding": 1.0,
@@ -11213,6 +11703,8 @@
       "extracted_materials": 2,
       "gold_steps": 5,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -11311,6 +11803,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11321,6 +11815,8 @@
       "extracted_materials": 0,
       "gold_steps": 5,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -11411,6 +11907,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11421,6 +11919,8 @@
       "extracted_materials": 0,
       "gold_steps": 5,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -11488,6 +11988,8 @@
      "metrics": {
       "step_coverage": 0.75,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.8,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11498,6 +12000,8 @@
       "extracted_materials": 0,
       "gold_steps": 4,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -11557,6 +12061,8 @@
      "metrics": {
       "step_coverage": 0.75,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.8,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11567,6 +12073,8 @@
       "extracted_materials": 0,
       "gold_steps": 4,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -11655,6 +12163,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11665,6 +12175,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -11745,6 +12257,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11755,6 +12269,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -11899,6 +12415,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -11909,6 +12427,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -12045,6 +12565,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12055,6 +12577,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -12130,6 +12654,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12140,6 +12666,8 @@
       "extracted_materials": 1,
       "gold_steps": 3,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -12207,6 +12735,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12217,6 +12747,8 @@
       "extracted_materials": 1,
       "gold_steps": 3,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -12334,6 +12866,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12344,6 +12878,8 @@
       "extracted_materials": 3,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -12453,6 +12989,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12463,6 +13001,8 @@
       "extracted_materials": 3,
       "gold_steps": 2,
       "gold_materials": 2,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -12551,6 +13091,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.75,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12561,6 +13103,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -12641,6 +13185,8 @@
      "metrics": {
       "step_coverage": 0.6666666666666666,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.75,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12651,6 +13197,8 @@
       "extracted_materials": 0,
       "gold_steps": 3,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -12771,6 +13319,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12781,6 +13331,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -12893,6 +13445,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -12903,6 +13457,8 @@
       "extracted_materials": 2,
       "gold_steps": 2,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -13007,6 +13563,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13017,6 +13575,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -13113,6 +13673,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13123,6 +13685,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -13241,6 +13805,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.75,
@@ -13251,6 +13817,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -13366,6 +13934,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.6666666666666666,
@@ -13376,6 +13946,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -13434,6 +14006,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13444,6 +14018,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -13508,6 +14084,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13518,6 +14096,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -13583,6 +14163,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13593,6 +14175,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -13650,6 +14234,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13660,6 +14246,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -13751,6 +14339,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13761,6 +14351,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -13789,6 +14381,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13799,6 +14393,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": true
      }
     }
@@ -13928,6 +14524,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -13938,6 +14536,8 @@
       "extracted_materials": 8,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -14059,6 +14659,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14069,6 +14671,8 @@
       "extracted_materials": 7,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -14153,6 +14757,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14163,6 +14769,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -14272,6 +14880,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14282,6 +14892,8 @@
       "extracted_materials": 4,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -14373,6 +14985,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14383,6 +14997,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -14466,6 +15082,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14476,6 +15094,8 @@
       "extracted_materials": 2,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -14608,6 +15228,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14618,6 +15240,8 @@
       "extracted_materials": 5,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -14742,6 +15366,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14752,6 +15378,8 @@
       "extracted_materials": 5,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -14848,6 +15476,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14858,6 +15488,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": true
      }
     },
@@ -14907,6 +15539,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -14917,6 +15551,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": true
      }
     }
@@ -15055,6 +15691,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15065,6 +15703,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -15195,6 +15835,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15205,6 +15847,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -15331,6 +15975,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15341,6 +15987,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -15376,6 +16024,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15386,6 +16036,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -15464,6 +16116,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15474,6 +16128,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -15530,6 +16186,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15540,6 +16198,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -15605,6 +16265,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15615,6 +16277,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -15672,6 +16336,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15682,6 +16348,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -15774,6 +16442,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15784,6 +16454,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -15868,6 +16540,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15878,6 +16552,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -15943,6 +16619,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -15953,6 +16631,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -16024,6 +16704,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16034,6 +16716,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -16093,6 +16777,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16103,6 +16789,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -16153,6 +16841,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16163,6 +16853,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -16263,6 +16955,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16273,6 +16967,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -16411,6 +17107,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16421,6 +17119,8 @@
       "extracted_materials": 8,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -16457,6 +17157,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16467,6 +17169,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": true
      }
     },
@@ -16495,6 +17199,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16505,6 +17211,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 1,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": true
      }
     }
@@ -16605,6 +17313,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16615,6 +17325,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 2,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -16707,6 +17419,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16717,6 +17431,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 2,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -16817,6 +17533,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16827,6 +17545,8 @@
       "extracted_materials": 3,
       "gold_steps": 1,
       "gold_materials": 2,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -16936,6 +17656,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.5,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.6666666666666666,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -16946,6 +17668,8 @@
       "extracted_materials": 6,
       "gold_steps": 1,
       "gold_materials": 2,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -17038,6 +17762,8 @@
      "metrics": {
       "step_coverage": 0.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 0.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17048,6 +17774,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -17126,6 +17854,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17136,6 +17866,8 @@
       "extracted_materials": 1,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -17194,6 +17926,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17204,6 +17938,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     },
@@ -17254,6 +17990,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.5,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17264,6 +18002,8 @@
       "extracted_materials": 0,
       "gold_steps": 1,
       "gold_materials": 0,
+      "gold_time": 2,
+      "gold_entries": 1,
       "insufficient_flagged": false
      }
     }
@@ -17324,6 +18064,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17334,6 +18076,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -17385,6 +18129,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17395,6 +18141,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -17474,6 +18222,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17484,6 +18234,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -17554,6 +18306,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17564,6 +18318,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -17651,6 +18407,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17661,6 +18419,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -17747,6 +18507,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17757,6 +18519,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -17815,6 +18579,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17825,6 +18591,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -17874,6 +18642,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17884,6 +18654,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -17966,6 +18738,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -17976,6 +18750,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -18076,6 +18852,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18086,6 +18864,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -18188,6 +18968,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18198,6 +18980,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -18297,6 +19081,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18307,6 +19093,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -18409,6 +19197,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18419,6 +19209,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -18512,6 +19304,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18522,6 +19316,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -18609,6 +19405,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18619,6 +19417,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -18704,6 +19504,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18714,6 +19516,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -18757,6 +19561,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18767,6 +19573,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -18801,6 +19609,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18811,6 +19621,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -18906,6 +19718,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -18916,6 +19730,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19009,6 +19825,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19019,6 +19837,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -19121,6 +19941,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19131,6 +19953,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19216,6 +20040,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19226,6 +20052,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -19328,6 +20156,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19338,6 +20168,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19437,6 +20269,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19447,6 +20281,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -19512,6 +20348,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19522,6 +20360,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19643,6 +20483,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19653,6 +20495,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -19718,6 +20562,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19728,6 +20574,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19833,6 +20681,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19843,6 +20693,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -19909,6 +20761,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19919,6 +20773,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -19977,6 +20833,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -19987,6 +20845,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20080,6 +20940,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20090,6 +20952,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20181,6 +21045,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20191,6 +21057,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20247,6 +21115,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20257,6 +21127,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20330,6 +21202,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20340,6 +21214,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20422,6 +21298,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20432,6 +21310,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20532,6 +21412,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20542,6 +21424,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20600,6 +21484,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20610,6 +21496,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20659,6 +21547,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20669,6 +21559,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20755,6 +21647,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20765,6 +21659,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20855,6 +21751,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20865,6 +21763,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -20934,6 +21834,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -20944,6 +21846,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -20995,6 +21899,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21005,6 +21911,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21084,6 +21992,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21094,6 +22004,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21164,6 +22076,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21174,6 +22088,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21239,6 +22155,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21249,6 +22167,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21305,6 +22225,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21315,6 +22237,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 0,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21380,6 +22304,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21390,6 +22316,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21447,6 +22375,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21457,6 +22387,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21515,6 +22447,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21525,6 +22459,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21575,6 +22511,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21585,6 +22523,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21643,6 +22583,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21653,6 +22595,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21703,6 +22647,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21713,6 +22659,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21778,6 +22726,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.3333333333333333,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21788,6 +22738,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21845,6 +22797,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.3333333333333333,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -21855,6 +22809,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -21913,6 +22869,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.0,
@@ -21923,6 +22881,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -21973,6 +22933,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.0,
@@ -21983,6 +22945,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -22042,6 +23006,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22052,6 +23018,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -22103,6 +23071,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22113,6 +23083,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -22185,6 +23157,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.0,
@@ -22195,6 +23169,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -22259,6 +23235,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 0.0,
@@ -22269,6 +23247,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -22354,6 +23334,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22364,6 +23346,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -22441,6 +23425,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22451,6 +23437,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -22492,6 +23480,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22502,6 +23492,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -22535,6 +23527,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22545,6 +23539,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -22608,6 +23604,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22618,6 +23616,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -22673,6 +23673,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22683,6 +23685,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -22751,6 +23755,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22761,6 +23767,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -22823,6 +23831,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22833,6 +23843,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -22876,6 +23888,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22886,6 +23900,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -22921,6 +23937,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22931,6 +23949,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -22974,6 +23994,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -22984,6 +24006,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23019,6 +24043,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23029,6 +24055,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23065,6 +24093,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23075,6 +24105,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -23100,6 +24132,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23110,6 +24144,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23161,6 +24197,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23171,6 +24209,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23214,6 +24254,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23224,6 +24266,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23282,6 +24326,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23292,6 +24338,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23335,6 +24383,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23345,6 +24395,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23396,6 +24448,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23406,6 +24460,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23449,6 +24505,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23459,6 +24517,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23495,6 +24555,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23505,6 +24567,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23533,6 +24597,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23543,6 +24609,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23621,6 +24689,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23631,6 +24701,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23701,6 +24773,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23711,6 +24785,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23754,6 +24830,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23764,6 +24842,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23799,6 +24879,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23809,6 +24891,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -23881,6 +24965,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23891,6 +24977,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -23955,6 +25043,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.6666666666666666,
+      "entry_coverage": 0.5,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -23965,6 +25055,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -24050,6 +25142,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24060,6 +25154,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -24137,6 +25233,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24147,6 +25245,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -24198,6 +25298,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24208,6 +25310,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -24251,6 +25355,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24261,6 +25367,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 3,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -24312,6 +25420,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24322,6 +25432,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -24357,6 +25469,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24367,6 +25481,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -24410,6 +25526,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24420,6 +25538,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -24455,6 +25575,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24465,6 +25587,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -24516,6 +25640,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24526,6 +25652,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -24569,6 +25697,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24579,6 +25709,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -24637,6 +25769,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24647,6 +25781,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -24697,6 +25833,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24707,6 +25845,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -24830,6 +25970,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24840,6 +25982,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -24955,6 +26099,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -24965,6 +26111,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -25068,6 +26216,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25078,6 +26228,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -25173,6 +26325,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25183,6 +26337,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -25256,6 +26412,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25266,6 +26424,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -25331,6 +26491,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25341,6 +26503,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -25444,6 +26608,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25454,6 +26620,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -25555,6 +26723,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25565,6 +26735,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -25662,6 +26834,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25672,6 +26846,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -25767,6 +26943,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25777,6 +26955,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -25813,6 +26993,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25823,6 +27005,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -25851,6 +27035,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25861,6 +27047,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -25897,6 +27085,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25907,6 +27097,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     },
@@ -25935,6 +27127,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -25945,6 +27139,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -26003,6 +27199,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26013,6 +27211,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26063,6 +27263,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26073,6 +27275,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -26187,6 +27391,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26197,6 +27403,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26303,6 +27511,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26313,6 +27523,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -26371,6 +27583,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26381,6 +27595,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26409,6 +27625,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26419,6 +27637,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": true
      }
     }
@@ -26477,6 +27697,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26487,6 +27709,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26537,6 +27761,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26547,6 +27773,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -26612,6 +27840,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26622,6 +27852,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26679,6 +27911,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26689,6 +27923,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -26768,6 +28004,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26778,6 +28016,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -26849,6 +28089,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26859,6 +28101,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -26910,6 +28154,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -26920,6 +28166,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27003,6 +28251,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27013,6 +28263,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27072,6 +28324,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27082,6 +28336,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27133,6 +28389,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27143,6 +28401,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27211,6 +28471,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27221,6 +28483,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27284,6 +28548,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27294,6 +28560,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27345,6 +28613,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27355,6 +28625,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27398,6 +28670,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27408,6 +28682,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27466,6 +28742,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27476,6 +28754,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27526,6 +28806,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27536,6 +28818,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27608,6 +28892,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27618,6 +28904,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     },
@@ -27682,6 +28970,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27692,6 +28982,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 4,
+      "gold_entries": 0,
       "insufficient_flagged": false
      }
     }
@@ -27728,6 +29020,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27738,6 +29032,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -27766,6 +29062,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27776,6 +29074,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -27834,6 +29134,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27844,6 +29146,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -27901,6 +29205,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27911,6 +29217,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -27962,6 +29270,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -27972,6 +29282,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -28015,6 +29327,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28025,6 +29339,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -28137,6 +29453,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28147,6 +29465,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -28251,6 +29571,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28261,6 +29583,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -28304,6 +29628,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28314,6 +29640,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -28342,6 +29670,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28352,6 +29682,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -28445,6 +29777,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28455,6 +29789,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -28558,6 +29894,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28568,6 +29906,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -28604,6 +29944,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28614,6 +29956,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -28642,6 +29986,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28652,6 +29998,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -28765,6 +30113,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28775,6 +30125,8 @@
       "extracted_materials": 2,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -28879,6 +30231,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -28889,6 +30243,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -28999,6 +30355,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29009,6 +30367,8 @@
       "extracted_materials": 4,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29111,6 +30471,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29121,6 +30483,8 @@
       "extracted_materials": 4,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -29157,6 +30521,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29167,6 +30533,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -29195,6 +30563,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29205,6 +30575,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -29246,6 +30618,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29256,6 +30630,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     },
@@ -29289,6 +30665,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29299,6 +30677,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -29335,6 +30715,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29345,6 +30727,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29373,6 +30757,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29383,6 +30769,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -29447,6 +30835,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29457,6 +30847,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29513,6 +30905,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29523,6 +30917,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": true
      }
     }
@@ -29591,6 +30987,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29601,6 +30999,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29631,6 +31031,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29641,6 +31043,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -29733,6 +31137,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29743,6 +31149,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29827,6 +31235,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29837,6 +31247,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -29888,6 +31300,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29898,6 +31312,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -29941,6 +31357,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -29951,6 +31369,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -29995,6 +31415,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30005,6 +31427,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30041,6 +31465,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30051,6 +31477,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30127,6 +31555,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30137,6 +31567,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30205,6 +31637,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30215,6 +31649,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30313,6 +31749,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30323,6 +31761,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30399,6 +31839,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30409,6 +31851,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30456,6 +31900,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30466,6 +31912,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30510,6 +31958,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30520,6 +31970,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30597,6 +32049,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30607,6 +32061,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30676,6 +32132,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 1.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30686,6 +32144,8 @@
       "extracted_materials": 1,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30791,6 +32251,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30801,6 +32263,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -30898,6 +32362,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 0.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 1.0,
       "element_coverage": 0.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30908,6 +32374,8 @@
       "extracted_materials": 3,
       "gold_steps": 0,
       "gold_materials": 1,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
@@ -30966,6 +32434,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -30976,6 +32446,8 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     },
@@ -31026,6 +32498,8 @@
      "metrics": {
       "step_coverage": 1.0,
       "material_coverage": 1.0,
+      "time_coverage": 0.0,
+      "entry_coverage": 0.0,
       "element_coverage": 1.0,
       "order_consistency": 1.0,
       "step_grounding": 1.0,
@@ -31036,24 +32510,26 @@
       "extracted_materials": 0,
       "gold_steps": 0,
       "gold_materials": 0,
+      "gold_time": 1,
+      "gold_entries": 2,
       "insufficient_flagged": false
      }
     }
    }
   }
  ],
- "created_at_utc": "2026-10-14T15:00:07.599199+00:00",
- "elapsed_seconds": 411.7214067999885,
+ "created_at_utc": "2026-10-15T04:08:54.039066+00:00",
+ "elapsed_seconds": 26.07499729999995,
  "cost": {
-  "chat_calls": 199,
-  "chat_cache_hits": 169,
-  "embed_calls": 83,
-  "embed_cache_hits": 2172,
-  "rerank_calls": 246,
-  "rerank_cache_hits": 122,
-  "prompt_tokens": 150632,
-  "completion_tokens": 51002,
-  "embed_tokens": 2139,
-  "cost_cny": 0.7560815000000005
+  "chat_calls": 0,
+  "chat_cache_hits": 368,
+  "embed_calls": 100,
+  "embed_cache_hits": 3011,
+  "rerank_calls": 0,
+  "rerank_cache_hits": 368,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "embed_tokens": 1334,
+  "cost_cny": 0.000667
  }
 }

@@ -38,7 +38,7 @@ from app.backend.flow_extractor import extract as extract_flow
 from app.backend.research_data import ResearchRepository
 from app.backend.retrieval_stack import RetrievalStack
 from app.backend.scoring_v2 import ElementMatcher, score_prediction
-from app.backend.stage4_statistics import holm_adjust, paired_analysis
+from app.backend.stage4_statistics import paired_analysis
 
 CONFIGS = {
     "baseline_a": {"strategy": "dense", "k": 5, "routed": False},
@@ -135,6 +135,11 @@ def run_one(repository: ResearchRepository, stack: RetrievalStack, client: ApiCl
 
 
 def compare(results: dict[str, list[dict]]) -> list[dict]:
+    """Paired differences for each contrast, descriptive only.
+
+    Hypothesis tests, with one primary metric per hypothesis and Holm correction
+    across models, are made by analyze_hypotheses.py.
+    """
     comparisons = []
     for left, right, label in CONTRASTS:
         aligned_left = {r["sample_id"]: r for r in results.get(left, [])}
@@ -152,10 +157,6 @@ def compare(results: dict[str, list[dict]]) -> list[dict]:
             )
             comparisons.append({"label": label, "left": left, "right": right,
                                 "metric": metric, **stat})
-    for comparison, adjusted in zip(
-        comparisons, holm_adjust([c["paired_sign_flip_p"] for c in comparisons])
-    ):
-        comparison["holm_adjusted_p"] = adjusted
     return comparisons
 
 

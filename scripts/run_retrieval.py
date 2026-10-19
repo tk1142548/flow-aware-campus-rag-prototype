@@ -1,15 +1,13 @@
-"""Stage-3 retrieval baselines under an id-free, oracle-free protocol.
+"""Retrieval strategies compared on the user question alone.
 
-The earlier formal run conditioned retrieval on each sample's gold `process_id`,
-which means it measured "find the evidence once you already know the answer".
-Here retrieval sees only the user question. Two scopes are reported:
+Retrieval sees only what the student said. Two scopes are reported:
 
 * ``global``          - search the whole verified evidence pool (the headline)
 * ``item_conditioned`` - search inside the gold item only (diagnostic upper bound,
                         must not be reported as the retrieval result)
 
 Usage:
-    python scripts/run_retrieval_v2.py [--limit N] [--output PATH]
+    python scripts/run_retrieval.py [--limit N] [--output PATH]
 """
 from __future__ import annotations
 
@@ -125,7 +123,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--output", type=Path,
-                        default=ROOT / "data/experiments/retrieval-v2.json")
+                        default=ROOT / "data/experiments/retrieval.json")
     args = parser.parse_args()
 
     started = time.perf_counter()
@@ -133,7 +131,7 @@ def main() -> int:
     client = ApiClient(ROOT / "data/cache")
 
     samples = [json.loads(line) for line in
-               (ROOT / "data/evaluation/stage2_samples.jsonl").read_text(encoding="utf-8").splitlines()
+               (ROOT / "data/evaluation/dev-set.jsonl").read_text(encoding="utf-8").splitlines()
                if line]
     samples = [s for s in samples if s["gold"]["supporting_evidence_ids"]]
     if args.limit:

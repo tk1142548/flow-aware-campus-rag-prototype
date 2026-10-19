@@ -21,6 +21,7 @@ from typing import Any, Iterable, Sequence
 import httpx
 
 COMPATIBLE_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+MOONSHOT_BASE = "https://api.moonshot.cn/v1"
 RERANK_ENDPOINT = "https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank"
 EMBED_BATCH = 10
 
@@ -33,8 +34,11 @@ PRICES = {
     "qwen-plus": {"input": 0.0008, "output": 0.002},
     "qwen-max": {"input": 0.0024, "output": 0.0096},
     "qwen-flash": {"input": 0.00015, "output": 0.0015},
+    "qwen3.5-35b-a3b": {"input": 0.0004, "output": 0.0032},
     "text-embedding-v4": {"input": 0.0005, "output": 0.0},
     "gte-rerank-v2": {"input": 0.0008, "output": 0.0},
+    # Moonshot list price, cache-miss input (platform.kimi.com/docs/pricing/chat, 2026-10).
+    "kimi-k2.6": {"input": 0.0065, "output": 0.027},
 }
 
 
@@ -50,7 +54,7 @@ class ApiClient:
         cache_dir: Path | str,
         api_key: str | None = None,
         base_url: str = COMPATIBLE_BASE,
-        chat_model: str = DEFAULT_CHAT_MODEL,
+        chat_model: str | None = None,
         embed_model: str = DEFAULT_EMBED_MODEL,
         rerank_model: str = DEFAULT_RERANK_MODEL,
         timeout: float = 120.0,
@@ -58,7 +62,7 @@ class ApiClient:
     ) -> None:
         self.api_key = api_key or os.getenv("DASHSCOPE_API_KEY", "") or os.getenv("OPENAI_API_KEY", "")
         self.base_url = (os.getenv("OPENAI_BASE_URL") or base_url).rstrip("/")
-        self.chat_model = os.getenv("OPENAI_MODEL") or chat_model
+        self.chat_model = chat_model or os.getenv("OPENAI_MODEL") or DEFAULT_CHAT_MODEL
         self.embed_model = os.getenv("DASHSCOPE_EMBED_MODEL") or embed_model
         self.rerank_model = os.getenv("DASHSCOPE_RERANK_MODEL") or rerank_model
         self.timeout = timeout
@@ -66,6 +70,10 @@ class ApiClient:
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
+        # One pooled connection set shared by every worker thread.
+        self._http = httpx.Client(timeout=timeout,
+                                  limits=httpx.Limits(max_connections=8,
+                                                      max_keepalive_connections=8))
         self.stats: dict[str, Any] = {
             "chat_calls": 0,
             "chat_cache_hits": 0,
@@ -77,6 +85,7 @@ class ApiClient:
             "completion_tokens": 0,
             "embed_tokens": 0,
             "cost_cny": 0.0,
+            "json_retries": 0,
             "json_repairs": 0,
         }
 
@@ -117,7 +126,7 @@ class ApiClient:
         last: Exception | None = None
         for attempt in range(self.max_retries):
             try:
-                response = httpx.post(url, headers=headers, json=payload, timeout=self.timeout)
+                response = self._http.post(url, headers=headers, json=payload)
                 if response.status_code == 429 or response.status_code >= 500:
                     raise ApiError(f"retryable {response.status_code}: {response.text[:200]}")
                 if response.status_code >= 400:
@@ -165,6 +174,14 @@ class ApiClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
+        if model.startswith("qwen3"):
+            # Open-weight Qwen3 models think by default; every configuration is
+            # compared with thinking off.
+            payload["enable_thinking"] = False
+        if model.startswith("kimi-k2"):
+            # kimi-k2 accepts only temperature 0.6 with thinking disabled.
+            payload["temperature"] = 0.6
+            payload["thinking"] = {"type": "disabled"}
         path = self._cache_path("chat", payload)
         if use_cache:
             cached = self._cache_read(path)
@@ -193,15 +210,23 @@ class ApiClient:
     ) -> Any:
         """Chat and parse a JSON object out of the reply.
 
-        A reply that is not valid JSON as written is repaired by `extract_json`.
-        The reply is scored on what it says, not on how it punctuates, so a stray
-        aside or a missing closing bracket must not turn a good answer into a
-        missing one. A reply that cannot be repaired still raises, as before.
+        A malformed reply is repaired by `parse_json_reply`; one that cannot be
+        repaired is requested once more, and raises if that also fails.
         """
         text = self.chat(
             messages, model=model, temperature=temperature, max_tokens=max_tokens
         )
-        value, repaired = parse_json_reply(text)
+        try:
+            value, repaired = parse_json_reply(text)
+        except ValueError:
+            # Ask once more with the format restated; the retry is cached separately.
+            retry = list(messages) + [
+                {"role": "assistant", "content": text},
+                {"role": "user", "content": "上面的回复不是合法的 JSON。请按要求的字段重新输出完整、合法的 JSON，不要输出其他内容。"},
+            ]
+            text = self.chat(retry, model=model, temperature=temperature, max_tokens=max_tokens)
+            value, repaired = parse_json_reply(text)
+            self._bump(json_retries=1)
         if repaired:
             self._bump(json_repairs=1)
         return value
@@ -290,17 +315,19 @@ def extract_json(text: str) -> Any:
 def parse_json_reply(text: str) -> tuple[Any, bool]:
     """Return the reply's JSON value and whether a repair was needed.
 
-    Three shapes of near-miss are recovered, in order: text that sits outside any
-    string and could not be legal JSON, and a reply cut off before its closing
-    bracket. Both were observed on real runs and both leave the answer itself
-    intact, so scoring must not treat them as a missing answer.
+    Recovered near-misses: text outside any string that JSON cannot contain, a
+    reply cut off before its closing bracket, and an unescaped quote inside a
+    string value. Each leaves the answer itself intact.
     """
     candidate = _json_candidate(text)
+    escaped = escape_inner_quotes(candidate)
     attempts = [
         candidate,
         strip_text_outside_strings(candidate),
         close_truncated(candidate),
         close_truncated(strip_text_outside_strings(candidate)),
+        escaped,
+        close_truncated(escaped),
     ]
     for index, attempt in enumerate(attempts):
         try:
@@ -379,6 +406,43 @@ def close_truncated(text: str) -> str:
     return "".join(out)
 
 
+def escape_inner_quotes(text: str) -> str:
+    """Escape ASCII quotes that sit inside a string value.
+
+    Chinese text is sometimes quoted with an ASCII opening quote and a full-width
+    closing one (主题为"XX学院清退名单”). A quote inside a string is taken as
+    closing it only when the next non-space character can follow a string in JSON
+    (``,`` ``:`` ``}`` ``]``).
+    """
+    out: list[str] = []
+    in_string = False
+    escaped = False
+    for index, character in enumerate(text):
+        if not in_string:
+            out.append(character)
+            if character == '"':
+                in_string = True
+            continue
+        if escaped:
+            escaped = False
+            out.append(character)
+            continue
+        if character == "\\":
+            escaped = True
+            out.append(character)
+            continue
+        if character == '"':
+            rest = text[index + 1:].lstrip()
+            if not rest or rest[0] in ",:}]":
+                in_string = False
+                out.append(character)
+            else:
+                out.append('\\"')
+            continue
+        out.append(character)
+    return "".join(out)
+
+
 _STRUCTURAL = set('{}[]:,"')
 
 
@@ -409,3 +473,9 @@ def strip_text_outside_strings(text: str) -> str:
         elif character in _STRUCTURAL or character.isascii():
             out.append(character)
     return "".join(out)
+
+
+def judge_client(cache_dir: Path | str, model: str = "kimi-k2.6") -> ApiClient:
+    """A client for the assertion judge, on a different model family from the generator."""
+    return ApiClient(cache_dir, api_key=os.getenv("MOONSHOT_API_KEY", ""),
+                     base_url=MOONSHOT_BASE, chat_model=model)

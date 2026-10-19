@@ -1,17 +1,15 @@
 """Extract a lightweight process skeleton from retrieved evidence.
 
-This is the piece the申报书 stage 3 actually asked for and the repository never
-had: the earlier "流程中间表示" was hand-annotated and then read back at
-inference time, which is not extraction. Here the model receives only the user
-question and the evidence this run retrieved, and must produce the five element
-kinds, each bound to the evidence ids it used.
-
-The hand-annotated process records stay on the evaluation side as gold.
+The model receives only the conversation and the evidence this run retrieved, and
+must produce the five element kinds, each bound to the evidence ids it used. The
+hand-annotated process records stay on the evaluation side as gold.
 """
 from __future__ import annotations
 
 import json
 from typing import Any, Sequence
+
+from .prompting import conversation_block, evidence_block
 
 ELEMENT_KINDS = ("steps", "conditions", "materials", "time_constraints", "entries")
 
@@ -44,15 +42,6 @@ USER_TEMPLATE = """【用户问题】
 - 每条 evidence_ids 只能取自【证据】中出现的编号，不得新增。
 - 如果证据中没有任何与问题相关的内容，把 insufficient 设为 true 并让各数组为空。
 - 只输出 JSON，不要解释。"""
-
-
-def format_evidence(rows: Sequence[dict]) -> str:
-    blocks = []
-    for row in rows:
-        claim = row.get("normalized_claim") or ""
-        verbatim = row.get("verbatim_text") or ""
-        blocks.append(f"[{row['evidence_id']}] {claim}\n    原文：{verbatim}")
-    return "\n".join(blocks) if blocks else "（无）"
 
 
 def empty_skeleton(reason: str = "") -> dict:
@@ -104,14 +93,14 @@ def normalise(raw: Any) -> dict:
     return out
 
 
-def extract(client: Any, question: str, evidence_rows: Sequence[dict]) -> dict:
-    """Extract a skeleton from the evidence retrieved for this question."""
+def extract(client: Any, turns: Sequence[dict], evidence_rows: Sequence[dict]) -> dict:
+    """Extract a skeleton from the evidence retrieved for this conversation."""
     if not evidence_rows:
         return empty_skeleton("no evidence retrieved")
     messages = [
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": USER_TEMPLATE.format(
-            question=question, evidence=format_evidence(evidence_rows))},
+            question=conversation_block(turns), evidence=evidence_block(evidence_rows))},
     ]
     reply = client.chat(messages, temperature=0.0, max_tokens=2000)
     try:

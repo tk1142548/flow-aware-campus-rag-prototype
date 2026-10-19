@@ -1,7 +1,6 @@
 """Cross-encoder style reranking for retrieved evidence.
 
-The申报书 requires a reranking stage; the previous code had none. This wraps a
-hosted cross-encoder (gte-rerank-v2) behind the same shape as the other
+Wraps a hosted cross-encoder (gte-rerank-v2) behind the same shape as the other
 retrievers so it can be switched on and off for ablations.
 
 The reranker only sees the query and the candidate passages. It never sees

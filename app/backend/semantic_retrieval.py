@@ -6,6 +6,7 @@ import os
 import time
 from typing import Callable
 
+import numpy as np
 import requests
 
 ENDPOINT = 'https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings'
@@ -44,6 +45,9 @@ class SemanticRetriever:
         self.embedder = embedder
         texts = [self._text(row) for row in self.rows]
         self.vectors = self._embed_all(texts)
+        matrix = np.asarray(self.vectors, dtype=float) if self.vectors else np.zeros((0, 0))
+        norms = np.linalg.norm(matrix, axis=1, keepdims=True) if matrix.size else matrix
+        self._unit = matrix / np.where(norms == 0, 1.0, norms) if matrix.size else matrix
 
     def _embed_all(self, texts: list[str]) -> list[list[float]]:
         vectors = []
@@ -60,9 +64,7 @@ class SemanticRetriever:
             raise ValueError('query must not be empty')
         if top_k < 1:
             raise ValueError('top_k must be positive')
-        query_vector = self.embedder([query])[0]
-        ranked = [(row, cosine(query_vector, vector)) for row, vector in zip(self.rows, self.vectors)]
-        return sorted(ranked, key=lambda hit: (-hit[1], hit[0]['evidence_id']))[:top_k]
+        return self._rank(self.embedder([query])[0], top_k)
 
     def search_many(self, queries: list[str], top_k: int = 5) -> list[list[tuple[dict, float]]]:
         """Embed a query batch in groups of ten and rank without extra API calls."""
@@ -76,5 +78,10 @@ class SemanticRetriever:
         return [self._rank(vector, top_k) for vector in vectors]
 
     def _rank(self, query_vector: list[float], top_k: int) -> list[tuple[dict, float]]:
-        ranked = [(row, cosine(query_vector, vector)) for row, vector in zip(self.rows, self.vectors)]
+        if not self.rows:
+            return []
+        query = np.asarray(query_vector, dtype=float)
+        norm = np.linalg.norm(query)
+        scores = self._unit @ (query / norm if norm else query)
+        ranked = [(row, float(score)) for row, score in zip(self.rows, scores)]
         return sorted(ranked, key=lambda hit: (-hit[1], hit[0]['evidence_id']))[:top_k]

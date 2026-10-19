@@ -148,7 +148,7 @@ def run_sample(repository: ResearchRepository, stack: RetrievalStack, client: An
     for mode in MODES:
         hits = stack.reranker.rerank(question, pools[mode], EVIDENCE_K)
         rows = [row for row, _ in hits]
-        skeleton = extract(client, question, rows)
+        skeleton = extract(client, sample["conversation"], rows)
         entry["modes"][mode] = {
             "skeleton": skeleton,
             "retrieved_evidence_ids": [row["evidence_id"] for row in rows],
@@ -173,7 +173,7 @@ def main() -> int:
     matcher = ElementMatcher(client)
 
     samples = [json.loads(line) for line in
-               (ROOT / "data/evaluation/stage2_samples.jsonl").read_text(encoding="utf-8").splitlines()
+               (ROOT / "data/evaluation/dev-set.jsonl").read_text(encoding="utf-8").splitlines()
                if line]
     samples = [s for s in samples if s["gold"]["supporting_evidence_ids"]]
     if args.limit:

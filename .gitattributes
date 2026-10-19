@@ -2,18 +2,6 @@
 data/sources/** -text -diff
 
 # 数据文件统一使用 LF 换行。
-data/research/stage2-evaluation-blueprint.csv text eol=lf
-data/research/stage2-evaluation-plan.json text eol=lf
-data/research/source_capture_plan.json text eol=lf
-data/research/source_records.jsonl text eol=lf
-data/research/evidence_units.jsonl text eol=lf
-data/research/process_records.jsonl text eol=lf
-data/research/stage2-source-migration-plan.csv text eol=lf
-data/research/stage2b-withdrawal-annotation-examples.json text eol=lf
-data/audit/stage2b-withdrawal-second-review.csv text eol=lf
-
-# 标注表按原样保存，不做换行转换。
-data/evaluation/task-completion-sheet.csv -text
-data/experiments/judge-calibration.csv -text
-data/evaluation/task-completion-review.csv -text
-data/evaluation/judge-calibration-review.csv -text
+data/research/*.jsonl text eol=lf
+data/research/*.json text eol=lf
+data/evaluation/*.jsonl text eol=lf

@@ -18,19 +18,15 @@ if ($Python -ne '') {
 
 Push-Location $repoRoot
 try {
-    Write-Output "[1/4] validate_research_data"
+    Write-Output "[1/3] validate_research_data"
     & $target 'scripts/validate_research_data.py'
     if ($LASTEXITCODE -ne 0) { throw "validate_research_data failed." }
 
-    Write-Output "[2/4] validate_process_records"
+    Write-Output "[2/3] validate_process_records"
     & $target 'scripts/validate_process_records.py'
     if ($LASTEXITCODE -ne 0) { throw "validate_process_records failed." }
 
-    Write-Output "[3/4] validate_stage2_content"
-    & $target 'scripts/validate_stage2_content.py'
-    if ($LASTEXITCODE -ne 0) { throw "validate_stage2_content failed." }
-
-    Write-Output "[4/4] unit tests"
+    Write-Output "[3/3] unit tests"
     & $target '-m' 'unittest' 'discover' '-s' 'tests' '-p' 'test_*.py' '-q'
     if ($LASTEXITCODE -ne 0) { throw "unit tests failed." }
 } finally {

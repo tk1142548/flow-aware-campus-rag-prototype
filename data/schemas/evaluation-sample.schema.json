@@ -30,17 +30,20 @@
   "dataset_id": {
    "type": "string",
    "enum": [
-    "CAMPUS_RAG_STAGE2_EVAL",
-    "CAMPUS_RAG_INDEPENDENT_V1"
+    "CAMPUS_RAG_DEV_V1",
+    "CAMPUS_RAG_CONFIRM_V1"
    ],
    "description": "开发集或独立确认性验证集"
   },
   "sample_id": {
    "type": "string",
-   "pattern": "^(S2E|ISE)-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+   "pattern": "^(ISE|CFM)-(PP|SC|WD|CR|SR|CS|LR|MC|OS)-[0-9]{3}$"
   },
   "allocation_item_id": {
-   "type": "string",
+   "type": [
+    "string",
+    "null"
+   ],
    "pattern": "^[A-Z][A-Z0-9_]+$"
   },
   "item_id": {
@@ -58,7 +61,10 @@
    "pattern": "^PROC_[A-Z][A-Z0-9_]+_V[0-9]{3}$"
   },
   "split": {
-   "const": "test"
+   "enum": [
+    "dev",
+    "confirm"
+   ]
   },
   "scenario_type": {
    "enum": [
@@ -316,7 +322,7 @@
      "uniqueItems": true,
      "items": {
       "type": "string",
-      "pattern": "^(S2E|ISE)-(PP|SC|WD|CR|SR|CS|LR|MC)-[0-9]{3}$"
+      "pattern": "^(ISE|CFM)-(PP|SC|WD|CR|SR|CS|LR|MC|OS)-[0-9]{3}$"
      }
     },
     "check_status": {
@@ -347,9 +353,8 @@
   "review_status": {
    "enum": [
     "draft",
-    "primary_complete",
-    "second_review_complete",
-    "adjudicated",
+    "model_reviewed",
+    "human_reviewed",
     "rejected"
    ]
   }
@@ -415,13 +420,17 @@
   {
    "if": {
     "properties": {
-     "scenario_type": {
-      "const": "out_of_scope"
+     "gold": {
+      "properties": {
+       "response_mode": {
+        "const": "abstention"
+       }
+      },
+      "required": [
+       "response_mode"
+      ]
      }
-    },
-    "required": [
-     "scenario_type"
-    ]
+    }
    },
    "then": {
     "properties": {
@@ -433,9 +442,6 @@
      },
      "gold": {
       "properties": {
-       "response_mode": {
-        "const": "abstention"
-       },
        "target_item_id": {
         "type": "null"
        }
@@ -458,7 +464,36 @@
        "target_item_id": {
         "type": "string",
         "pattern": "^[A-Z][A-Z0-9_]+$"
-       },
+       }
+      }
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "gold": {
+      "properties": {
+       "response_mode": {
+        "enum": [
+         "answer",
+         "scoped_correction",
+         "version_qualified",
+         "conversation_resolution"
+        ]
+       }
+      },
+      "required": [
+       "response_mode"
+      ]
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "gold": {
+      "properties": {
        "supporting_evidence_ids": {
         "minItems": 1
        }

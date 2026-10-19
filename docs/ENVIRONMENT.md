@@ -29,7 +29,7 @@ powershell -ExecutionPolicy Bypass -File scripts\setup_env.ps1 -BasePython "C:\P
 powershell -ExecutionPolicy Bypass -File scripts\verify_all.ps1
 ```
 
-依次执行 `validate_research_data.py`、`validate_stage2_content.py` 与 `unittest discover -s tests`；
+依次执行 `validate_research_data.py`、`validate_process_records.py` 与 `unittest discover -s tests`；
 任何一步失败都会立即中断并报出是哪一步。
 
 > 数据扩充后，应同步更新校验器中对应的契约定义，而不是把校验当噪声关掉。

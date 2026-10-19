@@ -1,9 +1,7 @@
 """Evaluation-side scoring that never requires the system to emit annotation ids.
 
-The previous scorer compared `claim_id` values, which a generative system can
-never produce, so every generative baseline scored zero. Here the gold side is
-resolved to *text* and compared to the answer by content, so any system that
-says the right thing scores well regardless of how it labels it.
+The gold side is resolved to *text* and compared to the answer by content, so a
+system that says the right thing scores well regardless of how it labels it.
 
 This module is evaluation-only. It is expected to read `sample['gold']`; nothing
 in the inference path may import it.
@@ -14,6 +12,8 @@ import math
 import re
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Sequence
+
+import numpy as np
 
 CLAUSE_SPLIT = re.compile(r"[\n。；;！!？?]+")
 LEXICAL_THRESHOLD = 0.5
@@ -59,6 +59,12 @@ def cosine(left: Sequence[float], right: Sequence[float]) -> float:
     ln = math.sqrt(sum(a * a for a in left))
     rn = math.sqrt(sum(b * b for b in right))
     return dot / (ln * rn) if ln and rn else 0.0
+
+
+def _unit_rows(vectors: Sequence[Sequence[float]]) -> np.ndarray:
+    matrix = np.asarray(vectors, dtype=float)
+    norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+    return matrix / np.where(norms == 0, 1.0, norms)
 
 
 def resolve_gold_elements(repository: Any, sample: dict) -> list[dict]:
@@ -146,17 +152,19 @@ class ElementMatcher:
         if element_vectors is None and self.client is not None:
             element_vectors = self.client.embed([el["text"] for el in elements])
 
+        similarity = None
+        if answer_vectors and element_vectors:
+            similarity = _unit_rows(element_vectors) @ _unit_rows(answer_vectors).T
+
         results: list[dict] = []
         for index, element in enumerate(elements):
             best_lex = max(lexical_containment(clause, element["text"]) for clause in clauses)
             best_sem = 0.0
             best_clause = None
-            if answer_vectors and element_vectors:
-                vector = element_vectors[index]
-                for clause, clause_vector in zip(clauses, answer_vectors):
-                    score = cosine(clause_vector, vector)
-                    if score > best_sem:
-                        best_sem, best_clause = score, clause
+            if similarity is not None:
+                column = int(np.argmax(similarity[index]))
+                if similarity[index, column] > 0:
+                    best_sem, best_clause = float(similarity[index, column]), clauses[column]
             covered = best_lex >= self.lexical_threshold or best_sem >= self.semantic_threshold
             results.append(
                 {"element": element, "covered": covered, "lexical": best_lex,
@@ -268,6 +276,14 @@ def score_prediction(
     if gold["response_mode"] in REFUSAL_MODES:
         # Nothing should be asserted; coverage is vacuous and the mode is the test.
         ok = mode_ok == 1.0
+    elif gold["response_mode"] == "clarification":
+        # The reference reply is the follow-up question itself.
+        ok = (
+            item_correct == 1.0
+            and mode_ok == 1.0
+            and metrics["missing_slot_f1"] == 1.0
+            and metrics["follow_up_correct"] == 1.0
+        )
     else:
         ok = (
             item_correct == 1.0
@@ -312,52 +328,3 @@ def summarise(records: Sequence[dict]) -> dict:
                     failures.get(f"{element['kind']}:{element['id']}", 0) + 1
                 )
     return {"sample_count": len(records), "metrics": summary, "uncovered_elements": failures}
-
-
-JUDGE_SYSTEM = (
-    "你是严格的事实核验员。判断【回答】中的每条实质性陈述是否被【证据】支持。"
-    "只依据给定证据，不使用你自己的常识补充。"
-)
-
-JUDGE_USER = """【问题】
-{question}
-
-【证据】
-{evidence}
-
-【回答】
-{answer}
-
-只输出 JSON：
-{{"supported": [{{"claim": "回答中的一条实质陈述", "verdict": "supported|unsupported|unclear", "evidence_id": "支撑它的证据编号，没有则空串"}}],
- "unsupported_ratio": 0.0,
- "reason": "一句话理由"}}
-
-要求：
-- 逐条拆出回答中的实质性陈述（办理主体、对象、步骤、材料、时间、地点、费用、版本）。
-- verdict=supported 仅当证据中有文字能直接支撑该陈述。
-- unsupported_ratio = verdict 为 unsupported 的条数 / 总条数。"""
-
-
-def judge_support(client: Any, question: str, answer: str, evidence: Sequence[dict]) -> dict:
-    """LLM-as-judge pass for citation faithfulness. Calibrate on a human slice."""
-    evidence_block = "\n".join(
-        f"[{e['evidence_id']}] {e.get('normalized_claim') or e.get('verbatim_text', '')}"
-        for e in evidence
-    )
-    payload = [
-        {"role": "system", "content": JUDGE_SYSTEM},
-        {"role": "user", "content": JUDGE_USER.format(
-            question=question, evidence=evidence_block, answer=answer)},
-    ]
-    try:
-        result = client.chat_json(payload, temperature=0.0, max_tokens=1200)
-    except (ValueError, RuntimeError) as error:
-        return {"error": str(error), "unsupported_ratio": None, "supported": []}
-    items = result.get("supported") or []
-    unsupported = [i for i in items if i.get("verdict") == "unsupported"]
-    return {
-        "supported": items,
-        "unsupported_ratio": (len(unsupported) / len(items)) if items else 0.0,
-        "reason": result.get("reason", ""),
-    }
